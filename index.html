@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mira Flow — Padel Retreats · Costa Vicentina · Portugal</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@100;200;300;400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBCMjUzNSIvPjxjaXJjbGUgY3g9IjUwIiBjeT0iNTAiIHI9IjQ0IiBmaWxsPSJub25lIiBzdHJva2U9IiNCNTg0MkEiIHN0cm9rZS13aWR0aD0iMy41Ii8+PHRleHQgeD0iNTAiIHk9IjQ0IiBmb250LWZhbWlseT0iJ0pvc3QnLEFyaWFsIiBmb250LXdlaWdodD0iMjAwIiBmb250LXNpemU9IjIyIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgbGV0dGVyLXNwYWNpbmc9IjMiPk1JUkE8L3RleHQ+PGxpbmUgeDE9IjMyIiB5MT0iNTEiIHgyPSI2OCIgeTI9IjUxIiBzdHJva2U9IiNENEE4NEIiIHN0cm9rZS13aWR0aD0iMSIvPjx0ZXh0IHg9IjUwIiB5PSI2OCIgZm9udC1mYW1pbHk9IidKb3N0JyxBcmlhbCIgZm9udC13ZWlnaHQ9IjIwMCIgZm9udC1zaXplPSIyMiIgZmlsbD0iI0Q0QTg0QiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgbGV0dGVyLXNwYWNpbmc9IjMiPkZMT1c8L3RleHQ+PC9zdmc+">
+<meta name="theme-color" content="#0B2535">
+<style>
+:root {
+  --ink:    #0B2535;
+  --deep:   #1A4560;
+  --gold:   #B5842A;
+  --glt:    #D4A84B;
+  --sand:   #EDE4D0;
+  --slt:    #F7F2E8;
+  --sdk:    #D5C9B0;
+  --clay:   #8B6A52;
+  --cork:   #3D5840;
+  --muted:  #7A7060;
+  --text:   #1C1C1A;
+}
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body { font-family:'Jost',sans-serif; font-weight:300; color:var(--text); background:var(--ink); overflow-x:hidden; }
+
+/* ── NAV ── */
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  display:flex; justify-content:space-between; align-items:center;
+  padding:20px 56px;
+  transition:background .4s, padding .3s;
+}
+nav.scrolled { background:rgba(11,37,53,.96); backdrop-filter:blur(8px); padding:14px 56px; }
+.nav-logo { text-decoration:none; line-height:1; }
+.nl-t { font-family:'Jost',sans-serif; font-weight:200; font-size:13px; letter-spacing:6px; color:white; text-transform:uppercase; display:block; }
+.nl-b { font-family:'Jost',sans-serif; font-weight:100; font-size:13px; letter-spacing:6px; color:var(--glt); text-transform:uppercase; display:block; margin-top:-2px; }
+.nav-right { display:flex; align-items:center; gap:20px; }
+.nav-clubs-btn {
+  background:none; border:none; cursor:pointer;
+  font-family:'Jost',sans-serif; font-weight:300; font-size:10px;
+  letter-spacing:2px; text-transform:uppercase;
+  color:rgba(255,255,255,.4); transition:color .2s;
+  padding:4px 0;
+}
+.nav-clubs-btn:hover { color:var(--glt); }
+.lang-sw { display:flex; align-items:center; gap:5px; }
+.lsb { background:none; border:none; font-family:'Jost',sans-serif; font-weight:300; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,.3); cursor:pointer; padding:4px 2px; transition:color .2s; }
+.lsb.active { color:white; }
+.lang-sep { color:rgba(255,255,255,.15); font-size:10px; }
+.nav-cta { display:inline-block; padding:9px 22px; background:var(--gold); color:white; font-size:10px; font-weight:300; letter-spacing:2px; text-transform:uppercase; text-decoration:none; transition:background .2s; }
+.nav-cta:hover { background:var(--glt); }
+
+/* ── HERO ── */
+#hero {
+  min-height:100vh; background:var(--ink);
+  display:flex; align-items:center;
+  padding:120px 56px 100px;
+  position:relative; overflow:hidden;
+}
+/* Video background */
+.hero-video {
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  object-fit:cover;
+  z-index:0;
+  opacity:0;
+  transition:opacity 1.2s ease;
+}
+.hero-video.loaded { opacity:0.38; }
+/* Dark gradient overlay so text stays readable */
+.hero-video-overlay {
+  position:absolute; inset:0; z-index:1;
+  background:linear-gradient(
+    105deg,
+    rgba(11,37,53,0.85) 0%,
+    rgba(11,37,53,0.55) 50%,
+    rgba(11,37,53,0.35) 100%
+  );
+}
+/* Video upload hint (shown when no video src) */
+.hero-video-hint {
+  position:absolute; bottom:40px; right:56px;
+  z-index:3; font-size:8px; font-weight:300;
+  letter-spacing:2px; text-transform:uppercase;
+  color:rgba(255,255,255,0.12);
+  pointer-events:none;
+}
+.hero-ring { position:absolute; border-radius:50%; pointer-events:none; }
+.hero-ring-1 { width:650px; height:650px; right:-180px; top:-180px; border:1px solid rgba(181,132,42,.1); }
+.hero-ring-2 { width:1050px; height:1050px; right:-380px; top:-380px; border:1px solid rgba(181,132,42,.05); }
+.hero-accent { position:absolute; left:0; top:0; bottom:0; width:2px; background:linear-gradient(180deg,transparent 0%,var(--gold) 30%,var(--glt) 70%,transparent 100%); }
+.hero-inner { position:relative; z-index:2; max-width:960px; width:100%; }
+.hero-eyebrow { font-size:9px; font-weight:300; letter-spacing:4px; text-transform:uppercase; color:var(--glt); margin-bottom:28px; display:block; }
+.hero-wm { line-height:1; margin-bottom:32px; }
+.hero-wm-t { font-family:'Jost',sans-serif; font-weight:200; font-size:clamp(64px,11vw,132px); letter-spacing:14px; color:white; text-transform:uppercase; display:block; }
+.hero-wm-b { font-family:'Jost',sans-serif; font-weight:100; font-size:clamp(64px,11vw,132px); letter-spacing:14px; color:var(--glt); text-transform:uppercase; display:block; margin-top:-10px; }
+.hero-tagline { font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:300; font-size:clamp(20px,2.5vw,32px); color:rgba(255,255,255,.55); line-height:1.5; margin-bottom:48px; max-width:700px; }
+.hero-facts { display:flex; gap:0; margin-bottom:52px; border-top:1px solid rgba(255,255,255,.07); padding-top:28px; flex-wrap:wrap; }
+.hero-fact { padding-right:40px; margin-right:40px; border-right:1px solid rgba(255,255,255,.07); }
+.hero-fact:last-child { border-right:none; }
+.hf-num { font-family:'Cormorant Garamond',serif; font-size:30px; font-weight:300; color:var(--glt); line-height:1; margin-bottom:5px; }
+.hf-lbl { font-size:9px; font-weight:300; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,.3); }
+.hero-cta { display:flex; align-items:center; gap:20px; }
+.hero-cta-sub { font-size:12px; font-weight:300; color:rgba(255,255,255,.2); font-style:italic; }
+.hero-scroll-btn {
+  position:absolute; bottom:40px; left:56px;
+  display:flex; align-items:center; gap:12px;
+  background:none; border:none; cursor:pointer; z-index:3;
+}
+.hscroll-line { width:40px; height:1px; background:rgba(181,132,42,.4); }
+.hscroll-lbl { font-size:8px; font-weight:300; letter-spacing:3px; text-transform:uppercase; color:rgba(255,255,255,.2); }
+
+/* ── SHARED SECTION ── */
+.sec { padding:88px 56px; }
+.max { max-width:1200px; margin:0 auto; }
+.sl { font-size:9px; font-weight:300; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:16px; }
+.st { font-family:'Cormorant Garamond',serif; font-weight:300; font-size:clamp(28px,3.8vw,48px); line-height:1.15; color:var(--ink); }
+.st em { font-style:italic; }
+.sb { font-size:14px; font-weight:300; line-height:1.75; color:var(--muted); }
+.btn-p { display:inline-block; padding:14px 32px; background:var(--gold); color:white; font-size:10px; font-weight:300; letter-spacing:2px; text-transform:uppercase; text-decoration:none; transition:background .2s; }
+.btn-p:hover { background:var(--glt); }
+.btn-g { display:inline-block; padding:13px 30px; border:1px solid rgba(255,255,255,.2); color:rgba(255,255,255,.6); font-size:10px; font-weight:300; letter-spacing:2px; text-transform:uppercase; text-decoration:none; transition:all .2s; }
+.btn-g:hover { border-color:var(--gold); color:var(--glt); }
+.btn-p-ink { display:inline-block; padding:14px 32px; background:var(--ink); color:white; font-size:10px; font-weight:300; letter-spacing:2px; text-transform:uppercase; text-decoration:none; transition:background .2s; }
+.btn-p-ink:hover { background:var(--deep); }
+.btn-g-ink { display:inline-block; padding:13px 30px; border:1px solid rgba(11,37,53,.25); color:var(--ink); font-size:10px; font-weight:300; letter-spacing:2px; text-transform:uppercase; text-decoration:none; transition:all .2s; }
+.btn-g-ink:hover { border-color:var(--gold); }
+.reveal { opacity:0; transform:translateY(24px); transition:opacity .6s ease, transform .6s ease; }
+.reveal.visible { opacity:1; transform:none; }
+
+/* ── P-WHY ── */
+.p-why { background:var(--slt); }
+.p-why .st { color:var(--ink); }
+.two { display:grid; grid-template-columns:1fr 1fr; gap:56px; }
+.p-pillars { display:grid; grid-template-columns:1fr 1fr; gap:3px; margin-top:36px; }
+.pp { padding:24px 20px; background:var(--sand); }
+.pp.dark { background:var(--ink); }
+.ppn { font-family:'Cormorant Garamond',serif; font-size:30px; font-weight:300; color:var(--sdk); line-height:1; margin-bottom:6px; }
+.pp.dark .ppn { color:rgba(255,255,255,.1); }
+.ppt { font-size:11px; font-weight:500; letter-spacing:1px; color:var(--ink); margin-bottom:6px; }
+.pp.dark .ppt { color:var(--glt); }
+.ppb { font-size:12px; font-weight:300; color:var(--muted); line-height:1.6; }
+.pp.dark .ppb { color:rgba(255,255,255,.45); }
+
+/* ── PLACE SECTION ── */
+.p-place { background:var(--ink); }
+.p-place .sl { color:var(--glt); }
+.p-place .st { color:white; }
+.place-intro { display:grid; grid-template-columns:1fr 1fr; gap:56px; margin-top:52px; }
+.place-intro-text { font-size:15px; font-weight:300; color:rgba(255,255,255,.5); line-height:1.8; }
+.place-intro-text em { color:var(--glt); font-style:italic; font-family:'Cormorant Garamond',serif; font-size:17px; }
+.place-intro-text strong { color:white; font-weight:400; }
+.place-stats { display:flex; flex-direction:column; gap:20px; justify-content:center; }
+.place-stat { border-left:2px solid var(--gold); padding-left:18px; }
+.ps-num { font-family:'Cormorant Garamond',serif; font-size:32px; font-weight:300; color:var(--glt); line-height:1; margin-bottom:4px; }
+.ps-lbl { font-size:9px; font-weight:300; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,.35); }
+.place-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:3px; margin-top:3px; }
+.place-card { position:relative; overflow:hidden; aspect-ratio:4/3; background:var(--deep); }
+.place-card.tall { aspect-ratio:3/4; grid-row:span 2; }
+.place-ph { width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; background:linear-gradient(135deg,var(--deep),var(--ink)); border:1px dashed rgba(181,132,42,.2); }
+.place-ph-icon { font-size:26px; opacity:.35; }
+.place-ph-lbl { font-size:8px; font-weight:300; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,.2); text-align:center; padding:0 16px; }
+.place-caption { position:absolute; bottom:0; left:0; right:0; padding:18px 16px 12px; background:linear-gradient(0deg,rgba(11,37,53,.9) 0%,transparent 100%); }
+.place-caption h4 { font-size:12px; font-weight:400; color:white; margin-bottom:3px; }
+.place-caption p { font-size:10px; font-weight:300; color:rgba(255,255,255,.4); }
+
+/* ── TEAM ── */
+.p-team { background:var(--slt); }
+.p-team .sl { color:var(--gold); }
+.p-team .st { color:var(--ink); }
+.team-sub { font-size:13px; font-weight:300; color:var(--muted); line-height:1.7; margin-top:14px; max-width:560px; }
+.team-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:3px; margin-top:48px; }
+.team-card { background:white; overflow:hidden; }
+.team-card.founder { background:var(--ink); }
+.team-photo { aspect-ratio:3/4; position:relative; overflow:hidden; }
+.team-photo-ph { width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; }
+.team-card:not(.founder) .team-photo-ph { background:var(--sand); }
+.team-card.founder .team-photo-ph { background:linear-gradient(180deg,var(--deep),var(--ink)); }
+.team-photo-ph-icon { font-size:30px; opacity:.25; }
+.team-photo-ph-lbl { font-size:8px; font-weight:300; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); }
+.team-card.founder .team-photo-ph-lbl { color:rgba(255,255,255,.2); }
+.team-info { padding:18px 16px 20px; }
+.team-role { font-size:8px; font-weight:400; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:6px; }
+.team-card.founder .team-role { color:var(--glt); }
+.team-name { font-family:'Cormorant Garamond',serif; font-size:20px; font-weight:300; color:var(--ink); margin-bottom:8px; line-height:1.15; }
+.team-card.founder .team-name { color:white; }
+.team-bio { font-size:12px; font-weight:300; color:var(--muted); line-height:1.6; }
+.team-card.founder .team-bio { color:rgba(255,255,255,.45); }
+.team-note { font-size:11px; font-weight:300; color:var(--muted); font-style:italic; margin-top:16px; text-align:center; }
+
+/* ── WEEK ── */
+.p-week { background:var(--ink); }
+.p-week .sl { color:var(--glt); }
+.p-week .st { color:white; }
+.p-strip { background:rgba(255,255,255,.04); border-top:2px solid var(--gold); padding:16px 0; display:flex; gap:0; overflow-x:auto; margin-top:40px; }
+.p-strip-item { font-size:10px; font-weight:300; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,.45); padding:8px 28px; border-right:1px solid rgba(255,255,255,.06); white-space:nowrap; }
+.p-strip-item:last-child { border-right:none; }
+.wk-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:2px; margin-top:2px; }
+.wkd { padding:22px 18px; background:rgba(255,255,255,.03); }
+.wkd.dep { background:rgba(181,132,42,.08); }
+.wkd.trip { background:rgba(26,69,96,.6); }
+.wkd.sat { background:rgba(181,132,42,.12); }
+.wkd-n { font-size:9px; font-weight:400; color:var(--gold); letter-spacing:1px; margin-bottom:2px; }
+.wkd-d { font-size:11px; font-weight:400; color:white; margin-bottom:4px; }
+.wkd-t { font-size:10px; font-weight:400; color:var(--glt); margin-bottom:10px; }
+.wkd-i { list-style:none; }
+.wkd-i li { font-size:10px; font-weight:300; color:rgba(255,255,255,.45); padding:2px 0; line-height:1.4; }
+
+/* ── MENTAL ── */
+.p-mental { background:var(--slt); }
+.p-mental .sl { color:var(--gold); }
+.p-mental .st { color:var(--ink); }
+.mc-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:3px; margin-top:48px; }
+.mc { padding:36px 28px; background:var(--sand); position:relative; }
+.mc-n { font-family:'Cormorant Garamond',serif; font-size:48px; font-weight:300; color:var(--sdk); line-height:1; margin-bottom:8px; }
+.mc-sub { font-size:9px; font-weight:400; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:6px; }
+.mc-t { font-size:16px; font-weight:500; color:var(--ink); margin-bottom:10px; }
+.mc-b { font-size:13px; font-weight:300; color:var(--muted); line-height:1.7; }
+.mc-quote { background:var(--ink); padding:28px 30px; margin-top:3px; grid-column:1/-1; }
+.mc-quote p { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:18px; color:rgba(255,255,255,.75); line-height:1.55; }
+.mc-quote span { font-size:9px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,.2); display:block; margin-top:12px; }
+
+/* ── PACKAGES ── */
+.p-pkg { background:var(--ink); }
+.p-pkg .sl { color:var(--glt); }
+.p-pkg .st { color:white; }
+.pkg-guarantee { background:rgba(255,255,255,.04); border:1px solid rgba(181,132,42,.15); padding:24px 28px; margin-top:48px; }
+.pkg-g-title { font-size:10px; font-weight:400; letter-spacing:2px; text-transform:uppercase; color:var(--glt); margin-bottom:10px; }
+.pkg-g-text { font-size:13px; font-weight:300; color:rgba(255,255,255,.45); line-height:1.75; }
+.pkg-g-text strong { font-weight:400; color:white; }
+.pkg-tags { display:flex; flex-wrap:wrap; gap:6px; margin-top:14px; }
+.pkg-tag { font-size:8px; font-weight:300; letter-spacing:1px; text-transform:uppercase; padding:3px 8px; border:0.5px solid rgba(181,132,42,.3); color:var(--glt); }
+.pkg-grid { display:grid; grid-template-columns:1fr 1fr; gap:3px; margin-top:3px; }
+.pkg { display:flex; flex-direction:column; overflow:hidden; position:relative; }
+.pkg::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; }
+.pkg-classic { background:var(--slt); border:1px solid var(--sdk); }
+.pkg-classic::before { background:var(--sdk); }
+.pkg-full { background:var(--ink); border:1px solid rgba(181,132,42,.15); }
+.pkg-full::before { background:var(--gold); }
+.pkg-tier { padding:28px 28px 0; }
+.pkg-tier-tag { font-size:8px; font-weight:300; letter-spacing:2.5px; text-transform:uppercase; margin-bottom:8px; }
+.pkg-classic .pkg-tier-tag { color:var(--muted); }
+.pkg-full .pkg-tier-tag { color:var(--glt); }
+.pkg-name { font-family:'Cormorant Garamond',serif; font-size:36px; font-weight:300; line-height:1.1; margin-bottom:8px; }
+.pkg-classic .pkg-name { color:var(--ink); }
+.pkg-full .pkg-name { color:white; }
+.pkg-sub { font-size:12px; font-weight:300; line-height:1.6; max-width:380px; }
+.pkg-classic .pkg-sub { color:var(--muted); }
+.pkg-full .pkg-sub { color:rgba(255,255,255,.4); }
+.pkg-price-row { padding:20px 28px; border-bottom:1px solid; display:flex; align-items:baseline; gap:8px; }
+.pkg-classic .pkg-price-row { border-color:var(--sdk); }
+.pkg-full .pkg-price-row { border-color:rgba(255,255,255,.08); }
+.pkg-price { font-family:'Cormorant Garamond',serif; font-size:44px; font-weight:300; line-height:1; }
+.pkg-classic .pkg-price { color:var(--ink); }
+.pkg-full .pkg-price { color:var(--glt); }
+.pkg-per { font-size:12px; font-weight:300; }
+.pkg-classic .pkg-per { color:var(--muted); }
+.pkg-full .pkg-per { color:rgba(255,255,255,.3); }
+.pkg-feats { padding:20px 28px; flex:1; }
+.pkg-feat-label { font-size:8px; font-weight:400; letter-spacing:2px; text-transform:uppercase; margin-bottom:12px; }
+.pkg-classic .pkg-feat-label { color:var(--muted); }
+.pkg-full .pkg-feat-label { color:var(--glt); }
+.pkg-feat-list { list-style:none; }
+.pkg-feat-list li { display:grid; grid-template-columns:14px 1fr; gap:8px; padding:6px 0; border-bottom:1px solid; font-size:12px; font-weight:300; line-height:1.45; }
+.pkg-feat-list li:last-child { border-bottom:none; }
+.pkg-classic .pkg-feat-list li { border-color:var(--sdk); color:var(--muted); }
+.pkg-full .pkg-feat-list li { border-color:rgba(255,255,255,.06); color:rgba(255,255,255,.55); }
+.pkg-feat-list li::before { content:'✓'; font-size:9px; padding-top:1px; }
+.pkg-classic .pkg-feat-list li::before { color:var(--gold); }
+.pkg-full .pkg-feat-list li::before { color:var(--glt); }
+.pkg-feat-list li.plus { font-weight:400; }
+.pkg-classic .pkg-feat-list li.plus { color:var(--ink); }
+.pkg-full .pkg-feat-list li.plus { color:white; }
+.pkg-note-box { padding:14px 18px; margin:0 28px 20px; font-size:11px; font-weight:300; line-height:1.65; font-style:italic; }
+.pkg-classic .pkg-note-box { background:var(--sand); color:var(--muted); }
+.pkg-full .pkg-note-box { background:rgba(181,132,42,.07); color:rgba(255,255,255,.4); }
+.pkg-cta-wrap { padding:0 28px 28px; }
+.pkg-cta { display:block; padding:13px; text-align:center; font-size:10px; font-weight:300; letter-spacing:2px; text-transform:uppercase; text-decoration:none; transition:all .2s; }
+.pkg-classic .pkg-cta { border:1px solid var(--gold); color:var(--gold); }
+.pkg-classic .pkg-cta:hover { background:var(--gold); color:white; }
+.pkg-full .pkg-cta { background:var(--gold); color:white; }
+.pkg-full .pkg-cta:hover { background:var(--glt); color:var(--ink); }
+.pkg-group-note { margin-top:20px; background:rgba(255,255,255,.04); padding:16px 20px; border-left:2px solid var(--gold); }
+.pgn { font-size:12px; font-weight:300; color:rgba(255,255,255,.4); line-height:1.7; }
+.pgn strong { color:white; font-weight:400; }
+
+/* ── WAITLIST ── */
+.p-waitlist { background:var(--sand); text-align:center; }
+.p-waitlist .sl { color:var(--gold); }
+.p-waitlist .st { color:var(--ink); }
+.p-waitlist .sb { color:var(--muted); max-width:440px; margin:0 auto 32px; }
+.wl-form { display:flex; gap:0; max-width:400px; margin:0 auto 12px; }
+.wl-input { flex:1; border:1px solid var(--sdk); border-right:none; background:white; padding:0 16px; font-size:13px; font-family:'Jost',sans-serif; font-weight:300; outline:none; height:48px; }
+.wl-btn { background:var(--ink); color:white; border:none; padding:0 24px; font-family:'Jost',sans-serif; font-size:10px; font-weight:300; letter-spacing:2px; text-transform:uppercase; cursor:pointer; height:48px; white-space:nowrap; transition:background .2s; }
+.wl-btn:hover { background:var(--deep); }
+.wl-note { font-size:11px; font-weight:300; color:var(--muted); font-style:italic; }
+
+/* ── CLUB WORLD ── */
+#club-world { display:none; }
+.club-back-bar { background:var(--deep); padding:14px 56px; border-bottom:2px solid var(--gold); display:flex; justify-content:space-between; align-items:center; position:sticky; top:72px; z-index:50; }
+.club-back-btn { background:none; border:none; cursor:pointer; font-family:'Jost',sans-serif; font-weight:300; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,.45); transition:color .2s; }
+.club-back-btn:hover { color:white; }
+.club-lbl { font-size:9px; font-weight:300; letter-spacing:3px; text-transform:uppercase; color:var(--glt); }
+
+.c-hero { min-height:80vh; background:var(--slt); display:flex; align-items:flex-end; position:relative; overflow:hidden; }
+.c-hero-geo { position:absolute; inset:0; }
+.c-hero-geo::before { content:''; position:absolute; right:-60px; top:-60px; width:400px; height:400px; border-radius:50%; background:rgba(11,37,53,.04); }
+.c-hero-stripe { position:absolute; left:0; top:0; bottom:0; width:4px; background:var(--gold); }
+.c-hero-content { padding:56px; position:relative; z-index:1; }
+.c-hero-label { font-size:9px; font-weight:300; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:16px; }
+.c-hero-title { font-family:'Cormorant Garamond',serif; font-weight:300; font-size:clamp(36px,5vw,62px); color:var(--ink); line-height:1.1; margin-bottom:20px; }
+.c-hero-title em { color:var(--gold); font-style:italic; }
+.c-hero-sub { font-size:14px; font-weight:300; color:var(--muted); line-height:1.75; max-width:560px; margin-bottom:32px; }
+.c-hero-actions { display:flex; gap:12px; flex-wrap:wrap; }
+.c-strip { background:var(--ink); padding:16px 56px; display:flex; gap:0; overflow-x:auto; }
+.c-strip-item { font-size:10px; font-weight:300; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,.4); padding:8px 28px; border-right:1px solid rgba(255,255,255,.07); white-space:nowrap; }
+.c-strip-item:first-child { padding-left:0; }
+.c-strip-item:last-child { border-right:none; }
+.c-golf { background:var(--slt); }
+.c-golf .st { color:var(--ink); }
+.golf-cards { display:grid; grid-template-columns:1fr 1fr; gap:3px; margin-top:48px; }
+.golf-card { padding:36px 32px; }
+.gc-light { background:white; }
+.gc-dark { background:var(--ink); }
+.gc-label { font-size:9px; font-weight:400; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:10px; }
+.gc-title { font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:300; margin-bottom:14px; }
+.gc-light .gc-title { color:var(--ink); }
+.gc-dark .gc-title { color:white; }
+.gc-body { font-size:13px; font-weight:300; line-height:1.7; color:var(--muted); }
+.gc-dark .gc-body { color:rgba(255,255,255,.45); }
+.c-benefits { background:var(--ink); }
+.c-benefits .sl { color:var(--glt); }
+.c-benefits .st { color:white; }
+.ben-grid { display:grid; grid-template-columns:1fr 1fr; gap:2px; margin-top:48px; }
+.ben { padding:30px 26px; background:rgba(255,255,255,.03); border-left:3px solid; }
+.ben:nth-child(1) { border-color:var(--deep); }
+.ben:nth-child(2) { border-color:var(--gold); }
+.ben:nth-child(3) { border-color:var(--cork); }
+.ben:nth-child(4) { border-color:var(--clay); }
+.ben-num { font-family:'Cormorant Garamond',serif; font-size:36px; font-weight:300; color:rgba(255,255,255,.08); line-height:1; margin-bottom:8px; }
+.ben-t { font-size:12px; font-weight:500; letter-spacing:.5px; color:white; margin-bottom:8px; }
+.ben-b { font-size:12px; font-weight:300; color:rgba(255,255,255,.4); line-height:1.7; }
+.c-how { background:var(--slt); }
+.c-how .sl { color:var(--gold); }
+.c-how .st { color:var(--ink); }
+.how-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:3px; margin-top:48px; }
+.how-step { padding:28px 22px; background:white; }
+.hs-n { font-family:'Cormorant Garamond',serif; font-size:48px; font-weight:300; color:var(--sdk); line-height:1; margin-bottom:10px; }
+.hs-t { font-size:12px; font-weight:500; color:var(--ink); margin-bottom:6px; }
+.hs-b { font-size:12px; font-weight:300; color:var(--muted); line-height:1.65; }
+.c-founder { background:var(--sand); }
+.c-founder .sl { color:var(--gold); }
+.c-founder .st { color:var(--ink); }
+.founder-grid { display:grid; grid-template-columns:1fr 1fr; gap:56px; margin-top:48px; align-items:start; }
+.founder-quote { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:clamp(18px,2.2vw,26px); line-height:1.5; color:var(--ink); padding-left:22px; border-left:2px solid var(--gold); margin-bottom:32px; }
+.founder-sig { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:20px; color:var(--ink); }
+.founder-sig-t { font-size:9px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-top:4px; }
+.c-cta { background:var(--ink); text-align:center; padding:88px 56px; }
+.c-cta .sl { color:var(--glt); }
+.c-cta .st { color:white; }
+.c-cta .sb { color:rgba(255,255,255,.4); max-width:480px; margin:0 auto 28px; }
+.founding-box { background:rgba(181,132,42,.08); border:1px solid rgba(181,132,42,.2); padding:28px 32px; max-width:540px; margin:28px auto 0; text-align:left; }
+.fb-label { font-size:9px; font-weight:400; letter-spacing:2px; text-transform:uppercase; color:var(--glt); margin-bottom:10px; }
+.fb-body { font-size:13px; font-weight:300; color:rgba(255,255,255,.5); line-height:1.75; margin-bottom:18px; }
+
+/* ── FOOTER ── */
+footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.05); padding:48px 56px 32px; }
+.footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:40px; padding-bottom:32px; border-bottom:1px solid rgba(255,255,255,.05); }
+.footer-brand { margin-bottom:10px; line-height:1; }
+.fb-t { font-family:'Jost',sans-serif; font-weight:200; font-size:13px; letter-spacing:6px; color:white; text-transform:uppercase; display:block; }
+.fb-b { font-family:'Jost',sans-serif; font-weight:100; font-size:13px; letter-spacing:6px; color:var(--glt); text-transform:uppercase; display:block; margin-top:-2px; }
+.footer-tag { font-size:11px; font-weight:300; color:rgba(255,255,255,.22); line-height:1.7; margin-top:10px; max-width:200px; }
+.footer-col h4 { font-size:8px; letter-spacing:2.5px; text-transform:uppercase; color:rgba(255,255,255,.2); margin-bottom:14px; }
+.footer-col ul { list-style:none; }
+.footer-col ul li { margin-bottom:8px; }
+.footer-col ul li a { font-size:12px; font-weight:300; color:rgba(255,255,255,.4); text-decoration:none; transition:color .2s; }
+.footer-col ul li a:hover { color:white; }
+.footer-bottom { display:flex; justify-content:space-between; align-items:center; margin-top:20px; }
+.footer-copy { font-size:10px; font-weight:300; color:rgba(255,255,255,.14); letter-spacing:.3px; }
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px) {
+  nav, #hero, .sec, .club-back-bar, .c-hero-content, .c-strip, .c-cta, footer { padding-left:22px; padding-right:22px; }
+  .two, .place-intro, .golf-cards, .ben-grid, .founder-grid { grid-template-columns:1fr; gap:28px; }
+  .place-grid { grid-template-columns:1fr 1fr; }
+  .place-card.tall { aspect-ratio:4/3; grid-row:span 1; }
+  .team-grid { grid-template-columns:1fr 1fr; }
+  .mc-grid, .how-grid, .wk-grid { grid-template-columns:1fr 1fr; }
+  .pkg-grid { grid-template-columns:1fr; }
+  .footer-grid { grid-template-columns:1fr 1fr; }
+  .hero-facts { gap:0; }
+  .hero-fact { padding-right:20px; margin-right:20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo" onclick="goHome(event)">
+    <span class="nl-t">MIRA</span>
+    <span class="nl-b">FLOW</span>
+  </a>
+  <div class="nav-right">
+    <button class="nav-clubs-btn" id="nav-clubs-btn" onclick="showClubs()">For clubs</button>
+    <div class="lang-sw">
+      <button class="lsb active" data-lang="en" onclick="setLang('en')">EN</button>
+      <span class="lang-sep">·</span>
+      <button class="lsb" data-lang="de" onclick="setLang('de')">DE</button>
+    </div>
+    <a href="#waitlist" class="nav-cta" id="nav-cta">Join waitlist</a>
+  </div>
+</nav>
+
+<!-- ═══ PLAYER WORLD ═══ -->
+<div id="player-world">
+
+  <!-- HERO -->
+  <section id="hero">
+    <!-- ─ Background video ─────────────────────────────────────────────
+         To activate: set the src attribute on the <source> tag below
+         to your MP4 file path, e.g. src="milfontes-hero.mp4"
+         Recommended: 15–30 sec loop, 1920×1080, H.264, ~5–10MB
+         Optimal settings: muted, autoplay, loop, playsinline
+    ──────────────────────────────────────────────────────────────────── -->
+    <video class="hero-video" id="hero-video"
+           autoplay muted loop playsinline
+           preload="metadata"
+           oncanplay="this.classList.add('loaded')">
+      <source id="hero-video-src" src="" type="video/mp4">
+      <!-- Fallback: video not shown if src is empty — navy bg shows instead -->
+    </video>
+    <div class="hero-video-overlay" id="hero-video-overlay"></div>
+    <p class="hero-video-hint" id="hero-video-hint">[ Add hero video → hero-video-src ]</p>
+
+    <div class="hero-ring hero-ring-1"></div>
+    <div class="hero-ring hero-ring-2"></div>
+    <div class="hero-accent"></div>
+    <div class="hero-inner">
+      <span class="hero-eyebrow" id="h-ey">Padel retreat · Costa Vicentina · Portugal</span>
+      <div class="hero-wm">
+        <span class="hero-wm-t">MIRA</span>
+        <span class="hero-wm-b">FLOW</span>
+      </div>
+      <p class="hero-tagline" id="h-tg">Seven days on the Atlantic coast.<br>Padel, mental coaching, breathwork.<br><em>The game you come back different from.</em></p>
+      <div class="hero-facts">
+        <div class="hero-fact"><div class="hf-num">7</div><div class="hf-lbl" id="hf1">nights · Milfontes</div></div>
+        <div class="hero-fact"><div class="hf-num">~14h</div><div class="hf-lbl" id="hf2">on court · 3 clubs</div></div>
+        <div class="hero-fact"><div class="hf-num">8–12</div><div class="hf-lbl" id="hf3">guests per edition</div></div>
+        <div class="hero-fact"><div class="hf-num">1</div><div class="hf-lbl" id="hf4">Saturday tournament</div></div>
+      </div>
+      <div class="hero-cta">
+        <a href="#waitlist" class="btn-p" id="h-btn">Join the waitlist</a>
+        <span class="hero-cta-sub" id="h-sub">Spring &amp; autumn editions · 8–12 guests</span>
+      </div>
+    </div>
+    <button class="hero-scroll-btn" onclick="document.getElementById('concept').scrollIntoView({behavior:'smooth'})">
+      <div class="hscroll-line"></div>
+      <span class="hscroll-lbl" id="h-sc">Discover</span>
+    </button>
+  </section>
+
+  <!-- CONCEPT -->
+  <section class="sec p-why" id="concept">
+    <div class="max two">
+      <div class="reveal">
+        <p class="sl" id="why-sl1">The concept</p>
+        <h2 class="st" id="why-st1">Not a training camp.<br><em>An experience.</em></h2>
+        <div class="p-pillars" style="margin-top:32px">
+          <div class="pp"><div class="ppn">01</div><div class="ppt" id="pp1t">Padel</div><div class="ppb" id="pp1b">~14 hours on court across three partner clubs. Match play, technique, and a real closing tournament on Saturday with local players.</div></div>
+          <div class="pp dark"><div class="ppn">02</div><div class="ppt" id="pp2t">Mental game</div><div class="ppb" id="pp2b">The part most retreats ignore. Workshops, video review, your personal pre-point routine, and a game plan booklet to take home.</div></div>
+          <div class="pp dark"><div class="ppn">03</div><div class="ppt" id="pp3t">Wellness</div><div class="ppb" id="pp3b">Morning yoga and breathwork with the same Milfontes facilitator every day. Sound therapy twice during the week.</div></div>
+          <div class="pp"><div class="ppn">04</div><div class="ppt" id="pp4t">Atlantic life</div><div class="ppb" id="pp4b">Alentejo food, the Mira estuary at golden hour, clifftop lunch at Porto Covo. The place is as much part of the product as the courts.</div></div>
+        </div>
+      </div>
+      <div class="reveal" style="padding-top:48px">
+        <p class="sl" id="why-sl2">Why it works</p>
+        <h3 class="st" style="font-size:clamp(22px,2.8vw,34px)" id="why-st2">Most players plateau not from lack of technique — from the <em>mental side.</em></h3>
+        <p class="sb" style="margin-top:18px" id="why-sb1">We address that directly — with a mental coach, structured workshops, video review, and daily practices that build real habits you will use in your next match.</p>
+        <p class="sb" style="margin-top:12px" id="why-sb2">And we do all of this from one of the last untouched stretches of Atlantic coastline in Europe. You sleep in Milfontes every night. You unpack once. By Tuesday it already feels like home.</p>
+        <div style="margin-top:28px;padding:22px 26px;background:var(--ink)">
+          <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;color:rgba(255,255,255,.75);line-height:1.55" id="why-quote">"The score is just information. Your response to it is the game."</p>
+          <p style="font-size:8px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.2);margin-top:10px">Mira Flow · mental framework</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PLACE -->
+  <section class="sec p-place" id="place">
+    <div class="max">
+      <div class="reveal" style="text-align:center;max-width:560px;margin:0 auto">
+        <p class="sl" id="pl-sl">The place</p>
+        <h2 class="st" id="pl-st">Milfontes.<br><em>The Atlantic coast at its most itself.</em></h2>
+      </div>
+      <div class="place-intro reveal">
+        <p class="place-intro-text" id="pl-txt">Milfontes is not a mass tourism destination. It is a village that despite its popularity has remained itself — <em>on the river, on the Atlantic, with good food.</em> The Portuguese themselves holiday here. You feel it everywhere: in the restaurants, in the people, in the light at the end of the day. <strong>You unpack once. By Tuesday it already feels like home.</strong></p>
+        <div class="place-stats">
+          <div class="place-stat"><div class="ps-num">7</div><div class="ps-lbl" id="ps1">nights · same home base</div></div>
+          <div class="place-stat"><div class="ps-num">3</div><div class="ps-lbl" id="ps2">partner clubs · Milfontes · Lagos · Sines</div></div>
+          <div class="place-stat"><div class="ps-num">1h</div><div class="ps-lbl" id="ps3">max from home base to any day trip</div></div>
+        </div>
+      </div>
+      <div class="place-grid reveal">
+        <div class="place-card tall">
+          <div class="place-ph"><div class="place-ph-icon">🌊</div><p class="place-ph-lbl">Mira estuary · golden hour<br>[Add your photo]</p></div>
+          <div class="place-caption"><h4 id="pc1h">The Mira estuary</h4><p id="pc1p">Vila Nova de Milfontes</p></div>
+        </div>
+        <div class="place-card">
+          <div class="place-ph"><div class="place-ph-icon">🎾</div><p class="place-ph-lbl">Home courts · Milfontes<br>[Add your photo]</p></div>
+          <div class="place-caption"><h4 id="pc2h">Home courts</h4><p id="pc2p">Milfontes · your base all week</p></div>
+        </div>
+        <div class="place-card">
+          <div class="place-ph"><div class="place-ph-icon">🏔️</div><p class="place-ph-lbl">Porto Covo cliffs<br>[Add your photo]</p></div>
+          <div class="place-caption"><h4 id="pc3h">Porto Covo</h4><p id="pc3p">Thursday lunch · clifftop</p></div>
+        </div>
+        <div class="place-card">
+          <div class="place-ph"><div class="place-ph-icon">🎾</div><p class="place-ph-lbl">Lagos courts<br>[Add your photo]</p></div>
+          <div class="place-caption"><h4 id="pc4h">Lagos</h4><p id="pc4p">Wednesday · unfamiliar courts</p></div>
+        </div>
+        <div class="place-card">
+          <div class="place-ph"><div class="place-ph-icon">🏡</div><p class="place-ph-lbl">Accommodation<br>[Add your photo]</p></div>
+          <div class="place-caption"><h4 id="pc5h">Where you sleep</h4><p id="pc5p">Same bed · 7 nights · unpack once</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="sec p-team" id="team">
+    <div class="max">
+      <div class="reveal">
+        <p class="sl" id="tm-sl">The people</p>
+        <h2 class="st" id="tm-st">The team behind<br><em>the week.</em></h2>
+        <p class="team-sub" id="tm-sub">The same people, every session. You do not get a different facilitator each time. By Tuesday you already know everyone who is holding the week.</p>
+      </div>
+      <div class="team-grid reveal">
+        <div class="team-card founder">
+          <div class="team-photo"><div class="team-photo-ph"><div class="team-photo-ph-icon">👤</div><p class="team-photo-ph-lbl">[Add photo]</p></div></div>
+          <div class="team-info">
+            <p class="team-role" id="tr1">Founder · Host</p>
+            <h3 class="team-name">João</h3>
+            <p class="team-bio" id="tb1">Lived 15 years in Switzerland. Built Mira Flow in Milfontes. Plays in the local Liga. On court and at the table all week.</p>
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="team-photo"><div class="team-photo-ph"><div class="team-photo-ph-icon">🧘</div><p class="team-photo-ph-lbl">[Add photo]</p></div></div>
+          <div class="team-info">
+            <p class="team-role" id="tr2">Yoga · Breathwork · Daily ritual</p>
+            <h3 class="team-name">Ana Teixeira</h3>
+            <p class="team-bio" id="tb2">StandUpYoga in Vila Nova de Milfontes. The same person every morning at 08:30. The thread that holds the week together.</p>
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="team-photo"><div class="team-photo-ph"><div class="team-photo-ph-icon">🧠</div><p class="team-photo-ph-lbl">[Add photo]</p></div></div>
+          <div class="team-info">
+            <p class="team-role" id="tr3">Mental coach · Programme facilitator</p>
+            <h3 class="team-name" id="tn3">Coming soon</h3>
+            <p class="team-bio" id="tb3">The person who leads the workshops, the video review and the game plan sessions. Confirmed before the first edition.</p>
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="team-photo"><div class="team-photo-ph"><div class="team-photo-ph-icon">🔔</div><p class="team-photo-ph-lbl">[Add photo]</p></div></div>
+          <div class="team-info">
+            <p class="team-role" id="tr4">Sound therapy · Tue + Thu evenings</p>
+            <h3 class="team-name" id="tn4">Local practitioner</h3>
+            <p class="team-bio" id="tb4">Tibetan bowls after the two hardest days of the week. Same person, same place, all year.</p>
+          </div>
+        </div>
+      </div>
+      <p class="team-note" id="tm-note">Padel coaching provided by FPP-certified local coaches at each partner club.</p>
+    </div>
+  </section>
+
+  <!-- WEEK -->
+  <section class="sec p-week" id="week">
+    <div class="max">
+      <div class="reveal" style="text-align:center">
+        <p class="sl" id="wk-sl">The week</p>
+        <h2 class="st" style="color:white" id="wk-st">Sunday to Sunday.<br><em>Seven full days.</em></h2>
+      </div>
+      <div class="p-strip reveal" id="p-strip">
+        <div class="p-strip-item" id="ps-i1">Sunday → Sunday</div>
+        <div class="p-strip-item" id="ps-i2">8–12 guests</div>
+        <div class="p-strip-item" id="ps-i3">Milfontes home base</div>
+        <div class="p-strip-item" id="ps-i4">08:30 morning ritual daily</div>
+        <div class="p-strip-item" id="ps-i5">Mental coaching included</div>
+        <div class="p-strip-item" id="ps-i6">Saturday tournament</div>
+      </div>
+      <div class="wk-grid reveal" id="wk-grid">
+        <div class="wkd dep"><div class="wkd-n" id="d0n">Day 0</div><div class="wkd-d" id="d0d">Sunday</div><div class="wkd-t" id="d0t">Arrival</div><ul class="wkd-i" id="d0i"><li>Transfer → Milfontes</li><li>Check-in for the week</li><li>Estuary walk</li><li>Welcome dinner</li></ul></div>
+        <div class="wkd home"><div class="wkd-n" id="d1n">Day 1</div><div class="wkd-d" id="d1d">Monday</div><div class="wkd-t" id="d1t">Milfontes</div><ul class="wkd-i" id="d1i"><li>08:30 yoga + breathwork</li><li>Welcome circle</li><li>Assessment play</li><li>Americano tournament</li></ul></div>
+        <div class="wkd home"><div class="wkd-n" id="d2n">Day 2</div><div class="wkd-d" id="d2d">Tuesday</div><div class="wkd-t" id="d2t">Milfontes</div><ul class="wkd-i" id="d2i"><li>08:30 yoga + breathwork</li><li>Technique session</li><li>Pre-point routine workshop</li><li>🔔 Evening sound therapy</li></ul></div>
+        <div class="wkd trip"><div class="wkd-n" id="d3n">Day 3</div><div class="wkd-d" id="d3d">Wednesday</div><div class="wkd-t" id="d3t">→ Lagos</div><ul class="wkd-i" id="d3i"><li>08:45 short ritual</li><li>Drive via Aljezur</li><li>Match play + video</li><li>Lagos old town lunch</li></ul></div>
+        <div class="wkd trip"><div class="wkd-n" id="d4n">Day 4</div><div class="wkd-d" id="d4d">Thursday</div><div class="wkd-t" id="d4t">→ Sines</div><ul class="wkd-i" id="d4i"><li>08:45 short ritual</li><li>Simulated tournament</li><li>Porto Covo lunch</li><li>Video review + 🔔</li></ul></div>
+        <div class="wkd home"><div class="wkd-n" id="d5n">Day 5</div><div class="wkd-d" id="d5d">Friday</div><div class="wkd-t" id="d5t">Milfontes</div><ul class="wkd-i" id="d5i"><li>Tournament prep ritual</li><li>Light play</li><li>Game plan session</li><li>Early night</li></ul></div>
+        <div class="wkd sat"><div class="wkd-n" id="d6n">Day 6</div><div class="wkd-d" id="d6d">Saturday 🏆</div><div class="wkd-t" id="d6t">Tournament</div><ul class="wkd-i" id="d6i"><li>07:30 competition ritual</li><li>Open doubles</li><li>Local players join</li><li>Celebration dinner</li></ul></div>
+        <div class="wkd dep"><div class="wkd-n" id="d7n">Day 7</div><div class="wkd-d" id="d7d">Sunday</div><div class="wkd-t" id="d7t">Departure</div><ul class="wkd-i" id="d7i"><li>Closing ritual 08:30</li><li>Final breakfast</li><li>Commitment card</li><li>Staggered transfers</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENTAL -->
+  <section class="sec p-mental" id="mental">
+    <div class="max">
+      <div class="reveal" style="text-align:center;max-width:520px;margin:0 auto">
+        <p class="sl" id="mn-sl">The differentiator</p>
+        <h2 class="st" id="mn-st">The mental game.<br><em>What no one else addresses.</em></h2>
+      </div>
+      <div class="mc-grid reveal">
+        <div class="mc"><div class="mc-n">01</div><div class="mc-sub" id="mc1s">Foundation</div><div class="mc-t" id="mc1t">Awareness</div><p class="mc-b" id="mc1b">Noticing what actually happens in your mind under pressure — not what you think should happen. Video review on Thursday is built specifically for this. Most players have never honestly observed themselves.</p></div>
+        <div class="mc"><div class="mc-n">02</div><div class="mc-sub" id="mc2s">The skill</div><div class="mc-t" id="mc2t">Process</div><p class="mc-b" id="mc2b">Your personal 10-second pre-point routine — a physical trigger that redirects attention from the last error to the next point. You build it on Day 2, test it all week, and trust it on Saturday.</p></div>
+        <div class="mc"><div class="mc-n">03</div><div class="mc-sub" id="mc3s">The practice</div><div class="mc-t" id="mc3t">Release</div><p class="mc-b" id="mc3b">Yoga, breathwork, and sound therapy train the nervous system to let go faster. Players who release faster recover faster. The morning ritual is not optional wellness — it is the foundation of every day.</p></div>
+      </div>
+      <div class="mc-quote reveal">
+        <p id="mc-quote">"The score is just information. Your response to it is the game."</p>
+        <span>Mira Flow · mental coaching framework</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PACKAGES -->
+  <section class="sec p-pkg" id="packages">
+    <div class="max">
+      <div class="reveal" style="text-align:center;max-width:540px;margin:0 auto">
+        <p class="sl" id="pk-sl">Your week</p>
+        <h2 class="st" style="color:white" id="pk-st">One experience.<br><em>Two ways to live it.</em></h2>
+      </div>
+      <div class="pkg-guarantee reveal">
+        <p class="pkg-g-title" id="pk-gt">The programme is identical in both packages</p>
+        <p class="pkg-g-text" id="pk-gb">Whether you choose <strong>Classic</strong> or <strong>Full Experience</strong>, you get the same week — same courts, same mental coach, same sessions, same Saturday tournament. What changes is the level of service and comfort wrapped around it.</p>
+        <div class="pkg-tags">
+          <span class="pkg-tag" id="pt1">All padel sessions</span>
+          <span class="pkg-tag" id="pt2">Mental coaching</span>
+          <span class="pkg-tag" id="pt3">Daily 08:30 ritual</span>
+          <span class="pkg-tag" id="pt4">Sound therapy ×2</span>
+          <span class="pkg-tag" id="pt5">Game plan booklet</span>
+          <span class="pkg-tag" id="pt6">Saturday tournament</span>
+          <span class="pkg-tag" id="pt7">Commitment card</span>
+          <span class="pkg-tag" id="pt8">Welcome gift</span>
+        </div>
+      </div>
+      <div class="pkg-grid reveal">
+        <div class="pkg pkg-classic">
+          <div class="pkg-tier">
+            <p class="pkg-tier-tag" id="pk1-tag">The programme week</p>
+            <h3 class="pkg-name" id="pk1-name">Classic</h3>
+            <p class="pkg-sub" id="pk1-sub">The full Mira Flow week. You take care of the small logistics. We take care of everything that matters.</p>
+          </div>
+          <div class="pkg-price-row">
+            <div class="pkg-price" id="pk1-price">€ 2'200</div>
+            <div class="pkg-per" id="pk1-per">per person</div>
+          </div>
+          <div class="pkg-feats">
+            <p class="pkg-feat-label" id="pk1-fl">What's included</p>
+            <ul class="pkg-feat-list" id="pk1-list">
+              <li>7 nights — standard accommodation</li>
+              <li>Half board — breakfast daily + 4 group dinners</li>
+              <li>Shared group transport — all day trips</li>
+              <li>Full mental coaching programme</li>
+              <li>All padel sessions across three clubs</li>
+              <li>Daily 08:30 yoga + breathwork ritual</li>
+              <li>Sound therapy — Tue &amp; Thu evenings</li>
+              <li>Personal game plan booklet</li>
+              <li>Saturday closing tournament</li>
+              <li>Welcome gift</li>
+            </ul>
+          </div>
+          <div class="pkg-note-box" id="pk1-note">A group of friends or a club that wants the full Mira Flow experience — without the full-service layer.</div>
+          <div class="pkg-cta-wrap"><a href="#waitlist" class="pkg-cta" id="pk1-cta">Reserve a place</a></div>
+        </div>
+        <div class="pkg pkg-full">
+          <div class="pkg-tier">
+            <p class="pkg-tier-tag" id="pk2-tag">The hosted week</p>
+            <h3 class="pkg-name" id="pk2-name">Full<br>Experience</h3>
+            <p class="pkg-sub" id="pk2-sub">You arrive on Sunday and make no decisions until you leave the following Sunday. Everything is arranged.</p>
+          </div>
+          <div class="pkg-price-row">
+            <div class="pkg-price" id="pk2-price">€ 3'900</div>
+            <div class="pkg-per" id="pk2-per">per person</div>
+          </div>
+          <div class="pkg-feats">
+            <p class="pkg-feat-label" id="pk2-fl">Everything in Classic, plus:</p>
+            <ul class="pkg-feat-list" id="pk2-list">
+              <li class="plus">Superior accommodation — best available rooms</li>
+              <li class="plus">Full board — all meals at curated local restaurants</li>
+              <li class="plus">Faro airport transfers — arrival &amp; departure</li>
+              <li class="plus">Dedicated minibus all day trips &amp; tournament</li>
+              <li class="plus">1 private session with the mental coach</li>
+              <li class="plus">Club coach travels free (8+ guests)</li>
+              <li class="plus">Full concierge — every detail handled</li>
+              <li class="plus">Priority court booking at all venues</li>
+            </ul>
+          </div>
+          <div class="pkg-note-box" id="pk2-note">A Swiss club that wants to offer its members a genuinely premium travel week. Your coach comes with the group. We organise everything.</div>
+          <div class="pkg-cta-wrap"><a href="#waitlist" class="pkg-cta" id="pk2-cta">Reserve a place</a></div>
+        </div>
+      </div>
+      <div class="pkg-group-note reveal">
+        <p class="pgn" id="pkg-gn"><strong>Groups book as one.</strong> Classic groups travel Classic. Full Experience groups travel Full Experience. No mixing within a session. Swiss CHF rates available on request. Group pricing from 8 guests.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WAITLIST -->
+  <section class="sec p-waitlist" id="waitlist">
+    <div class="max">
+      <p class="sl" id="wl-sl">Launching 2025</p>
+      <h2 class="st" style="margin-bottom:16px" id="wl-st">Be the first<br><em>to find your flow.</em></h2>
+      <p class="sb" id="wl-sb">Spring and autumn editions filling now. Leave your email for early access pricing and date confirmation.</p>
+      <div class="wl-form">
+        <input class="wl-input" type="email" id="wl-email" placeholder="your@email.com">
+        <input type="text" id="wl-company" tabindex="-1" autocomplete="off" aria-hidden="true"
+               style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;">
+        <button class="wl-btn" id="wl-btn" onclick="joinWaitlist()">Join waitlist</button>
+      </div>
+      <p class="wl-note" id="wl-note">No spam. One email when dates are confirmed.</p>
+    </div>
+  </section>
+
+</div><!-- /player-world -->
+
+<!-- ═══ CLUB WORLD ═══ -->
+<div id="club-world">
+  <div class="club-back-bar">
+    <button class="club-back-btn" onclick="showPlayers()" id="club-back">← For players</button>
+    <span class="club-lbl" id="club-lbl">For clubs</span>
+  </div>
+
+  <!-- Club hero -->
+  <div class="c-hero">
+    <div class="c-hero-geo"></div>
+    <div class="c-hero-stripe"></div>
+    <div class="c-hero-content" id="c-hero-content">
+      <div class="c-hero-label" id="ch-label">Mira Flow · For Swiss clubs</div>
+      <h1 class="c-hero-title" id="ch-title">Your members.<br>Portugal.<br><em>You take the credit.</em></h1>
+      <p class="c-hero-sub" id="ch-sub">The golf club travel week concept — brought to padel. Your members fly to Milfontes with their coach for a week of padel, mental coaching, and wild Atlantic coastline. We organise everything.</p>
+      <div class="c-hero-actions">
+        <a href="mailto:hello@mira-flow.ch" class="btn-p-ink" id="ch-btn1">Request the club deck</a>
+        <a href="#c-how" class="btn-g-ink" id="ch-btn2">How it works</a>
+      </div>
+    </div>
+  </div>
+  <div class="c-strip" id="c-strip">
+    <div class="c-strip-item" id="cs1">Your coach travels free (8+ guests)</div>
+    <div class="c-strip-item" id="cs2">Zero effort for the club</div>
+    <div class="c-strip-item" id="cs3">Bespoke group pricing</div>
+    <div class="c-strip-item" id="cs4">Co-branding included</div>
+    <div class="c-strip-item" id="cs5">Sunday to Sunday</div>
+  </div>
+
+  <!-- Golf concept -->
+  <section class="sec c-golf">
+    <div class="max">
+      <div>
+        <p class="sl" id="cg-sl">The concept</p>
+        <h2 class="st" id="cg-st">You already know<br>this idea. <em>From golf.</em></h2>
+        <p class="sb" style="margin-top:18px;max-width:620px" id="cg-sb">Every Swiss golf club runs travel weeks abroad. Members go with their coach, play somewhere beautiful, come back better players and more loyal to the club. We built exactly that for padel — in one of the most beautiful places in Europe.</p>
+      </div>
+      <div class="golf-cards" style="margin-top:40px">
+        <div class="golf-card gc-light">
+          <div class="gc-label" id="gc1-lbl">What you already know</div>
+          <div class="gc-title" id="gc1-t">The golf club travel week</div>
+          <p class="gc-body" id="gc1-b">Members travel together with their coach to Spain, Portugal, or Turkey. The club organises it. The trainer accompanies them. Members come back playing better and feeling more connected to the club.</p>
+        </div>
+        <div class="golf-card gc-dark">
+          <div class="gc-label" id="gc2-lbl">What we offer</div>
+          <div class="gc-title" id="gc2-t">The padel club travel week</div>
+          <p class="gc-body" id="gc2-b">We bring your members to Vila Nova de Milfontes — for 7 days of padel, mental coaching, and Atlantic coastline. Your coach comes with them. We handle courts, hotels, restaurants, transfers, and the full programme. You communicate it to your members.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits -->
+  <section class="sec c-benefits">
+    <div class="max">
+      <p class="sl" id="cb-sl">What your club gains</p>
+      <h2 class="st" style="color:white" id="cb-st">Four reasons to<br><em>say yes.</em></h2>
+      <div class="ben-grid" style="margin-top:48px">
+        <div class="ben"><div class="ben-num">01</div><div class="ben-t" id="b1t">Member loyalty and recruitment</div><div class="ben-b" id="b1b">A club that offers travel weeks retains members longer and attracts new ones. This is a membership benefit your competitors in the region don't have — yet.</div></div>
+        <div class="ben"><div class="ben-num">02</div><div class="ben-t" id="b2t">Your coach travels free</div><div class="ben-b" id="b2b">With 8 or more members, your club coach joins the group at no extra cost — and returns with new ideas, new energy, and stronger relationships with your members.</div></div>
+        <div class="ben"><div class="ben-num">03</div><div class="ben-t" id="b3t">Zero effort for the club</div><div class="ben-b" id="b3b">We handle courts, accommodation, restaurants, transfers, and the full daily programme. You communicate the week to your members. We do everything else.</div></div>
+        <div class="ben"><div class="ben-num">04</div><div class="ben-t" id="b4t">Co-branding and visibility</div><div class="ben-b" id="b4b">Your club name on all Mira Flow materials for that edition. Organic visibility across Switzerland, UK, France, and Germany at no cost to you.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="sec c-how" id="c-how">
+    <div class="max">
+      <p class="sl" id="ch2-sl">The process</p>
+      <h2 class="st" id="ch2-st">How it works —<br><em>four steps.</em></h2>
+      <div class="how-grid" style="margin-top:48px">
+        <div class="how-step"><div class="hs-n">01</div><div class="hs-t" id="hs1t">Coffee in Bern</div><div class="hs-b" id="hs1b">We meet in person. You see the concept and the programme. No pressure, no obligation. 20 minutes.</div></div>
+        <div class="how-step"><div class="hs-n">02</div><div class="hs-t" id="hs2t">Letter of intent</div><div class="hs-b" id="hs2b">A one-page document confirming your preferred dates and group size. Costs nothing. Secures your calendar slot.</div></div>
+        <div class="how-step"><div class="hs-n">03</div><div class="hs-t" id="hs3t">Your members sign up</div><div class="hs-b" id="hs3b">You communicate the week to your club. We provide German-language materials and handle all individual bookings.</div></div>
+        <div class="how-step"><div class="hs-n">04</div><div class="hs-t" id="hs4t">We handle everything</div><div class="hs-b" id="hs4b">Courts, hotels, restaurants, transfers, programme, concierge. Your coach travels with the group. You take the credit.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Founder -->
+  <section class="sec c-founder">
+    <div class="max">
+      <p class="sl" id="cf-sl">Why Switzerland</p>
+      <h2 class="st" id="cf-st">Built by someone<br>who <em>knows your world.</em></h2>
+      <div class="founder-grid" style="margin-top:48px">
+        <div>
+          <p class="founder-quote" id="cf-quote">"I lived 15 years in Switzerland. I have a Swiss wife and two boys raised there. I understand what Swiss club members expect — quality, organisation, genuine experiences. Mira Flow was built with exactly that in mind."</p>
+          <p class="founder-sig">João</p>
+          <p class="founder-sig-t" id="cf-sig">Founder, Mira Flow · Vila Nova de Milfontes</p>
+        </div>
+        <div>
+          <p class="sl" id="cf-sl2">We are visiting Bern</p>
+          <p class="sb" style="margin-top:8px" id="cf-sb1">We are meeting club directors in the Bern, Thun, Biel, and Freiburg area this spring. If you are based in the region, we would love to show you the programme over a coffee.</p>
+          <p class="sb" style="margin-top:12px" id="cf-sb2">We are looking for three founding partner clubs for the 2025 season. The clubs that sign early receive guaranteed fixed dates, a two-year rate lock, and co-branding across all launch campaigns.</p>
+          <a href="mailto:hello@mira-flow.ch" class="btn-p-ink" style="margin-top:24px;display:inline-block" id="cf-btn">Request the club deck</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Club CTA -->
+  <section class="sec c-cta">
+    <div class="max">
+      <p class="sl" id="cc-sl">Ready to talk?</p>
+      <h2 class="st" style="color:white;margin-bottom:16px" id="cc-st">Let's have a coffee<br><em>in Bern.</em></h2>
+      <p class="sb" id="cc-sb">No deck needed for the first meeting. Just 20 minutes and we'll show you exactly how this works for your club.</p>
+      <a href="mailto:hello@mira-flow.ch" class="btn-p" style="margin-top:8px" id="cc-btn">Contact us · hello@mira-flow.ch</a>
+      <div class="founding-box">
+        <p class="fb-label" id="fb-lbl">Founding partner offer · 2025</p>
+        <p class="fb-body" id="fb-body">The first 3 Swiss clubs to sign a partnership agreement receive guaranteed dates, a 2-year group rate lock, and co-branding across all Mira Flow launch campaigns.</p>
+        <a href="mailto:hello@mira-flow.ch" class="btn-p-ink" id="fb-btn">Contact · hello@mira-flow.ch</a>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /club-world -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand"><span class="fb-t">MIRA</span><span class="fb-b">FLOW</span></div>
+      <p class="footer-tag" id="ft-tag">Padel retreats · Vila Nova de Milfontes · Costa Vicentina · Portugal</p>
+    </div>
+    <div class="footer-col">
+      <h4 id="fc1-h">For players</h4>
+      <ul>
+        <li><a href="#concept" id="fc1-l1">The concept</a></li>
+        <li><a href="#place" id="fc1-l2">The place</a></li>
+        <li><a href="#week" id="fc1-l3">The week</a></li>
+        <li><a href="#packages" id="fc1-l4">Packages</a></li>
+        <li><a href="#waitlist" id="fc1-l5">Join waitlist</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 id="fc2-h">For clubs</h4>
+      <ul>
+        <li><a href="#" onclick="showClubs();return false;" id="fc2-l1">Club overview</a></li>
+        <li><a href="#" onclick="showClubs();return false;" id="fc2-l2">How it works</a></li>
+        <li><a href="mailto:hello@mira-flow.ch" id="fc2-l3">Request deck</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4 id="fc3-h">Contact</h4>
+      <ul>
+        <li><a href="mailto:hello@mira-flow.ch">hello@mira-flow.ch</a></li>
+        <li><a href="https://mira-flow.ch">mira-flow.ch</a></li>
+        <li><a href="https://mira-flow.eu">mira-flow.eu</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy" id="ft-copy">© 2025 Mira Flow · mira-flow.ch · mira-flow.eu</p>
+    <p class="footer-copy" id="ft-copy2">Named after the Mira river · Milfontes · Portugal</p>
+  </div>
+</footer>
+
+<script>
+// ── VIDEO HELPER ─────────────────────────────────────────────────────
+// To activate hero video, call:  setHeroVideo('path/to/video.mp4')
+// Or set the src attribute directly on #hero-video-src
+function setHeroVideo(src) {
+  const vid = document.getElementById('hero-video');
+  const srcEl = document.getElementById('hero-video-src');
+  const hint = document.getElementById('hero-video-hint');
+  if (!vid || !srcEl) return;
+  srcEl.src = src;
+  vid.load();
+  vid.oncanplay = () => vid.classList.add('loaded');
+  if (hint) hint.style.display = 'none';
+}
+// On load: if src is empty, keep navy bg — no broken video icon
+document.addEventListener('DOMContentLoaded', () => {
+  const srcEl = document.getElementById('hero-video-src');
+  if (srcEl && !srcEl.src) {
+    document.getElementById('hero-video').style.display = 'none';
+  }
+});
+
+// ── WAITLIST ENDPOINT ────────────────────────────────────────────
+// The Brevo API key is NOT here. It lives in Cloudflare environment
+// variables and is only ever used server-side, by functions/api/waitlist.js
+const WAITLIST_ENDPOINT = '/api/waitlist';
+
+// ── STATE ────────────────────────────────────────────────────────
+let currentLang = 'en';
+let showingClubs = false;
+let wlSubmitted = false;
+
+// ── NAV SCROLL ───────────────────────────────────────────────────
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// ── REVEAL ON SCROLL ─────────────────────────────────────────────
+function activateReveals() {
+  const els = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  els.forEach(el => observer.observe(el));
+}
+document.addEventListener('DOMContentLoaded', activateReveals);
+
+// ── PLAYER / CLUB TOGGLE ─────────────────────────────────────────
+function showClubs() {
+  showingClubs = true;
+  document.getElementById('player-world').style.display = 'none';
+  document.getElementById('club-world').style.display   = 'block';
+  document.getElementById('nav-clubs-btn').style.display = 'none';
+  const cta = document.getElementById('nav-cta');
+  cta.textContent = currentLang === 'de' ? 'Deck anfordern' : 'Request deck';
+  cta.href = 'mailto:hello@mira-flow.ch';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function showPlayers() {
+  showingClubs = false;
+  document.getElementById('club-world').style.display   = 'none';
+  document.getElementById('player-world').style.display = 'block';
+  document.getElementById('nav-clubs-btn').style.display = 'inline';
+  const cta = document.getElementById('nav-cta');
+  cta.textContent = currentLang === 'de' ? 'Warteliste' : 'Join waitlist';
+  cta.href = '#waitlist';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  setTimeout(activateReveals, 100);
+}
+
+function goHome(e) {
+  e.preventDefault();
+  if (showingClubs) showPlayers();
+  else window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ── WAITLIST ─────────────────────────────────────────────────────
+const WL_MSG = {
+  en: {
+    done:    '✓ You\'re on the list',
+    thanks:  'We\'ll be in touch soon.',
+    retry:   'Join waitlist',
+    failed:  'Something went wrong — please try again, or email hello@mira-flow.ch',
+    offline: 'Could not connect — please email hello@mira-flow.ch'
+  },
+  de: {
+    done:    '✓ Sie stehen auf der Liste',
+    thanks:  'Wir melden uns in Kürze.',
+    retry:   'Auf Warteliste',
+    failed:  'Etwas ist schiefgelaufen — bitte erneut versuchen oder an hello@mira-flow.ch schreiben',
+    offline: 'Keine Verbindung — bitte schreiben Sie an hello@mira-flow.ch'
+  }
+};
+
+async function joinWaitlist() {
+  const inp  = document.getElementById('wl-email');
+  const btn  = document.getElementById('wl-btn');
+  const note = document.getElementById('wl-note');
+  const hp   = document.getElementById('wl-company');
+  const m    = WL_MSG[currentLang] || WL_MSG.en;
+  const email = inp.value.trim();
+
+  if (!email.includes('@') || !email.includes('.')) {
+    inp.style.borderColor = '#B5842A';
+    inp.focus();
+    return;
+  }
+
+  inp.disabled = btn.disabled = true;
+  btn.textContent = '...';
+
+  try {
+    // Same-origin call. No API key in the browser, no CORS, no IP allowlist.
+    const res = await fetch(WAITLIST_ENDPOINT, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ email: email, company: hp ? hp.value : '' })
+    });
+
+    if (res.ok) {
+      wlSubmitted = true;
+      btn.textContent      = m.done;
+      btn.style.background = '#3D5840';
+      note.textContent     = m.thanks;
+      note.style.color     = '#B5842A';
+    } else {
+      inp.disabled = btn.disabled = false;
+      btn.textContent  = m.retry;
+      note.textContent = m.failed;
+      note.style.color = '#B5842A';
+    }
+  } catch {
+    inp.disabled = btn.disabled = false;
+    btn.textContent  = m.retry;
+    note.textContent = m.offline;
+    note.style.color = '#B5842A';
+  }
+}
+
+// ── SMOOTH SCROLL FOR ANCHOR LINKS ───────────────────────────────
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="#"]');
+  if (!a) return;
+  const target = document.querySelector(a.getAttribute('href'));
+  if (!target) return;
+  e.preventDefault();
+  const top = target.getBoundingClientRect().top + window.scrollY - 80;
+  window.scrollTo({ top, behavior: 'smooth' });
+});
+
+// ── i18n ─────────────────────────────────────────────────────────
+const T = {
+  en: {
+    'h-ey':'Padel retreat · Costa Vicentina · Portugal',
+    'h-tg':'Seven days on the Atlantic coast.<br>Padel, mental coaching, breathwork.<br><em>The game you come back different from.</em>',
+    'h-btn':'Join the waitlist','h-sub':'Spring &amp; autumn editions · 8–12 guests','h-sc':'Discover',
+    'hf1':'nights · Milfontes','hf2':'on court · 3 clubs','hf3':'guests per edition','hf4':'Saturday tournament',
+    'nav-clubs-btn':'For clubs','nav-cta':'Join waitlist',
+    'why-sl1':'The concept','why-st1':'Not a training camp.<br><em>An experience.</em>',
+    'why-sl2':'Why it works','why-st2':'Most players plateau not from lack of technique — from the <em>mental side.</em>',
+    'why-sb1':'We address that directly — with a mental coach, structured workshops, video review, and daily practices that build real habits you will use in your next match.',
+    'why-sb2':'And we do all of this from one of the last untouched stretches of Atlantic coastline in Europe. You sleep in Milfontes every night. You unpack once. By Tuesday it already feels like home.',
+    'why-quote':'"The score is just information. Your response to it is the game."',
+    'pl-sl':'The place','pl-st':'Milfontes.<br><em>The Atlantic coast at its most itself.</em>',
+    'pl-txt':'Milfontes is not a mass tourism destination. It is a village that despite its popularity has remained itself — <em>on the river, on the Atlantic, with good food.</em> The Portuguese themselves holiday here. You feel it everywhere: in the restaurants, in the people, in the light at the end of the day. <strong>You unpack once. By Tuesday it already feels like home.</strong>',
+    'ps1':'nights · same home base','ps2':'partner clubs · Milfontes · Lagos · Sines','ps3':'max from home base to any day trip',
+    'tm-sl':'The people','tm-st':'The team behind<br><em>the week.</em>',
+    'tm-sub':'The same people, every session. You do not get a different facilitator each time. By Tuesday you already know everyone who is holding the week.',
+    'tm-note':'Padel coaching provided by FPP-certified local coaches at each partner club.',
+    'wk-sl':'The week','wk-st':'Sunday to Sunday.<br><em>Seven full days.</em>',
+    'mn-sl':'The differentiator','mn-st':'The mental game.<br><em>What no one else addresses.</em>',
+    'pk-sl':'Your week','pk-st':'One experience.<br><em>Two ways to live it.</em>',
+    'pk-gt':'The programme is identical in both packages',
+    'pk-gb':'Whether you choose <strong>Classic</strong> or <strong>Full Experience</strong>, you get the same week — same courts, same mental coach, same sessions, same Saturday tournament. What changes is the level of service and comfort wrapped around it.',
+    'pk1-price':'€ 2\'900','pk1-per':'per person',
+    'pk2-price':'€ 3\'900','pk2-per':'per person',
+    'pk1-tag':'The programme week','pk1-name':'Classic','pk1-cta':'Reserve a place',
+    'pk2-tag':'The hosted week','pk2-name':'Full<br>Experience','pk2-cta':'Reserve a place',
+    'pkg-gn':'<strong>Groups book as one.</strong> Classic groups travel Classic. Full Experience groups travel Full Experience. No mixing within a session. Swiss CHF rates available on request. Group pricing from 8 guests.',
+    'wl-sl':'Launching 2025','wl-st':'Be the first<br><em>to find your flow.</em>',
+    'wl-sb':'Spring and autumn editions filling now. Leave your email for early access pricing and date confirmation.',
+    'wl-btn':'Join waitlist','wl-note':'No spam. One email when dates are confirmed.',
+    'club-back':'← For players','club-lbl':'For clubs',
+    'fc1-h':'For players','fc2-h':'For clubs','fc3-h':'Contact',
+    'ft-tag':'Padel retreats · Vila Nova de Milfontes · Costa Vicentina · Portugal',
+    'ft-copy':'© 2025 Mira Flow · mira-flow.ch · mira-flow.eu',
+    'ft-copy2':'Named after the Mira river · Milfontes · Portugal'
+  },
+  de: {
+    'h-ey':'Padel-Retreat · Costa Vicentina · Portugal',
+    'h-tg':'Sieben Tage an der Atlantikküste.<br>Padel, Mental Coaching, Breathwork.<br><em>Das Spiel, von dem man anders zurückkommt.</em>',
+    'h-btn':'Auf die Warteliste','h-sub':'Frühjahrs- &amp; Herbsteditions · 8–12 Gäste','h-sc':'Entdecken',
+    'hf1':'Nächte · Milfontes','hf2':'auf dem Court · 3 Clubs','hf3':'Gäste pro Edition','hf4':'Samstagsturnier',
+    'nav-clubs-btn':'Für Clubs','nav-cta':'Warteliste',
+    'why-sl1':'Das Konzept','why-st1':'Kein Trainingscamp.<br><em>Ein Erlebnis.</em>',
+    'why-sl2':'Warum es funktioniert','why-st2':'Die meisten Spieler stagnieren nicht wegen mangelnder Technik – wegen des <em>mentalen Spiels.</em>',
+    'why-sb1':'Wir sprechen das direkt an – mit einem Mental Coach, strukturierten Workshops, Videoanalyse und täglichen Übungen, die echte Gewohnheiten aufbauen.',
+    'why-sb2':'Und das alles von einer der letzten unberührten Atlantikküsten Europas aus. Du schläfst jeden Abend in Milfontes. Du packst einmal aus. Am Dienstag fühlt es sich bereits wie zu Hause an.',
+    'why-quote':'"Der Stand ist nur Information. Deine Reaktion darauf ist das Spiel."',
+    'pl-sl':'Der Ort','pl-st':'Milfontes.<br><em>Die Atlantikküste ganz bei sich.</em>',
+    'pl-txt':'Milfontes ist kein Massentourismusort. Es ist ein Dorf, das trotz seiner Beliebtheit noch immer es selbst ist – <em>am Fluss, am Atlantik, mit gutem Essen.</em> Die Portugiesen selbst verbringen hier ihre Ferien. Das merkt man überall. <strong>Einmal auspacken. Am Dienstag fühlt es sich schon wie zu Hause an.</strong>',
+    'ps1':'Nächte · Heimatbasis','ps2':'Partnerclubs · Milfontes · Lagos · Sines','ps3':'max. von der Heimatbasis',
+    'tm-sl':'Das Team','tm-st':'Das Team hinter<br><em>der Woche.</em>',
+    'tm-sub':'Dieselben Menschen, jede Session. Am Dienstag kennt man bereits alle, die die Woche tragen.',
+    'tm-note':'Padel-Coaching durch FPP-zertifizierte lokale Trainer in jedem Partnerclub.',
+    'wk-sl':'Die Woche','wk-st':'Sonntag bis Sonntag.<br><em>Sieben volle Tage.</em>',
+    'mn-sl':'Das Unterscheidungsmerkmal','mn-st':'Das mentale Spiel.<br><em>Was niemand sonst anspricht.</em>',
+    'pk-sl':'Deine Woche','pk-st':'Ein Erlebnis.<br><em>Zwei Wege, es zu leben.</em>',
+    'pk-gt':'Das Programm ist in beiden Paketen identisch',
+    'pk-gb':'Ob du <strong>Classic</strong> oder <strong>Full Experience</strong> wählst – du bekommst dieselbe Woche. Was sich ändert, ist der Service-Level drumherum.',
+    'pk1-price':'CHF 2\'150','pk1-per':'pro Person',
+    'pk2-price':'CHF 3\'800','pk2-per':'pro Person',
+    'pk1-tag':'Die Programmwoche','pk1-name':'Classic','pk1-cta':'Platz reservieren',
+    'pk2-tag':'Die betreute Woche','pk2-name':'Full<br>Experience','pk2-cta':'Platz reservieren',
+    'pkg-gn':'<strong>Gruppen buchen gemeinsam.</strong> Classic-Gruppen reisen Classic, Full Experience-Gruppen reisen Full Experience. EUR-Preise auf Anfrage. Gruppenrabatt ab 8 Gästen.',
+    'wl-sl':'Start 2025','wl-st':'Sei der Erste,<br><em>der seinen Flow findet.</em>',
+    'wl-sb':'Frühjahrs- und Herbsteditions füllen sich jetzt. Hinterlasse deine E-Mail für Frühbucherpreise.',
+    'wl-btn':'Auf Warteliste','wl-note':'Kein Spam. Eine E-Mail, wenn die Termine feststehen.',
+    'club-back':'← Für Spieler','club-lbl':'Für Clubs',
+    'fc1-h':'Für Spieler','fc2-h':'Für Clubs','fc3-h':'Kontakt',
+    'ft-tag':'Padel-Retreats · Vila Nova de Milfontes · Costa Vicentina · Portugal',
+    'ft-copy':'© 2025 Mira Flow · mira-flow.ch · mira-flow.eu',
+    'ft-copy2':'Benannt nach dem Fluss Mira · Milfontes · Portugal'
+  }
+};
+
+function setLang(lang) {
+  currentLang = lang;
+  document.documentElement.lang = lang;
+  document.querySelectorAll('.lsb').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+  const tr = T[lang];
+  Object.keys(tr).forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    // Don't overwrite the confirmation state if they've already signed up
+    if (wlSubmitted && (id === 'wl-btn' || id === 'wl-note')) return;
+    if (id === 'wl-btn' && el.disabled) return;
+    if (tr[id].includes('<')) el.innerHTML = tr[id];
+    else el.textContent = tr[id];
+  });
+
+  // If already signed up, translate the confirmation instead of resetting it
+  if (wlSubmitted) {
+    const m = WL_MSG[lang] || WL_MSG.en;
+    document.getElementById('wl-btn').textContent  = m.done;
+    document.getElementById('wl-note').textContent = m.thanks;
+  }
+  // Also update nav-cta based on current state
+  const cta = document.getElementById('nav-cta');
+  if (!showingClubs) {
+    cta.textContent = lang === 'de' ? 'Warteliste' : 'Join waitlist';
+    cta.href = '#waitlist';
+  }
+}
+</script>
+</body>
+</html>
