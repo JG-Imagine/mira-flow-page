@@ -1,0 +1,32 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+
+  // Must match your existing Worker name in the Cloudflare dashboard exactly.
+  // If it doesn't match, Cloudflare creates a second, separate Worker.
+  "name": "mira-flow",
+
+  "main": "src/index.js",
+  "compatibility_date": "2026-09-01",
+
+  "assets": {
+    // Everything in ./public is served as a static file.
+    "directory": "./public",
+
+    // Lets the Worker fall back to serving assets via env.ASSETS.
+    "binding": "ASSETS",
+
+    // Unmatched paths return the 404 page rather than index.html.
+    // This is a normal multi-page site, not a single-page app.
+    "not_found_handling": "none"
+  },
+
+  "observability": {
+    // Turns on the logs you'll want when something breaks.
+    "enabled": true
+  }
+
+  // NOTE: BREVO_API_KEY and BREVO_LIST_ID are NOT listed here.
+  // Secrets must never live in a file you commit to Git.
+  // Set them in the dashboard (Worker → Settings → Variables and Secrets)
+  // or via: npx wrangler secret put BREVO_API_KEY
+}
