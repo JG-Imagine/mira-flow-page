@@ -3,7 +3,7 @@
 
   // Must match your existing Worker name in the Cloudflare dashboard exactly.
   // If it doesn't match, Cloudflare creates a second, separate Worker.
-  "name": "mira-flow",
+  "name": "mira-flow-page",
 
   "main": "src/index.js",
   "compatibility_date": "2026-09-01",
