@@ -40,7 +40,7 @@ async function handleWaitlist(request, env) {
       return json({ error: 'invalid_email' }, 400);
     }
 
-    if (!env.BREVO_API_KEY || !env.BREVO_LIST_ID) {
+    if (!env.BREVO_API_KEY ) {
       console.log('Missing BREVO_API_KEY or BREVO_LIST_ID');
       return json({ error: 'not_configured' }, 500);
     }
@@ -54,7 +54,7 @@ async function handleWaitlist(request, env) {
       },
       body: JSON.stringify({
         email: email,
-        listIds: [Number(env.BREVO_LIST_ID)],
+        listIds: [2],
         updateEnabled: true,
         attributes: { SOURCE: 'mira-flow-website' }
       })
