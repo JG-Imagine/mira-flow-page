@@ -20,6 +20,11 @@
     "not_found_handling": "none"
   },
 
+  "vars": {
+    "BREVO_LIST_ID": "2",
+    "BREVO_DOI_TEMPLATE_ID": "1"
+  },
+
   "observability": {
     // Turns on the logs you'll want when something breaks.
     "enabled": true

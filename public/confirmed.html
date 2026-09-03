@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>You're on the list — Mira Flow</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background:#F7F2E8;
+    color:#0B2535;
+    font-family:'Jost',sans-serif;
+    font-weight:300;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:32px;
+    line-height:1.6;
+  }
+  .wrap { max-width:520px; text-align:center; }
+  .mark {
+    font-size:11px;
+    letter-spacing:.32em;
+    text-transform:uppercase;
+    color:#8B6A52;
+    margin-bottom:48px;
+  }
+  .tick {
+    width:44px; height:44px;
+    border:1px solid #3D5840;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    margin:0 auto 32px;
+    color:#3D5840;
+    font-size:18px;
+  }
+  h1 {
+    font-family:'Cormorant Garamond',serif;
+    font-weight:300;
+    font-size:clamp(32px,6vw,46px);
+    line-height:1.15;
+    margin-bottom:24px;
+  }
+  h1 em { font-style:italic; color:#B5842A; }
+  p { font-size:16px; color:#0B2535; opacity:.8; margin-bottom:20px; }
+  .rule { width:40px; height:1px; background:#D5C9B0; margin:40px auto; }
+  .place {
+    font-size:11px;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+    color:#8B6A52;
+  }
+  a { color:#B5842A; text-decoration:none; border-bottom:1px solid #D5C9B0; }
+  [lang-de] { display:none; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="mark">Mira Flow</div>
+    <div class="tick">&#10003;</div>
+
+    <div id="en">
+      <h1>You're on <em>the list.</em></h1>
+      <p>Thank you for confirming. We'll be in touch when dates for the next editions are set — you'll hear before anyone else.</p>
+      <p>If you already have a rough window in mind, a season or a month, just reply to the email we sent. It genuinely shapes how we set the dates.</p>
+    </div>
+
+    <div id="de" style="display:none">
+      <h1>Du bist <em>dabei.</em></h1>
+      <p>Danke für die Bestätigung. Wir melden uns, sobald die Termine für die nächsten Editionen stehen — du hörst es als Erste:r.</p>
+      <p>Wenn du schon einen groben Zeitraum im Kopf hast, eine Jahreszeit oder einen Monat, antworte einfach auf unsere E-Mail. Das beeinflusst wirklich, wie wir die Termine legen.</p>
+    </div>
+
+    <div class="rule"></div>
+    <div class="place">Vila Nova de Milfontes &middot; Alentejo</div>
+    <p style="margin-top:28px;font-size:14px"><a href="/">Back to mira-flow.ch</a></p>
+  </div>
+
+<script>
+  // The Worker appends ?lang=de for German visitors
+  var params = new URLSearchParams(window.location.search);
+  if (params.get('lang') === 'de') {
+    document.getElementById('en').style.display = 'none';
+    document.getElementById('de').style.display = 'block';
+    document.documentElement.lang = 'de';
+    document.title = "Du bist dabei — Mira Flow";
+  }
+</script>
+</body>
+</html>

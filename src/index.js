@@ -35,17 +35,21 @@ async function handleWaitlist(request, env) {
     }
 
     const email = String(body.email || '').trim().toLowerCase();
+    const lang  = body.lang === 'de' ? 'de' : 'en';
 
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email) || email.length > 200) {
       return json({ error: 'invalid_email' }, 400);
     }
 
-    if (!env.BREVO_API_KEY ) {
-      console.log('Missing BREVO_API_KEY or BREVO_LIST_ID');
+    if (!env.BREVO_API_KEY || !env.BREVO_LIST_ID || !env.BREVO_DOI_TEMPLATE_ID) {
+      console.log('Missing BREVO_API_KEY, BREVO_LIST_ID or BREVO_DOI_TEMPLATE_ID');
       return json({ error: 'not_configured' }, 500);
     }
 
-    const res = await fetch('https://api.brevo.com/v3/contacts', {
+    // Double opt-in: Brevo sends the confirmation email and only adds the
+    // contact to the list after they click. Nothing appears in All Contacts
+    // until then.
+    const res = await fetch('https://api.brevo.com/v3/contacts/doubleOptinConfirmation', {
       method: 'POST',
       headers: {
         'accept': 'application/json',
@@ -54,20 +58,26 @@ async function handleWaitlist(request, env) {
       },
       body: JSON.stringify({
         email: email,
-        listIds: [2],
-        updateEnabled: true,
-        attributes: { SOURCE: 'mira-flow-website' }
+        includeListIds: [Number(env.BREVO_LIST_ID)],
+        templateId: Number(env.BREVO_DOI_TEMPLATE_ID),
+        redirectionUrl: 'https://mira-flow.ch/confirmed.html?lang=' + lang,
+        attributes: {
+          SOURCE: 'mira-flow-website',
+          LANG: lang
+        }
       })
     });
 
-    if (res.ok || res.status === 204) {
+    if (res.ok || res.status === 201 || res.status === 204) {
       return json({ ok: true }, 200);
     }
 
     const detail = await res.text();
 
-    // Already on the list — a success from the visitor's point of view.
-    if (res.status === 400 && detail.toLowerCase().includes('already')) {
+    // Already subscribed and confirmed — success from the visitor's view.
+    if (res.status === 400 &&
+        (detail.toLowerCase().includes('already') ||
+         detail.toLowerCase().includes('duplicate'))) {
       return json({ ok: true, existing: true }, 200);
     }
 
