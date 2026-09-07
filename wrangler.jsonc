@@ -22,7 +22,8 @@
 
   "vars": {
     "BREVO_LIST_ID": "2",
-    "BREVO_DOI_TEMPLATE_ID": "1"
+    "BREVO_DOI_TEMPLATE_ID": "1",
+    "SITE_ORIGIN": "https://mira-flow.ch"
   },
 
   "observability": {
