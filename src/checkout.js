@@ -10,7 +10,7 @@
  * Secret:      npx wrangler secret put STRIPE_SECRET_KEY
  * Plain var:   "SITE_ORIGIN": "https://mira-flow.ch"  in wrangler.jsonc
  *
- * NO PRICES LIVE IN THIS FILE. They are all in public/editions.json.
+ * NO PRICES LIVE IN THIS FILE. They are all in src/editions.json.
  * The browser sends choice keys only, never amounts.
  */
 
@@ -58,7 +58,7 @@ export async function handleCheckout(request, env) {
 
   if (!BASE[body.product]) return json({ error: 'unknown_product' }, 400);
 
-  const config = await loadEditions(request, env);
+  const config = loadEditions();
   const ed = resolve(config, body.product, body.date);
   if (!ed) return json({ error: 'unknown_date' }, 400);
   if (ed.left <= 0) return json({ error: 'sold_out' }, 409);
@@ -85,9 +85,10 @@ export async function handleCheckout(request, env) {
 
   const form = new URLSearchParams();
   form.set('mode', 'payment');
-  // Payment methods come from the Stripe dashboard, so Multibanco and MB Way
-  // can be switched on there without a redeploy.
-  form.set('automatic_payment_methods[enabled]', 'true');
+  // Deliberately no payment_method_types: leaving it unset is what makes Stripe
+  // use the methods enabled in the dashboard, so Multibanco and MB Way can be
+  // switched on there without a redeploy. Do NOT add automatic_payment_methods
+  // here — that is a PaymentIntent parameter and Checkout rejects the request.
   form.set('locale', lang === 'pt' ? 'pt-BR' : lang); // Stripe has no pt-PT; pt-BR is closest.
   form.set('billing_address_collection', 'required');
   form.set('phone_number_collection[enabled]', 'true');
@@ -99,6 +100,7 @@ export async function handleCheckout(request, env) {
 
   let i = 0;
   const push = (name, desc, euros) => {
+    if (!(euros > 0)) return; // Stripe has nothing to charge for a €0 line.
     form.set(`line_items[${i}][price_data][currency]`, ed.currency);
     form.set(`line_items[${i}][price_data][unit_amount]`, String(Math.round(euros * 100)));
     form.set(`line_items[${i}][price_data][product_data][name]`, name);
@@ -121,6 +123,11 @@ export async function handleCheckout(request, env) {
     if (ed.base > 0) push(title, BASE[body.product].desc[lang], ed.base);
     push(ed.base > 0 ? tier.name[lang] : `${title} · ${tier.name[lang]}`, null, tier.price);
     for (const o of chosen) push(o.name[lang], null, o.price);
+  }
+
+  if (i === 0) {
+    console.error('no_line_items', body.product, ed.id, tier.id);
+    return json({ error: 'nothing_to_charge' }, 400);
   }
 
   form.set('metadata[product]', body.product);
@@ -148,10 +155,25 @@ export async function handleCheckout(request, env) {
   });
 
   if (!res.ok) {
-    console.error('stripe_error', res.status, await res.text());
-    return json({ error: 'stripe_error' }, 502);
+    const detail = await res.text();
+    // Always logged in full — read it with: npx wrangler tail
+    console.error('stripe_error', res.status, detail);
+    let message;
+    try { message = JSON.parse(detail).error.message; } catch { message = undefined; }
+    // Echoed to the browser only when you switch it on, so a live customer
+    // never sees Stripe's internals but you can debug without a tail open.
+    return json(
+      env.DEBUG_ERRORS === 'true' ? { error: 'stripe_error', detail: message } : { error: 'stripe_error' },
+      502
+    );
   }
-  return json({ url: (await res.json()).url });
+
+  const session = await res.json();
+  if (!session.url) {
+    console.error('stripe_no_url', JSON.stringify(session).slice(0, 400));
+    return json({ error: 'stripe_no_url' }, 502);
+  }
+  return json({ url: session.url });
 }
 
 function fmt(lang, amount, currency) {

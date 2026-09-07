@@ -1,19 +1,19 @@
 /**
- * Loads public/editions.json and resolves one edition's prices.
+ * Prices, dates and availability for every product.
+ *
+ * The data lives in src/editions.json and is IMPORTED, not fetched. Two
+ * reasons: a malformed file fails `wrangler deploy` instead of silently
+ * breaking the live booking pages, and the file is not served publicly.
  *
  * The same resolve() runs on the server for Stripe and, via /api/editions,
  * feeds the booking pages. The price a buyer sees and the price they are
  * charged come from one calculation over one file, so they cannot disagree.
  */
 
-let cache = null; // per-isolate; cleared on deploy
+import config from './editions.json' with { type: 'json' };
 
-export async function loadEditions(request, env) {
-  if (cache) return cache;
-  const res = await env.ASSETS.fetch(new Request(new URL('/editions.json', request.url)));
-  if (!res.ok) throw new Error('editions.json missing');
-  cache = await res.json();
-  return cache;
+export function loadEditions() {
+  return config;
 }
 
 export function getProduct(config, name) {
