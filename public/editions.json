@@ -1,0 +1,76 @@
+{
+  "_readme": [
+    "THIS FILE IS THE ONLY PLACE PRICES AND DATES ARE DEFINED.",
+    "The weekend page reads it. The Stripe checkout reads it. Nothing else holds a price.",
+    "",
+    "TO CHANGE A PRICE FOR ONE EDITION: add it under that edition's 'prices'.",
+    "Anything you don't list there falls back to 'defaults' below.",
+    "",
+    "TO ADD A NEW EDITION: copy the last block, change id, label, note and left.",
+    "The id must be unique. Use the Friday date, YYYY-MM-DD.",
+    "",
+    "'left' is how many places remain. Set it to 0 to show the edition as full;",
+    "the server refuses to sell a full edition even if someone edits the page.",
+    "This number is shown to buyers, so it has to be true.",
+    "",
+    "Amounts are euros. Deploy after editing (wrangler deploy) — this is a static asset."
+  ],
+
+  "currency": "eur",
+
+  "defaults": {
+    "base": 390,
+    "stay": {
+      "shared": 110,
+      "single": 190,
+      "own": 0
+    },
+    "options": [
+      { "id": "transfer",     "price": 45,  "name": { "pt": "Transfer Lisboa, ida e volta",              "en": "Lisbon transfer, return",              "de": "Transfer Lissabon, hin und zurück" } },
+      { "id": "padel1to1",    "price": 55,  "name": { "pt": "Hora individual com o treinador",          "en": "One-to-one hour with the coach",        "de": "Einzelstunde mit dem Trainer" } },
+      { "id": "mental1to1",   "price": 55,  "name": { "pt": "Sessão individual de performance mental",  "en": "One-to-one mental performance session", "de": "Einzelsession zu mentaler Leistung" } },
+      { "id": "video",        "price": 40,  "name": { "pt": "Análise de vídeo — para o teu jogo",       "en": "Video analysis — for your game",        "de": "Videoanalyse — für dein Spiel" } },
+      { "id": "filmPersonal", "price": 140, "name": { "pt": "O teu fim de semana em vídeo e fotografia","en": "Your weekend, filmed and photographed", "de": "Dein Wochenende, gefilmt und fotografiert" } }
+    ]
+  },
+
+  "editions": [
+    {
+      "id": "2026-10-16",
+      "label": { "pt": "16 – 18 Outubro 2026", "en": "16 – 18 October 2026", "de": "16. – 18. Oktober 2026" },
+      "note":  { "pt": "Água ainda quente", "en": "Sea still warm", "de": "Meer noch warm" },
+      "left": 4,
+      "prices": {
+        "stay": { "shared": 130, "single": 220 }
+      }
+    },
+    {
+      "id": "2026-11-13",
+      "label": { "pt": "13 – 15 Novembro 2026", "en": "13 – 15 November 2026", "de": "13. – 15. November 2026" },
+      "note":  { "pt": "Fora de época, courts vazios", "en": "Off season, empty courts", "de": "Nebensaison, leere Courts" },
+      "left": 9,
+      "prices": {
+        "base": 350,
+        "stay": { "shared": 95, "single": 165 }
+      }
+    },
+    {
+      "id": "2027-03-05",
+      "label": { "pt": "5 – 7 Março 2027", "en": "5 – 7 March 2027", "de": "5. – 7. März 2027" },
+      "note":  { "pt": "Primeira edição da primavera", "en": "First spring edition", "de": "Erste Frühlingsedition" },
+      "left": 12,
+      "prices": {}
+    },
+    {
+      "id": "2027-04-16",
+      "label": { "pt": "16 – 18 Abril 2027", "en": "16 – 18 April 2027", "de": "16. – 18. April 2027" },
+      "note":  { "pt": "Fim de semana longo", "en": "Long weekend", "de": "Langes Wochenende" },
+      "left": 0,
+      "prices": {
+        "base": 410,
+        "stay": { "shared": 140, "single": 235 },
+        "options": { "transfer": 55 }
+      }
+    }
+  ]
+}

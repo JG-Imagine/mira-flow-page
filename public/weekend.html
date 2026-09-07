@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fim de semana — Mira Flow · Vila Nova de Milfontes</title>
+<meta name="description" content="Sexta a domingo em Vila Nova de Milfontes. Padel, yoga, performance mental. A duas horas e meia de Lisboa.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@100;200;300;400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBCMjUzNSIvPjxjaXJjbGUgY3g9IjUwIiBjeT0iNTAiIHI9IjQ0IiBmaWxsPSJub25lIiBzdHJva2U9IiNCNTg0MkEiIHN0cm9rZS13aWR0aD0iMy41Ii8+PHRleHQgeD0iNTAiIHk9IjQ0IiBmb250LWZhbWlseT0iJ0pvc3QnLEFyaWFsIiBmb250LXdlaWdodD0iMjAwIiBmb250LXNpemU9IjIyIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgbGV0dGVyLXNwYWNpbmc9IjMiPk1JUkE8L3RleHQ+PGxpbmUgeDE9IjMyIiB5MT0iNTEiIHgyPSI2OCIgeTI9IjUxIiBzdHJva2U9IiNENEE4NEIiIHN0cm9rZS13aWR0aD0iMSIvPjx0ZXh0IHg9IjUwIiB5PSI2OCIgZm9udC1mYW1pbHk9IidKb3N0JyxBcmlhbCIgZm9udC13ZWlnaHQ9IjIwMCIgZm9udC1zaXplPSIyMiIgZmlsbD0iI0Q0QTg0QiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgbGV0dGVyLXNwYWNpbmc9IjMiPkZMT1c8L3RleHQ+PC9zdmc+">
+<meta name="theme-color" content="#0B2535">
+<style>
+:root {
+  --ink:#0B2535; --deep:#1A4560; --gold:#B5842A; --glt:#D4A84B;
+  --sand:#EDE4D0; --slt:#F7F2E8; --sdk:#D5C9B0;
+  --clay:#8B6A52; --cork:#3D5840; --muted:#7A7060; --text:#1C1C1A;
+}
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body { font-family:'Jost',sans-serif; font-weight:300; color:var(--text); background:var(--slt); overflow-x:hidden; }
+@media (prefers-reduced-motion:reduce) { html{scroll-behavior:auto} *{transition:none!important} }
+
+/* NAV */
+nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; justify-content:space-between;
+  align-items:center; padding:20px 56px; transition:background .4s, padding .3s; }
+nav.scrolled { background:rgba(11,37,53,.96); backdrop-filter:blur(8px); padding:14px 56px; }
+.nav-logo { text-decoration:none; line-height:1; }
+.nl-t { font-weight:200; font-size:13px; letter-spacing:6px; color:white; text-transform:uppercase; display:block; }
+.nl-b { font-weight:100; font-size:13px; letter-spacing:6px; color:var(--glt); text-transform:uppercase; display:block; margin-top:-2px; }
+.nav-right { display:flex; align-items:center; gap:20px; }
+.nav-back { font-size:10px; font-weight:300; letter-spacing:2px; text-transform:uppercase;
+  color:rgba(255,255,255,.4); text-decoration:none; transition:color .2s; }
+.nav-back:hover { color:var(--glt); }
+.lang-sw { display:flex; align-items:center; gap:5px; }
+.lsb { background:none; border:none; font-family:'Jost',sans-serif; font-weight:300; font-size:10px;
+  letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,.3); cursor:pointer; padding:4px 2px; transition:color .2s; }
+.lsb.active { color:white; }
+.lang-sep { color:rgba(255,255,255,.15); font-size:10px; }
+.nav-cta { display:inline-block; padding:9px 22px; background:var(--gold); color:white; font-size:10px;
+  font-weight:300; letter-spacing:2px; text-transform:uppercase; text-decoration:none; transition:background .2s; }
+.nav-cta:hover { background:var(--glt); }
+a:focus-visible, button:focus-visible, input:focus-visible { outline:2px solid var(--glt); outline-offset:3px; }
+
+/* HERO */
+#hero { min-height:76vh; background:var(--ink); display:flex; align-items:center;
+  padding:150px 56px 90px; position:relative; overflow:hidden; }
+.hero-ring { position:absolute; border-radius:50%; pointer-events:none; }
+.hero-ring-1 { width:620px; height:620px; right:-190px; top:-160px; border:1px solid rgba(181,132,42,.1); }
+.hero-accent { position:absolute; left:0; top:0; bottom:0; width:2px;
+  background:linear-gradient(180deg,transparent 0%,var(--gold) 30%,var(--glt) 70%,transparent 100%); }
+.hero-inner { position:relative; z-index:2; max-width:1000px; width:100%; }
+.hero-eyebrow { font-size:9px; font-weight:300; letter-spacing:4px; text-transform:uppercase;
+  color:var(--glt); margin-bottom:26px; display:block; }
+.hero-title { font-family:'Cormorant Garamond',serif; font-weight:300; font-size:clamp(40px,6.5vw,78px);
+  line-height:1.05; color:white; margin-bottom:26px; }
+.hero-title em { font-style:italic; color:var(--glt); }
+.hero-tagline { font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:300;
+  font-size:clamp(18px,2.2vw,26px); color:rgba(255,255,255,.55); line-height:1.55; margin-bottom:44px; max-width:620px; }
+.hero-facts { display:flex; margin-bottom:44px; border-top:1px solid rgba(255,255,255,.07);
+  padding-top:26px; flex-wrap:wrap; }
+.hero-fact { padding-right:36px; margin-right:36px; border-right:1px solid rgba(255,255,255,.07); margin-bottom:10px; }
+.hero-fact:last-child { border-right:none; }
+.hf-num { font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:300; color:var(--glt); line-height:1; margin-bottom:5px; }
+.hf-lbl { font-size:9px; font-weight:300; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,.3); }
+.btn-p { display:inline-block; padding:14px 32px; background:var(--gold); color:white; font-size:10px;
+  font-weight:300; letter-spacing:2px; text-transform:uppercase; text-decoration:none; transition:background .2s; border:none; cursor:pointer; }
+.btn-p:hover { background:var(--glt); }
+
+/* SECTIONS */
+.sec { padding:84px 56px; }
+.max { max-width:1180px; margin:0 auto; }
+.sl { font-size:9px; font-weight:300; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:16px; }
+.st { font-family:'Cormorant Garamond',serif; font-weight:300; font-size:clamp(26px,3.5vw,44px); line-height:1.15; color:var(--ink); }
+.st em { font-style:italic; }
+.sb { font-size:14px; font-weight:300; line-height:1.8; color:var(--muted); max-width:64ch; }
+
+/* INTRO */
+.intro-grid { display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start; }
+.intro-note { border-left:2px solid var(--gold); padding:4px 0 4px 22px; }
+.intro-note p { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:18px;
+  color:var(--clay); line-height:1.6; }
+
+/* PROGRAMME */
+.p-prog { background:var(--ink); }
+.prog-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:3px; margin-top:44px; }
+.pd { background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.06); padding:26px 24px; }
+.pd.sat { background:rgba(181,132,42,.07); border-color:rgba(181,132,42,.2); }
+.pd-day { font-size:9px; font-weight:300; letter-spacing:2.5px; text-transform:uppercase; color:var(--glt); margin-bottom:6px; }
+.pd-t { font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:300; color:white; margin-bottom:18px; }
+.pd-l { list-style:none; }
+.pd-l li { display:grid; grid-template-columns:52px 1fr; gap:10px; padding:8px 0;
+  border-bottom:1px solid rgba(255,255,255,.06); font-size:12.5px; color:rgba(255,255,255,.6); line-height:1.5; }
+.pd-l li:last-child { border-bottom:none; }
+.pd-l .hr { color:var(--glt); font-size:11px; }
+
+/* INCLUDED */
+.inc-grid { display:grid; grid-template-columns:1fr 1fr; gap:3px; margin-top:36px; }
+.inc-box { padding:28px 30px; }
+.inc-yes { background:var(--sand); }
+.inc-no { background:white; border:1px solid var(--sdk); }
+.inc-h { font-size:9px; font-weight:400; letter-spacing:2px; text-transform:uppercase; margin-bottom:16px; color:var(--clay); }
+.inc-l { list-style:none; }
+.inc-l li { padding:7px 0; border-bottom:1px solid rgba(0,0,0,.06); font-size:13px; color:var(--text); line-height:1.5; }
+.inc-l li:last-child { border-bottom:none; }
+.inc-no .inc-l li { color:var(--muted); }
+
+/* BOOKING */
+.p-book { background:var(--slt); }
+.book-wrap { display:grid; grid-template-columns:1.35fr 1fr; gap:3px; margin-top:40px; align-items:start; }
+.book-left { background:white; border:1px solid var(--sdk); padding:34px 36px; }
+.book-base { padding-bottom:26px; border-bottom:1px solid var(--sdk); }
+.book-base-h { display:flex; justify-content:space-between; align-items:baseline; gap:16px; flex-wrap:wrap; }
+.book-base-t { font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:300; color:var(--ink); }
+.book-base-p { font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:300; color:var(--gold); white-space:nowrap; }
+.book-base-s { font-size:13px; color:var(--muted); line-height:1.7; margin-top:10px; max-width:52ch; }
+.step-n { display:inline-block; font-size:9px; font-weight:400; letter-spacing:2px;
+  text-transform:uppercase; color:var(--gold); border:1px solid rgba(181,132,42,.35);
+  padding:2px 7px; margin-right:9px; }
+.dates { display:grid; gap:2px; margin-top:14px; }
+.dt { display:grid; grid-template-columns:20px 1fr auto; gap:12px; align-items:center;
+  padding:15px 16px; border:1px solid var(--sdk); background:var(--slt); cursor:pointer; transition:border-color .2s, background .2s; }
+.dt:hover:not(.gone) { border-color:var(--gold); }
+.dt.sel { border-color:var(--gold); background:white; }
+.dt.gone { cursor:not-allowed; opacity:.45; }
+.dt input { width:16px; height:16px; accent-color:var(--gold); cursor:inherit; }
+.dt-d { font-size:14px; color:var(--ink); }
+.dt-m { font-size:11.5px; color:var(--muted); margin-top:2px; }
+.dt-s { font-size:9px; font-weight:400; letter-spacing:1.5px; text-transform:uppercase; white-space:nowrap; }
+.dt-s.open { color:var(--cork); }
+.dt-s.few  { color:var(--gold); }
+.dt-s.gone { color:var(--muted); }
+.opt-h { font-size:9px; font-weight:400; letter-spacing:2px; text-transform:uppercase; color:var(--clay); margin:26px 0 4px; }
+.opt-sub { font-size:12px; color:var(--muted); margin-bottom:14px; line-height:1.6; }
+.opt { display:grid; grid-template-columns:20px 1fr auto; gap:12px; align-items:start;
+  padding:14px 0; border-bottom:1px solid rgba(0,0,0,.07); cursor:pointer; }
+.opt:last-of-type { border-bottom:none; }
+.opt input { width:16px; height:16px; margin-top:3px; accent-color:var(--gold); cursor:pointer; }
+.opt-n { font-size:13.5px; color:var(--text); line-height:1.4; }
+.opt-d { font-size:12px; color:var(--muted); line-height:1.55; margin-top:3px; }
+.opt-p { font-size:13.5px; color:var(--gold); white-space:nowrap; }
+.opt-p.free { color:var(--muted); font-style:italic; font-size:12px; }
+
+.book-right { background:var(--ink); padding:34px 32px; position:sticky; top:96px; }
+.sum-h { font-size:9px; font-weight:400; letter-spacing:2px; text-transform:uppercase; color:var(--glt); margin-bottom:20px; }
+.sum-l { list-style:none; margin-bottom:20px; }
+.sum-l li { display:flex; justify-content:space-between; gap:14px; padding:8px 0;
+  border-bottom:1px solid rgba(255,255,255,.07); font-size:12.5px; color:rgba(255,255,255,.6); line-height:1.45; }
+.sum-l li span:last-child { color:rgba(255,255,255,.85); white-space:nowrap; }
+.sum-tot { display:flex; justify-content:space-between; align-items:baseline; gap:14px;
+  padding-top:18px; border-top:1px solid rgba(181,132,42,.3); }
+.sum-tot-l { font-size:10px; font-weight:300; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,.4); }
+.sum-tot-v { font-family:'Cormorant Garamond',serif; font-size:40px; font-weight:300; color:var(--glt); line-height:1; }
+.sum-vat { font-size:11px; color:rgba(255,255,255,.3); margin-top:8px; line-height:1.6; }
+.sum-terms { display:grid; grid-template-columns:18px 1fr; gap:10px; margin:22px 0 16px; align-items:start; cursor:pointer; }
+.sum-terms input { width:15px; height:15px; margin-top:2px; accent-color:var(--gold); cursor:pointer; }
+.sum-terms span { font-size:11.5px; color:rgba(255,255,255,.45); line-height:1.6; }
+.sum-terms a { color:var(--glt); }
+.sum-btn { display:block; width:100%; padding:15px; background:var(--gold); color:white; border:none;
+  font-family:'Jost',sans-serif; font-size:10px; font-weight:300; letter-spacing:2px; text-transform:uppercase;
+  cursor:pointer; transition:background .2s; }
+.sum-btn:hover:not(:disabled) { background:var(--glt); }
+.sum-btn:disabled { background:rgba(255,255,255,.08); color:rgba(255,255,255,.25); cursor:not-allowed; }
+.sum-err { font-size:12px; color:var(--glt); margin-top:12px; line-height:1.6; display:none; }
+.sum-note { font-size:11px; color:rgba(255,255,255,.28); margin-top:14px; line-height:1.65; }
+
+/* TERMS */
+.p-terms { background:var(--sand); }
+.terms-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:36px; margin-top:32px; }
+.tb-h { font-size:9px; font-weight:400; letter-spacing:2px; text-transform:uppercase; color:var(--clay); margin-bottom:10px; }
+.tb-b { font-size:13px; color:var(--muted); line-height:1.75; }
+
+/* FOOTER */
+footer { background:var(--ink); padding:56px; }
+.foot { max-width:1180px; margin:0 auto; display:flex; justify-content:space-between; gap:32px; flex-wrap:wrap; }
+.foot p { font-size:11px; color:rgba(255,255,255,.3); line-height:1.8; }
+.foot a { color:rgba(255,255,255,.45); text-decoration:none; }
+.foot a:hover { color:var(--glt); }
+
+@media (max-width:940px) {
+  nav, nav.scrolled { padding:14px 22px; }
+  #hero { padding:130px 22px 70px; }
+  .sec, footer { padding:60px 22px; }
+  .intro-grid, .inc-grid, .book-wrap { grid-template-columns:1fr; gap:32px; }
+  .prog-grid, .terms-grid { grid-template-columns:1fr; }
+  .book-right { position:static; }
+  .hero-fact { padding-right:22px; margin-right:22px; }
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a href="/" class="nav-logo"><span class="nl-t">Mira</span><span class="nl-b">Flow</span></a>
+  <div class="nav-right">
+    <a href="/" class="nav-back" data-i18n="nav-back">A semana completa</a>
+    <div class="lang-sw">
+      <button class="lsb active" data-lang="pt" onclick="setLang('pt')">PT</button>
+      <span class="lang-sep">/</span>
+      <button class="lsb" data-lang="en" onclick="setLang('en')">EN</button>
+      <span class="lang-sep">/</span>
+      <button class="lsb" data-lang="de" onclick="setLang('de')">DE</button>
+    </div>
+    <a href="#reservar" class="nav-cta" data-i18n="nav-cta">Reservar</a>
+  </div>
+</nav>
+
+<section id="hero">
+  <div class="hero-accent"></div>
+  <div class="hero-ring hero-ring-1"></div>
+  <div class="hero-inner">
+    <span class="hero-eyebrow" data-i18n="h-ey">Fim de semana · Vila Nova de Milfontes</span>
+    <h1 class="hero-title" data-i18n="h-t">Sexta ao fim da tarde.<br><em>Domingo depois de almoço.</em></h1>
+    <p class="hero-tagline" data-i18n="h-tg">Dois dias e meio de padel a sério, com yoga, trabalho mental e a costa alentejana à porta. A duas horas e meia de Lisboa.</p>
+    <div class="hero-facts">
+      <div class="hero-fact"><div class="hf-num">~6h</div><div class="hf-lbl" data-i18n="hf1">de court</div></div>
+      <div class="hero-fact"><div class="hf-num">8&ndash;12</div><div class="hf-lbl" data-i18n="hf2">jogadores</div></div>
+      <div class="hero-fact"><div class="hf-num">4</div><div class="hf-lbl" data-i18n="hf3">refeições à mesa</div></div>
+      <div class="hero-fact"><div class="hf-num">2h30</div><div class="hf-lbl" data-i18n="hf4">de Lisboa</div></div>
+    </div>
+    <a href="#reservar" class="btn-p" data-i18n="h-btn">Ver datas e reservar</a>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="max intro-grid">
+    <div>
+      <p class="sl" data-i18n="in-sl">O formato</p>
+      <h2 class="st" data-i18n="in-st">Um fim de semana que não é<br><em>um fim de semana normal.</em></h2>
+    </div>
+    <div>
+      <p class="sb" data-i18n="in-b1">Chega-se na sexta ao fim da tarde e joga-se logo. No sábado há dois blocos de padel com treinador, yoga de manhã, uma sessão de performance mental e som ao fim do dia. No domingo é torneio, almoço e regresso.</p>
+      <p class="sb" style="margin-top:14px" data-i18n="in-b2">Não é uma versão reduzida da semana. A semana constrói progressão ao longo de sete dias — aqui o objetivo é diferente: jogar muito, perceber uma coisa nova sobre o teu jogo, e sair de Milfontes com vontade de voltar.</p>
+      <div class="intro-note" style="margin-top:24px">
+        <p data-i18n="in-q">Vem-se para jogar. O resto de Milfontes acontece por acréscimo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec p-prog">
+  <div class="max">
+    <p class="sl" data-i18n="pr-sl">O programa</p>
+    <h2 class="st" style="color:white" data-i18n="pr-st">Sexta, sábado, domingo.</h2>
+    <div class="prog-grid">
+      <div class="pd">
+        <div class="pd-day" data-i18n="pd1-d">Sexta</div>
+        <div class="pd-t" data-i18n="pd1-t">Chegada</div>
+        <ul class="pd-l">
+          <li><span class="hr">18:00</span><span data-i18n="pd1-1">Chegada e check-in</span></li>
+          <li><span class="hr">19:00</span><span data-i18n="pd1-2">Americano de abertura</span></li>
+          <li><span class="hr">21:00</span><span data-i18n="pd1-3">Jantar</span></li>
+        </ul>
+      </div>
+      <div class="pd sat">
+        <div class="pd-day" data-i18n="pd2-d">Sábado</div>
+        <div class="pd-t" data-i18n="pd2-t">O dia cheio</div>
+        <ul class="pd-l">
+          <li><span class="hr">08:30</span><span data-i18n="pd2-1">Yoga e respiração</span></li>
+          <li><span class="hr">10:00</span><span data-i18n="pd2-2">Padel — bloco técnico</span></li>
+          <li><span class="hr">13:00</span><span data-i18n="pd2-3">Almoço</span></li>
+          <li><span class="hr">15:00</span><span data-i18n="pd2-4">Performance mental</span></li>
+          <li><span class="hr">17:00</span><span data-i18n="pd2-5">Padel — jogo</span></li>
+          <li><span class="hr">19:30</span><span data-i18n="pd2-6">Terapia de som</span></li>
+          <li><span class="hr">21:00</span><span data-i18n="pd2-7">Jantar</span></li>
+        </ul>
+      </div>
+      <div class="pd">
+        <div class="pd-day" data-i18n="pd3-d">Domingo</div>
+        <div class="pd-t" data-i18n="pd3-t">Torneio</div>
+        <ul class="pd-l">
+          <li><span class="hr">08:30</span><span data-i18n="pd3-1">Ritual de manhã</span></li>
+          <li><span class="hr">10:00</span><span data-i18n="pd3-2">Torneio de encerramento</span></li>
+          <li><span class="hr">13:30</span><span data-i18n="pd3-3">Almoço final</span></li>
+          <li><span class="hr">15:30</span><span data-i18n="pd3-4">Partida</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="max">
+    <p class="sl" data-i18n="ic-sl">O que está incluído</p>
+    <h2 class="st" data-i18n="ic-st">Um preço, sem surpresas.</h2>
+    <div class="inc-grid">
+      <div class="inc-box inc-yes">
+        <p class="inc-h" data-i18n="ic-yh">Incluído no preço base</p>
+        <ul class="inc-l">
+          <li data-i18n="ic-y1">Cerca de 6 horas de court</li>
+          <li data-i18n="ic-y2">Treinador de padel certificado FPP</li>
+          <li data-i18n="ic-y3">Yoga e respiração — duas sessões</li>
+          <li data-i18n="ic-y4">Sessão de performance mental</li>
+          <li data-i18n="ic-y5">Terapia de som</li>
+          <li data-i18n="ic-y6">Quatro refeições à mesa, com o grupo</li>
+          <li data-i18n="ic-y7">Torneio de domingo</li>
+          <li data-i18n="ic-y8">Filmagem do grupo em court — partilhada com todos depois</li>
+        </ul>
+      </div>
+      <div class="inc-box inc-no">
+        <p class="inc-h" data-i18n="ic-nh">Não incluído</p>
+        <ul class="inc-l">
+          <li data-i18n="ic-n1">Alojamento — escolhes na reserva</li>
+          <li data-i18n="ic-n2">Bebidas fora das refeições</li>
+          <li data-i18n="ic-n3">Viagem até Milfontes</li>
+          <li data-i18n="ic-n4">Seguro de viagem pessoal</li>
+        </ul>
+        <p class="inc-h" style="margin-top:24px" data-i18n="ic-nh2">Sobre as refeições</p>
+        <p style="font-size:13px;color:var(--muted);line-height:1.75" data-i18n="ic-nb">As refeições do programa não são opcionais. É à mesa que o grupo se forma — e um fim de semana em que metade das pessoas janta noutro sítio deixa de ser um fim de semana em conjunto.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec p-book" id="reservar">
+  <div class="max">
+    <p class="sl" data-i18n="bk-sl">Reservar</p>
+    <h2 class="st" data-i18n="bk-st">Escolhe o que faz sentido<br><em>para ti.</em></h2>
+    <div class="book-wrap">
+
+      <div class="book-left">
+        <div class="book-base">
+          <div class="book-base-h">
+            <div class="book-base-t" data-i18n="bk-bt">Fim de semana Mira Flow</div>
+            <div class="book-base-p" id="base-price">€&nbsp;390</div>
+          </div>
+          <p class="book-base-s" data-i18n="bk-bs">Sexta 18:00 a domingo 15:30. Todo o programa e as quatro refeições. Por pessoa.</p>
+        </div>
+
+        <p class="opt-h"><span class="step-n">1</span><span data-i18n="bk-dh">Escolhe a edição</span></p>
+        <div class="dates" id="dates"></div>
+
+        <p class="opt-h" style="margin-top:30px"><span class="step-n">2</span><span data-i18n="bk-ah">Onde ficas</span></p>
+        <p class="opt-sub" data-i18n="bk-as">Duas noites na casa do grupo, a cinco minutos a pé dos courts. Pequeno-almoço incluído.</p>
+        <div id="tiers"></div>
+
+        <p class="opt-h" style="margin-top:30px"><span class="step-n">3</span><span data-i18n="bk-oh">Extras</span></p>
+        <p class="opt-sub" data-i18n="bk-os">Opcionais. Podes acrescentar depois, até uma semana antes.</p>
+        <div id="opts"></div>
+      </div>
+
+      <div class="book-right">
+        <p class="sum-h" data-i18n="sm-h">A tua reserva</p>
+        <ul class="sum-l" id="sum-list"></ul>
+        <div class="sum-tot">
+          <span class="sum-tot-l" data-i18n="sm-tot">Total</span>
+          <span class="sum-tot-v" id="sum-total">€&nbsp;390</span>
+        </div>
+        <p class="sum-vat" id="sum-vat" data-i18n="sm-vat">Preço final por pessoa, IVA incluído.</p>
+        <label class="sum-terms">
+          <input type="checkbox" id="consent">
+          <span data-i18n="sm-consent">Podem usar fotografias e vídeo em que apareço nos materiais do Mira Flow. Opcional — não muda nada na tua reserva.</span>
+        </label>
+        <label class="sum-terms">
+          <input type="checkbox" id="agree" onchange="recalc()">
+          <span data-i18n="sm-terms">Li e aceito as <a href="/termos.html">condições de reserva e cancelamento</a>.</span>
+        </label>
+        <button class="sum-btn" id="pay-btn" onclick="checkout()" disabled data-i18n="sm-btn">Continuar para pagamento</button>
+        <p class="sum-err" id="pay-err"></p>
+        <p class="sum-note" data-i18n="sm-note">Pagamento seguro via Stripe. Multibanco, MB Way e cartão. Os dados do cartão nunca passam por este site.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="sec p-terms">
+  <div class="max">
+    <p class="sl" data-i18n="tm-sl">Antes de reservares</p>
+    <h2 class="st" data-i18n="tm-st">As três coisas que<br><em>convém saber.</em></h2>
+    <div class="terms-grid">
+      <div>
+        <p class="tb-h" data-i18n="tb1-h">Cancelamento</p>
+        <p class="tb-b" data-i18n="tb1-b">[A DEFINIR — texto legal a confirmar. Sugestão de partida: reembolso total até 30 dias antes, 50% até 14 dias, sem reembolso depois disso. O lugar é transmissível a outra pessoa até 48 horas antes, sem custo.]</p>
+      </div>
+      <div>
+        <p class="tb-h" data-i18n="tb2-h">Número mínimo</p>
+        <p class="tb-b" data-i18n="tb2-b">A edição confirma-se com 8 jogadores. Se não chegarmos a esse número, avisamos com 21 dias de antecedência e devolvemos tudo — ou passas para a edição seguinte, à tua escolha.</p>
+      </div>
+      <div>
+        <p class="tb-h" data-i18n="tb4-h">Em que língua</p>
+        <p class="tb-b" data-i18n="tb4-b">O fim de semana é conduzido em português. Falamos todos inglês e safamo-nos em alemão e espanhol — se não falas português, dizes-nos na reserva e não te perdes. Mas as conversas à mesa vão ser em português.</p>
+      </div>
+      <div>
+        <p class="tb-h" data-i18n="tb3-h">Nível de jogo</p>
+        <p class="tb-b" data-i18n="tb3-b">Do iniciado com alguma prática ao jogador de liga. Fazemos os pares por nível ao longo do fim de semana, para que ninguém passe dois dias a jogar sozinho ou a correr atrás.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot">
+    <div>
+      <p data-i18n="ft-1">Mira Flow · Vila Nova de Milfontes · Costa Vicentina</p>
+      <p><a href="mailto:hello@mira-flow.ch">hello@mira-flow.ch</a></p>
+    </div>
+    <div>
+      <p><a href="/" data-i18n="ft-2">A semana completa</a></p>
+      <p><a href="/termos.html" data-i18n="ft-3">Condições de reserva</a></p>
+      <p data-i18n="ft-4">© 2026 Mira Flow</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Prices, dates and availability come from public/editions.json via
+   /api/editions. booking.js renders and prices the form; nothing here
+   holds a number. */
+
+let lang = 'pt';
+
+/* Portuguese lives in the HTML. English lives here. Nothing is
+   written twice, so the two can't drift apart. */
+const EN = {
+  '_loadfail':'Dates are not loading right now. Email hello@mira-flow.ch and we will book you in.',
+  '_pickfirst':'Pick an edition first — room prices change with the season.',
+  '_soldout':'That edition just filled. Pick another one.',
+  '_tiergone':'That option is no longer available for this edition.',
+
+  'nav-back':'The full week', 'nav-cta':'Book',
+  'h-ey':'Weekend · Vila Nova de Milfontes',
+  'h-t':'Friday evening.<br><em>Home after Sunday lunch.</em>',
+  'h-tg':'Two and a half days of real padel, with yoga, mental work and the Alentejo coast at the door. Two and a half hours from Lisbon.',
+  'hf1':'on court', 'hf2':'players', 'hf3':'meals together', 'hf4':'from Lisbon',
+  'h-btn':'See dates and book',
+  'in-sl':'The format',
+  'in-st':'A weekend that isn\'t<br><em>an ordinary weekend.</em>',
+  'in-b1':'You arrive Friday evening and play the same night. Saturday is two padel blocks with a coach, yoga in the morning, a mental performance session, and sound at the end of the day. Sunday is the tournament, lunch, and the drive home.',
+  'in-b2':'This is not a shortened version of the week. The week builds progression across seven days — the aim here is different: play a lot, learn one new thing about your game, and leave Milfontes wanting to come back.',
+  'in-q':'You come to play. The rest of Milfontes happens around it.',
+  'pr-sl':'The programme', 'pr-st':'Friday, Saturday, Sunday.',
+  'pd1-d':'Friday','pd1-t':'Arrival','pd1-1':'Arrival and check-in','pd1-2':'Opening americano','pd1-3':'Dinner',
+  'pd2-d':'Saturday','pd2-t':'The full day','pd2-1':'Yoga and breathwork','pd2-2':'Padel — technique block',
+  'pd2-3':'Lunch','pd2-4':'Mental performance','pd2-5':'Padel — match play','pd2-6':'Sound therapy','pd2-7':'Dinner',
+  'pd3-d':'Sunday','pd3-t':'Tournament','pd3-1':'Morning ritual','pd3-2':'Closing tournament','pd3-3':'Final lunch','pd3-4':'Departure',
+  'ic-sl':'What\'s included', 'ic-st':'One price, no surprises.',
+  'ic-yh':'Included in the base price',
+  'ic-y1':'Around 6 hours on court','ic-y2':'FPP-certified padel coach','ic-y3':'Yoga and breathwork — two sessions',
+  'ic-y4':'Mental performance session','ic-y5':'Sound therapy','ic-y6':'Four meals at the table, with the group',
+  'ic-y7':'Sunday tournament','ic-y8':'Group filming on court',
+  'ic-nh':'Not included',
+  'ic-n1':'Accommodation — you choose at checkout','ic-n2':'Drinks outside meals',
+  'ic-n3':'Travel to Milfontes','ic-n4':'Personal travel insurance',
+  'ic-nh2':'About the meals',
+  'ic-nb':'Programme meals are not optional. The table is where the group forms — and a weekend where half the room eats somewhere else stops being a weekend together.',
+  'bk-sl':'Book', 'bk-st':'Choose what makes sense<br><em>for you.</em>',
+  'bk-bt':'Mira Flow weekend',
+  'bk-bs':'Friday 18:00 to Sunday 15:30. The full programme and all four meals. Per person.',
+  'bk-dh':'Choose an edition',
+  'bk-ah':'Where you stay',
+  'bk-as':'Two nights in the group house, five minutes\' walk from the courts. Breakfast included.',
+  'bk-a1n':'Shared room (twin)','bk-a1d':'Two beds. We pair by gender, or tell us who you\'d like to share with.',
+  'bk-a2n':'Single room','bk-a2d':'Limited number each edition.',
+  'bk-a3n':'I have somewhere to stay','bk-a3d':'Your own place, family, or a booking you\'ve made yourself. Breakfast is on you.',
+  'bk-oh':'Extras','bk-os':'Optional. You can add them later, up to a week before.',
+  'bk-o1n':'Lisbon transfer, return','bk-o1d':'Leaves Sete Rios Friday at 15:00, back Sunday evening.',
+  'bk-o2n':'One-to-one hour with the coach','bk-o2d':'Early Saturday morning or Sunday after the tournament.',
+  'bk-o3n':'One-to-one mental performance session','bk-o3d':'An hour alone, to work on whatever shows up on court.',
+  'bk-o4n':'Video analysis — for your game','bk-o4d':'Your points filmed and talked through by the coach. A training tool, not a keepsake.',
+  'bk-o5n':'Your weekend, filmed and photographed','bk-o5d':'A short film that is only yours — on court, at the table, by the river — plus 25 to 30 edited photographs. Delivered two weeks later.',
+  'sm-consent':'You may use photographs and video I appear in for Mira Flow materials. Optional — it changes nothing about your booking.',
+  'sm-h':'Your booking','sm-tot':'Total','sm-vat':'Final price per person, VAT included.',
+  'sm-terms':'I have read and accept the <a href="/termos.html">booking and cancellation conditions</a>.',
+  'sm-btn':'Continue to payment',
+  'sm-note':'Secure payment via Stripe. Multibanco, MB Way and card. Card details never touch this site.',
+  'tm-sl':'Before you book','tm-st':'The three things<br><em>worth knowing.</em>',
+  'tb1-h':'Cancellation',
+  'tb1-b':'[TO BE CONFIRMED — legal wording pending. Starting suggestion: full refund up to 30 days before, 50% up to 14 days, no refund after that. Your place is transferable to someone else up to 48 hours before, at no cost.]',
+  'tb2-h':'Minimum numbers',
+  'tb2-b':'An edition confirms at 8 players. If we don\'t reach that, we tell you 21 days ahead and refund in full — or you move to the next edition, your choice.',
+  'tb4-h':'What language',
+  'tb4-b':'The weekend is run in Portuguese. We all speak English and get by in German and Spanish — tell us when you book and you won\'t be left out. But the conversation at the table will be Portuguese.',
+  'tb3-h':'Playing level',
+  'tb3-b':'From a beginner with some practice to a league player. We pair by level across the weekend, so nobody spends two days playing alone or chasing.',
+  'ft-1':'Mira Flow · Vila Nova de Milfontes · Costa Vicentina',
+  'ft-2':'The full week','ft-3':'Booking conditions','ft-4':'© 2026 Mira Flow',
+  // summary line labels
+  '_base':'Weekend programme','_transfer':'Lisbon transfer','_padel1to1':'Coach, one-to-one',
+  '_mental1to1':'Mental performance, one-to-one','_video':'Video analysis','_filmPersonal':'Your weekend, filmed',
+  '_open':'places left','_few':'places left','_gone':'full','_pick':'Pick an edition to continue',
+  '_err':'Something went wrong. Try again, or email hello@mira-flow.ch'
+};
+
+const DE = {
+ "nav-back": "Die ganze Woche",
+ "nav-cta": "Buchen",
+ "h-ey": "Wochenende · Vila Nova de Milfontes",
+ "h-t": "Freitagabend an.<br><em>Sonntag nach dem Mittagessen heim.</em>",
+ "h-tg": "Zweieinhalb Tage richtiges Padel, mit Yoga, mentaler Arbeit und der Alentejo-Küste vor der Tür. Zweieinhalb Stunden von Lissabon.",
+ "hf1": "auf dem Court",
+ "hf2": "Spieler",
+ "hf3": "Mahlzeiten zusammen",
+ "hf4": "von Lissabon",
+ "h-btn": "Termine ansehen und buchen",
+ "in-sl": "Das Format",
+ "in-st": "Ein Wochenende, das keines<br><em>wie jedes andere ist.</em>",
+ "in-b1": "Du kommst Freitagabend an und spielst noch am selben Abend. Der Samstag bringt zwei Padel-Blöcke mit Trainer, Yoga am Morgen, eine Session zu mentaler Leistung und Klang am Tagesende. Am Sonntag: Turnier, Mittagessen, Heimfahrt.",
+ "in-b2": "Das ist keine verkürzte Woche. Die Woche baut über sieben Tage auf — hier ist das Ziel ein anderes: viel spielen, eine neue Sache über dein Spiel verstehen, und mit Lust auf Wiederkommen aus Milfontes fahren.",
+ "in-q": "Man kommt zum Spielen. Der Rest von Milfontes passiert nebenbei.",
+ "pr-sl": "Das Programm",
+ "pr-st": "Freitag, Samstag, Sonntag.",
+ "pd1-d": "Freitag",
+ "pd1-t": "Ankunft",
+ "pd1-1": "Ankunft und Check-in",
+ "pd1-2": "Auftakt-Americano",
+ "pd1-3": "Abendessen",
+ "pd2-d": "Samstag",
+ "pd2-t": "Der volle Tag",
+ "pd2-1": "Yoga und Breathwork",
+ "pd2-2": "Padel — Technikblock",
+ "pd2-3": "Mittagessen",
+ "pd2-4": "Mentale Leistung",
+ "pd2-5": "Padel — Matchplay",
+ "pd2-6": "Klangtherapie",
+ "pd2-7": "Abendessen",
+ "pd3-d": "Sonntag",
+ "pd3-t": "Turnier",
+ "pd3-1": "Morgenritual",
+ "pd3-2": "Abschlussturnier",
+ "pd3-3": "Letztes Mittagessen",
+ "pd3-4": "Abreise",
+ "ic-sl": "Was enthalten ist",
+ "ic-st": "Ein Preis, keine Überraschungen.",
+ "ic-yh": "Im Grundpreis enthalten",
+ "ic-y1": "Rund 6 Stunden auf dem Court",
+ "ic-y2": "FPP-zertifizierter Padel-Trainer",
+ "ic-y3": "Yoga und Breathwork — zwei Sessions",
+ "ic-y4": "Session zu mentaler Leistung",
+ "ic-y5": "Klangtherapie",
+ "ic-y6": "Vier Mahlzeiten am Tisch, mit der Gruppe",
+ "ic-y7": "Sonntagsturnier",
+ "ic-y8": "Gruppenaufnahmen auf dem Court — danach mit allen geteilt",
+ "ic-nh": "Nicht enthalten",
+ "ic-n1": "Unterkunft — du wählst bei der Buchung",
+ "ic-n2": "Getränke ausserhalb der Mahlzeiten",
+ "ic-n3": "Anreise nach Milfontes",
+ "ic-n4": "Persönliche Reiseversicherung",
+ "ic-nh2": "Zu den Mahlzeiten",
+ "ic-nb": "Die Mahlzeiten des Programms sind nicht optional. Am Tisch entsteht die Gruppe — und ein Wochenende, an dem die Hälfte woanders isst, ist kein gemeinsames Wochenende mehr.",
+ "bk-sl": "Buchen",
+ "bk-st": "Wähl, was für dich<br><em>Sinn ergibt.</em>",
+ "bk-bt": "Mira Flow Wochenende",
+ "bk-bs": "Freitag 18:00 bis Sonntag 15:30. Das ganze Programm und alle vier Mahlzeiten. Pro Person.",
+ "bk-dh": "Edition wählen",
+ "bk-ah": "Wo du schläfst",
+ "bk-as": "Zwei Nächte im Gruppenhaus, fünf Gehminuten von den Courts. Frühstück inklusive.",
+ "bk-a1n": "Doppelzimmer (geteilt)",
+ "bk-a1d": "Zwei Betten. Wir teilen nach Geschlecht ein, oder du sagst uns, mit wem du teilen möchtest.",
+ "bk-a2n": "Einzelzimmer",
+ "bk-a2d": "Pro Edition nur begrenzt verfügbar.",
+ "bk-a3n": "Ich habe eine Unterkunft",
+ "bk-a3d": "Eigenes Haus, Familie, oder selbst gebucht. Frühstück ist dann deine Sache.",
+ "bk-oh": "Extras",
+ "bk-os": "Optional. Du kannst sie bis eine Woche vorher noch dazunehmen.",
+ "bk-o1n": "Transfer Lissabon, hin und zurück",
+ "bk-o1d": "Abfahrt Sete Rios Freitag 15:00, zurück Sonntagabend.",
+ "bk-o2n": "Einzelstunde mit dem Trainer",
+ "bk-o2d": "Früh am Samstagmorgen oder Sonntag nach dem Turnier.",
+ "bk-o3n": "Einzelsession zu mentaler Leistung",
+ "bk-o3d": "Eine Stunde allein, für das, was auf dem Court hochkommt.",
+ "bk-o4n": "Videoanalyse — für dein Spiel",
+ "bk-o4d": "Deine Punkte gefilmt und vom Trainer besprochen. Ein Trainingsmittel, keine Erinnerung.",
+ "bk-o5n": "Dein Wochenende, gefilmt und fotografiert",
+ "bk-o5d": "Ein kurzer Film, der nur dir gehört — auf dem Court, am Tisch, am Fluss — plus 25 bis 30 bearbeitete Fotos. Lieferung zwei Wochen später.",
+ "sm-consent": "Ihr dürft Fotos und Videos, auf denen ich zu sehen bin, für Mira-Flow-Materialien verwenden. Optional — an deiner Buchung ändert das nichts.",
+ "sm-h": "Deine Buchung",
+ "sm-tot": "Total",
+ "sm-vat": "Endpreis pro Person, inkl. MwSt.",
+ "sm-terms": "Ich habe die <a href=\"/termos.html\">Buchungs- und Stornobedingungen</a> gelesen und akzeptiere sie.",
+ "sm-btn": "Weiter zur Zahlung",
+ "sm-note": "Sichere Zahlung über Stripe. Multibanco, MB Way und Karte. Kartendaten berühren diese Seite nie.",
+ "tm-sl": "Bevor du buchst",
+ "tm-st": "Die drei Dinge,<br><em>die man wissen sollte.</em>",
+ "tb1-h": "Stornierung",
+ "tb1-b": "[NOCH ZU BESTÄTIGEN — rechtlicher Wortlaut ausstehend. Vorschlag: volle Rückerstattung bis 30 Tage vorher, 50% bis 14 Tage, danach keine Rückerstattung. Dein Platz ist bis 48 Stunden vorher kostenlos übertragbar.]",
+ "tb2-h": "Mindestteilnehmerzahl",
+ "tb2-b": "Eine Edition wird ab 8 Spielern bestätigt. Wenn wir die Zahl nicht erreichen, sagen wir 21 Tage vorher Bescheid und erstatten voll — oder du wechselst auf die nächste Edition, wie du willst.",
+ "tb3-h": "Spielstärke",
+ "tb3-b": "Von Anfängern mit etwas Praxis bis zu Ligaspielern. Wir stellen die Paarungen übers Wochenende nach Niveau zusammen, damit niemand zwei Tage allein spielt oder nur hinterherläuft.",
+ "tb4-h": "In welcher Sprache",
+ "tb4-b": "Das Wochenende wird auf Portugiesisch geleitet. Wir sprechen alle Englisch und kommen auf Deutsch und Spanisch zurecht — sag uns bei der Buchung Bescheid, dann verlierst du den Anschluss nicht. Am Tisch wird aber Portugiesisch gesprochen.",
+ "ft-1": "Mira Flow · Vila Nova de Milfontes · Costa Vicentina",
+ "ft-2": "Die ganze Woche",
+ "ft-3": "Buchungsbedingungen",
+ "ft-4": "© 2026 Mira Flow",
+ "_base": "Wochenendprogramm",
+ "_transfer": "Transfer Lissabon",
+ "_padel1to1": "Trainer, einzeln",
+ "_mental1to1": "Mentale Leistung, einzeln",
+ "_video": "Videoanalyse",
+ "_open": "Plätze frei",
+ "_few": "Plätze frei",
+ "_gone": "ausgebucht",
+ "_pick": "Wähl eine Edition, um fortzufahren",
+ "_err": "Etwas ist schiefgelaufen. Versuch es nochmal, oder schreib an hello@mira-flow.ch"
+};
+
+const PT_LABELS = {
+  '_loadfail':'As datas não estão a carregar. Escreve para hello@mira-flow.ch e tratamos da tua reserva.',
+  '_pickfirst':'Escolhe primeiro uma edição — os preços dos quartos mudam com a época.',
+  '_soldout':'Essa edição acabou de encher. Escolhe outra.',
+  '_tiergone':'Essa opção já não está disponível nesta edição.',
+
+  '_base':'Programa do fim de semana','_transfer':'Transfer Lisboa','_padel1to1':'Treinador, individual',
+  '_mental1to1':'Performance mental, individual','_video':'Análise de vídeo','_filmPersonal':'O teu fim de semana em vídeo',
+  '_open':'lugares','_few':'lugares','_gone':'esgotado','_pick':'Escolhe uma edição para continuar',
+  '_err':'Algo correu mal. Tenta de novo, ou escreve para hello@mira-flow.ch'
+};
+
+// Snapshot the Portuguese straight off the page before anything changes it.
+const PT = {};
+document.querySelectorAll('[data-i18n]').forEach(el => { PT[el.dataset.i18n] = el.innerHTML; });
+Object.assign(PT, PT_LABELS);
+
+function setLang(l) {
+  lang = l;
+  document.documentElement.lang = l;
+  document.querySelectorAll('.lsb').forEach(b => b.classList.toggle('active', b.dataset.lang === l));
+  const tr = DICTS[l] || PT;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const v = tr[el.dataset.i18n] !== undefined ? tr[el.dataset.i18n] : PT[el.dataset.i18n];
+    if (v !== undefined) el.innerHTML = v;
+  });
+  if (window.refreshBooking) window.refreshBooking();
+}
+
+
+const DICTS = { en: EN, de: DE, pt: PT };
+// Anything a language doesn't define falls back to Portuguese, the source copy.
+const dict = () => DICTS[lang] || PT;
+const t = k => { const d = dict(); return d[k] !== undefined ? d[k] : (PT[k] || ''); };
+const money = n => '€\u00A0' + n.toLocaleString({ en:'en-IE', de:'de-CH' }[lang] || 'pt-PT');
+
+window.BOOKING_CONFIG = {
+  product: 'weekend',
+  tierDesc: { shared:'bk-a1d', single:'bk-a2d', own:'bk-a3d' },
+  optDesc:  { transfer:'bk-o1d', padel1to1:'bk-o2d', mental1to1:'bk-o3d',
+              video:'bk-o4d', filmPersonal:'bk-o5d' },
+  t: k => t(k),
+  lang: () => lang,
+  money: n => money(n)
+};
+
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
+});
+
+</script>
+<script src="/booking.js"></script>
+</body>
+</html>

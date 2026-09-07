@@ -1,0 +1,111 @@
+{
+  "_readme": [
+    "THE ONLY PLACE PRICES, DATES AND AVAILABILITY ARE DEFINED.",
+    "Both booking pages read it. Both Stripe charges are priced from it.",
+    "",
+    "SHAPE",
+    "  products.<name>.defaults   base price, tiers, options, deposit rule",
+    "  products.<name>.editions   one block per date; 'prices' overrides the defaults",
+    "",
+    "TIERS are the mutually exclusive choice. For the weekend that is the room;",
+    "for the week it is the package. Weekend tier prices ADD to the base.",
+    "The week has base 0, so its tier price IS the package price.",
+    "",
+    "AN EDITION CAN RESTRICT TIERS with \"tiers\": [\"full\"]. That enforces the",
+    "no-mixing rule: a Full Experience week cannot be sold a Classic place.",
+    "",
+    "'left' is places remaining. 0 shows as full and the server refuses the sale.",
+    "It is manual — nothing decrements it on purchase. Buyers see it, so keep it true.",
+    "",
+    "Deploy after editing (wrangler deploy). This is a static asset."
+  ],
+
+  "products": {
+
+    "weekend": {
+      "currency": "eur",
+      "defaults": {
+        "base": 390,
+        "tiers": {
+          "shared": { "price": 110, "name": { "pt": "Quarto partilhado · 2 noites", "en": "Shared room · 2 nights", "de": "Doppelzimmer · 2 Nächte" } },
+          "single": { "price": 190, "name": { "pt": "Quarto individual · 2 noites", "en": "Single room · 2 nights", "de": "Einzelzimmer · 2 Nächte" } },
+          "own":    { "price": 0,   "name": { "pt": "Alojamento próprio", "en": "Own accommodation", "de": "Eigene Unterkunft" } }
+        },
+        "options": [
+          { "id": "transfer",     "price": 45,  "name": { "pt": "Transfer Lisboa, ida e volta", "en": "Lisbon transfer, return", "de": "Transfer Lissabon, hin und zurück" } },
+          { "id": "padel1to1",    "price": 55,  "name": { "pt": "Hora individual com o treinador", "en": "One-to-one hour with the coach", "de": "Einzelstunde mit dem Trainer" } },
+          { "id": "mental1to1",   "price": 55,  "name": { "pt": "Sessão individual de performance mental", "en": "One-to-one mental performance session", "de": "Einzelsession zu mentaler Leistung" } },
+          { "id": "video",        "price": 40,  "name": { "pt": "Análise de vídeo — para o teu jogo", "en": "Video analysis — for your game", "de": "Videoanalyse — für dein Spiel" } },
+          { "id": "filmPersonal", "price": 140, "name": { "pt": "O teu fim de semana em vídeo e fotografia", "en": "Your weekend, filmed and photographed", "de": "Dein Wochenende, gefilmt und fotografiert" } }
+        ],
+        "deposit": null
+      },
+      "editions": [
+        { "id": "2026-10-16",
+          "label": { "pt": "16 – 18 Outubro 2026", "en": "16 – 18 October 2026", "de": "16. – 18. Oktober 2026" },
+          "note":  { "pt": "Água ainda quente", "en": "Sea still warm", "de": "Meer noch warm" },
+          "left": 4,
+          "prices": { "tiers": { "shared": 130, "single": 220 } } },
+        { "id": "2026-11-13",
+          "label": { "pt": "13 – 15 Novembro 2026", "en": "13 – 15 November 2026", "de": "13. – 15. November 2026" },
+          "note":  { "pt": "Fora de época, courts vazios", "en": "Off season, empty courts", "de": "Nebensaison, leere Courts" },
+          "left": 9,
+          "prices": { "base": 350, "tiers": { "shared": 95, "single": 165 } } },
+        { "id": "2027-03-05",
+          "label": { "pt": "5 – 7 Março 2027", "en": "5 – 7 March 2027", "de": "5. – 7. März 2027" },
+          "note":  { "pt": "Primeira edição da primavera", "en": "First spring edition", "de": "Erste Frühlingsedition" },
+          "left": 12,
+          "prices": {} },
+        { "id": "2027-04-16",
+          "label": { "pt": "16 – 18 Abril 2027", "en": "16 – 18 April 2027", "de": "16. – 18. April 2027" },
+          "note":  { "pt": "Fim de semana longo", "en": "Long weekend", "de": "Langes Wochenende" },
+          "left": 0,
+          "prices": { "base": 410, "tiers": { "shared": 140, "single": 235 }, "options": { "transfer": 55 } } }
+      ]
+    },
+
+    "week": {
+      "currency": "eur",
+      "defaults": {
+        "base": 0,
+        "tiers": {
+          "classic": { "price": 2900, "name": { "pt": "Classic · 7 noites", "en": "Classic · 7 nights", "de": "Classic · 7 Nächte" } },
+          "full":    { "price": 3900, "name": { "pt": "Full Experience · 7 noites", "en": "Full Experience · 7 nights", "de": "Full Experience · 7 Nächte" } }
+        },
+        "options": [
+          { "id": "singleSupp",   "price": 420, "name": { "pt": "Suplemento de quarto individual", "en": "Single room supplement", "de": "Einzelzimmerzuschlag" } },
+          { "id": "faroTransfer", "price": 120, "name": { "pt": "Transfer aeroporto de Faro, ida e volta", "en": "Faro airport transfer, return", "de": "Transfer Flughafen Faro, hin und zurück" } },
+          { "id": "mental1to1",   "price": 90,  "name": { "pt": "Sessão individual de performance mental", "en": "One-to-one mental performance session", "de": "Einzelsession zu mentaler Leistung" } },
+          { "id": "filmPersonal", "price": 260, "name": { "pt": "A tua semana em vídeo e fotografia", "en": "Your week, filmed and photographed", "de": "Deine Woche, gefilmt und fotografiert" } },
+          { "id": "extraNight",   "price": 95,  "name": { "pt": "Noite extra antes ou depois", "en": "Extra night before or after", "de": "Zusatznacht davor oder danach" } }
+        ],
+        "deposit": { "amount": 800, "balanceDueDays": 60 }
+      },
+      "editions": [
+        { "id": "2027-04-25",
+          "label": { "pt": "25 Abril – 2 Maio 2027", "en": "25 April – 2 May 2027", "de": "25. April – 2. Mai 2027" },
+          "note":  { "pt": "Primeira edição da primavera", "en": "First spring edition", "de": "Erste Frühlingsedition" },
+          "left": 6,
+          "tiers": ["classic"],
+          "prices": {} },
+        { "id": "2027-05-23",
+          "label": { "pt": "23 – 30 Maio 2027", "en": "23 – 30 May 2027", "de": "23. – 30. Mai 2027" },
+          "note":  { "pt": "Dias longos, mar quente", "en": "Long days, warm sea", "de": "Lange Tage, warmes Meer" },
+          "left": 10,
+          "prices": { "tiers": { "classic": 3100, "full": 4100 } } },
+        { "id": "2027-09-19",
+          "label": { "pt": "19 – 26 Setembro 2027", "en": "19 – 26 September 2027", "de": "19. – 26. September 2027" },
+          "note":  { "pt": "A melhor altura do ano em Milfontes", "en": "The best time of year in Milfontes", "de": "Die beste Zeit des Jahres in Milfontes" },
+          "left": 12,
+          "prices": { "tiers": { "classic": 3100, "full": 4100 } } },
+        { "id": "2027-10-10",
+          "label": { "pt": "10 – 17 Outubro 2027", "en": "10 – 17 October 2027", "de": "10. – 17. Oktober 2027" },
+          "note":  { "pt": "Edição de clube — grupo fechado", "en": "Club edition — closed group", "de": "Club-Edition — geschlossene Gruppe" },
+          "left": 0,
+          "tiers": ["full"],
+          "prices": {} }
+      ]
+    }
+
+  }
+}

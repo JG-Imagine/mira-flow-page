@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book the week — Mira Flow · Vila Nova de Milfontes</title>
+<meta name="description" content="Book a Mira Flow week in Vila Nova de Milfontes. Sunday to Sunday, 8 to 12 players, padel and mental performance.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@100;200;300;400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBCMjUzNSIvPjxjaXJjbGUgY3g9IjUwIiBjeT0iNTAiIHI9IjQ0IiBmaWxsPSJub25lIiBzdHJva2U9IiNCNTg0MkEiIHN0cm9rZS13aWR0aD0iMy41Ii8+PHRleHQgeD0iNTAiIHk9IjQ0IiBmb250LWZhbWlseT0iJ0pvc3QnLEFyaWFsIiBmb250LXdlaWdodD0iMjAwIiBmb250LXNpemU9IjIyIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgbGV0dGVyLXNwYWNpbmc9IjMiPk1JUkE8L3RleHQ+PGxpbmUgeDE9IjMyIiB5MT0iNTEiIHgyPSI2OCIgeTI9IjUxIiBzdHJva2U9IiNENEE4NEIiIHN0cm9rZS13aWR0aD0iMSIvPjx0ZXh0IHg9IjUwIiB5PSI2OCIgZm9udC1mYW1pbHk9IidKb3N0JyxBcmlhbCIgZm9udC13ZWlnaHQ9IjIwMCIgZm9udC1zaXplPSIyMiIgZmlsbD0iI0Q0QTg0QiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgbGV0dGVyLXNwYWNpbmc9IjMiPkZMT1c8L3RleHQ+PC9zdmc+">
+<meta name="theme-color" content="#0B2535">
+<style>
+:root {
+  --ink:#0B2535; --deep:#1A4560; --gold:#B5842A; --glt:#D4A84B;
+  --sand:#EDE4D0; --slt:#F7F2E8; --sdk:#D5C9B0;
+  --clay:#8B6A52; --cork:#3D5840; --muted:#7A7060; --text:#1C1C1A;
+}
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body { font-family:'Jost',sans-serif; font-weight:300; color:var(--text); background:var(--slt); overflow-x:hidden; }
+@media (prefers-reduced-motion:reduce) { html{scroll-behavior:auto} *{transition:none!important} }
+
+/* NAV */
+nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; justify-content:space-between;
+  align-items:center; padding:20px 56px; transition:background .4s, padding .3s; }
+nav.scrolled { background:rgba(11,37,53,.96); backdrop-filter:blur(8px); padding:14px 56px; }
+.nav-logo { text-decoration:none; line-height:1; }
+.nl-t { font-weight:200; font-size:13px; letter-spacing:6px; color:white; text-transform:uppercase; display:block; }
+.nl-b { font-weight:100; font-size:13px; letter-spacing:6px; color:var(--glt); text-transform:uppercase; display:block; margin-top:-2px; }
+.nav-right { display:flex; align-items:center; gap:20px; }
+.nav-back { font-size:10px; font-weight:300; letter-spacing:2px; text-transform:uppercase;
+  color:rgba(255,255,255,.4); text-decoration:none; transition:color .2s; }
+.nav-back:hover { color:var(--glt); }
+.lang-sw { display:flex; align-items:center; gap:5px; }
+.lsb { background:none; border:none; font-family:'Jost',sans-serif; font-weight:300; font-size:10px;
+  letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,.3); cursor:pointer; padding:4px 2px; transition:color .2s; }
+.lsb.active { color:white; }
+.lang-sep { color:rgba(255,255,255,.15); font-size:10px; }
+.nav-cta { display:inline-block; padding:9px 22px; background:var(--gold); color:white; font-size:10px;
+  font-weight:300; letter-spacing:2px; text-transform:uppercase; text-decoration:none; transition:background .2s; }
+.nav-cta:hover { background:var(--glt); }
+a:focus-visible, button:focus-visible, input:focus-visible { outline:2px solid var(--glt); outline-offset:3px; }
+
+/* HERO */
+#hero { min-height:76vh; background:var(--ink); display:flex; align-items:center;
+  padding:150px 56px 90px; position:relative; overflow:hidden; }
+.hero-ring { position:absolute; border-radius:50%; pointer-events:none; }
+.hero-ring-1 { width:620px; height:620px; right:-190px; top:-160px; border:1px solid rgba(181,132,42,.1); }
+.hero-accent { position:absolute; left:0; top:0; bottom:0; width:2px;
+  background:linear-gradient(180deg,transparent 0%,var(--gold) 30%,var(--glt) 70%,transparent 100%); }
+.hero-inner { position:relative; z-index:2; max-width:1000px; width:100%; }
+.hero-eyebrow { font-size:9px; font-weight:300; letter-spacing:4px; text-transform:uppercase;
+  color:var(--glt); margin-bottom:26px; display:block; }
+.hero-title { font-family:'Cormorant Garamond',serif; font-weight:300; font-size:clamp(40px,6.5vw,78px);
+  line-height:1.05; color:white; margin-bottom:26px; }
+.hero-title em { font-style:italic; color:var(--glt); }
+.hero-tagline { font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:300;
+  font-size:clamp(18px,2.2vw,26px); color:rgba(255,255,255,.55); line-height:1.55; margin-bottom:44px; max-width:620px; }
+.hero-facts { display:flex; margin-bottom:44px; border-top:1px solid rgba(255,255,255,.07);
+  padding-top:26px; flex-wrap:wrap; }
+.hero-fact { padding-right:36px; margin-right:36px; border-right:1px solid rgba(255,255,255,.07); margin-bottom:10px; }
+.hero-fact:last-child { border-right:none; }
+.hf-num { font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:300; color:var(--glt); line-height:1; margin-bottom:5px; }
+.hf-lbl { font-size:9px; font-weight:300; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,.3); }
+.btn-p { display:inline-block; padding:14px 32px; background:var(--gold); color:white; font-size:10px;
+  font-weight:300; letter-spacing:2px; text-transform:uppercase; text-decoration:none; transition:background .2s; border:none; cursor:pointer; }
+.btn-p:hover { background:var(--glt); }
+
+/* SECTIONS */
+.sec { padding:84px 56px; }
+.max { max-width:1180px; margin:0 auto; }
+.sl { font-size:9px; font-weight:300; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:16px; }
+.st { font-family:'Cormorant Garamond',serif; font-weight:300; font-size:clamp(26px,3.5vw,44px); line-height:1.15; color:var(--ink); }
+.st em { font-style:italic; }
+.sb { font-size:14px; font-weight:300; line-height:1.8; color:var(--muted); max-width:64ch; }
+
+/* INTRO */
+.intro-grid { display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start; }
+.intro-note { border-left:2px solid var(--gold); padding:4px 0 4px 22px; }
+.intro-note p { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:18px;
+  color:var(--clay); line-height:1.6; }
+
+/* PROGRAMME */
+.p-prog { background:var(--ink); }
+.prog-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:3px; margin-top:44px; }
+.pd { background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.06); padding:26px 24px; }
+.pd.sat { background:rgba(181,132,42,.07); border-color:rgba(181,132,42,.2); }
+.pd-day { font-size:9px; font-weight:300; letter-spacing:2.5px; text-transform:uppercase; color:var(--glt); margin-bottom:6px; }
+.pd-t { font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:300; color:white; margin-bottom:18px; }
+.pd-l { list-style:none; }
+.pd-l li { display:grid; grid-template-columns:52px 1fr; gap:10px; padding:8px 0;
+  border-bottom:1px solid rgba(255,255,255,.06); font-size:12.5px; color:rgba(255,255,255,.6); line-height:1.5; }
+.pd-l li:last-child { border-bottom:none; }
+.pd-l .hr { color:var(--glt); font-size:11px; }
+
+/* INCLUDED */
+.inc-grid { display:grid; grid-template-columns:1fr 1fr; gap:3px; margin-top:36px; }
+.inc-box { padding:28px 30px; }
+.inc-yes { background:var(--sand); }
+.inc-no { background:white; border:1px solid var(--sdk); }
+.inc-h { font-size:9px; font-weight:400; letter-spacing:2px; text-transform:uppercase; margin-bottom:16px; color:var(--clay); }
+.inc-l { list-style:none; }
+.inc-l li { padding:7px 0; border-bottom:1px solid rgba(0,0,0,.06); font-size:13px; color:var(--text); line-height:1.5; }
+.inc-l li:last-child { border-bottom:none; }
+.inc-no .inc-l li { color:var(--muted); }
+
+/* BOOKING */
+.p-book { background:var(--slt); }
+.book-wrap { display:grid; grid-template-columns:1.35fr 1fr; gap:3px; margin-top:40px; align-items:start; }
+.book-left { background:white; border:1px solid var(--sdk); padding:34px 36px; }
+.book-base { padding-bottom:26px; border-bottom:1px solid var(--sdk); }
+.book-base-h { display:flex; justify-content:space-between; align-items:baseline; gap:16px; flex-wrap:wrap; }
+.book-base-t { font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:300; color:var(--ink); }
+.book-base-p { font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:300; color:var(--gold); white-space:nowrap; }
+.book-base-s { font-size:13px; color:var(--muted); line-height:1.7; margin-top:10px; max-width:52ch; }
+.step-n { display:inline-block; font-size:9px; font-weight:400; letter-spacing:2px;
+  text-transform:uppercase; color:var(--gold); border:1px solid rgba(181,132,42,.35);
+  padding:2px 7px; margin-right:9px; }
+.dates { display:grid; gap:2px; margin-top:14px; }
+.dt { display:grid; grid-template-columns:20px 1fr auto; gap:12px; align-items:center;
+  padding:15px 16px; border:1px solid var(--sdk); background:var(--slt); cursor:pointer; transition:border-color .2s, background .2s; }
+.dt:hover:not(.gone) { border-color:var(--gold); }
+.dt.sel { border-color:var(--gold); background:white; }
+.dt.gone { cursor:not-allowed; opacity:.45; }
+.dt input { width:16px; height:16px; accent-color:var(--gold); cursor:inherit; }
+.dt-d { font-size:14px; color:var(--ink); }
+.dt-m { font-size:11.5px; color:var(--muted); margin-top:2px; }
+.dt-s { font-size:9px; font-weight:400; letter-spacing:1.5px; text-transform:uppercase; white-space:nowrap; }
+.dt-s.open { color:var(--cork); }
+.dt-s.few  { color:var(--gold); }
+.dt-s.gone { color:var(--muted); }
+.opt-h { font-size:9px; font-weight:400; letter-spacing:2px; text-transform:uppercase; color:var(--clay); margin:26px 0 4px; }
+.opt-sub { font-size:12px; color:var(--muted); margin-bottom:14px; line-height:1.6; }
+.opt { display:grid; grid-template-columns:20px 1fr auto; gap:12px; align-items:start;
+  padding:14px 0; border-bottom:1px solid rgba(0,0,0,.07); cursor:pointer; }
+.opt:last-of-type { border-bottom:none; }
+.opt input { width:16px; height:16px; margin-top:3px; accent-color:var(--gold); cursor:pointer; }
+.opt-n { font-size:13.5px; color:var(--text); line-height:1.4; }
+.opt-d { font-size:12px; color:var(--muted); line-height:1.55; margin-top:3px; }
+.opt-p { font-size:13.5px; color:var(--gold); white-space:nowrap; }
+.opt-p.free { color:var(--muted); font-style:italic; font-size:12px; }
+
+.book-right { background:var(--ink); padding:34px 32px; position:sticky; top:96px; }
+.sum-h { font-size:9px; font-weight:400; letter-spacing:2px; text-transform:uppercase; color:var(--glt); margin-bottom:20px; }
+.sum-l { list-style:none; margin-bottom:20px; }
+.sum-l li { display:flex; justify-content:space-between; gap:14px; padding:8px 0;
+  border-bottom:1px solid rgba(255,255,255,.07); font-size:12.5px; color:rgba(255,255,255,.6); line-height:1.45; }
+.sum-l li span:last-child { color:rgba(255,255,255,.85); white-space:nowrap; }
+.sum-tot { display:flex; justify-content:space-between; align-items:baseline; gap:14px;
+  padding-top:18px; border-top:1px solid rgba(181,132,42,.3); }
+.sum-tot-l { font-size:10px; font-weight:300; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,.4); }
+.sum-tot-v { font-family:'Cormorant Garamond',serif; font-size:40px; font-weight:300; color:var(--glt); line-height:1; }
+.sum-vat { font-size:11px; color:rgba(255,255,255,.3); margin-top:8px; line-height:1.6; }
+.sum-terms { display:grid; grid-template-columns:18px 1fr; gap:10px; margin:22px 0 16px; align-items:start; cursor:pointer; }
+.sum-terms input { width:15px; height:15px; margin-top:2px; accent-color:var(--gold); cursor:pointer; }
+.sum-terms span { font-size:11.5px; color:rgba(255,255,255,.45); line-height:1.6; }
+.sum-terms a { color:var(--glt); }
+.sum-btn { display:block; width:100%; padding:15px; background:var(--gold); color:white; border:none;
+  font-family:'Jost',sans-serif; font-size:10px; font-weight:300; letter-spacing:2px; text-transform:uppercase;
+  cursor:pointer; transition:background .2s; }
+.sum-btn:hover:not(:disabled) { background:var(--glt); }
+.sum-btn:disabled { background:rgba(255,255,255,.08); color:rgba(255,255,255,.25); cursor:not-allowed; }
+.sum-err { font-size:12px; color:var(--glt); margin-top:12px; line-height:1.6; display:none; }
+.sum-note { font-size:11px; color:rgba(255,255,255,.28); margin-top:14px; line-height:1.65; }
+
+/* TERMS */
+.p-terms { background:var(--sand); }
+.terms-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:36px; margin-top:32px; }
+.tb-h { font-size:9px; font-weight:400; letter-spacing:2px; text-transform:uppercase; color:var(--clay); margin-bottom:10px; }
+.tb-b { font-size:13px; color:var(--muted); line-height:1.75; }
+
+/* FOOTER */
+footer { background:var(--ink); padding:56px; }
+.foot { max-width:1180px; margin:0 auto; display:flex; justify-content:space-between; gap:32px; flex-wrap:wrap; }
+.foot p { font-size:11px; color:rgba(255,255,255,.3); line-height:1.8; }
+.foot a { color:rgba(255,255,255,.45); text-decoration:none; }
+.foot a:hover { color:var(--glt); }
+
+@media (max-width:940px) {
+  nav, nav.scrolled { padding:14px 22px; }
+  #hero { padding:130px 22px 70px; }
+  .sec, footer { padding:60px 22px; }
+  .intro-grid, .inc-grid, .book-wrap { grid-template-columns:1fr; gap:32px; }
+  .prog-grid, .terms-grid { grid-template-columns:1fr; }
+  .book-right { position:static; }
+  .hero-fact { padding-right:22px; margin-right:22px; }
+}
+</style>
+</head>
+<body>
+
+
+<nav id="nav">
+  <a href="/" class="nav-logo"><span class="nl-t">Mira</span><span class="nl-b">Flow</span></a>
+  <div class="nav-right">
+    <a href="/" class="nav-back" data-i18n="nav-back">Back to the week</a>
+    <div class="lang-sw">
+      <button class="lsb active" data-lang="en" onclick="setLang('en')">EN</button>
+      <span class="lang-sep">/</span>
+      <button class="lsb" data-lang="de" onclick="setLang('de')">DE</button>
+      <span class="lang-sep">/</span>
+      <button class="lsb" data-lang="pt" onclick="setLang('pt')">PT</button>
+    </div>
+    <a href="#reservar" class="nav-cta" data-i18n="nav-cta">Book</a>
+  </div>
+</nav>
+
+<section id="hero" style="min-height:58vh">
+  <div class="hero-accent"></div>
+  <div class="hero-ring hero-ring-1"></div>
+  <div class="hero-inner">
+    <span class="hero-eyebrow" data-i18n="h-ey">Book a week · Vila Nova de Milfontes</span>
+    <h1 class="hero-title" data-i18n="h-t">Seven days.<br><em>Pick yours.</em></h1>
+    <p class="hero-tagline" data-i18n="h-tg">Sunday to Sunday on the Atlantic coast. Eight to twelve players, one home base, the same people holding the week from start to finish.</p>
+    <a href="#reservar" class="btn-p" data-i18n="h-btn">Choose an edition</a>
+  </div>
+</section>
+
+<section class="sec p-book" id="reservar">
+  <div class="max">
+    <p class="sl" data-i18n="bk-sl">Book</p>
+    <h2 class="st" data-i18n="bk-st">Choose your edition<br><em>and your package.</em></h2>
+    <div class="book-wrap">
+
+      <div class="book-left">
+        <div class="book-base">
+          <div class="book-base-h">
+            <div class="book-base-t" data-i18n="bk-bt">The Mira Flow week</div>
+          </div>
+          <p class="book-base-s" data-i18n="bk-bs">Sunday to Sunday. Around 14 hours on court across three clubs, the full mental performance programme, the daily 08:30 ritual, sound therapy twice, and the Saturday closing tournament. Accommodation and meals are inside the package.</p>
+        </div>
+
+        <p class="opt-h"><span class="step-n">1</span><span data-i18n="bk-dh">Choose an edition</span></p>
+        <div class="dates" id="dates"></div>
+
+        <p class="opt-h" style="margin-top:30px"><span class="step-n">2</span><span data-i18n="bk-th">Choose a package</span></p>
+        <p class="opt-sub" data-i18n="bk-ts">The programme is identical in both. What changes is the service and comfort around it. Some editions run as one package only — a club group travels together.</p>
+        <div id="tiers"></div>
+
+        <p class="opt-h" style="margin-top:30px"><span class="step-n">3</span><span data-i18n="bk-oh">Extras</span></p>
+        <p class="opt-sub" data-i18n="bk-os">Optional. You can add these later, up to three weeks before.</p>
+        <div id="opts"></div>
+
+        <p class="opt-h" style="margin-top:30px"><span class="step-n">4</span><span data-i18n="bk-ph">How you pay</span></p>
+        <div id="paymode"></div>
+      </div>
+
+      <div class="book-right">
+        <p class="sum-h" data-i18n="sm-h">Your booking</p>
+        <ul class="sum-l" id="sum-list"></ul>
+        <div class="sum-tot">
+          <span class="sum-tot-l" data-i18n="sm-tot">Due now</span>
+          <span class="sum-tot-v" id="sum-total">&mdash;</span>
+        </div>
+        <p class="sum-vat" id="sum-vat" data-i18n="sm-vat">Final price per person, VAT included.</p>
+        <label class="sum-terms">
+          <input type="checkbox" id="consent">
+          <span data-i18n="sm-consent">You may use photographs and video I appear in for Mira Flow materials. Optional &mdash; it changes nothing about your booking.</span>
+        </label>
+        <label class="sum-terms">
+          <input type="checkbox" id="agree" onchange="recalc()">
+          <span data-i18n="sm-terms">I have read and accept the <a href="/termos.html">booking and cancellation conditions</a>.</span>
+        </label>
+        <button class="sum-btn" id="pay-btn" onclick="checkout()" disabled data-i18n="sm-btn">Continue to payment</button>
+        <p class="sum-err" id="pay-err"></p>
+        <p class="sum-note" data-i18n="sm-note">Secure payment via Stripe. Card, Multibanco and MB Way. Card details never touch this site.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="sec p-terms">
+  <div class="max">
+    <p class="sl" data-i18n="tm-sl">Before you book</p>
+    <h2 class="st" data-i18n="tm-st">Four things<br><em>worth knowing.</em></h2>
+    <div class="terms-grid">
+      <div>
+        <p class="tb-h" data-i18n="tb1-h">Cancellation</p>
+        <p class="tb-b" data-i18n="tb1-b">[TO BE CONFIRMED &mdash; legal wording pending. Starting suggestion: deposit refundable up to 90 days before, 50% of the total up to 45 days, no refund after that. Your place is transferable to someone else up to 14 days before, at no cost.]</p>
+      </div>
+      <div>
+        <p class="tb-h" data-i18n="tb2-h">Minimum numbers</p>
+        <p class="tb-b" data-i18n="tb2-b">An edition confirms at 8 players. If we don't reach that, we tell you 45 days ahead and refund in full &mdash; or you move to the next edition, your choice.</p>
+      </div>
+      <div>
+        <p class="tb-h" data-i18n="tb3-h">Playing level</p>
+        <p class="tb-b" data-i18n="tb3-b">From a confident club player upward. Seven days is long enough that a large gap in level shows, so tell us where you play and we will say honestly whether the edition suits you.</p>
+      </div>
+      <div>
+        <p class="tb-h" data-i18n="tb4-h">What language</p>
+        <p class="tb-b" data-i18n="tb4-b">The week is run in English, with German spoken throughout. Portuguese where you want it. The table finds its own language by Tuesday.</p>
+      </div>
+      <div>
+        <p class="tb-h" data-i18n="tb5-h">What is not in the price</p>
+        <p class="tb-b" data-i18n="tb5-b">Flights, personal travel insurance, and drinks outside the meals listed in your package. Everything else on the programme is included.</p>
+      </div>
+      <div>
+        <p class="tb-h" data-i18n="tb6-h">Paying a deposit</p>
+        <p class="tb-b" data-i18n="tb6-b">A deposit holds your place. We invoice the balance by email, due 60 days before arrival. If you book inside 60 days, the full amount is payable now.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot">
+    <div>
+      <p data-i18n="ft-1">Mira Flow · Vila Nova de Milfontes · Costa Vicentina</p>
+      <p><a href="mailto:hello@mira-flow.ch">hello@mira-flow.ch</a></p>
+    </div>
+    <div>
+      <p><a href="/weekend.html" data-i18n="ft-2">The weekend format</a></p>
+      <p><a href="/termos.html" data-i18n="ft-3">Booking conditions</a></p>
+      <p data-i18n="ft-4">© 2026 Mira Flow</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+let lang = 'en';
+
+/* English lives in the HTML above and is captured at load, so no string
+   exists twice. DE and PT are below. Prices and dates are NOT here —
+   they come from /api/editions. */
+const DE = {
+ "nav-back": "Zurück zur Woche",
+ "nav-cta": "Buchen",
+ "h-ey": "Woche buchen · Vila Nova de Milfontes",
+ "h-t": "Sieben Tage.<br><em>Wähl deine.</em>",
+ "h-tg": "Sonntag bis Sonntag an der Atlantikküste. Acht bis zwölf Spieler, eine Basis, dieselben Menschen von Anfang bis Ende.",
+ "h-btn": "Edition wählen",
+ "bk-sl": "Buchen",
+ "bk-st": "Wähl deine Edition<br><em>und dein Paket.</em>",
+ "bk-bt": "Die Mira-Flow-Woche",
+ "bk-bs": "Sonntag bis Sonntag. Rund 14 Stunden auf dem Court in drei Clubs, das ganze Mental-Programm, täglich das Ritual um 08:30, zweimal Klangtherapie und das Abschlussturnier am Samstag. Unterkunft und Mahlzeiten sind im Paket enthalten.",
+ "bk-dh": "Edition wählen",
+ "bk-th": "Paket wählen",
+ "bk-ts": "Das Programm ist in beiden identisch. Was sich ändert, ist der Service drumherum. Manche Editionen laufen nur mit einem Paket — eine Clubgruppe reist gemeinsam.",
+ "bk-oh": "Extras",
+ "bk-os": "Optional. Bis drei Wochen vorher kannst du sie noch dazunehmen.",
+ "bk-ph": "Wie du zahlst",
+ "sm-h": "Deine Buchung",
+ "sm-tot": "Jetzt fällig",
+ "sm-vat": "Endpreis pro Person, inkl. MwSt.",
+ "sm-consent": "Ihr dürft Fotos und Videos, auf denen ich zu sehen bin, für Mira-Flow-Materialien verwenden. Optional — an deiner Buchung ändert das nichts.",
+ "sm-terms": "Ich habe die <a href=\"/termos.html\">Buchungs- und Stornobedingungen</a> gelesen und akzeptiere sie.",
+ "sm-btn": "Weiter zur Zahlung",
+ "sm-note": "Sichere Zahlung über Stripe. Karte, Multibanco und MB Way. Kartendaten berühren diese Seite nie.",
+ "tm-sl": "Bevor du buchst",
+ "tm-st": "Vier Dinge,<br><em>die man wissen sollte.</em>",
+ "tb1-h": "Stornierung",
+ "tb1-b": "[NOCH ZU BESTÄTIGEN — rechtlicher Wortlaut ausstehend. Vorschlag: Anzahlung bis 90 Tage vorher erstattbar, 50% des Gesamtbetrags bis 45 Tage, danach keine Erstattung. Dein Platz ist bis 14 Tage vorher kostenlos übertragbar.]",
+ "tb2-h": "Mindestteilnehmerzahl",
+ "tb2-b": "Eine Edition wird ab 8 Spielern bestätigt. Erreichen wir die Zahl nicht, sagen wir 45 Tage vorher Bescheid und erstatten voll — oder du wechselst auf die nächste Edition.",
+ "tb3-h": "Spielstärke",
+ "tb3-b": "Ab sicherem Clubniveau. Sieben Tage sind lang genug, dass ein grosser Niveauunterschied auffällt — sag uns, wo du spielst, und wir sagen ehrlich, ob die Edition passt.",
+ "tb4-h": "In welcher Sprache",
+ "tb4-b": "Die Woche wird auf Englisch geleitet, Deutsch wird durchgehend gesprochen. Portugiesisch, wo du magst. Am Tisch findet sich die Sprache bis Dienstag von selbst.",
+ "tb5-h": "Was nicht im Preis ist",
+ "tb5-b": "Flüge, persönliche Reiseversicherung und Getränke ausserhalb der in deinem Paket genannten Mahlzeiten. Alles andere im Programm ist enthalten.",
+ "tb6-h": "Anzahlung",
+ "tb6-b": "Eine Anzahlung sichert deinen Platz. Den Rest stellen wir per E-Mail in Rechnung, fällig 60 Tage vor Anreise. Buchst du innerhalb von 60 Tagen, ist der volle Betrag sofort fällig.",
+ "ft-1": "Mira Flow · Vila Nova de Milfontes · Costa Vicentina",
+ "ft-2": "Das Wochenendformat",
+ "ft-3": "Buchungsbedingungen",
+ "ft-4": "© 2026 Mira Flow",
+ "d-classic": "Du kümmerst dich um die kleine Logistik. Wir um alles, worauf es ankommt.",
+ "d-full": "Bessere Zimmer, Vollpension, Transfers ab Faro, eigener Minibus, eine Einzelsession mit dem Mental Coach.",
+ "d-singleSupp": "Ein Zimmer für dich allein, die ganze Woche.",
+ "d-faroTransfer": "Ankunft und Abreise. Bei Full Experience bereits enthalten.",
+ "d-mental1to1": "Eine Stunde allein mit dem Mental Coach, zusätzlich zum Programm.",
+ "d-filmPersonal": "Ein kurzer Film, der nur dir gehört, plus 40 bis 50 bearbeitete Fotos.",
+ "d-extraNight": "Samstag davor oder Montag danach, im selben Haus.",
+ "_base": "Woche",
+ "_open": "Plätze frei",
+ "_few": "Plätze frei",
+ "_gone": "ausgebucht",
+ "_pick": "Wähl eine Edition, um fortzufahren",
+ "_pickfirst": "Wähl zuerst eine Edition — die Preise unterscheiden sich je nach Termin.",
+ "_loadfail": "Die Termine laden gerade nicht. Schreib an hello@mira-flow.ch, wir buchen dich ein.",
+ "_soldout": "Diese Edition ist gerade voll geworden. Wähl eine andere.",
+ "_tiergone": "Dieses Paket ist für diese Edition nicht mehr verfügbar.",
+ "_err": "Etwas ist schiefgelaufen. Versuch es nochmal, oder schreib an hello@mira-flow.ch",
+ "_payfull": "Alles jetzt bezahlen",
+ "_payfulld": "Eine Zahlung, danach ist nichts mehr offen.",
+ "_paydep": "Anzahlung jetzt",
+ "_paydepd": "{balance} später per Rechnung, fällig {days} Tage vor Anreise.",
+ "_subtotal": "Gesamtpreis der Woche",
+ "_balancelater": "Rest später fällig",
+ "_vatdep": "Anzahlung. Der Rest wird per E-Mail in Rechnung gestellt. Preise pro Person, inkl. MwSt."
+};
+const PT = {
+ "nav-back": "Voltar à semana",
+ "nav-cta": "Reservar",
+ "h-ey": "Reservar uma semana · Vila Nova de Milfontes",
+ "h-t": "Sete dias.<br><em>Escolhe os teus.</em>",
+ "h-tg": "De domingo a domingo na costa atlântica. Oito a doze jogadores, uma base, as mesmas pessoas do princípio ao fim.",
+ "h-btn": "Escolher edição",
+ "bk-sl": "Reservar",
+ "bk-st": "Escolhe a edição<br><em>e o pacote.</em>",
+ "bk-bt": "A semana Mira Flow",
+ "bk-bs": "De domingo a domingo. Cerca de 14 horas de court em três clubes, o programa completo de performance mental, o ritual diário às 08:30, terapia de som duas vezes, e o torneio de encerramento de sábado. Alojamento e refeições estão dentro do pacote.",
+ "bk-dh": "Escolhe a edição",
+ "bk-th": "Escolhe o pacote",
+ "bk-ts": "O programa é idêntico nos dois. O que muda é o serviço à volta. Algumas edições funcionam com um só pacote — um grupo de clube viaja em conjunto.",
+ "bk-oh": "Extras",
+ "bk-os": "Opcionais. Podes acrescentar depois, até três semanas antes.",
+ "bk-ph": "Como pagas",
+ "sm-h": "A tua reserva",
+ "sm-tot": "A pagar agora",
+ "sm-vat": "Preço final por pessoa, IVA incluído.",
+ "sm-consent": "Podem usar fotografias e vídeo em que apareço nos materiais do Mira Flow. Opcional — não muda nada na tua reserva.",
+ "sm-terms": "Li e aceito as <a href=\"/termos.html\">condições de reserva e cancelamento</a>.",
+ "sm-btn": "Continuar para pagamento",
+ "sm-note": "Pagamento seguro via Stripe. Cartão, Multibanco e MB Way. Os dados do cartão nunca passam por este site.",
+ "tm-sl": "Antes de reservares",
+ "tm-st": "Quatro coisas que<br><em>convém saber.</em>",
+ "tb1-h": "Cancelamento",
+ "tb1-b": "[A DEFINIR — texto legal a confirmar. Sugestão de partida: depósito reembolsável até 90 dias antes, 50% do total até 45 dias, sem reembolso depois disso. O lugar é transmissível a outra pessoa até 14 dias antes, sem custo.]",
+ "tb2-h": "Número mínimo",
+ "tb2-b": "A edição confirma-se com 8 jogadores. Se não chegarmos a esse número, avisamos com 45 dias de antecedência e devolvemos tudo — ou passas para a edição seguinte.",
+ "tb3-h": "Nível de jogo",
+ "tb3-b": "De jogador de clube confiante para cima. Sete dias são tempo suficiente para uma grande diferença de nível se notar, por isso diz-nos onde jogas e dizemos-te com honestidade se a edição te serve.",
+ "tb4-h": "Em que língua",
+ "tb4-b": "A semana é conduzida em inglês, com alemão falado ao longo dos dias. Português quando quiseres. À mesa a língua encontra-se sozinha até terça.",
+ "tb5-h": "O que não está no preço",
+ "tb5-b": "Voos, seguro de viagem pessoal, e bebidas fora das refeições indicadas no teu pacote. Todo o resto do programa está incluído.",
+ "tb6-h": "Pagar depósito",
+ "tb6-b": "O depósito garante o lugar. O restante é facturado por email, a pagar 60 dias antes da chegada. Se reservares dentro dos 60 dias, o valor total é devido agora.",
+ "ft-1": "Mira Flow · Vila Nova de Milfontes · Costa Vicentina",
+ "ft-2": "O formato de fim de semana",
+ "ft-3": "Condições de reserva",
+ "ft-4": "© 2026 Mira Flow",
+ "d-classic": "Tratas da pequena logística. Nós tratamos de tudo o que importa.",
+ "d-full": "Melhores quartos, pensão completa, transfers de Faro, minibus dedicado, uma sessão privada com o coach mental.",
+ "d-singleSupp": "Um quarto só para ti, a semana inteira.",
+ "d-faroTransfer": "Chegada e partida. Já incluído no Full Experience.",
+ "d-mental1to1": "Uma hora a sós com o coach mental, além do programa.",
+ "d-filmPersonal": "Um filme curto só teu, mais 40 a 50 fotografias editadas.",
+ "d-extraNight": "Sábado antes ou segunda depois, na mesma casa.",
+ "_base": "Semana",
+ "_open": "lugares",
+ "_few": "lugares",
+ "_gone": "esgotado",
+ "_pick": "Escolhe uma edição para continuar",
+ "_pickfirst": "Escolhe primeiro uma edição — os preços variam com a data.",
+ "_loadfail": "As datas não estão a carregar. Escreve para hello@mira-flow.ch e tratamos da tua reserva.",
+ "_soldout": "Essa edição acabou de encher. Escolhe outra.",
+ "_tiergone": "Esse pacote já não está disponível nesta edição.",
+ "_err": "Algo correu mal. Tenta de novo, ou escreve para hello@mira-flow.ch",
+ "_payfull": "Pagar tudo agora",
+ "_payfulld": "Um pagamento e fica tudo tratado.",
+ "_paydep": "Pagar depósito agora",
+ "_paydepd": "{balance} depois, por factura, a pagar {days} dias antes da chegada.",
+ "_subtotal": "Preço total da semana",
+ "_balancelater": "Restante a pagar depois",
+ "_vatdep": "Depósito. O restante é facturado por email. Preços por pessoa, IVA incluído."
+};
+const EN_EXTRA = {
+ "d-classic": "You take care of the small logistics. We take care of everything that matters.",
+ "d-full": "Better rooms, full board, Faro transfers, a dedicated minibus, one private session with the mental coach.",
+ "d-singleSupp": "A room to yourself, the whole week.",
+ "d-faroTransfer": "Arrival and departure. Already included in Full Experience.",
+ "d-mental1to1": "An hour alone with the mental coach, on top of the programme.",
+ "d-filmPersonal": "A short film that is only yours, plus 40 to 50 edited photographs.",
+ "d-extraNight": "The Saturday before or the Monday after, in the same house.",
+ "_base": "Week",
+ "_open": "places left",
+ "_few": "places left",
+ "_gone": "full",
+ "_pick": "Pick an edition to continue",
+ "_pickfirst": "Pick an edition first — prices vary by date.",
+ "_loadfail": "Dates are not loading right now. Email hello@mira-flow.ch and we will book you in.",
+ "_soldout": "That edition just filled. Pick another one.",
+ "_tiergone": "That package is no longer available for this edition.",
+ "_err": "Something went wrong. Try again, or email hello@mira-flow.ch",
+ "_payfull": "Pay in full now",
+ "_payfulld": "One payment and nothing left outstanding.",
+ "_paydep": "Pay a deposit now",
+ "_paydepd": "{balance} later by invoice, due {days} days before arrival.",
+ "_subtotal": "Full price of the week",
+ "_balancelater": "Balance due later",
+ "_vatdep": "Deposit. The balance is invoiced by email. Prices per person, VAT included."
+};
+
+const EN = {};
+document.querySelectorAll('[data-i18n]').forEach(el => { EN[el.dataset.i18n] = el.innerHTML; });
+Object.assign(EN, EN_EXTRA);
+
+const DICTS = { en: EN, de: DE, pt: PT };
+const t = k => { const d = DICTS[lang] || EN; return d[k] !== undefined ? d[k] : (EN[k] || ''); };
+const money = n => new Intl.NumberFormat({ pt:'pt-PT', de:'de-CH' }[lang] || 'en-IE',
+  { style:'currency', currency:'EUR', maximumFractionDigits:0 }).format(n);
+
+function setLang(l) {
+  lang = l;
+  document.documentElement.lang = l;
+  document.querySelectorAll('.lsb').forEach(b => b.classList.toggle('active', b.dataset.lang === l));
+  const tr = DICTS[l] || EN;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const v = tr[el.dataset.i18n] !== undefined ? tr[el.dataset.i18n] : EN[el.dataset.i18n];
+    if (v !== undefined) el.innerHTML = v;
+  });
+  if (window.refreshBooking) window.refreshBooking();
+}
+
+window.BOOKING_CONFIG = {
+  product: 'week',
+  tierDesc: { classic:'d-classic', full:'d-full' },
+  optDesc:  { singleSupp:'d-singleSupp', faroTransfer:'d-faroTransfer',
+              mental1to1:'d-mental1to1', filmPersonal:'d-filmPersonal', extraNight:'d-extraNight' },
+  t: k => t(k),
+  lang: () => lang,
+  money: n => money(n)
+};
+
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
+});
+</script>
+<script src="/booking.js"></script>
+</body>
+</html>
