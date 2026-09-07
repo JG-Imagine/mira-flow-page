@@ -13,6 +13,7 @@
 
 import { handleCheckout } from './checkout.js';
 import { loadEditions, publicView } from './editions.js';
+import { handleSession } from './session.js';
 
 const LANGS = ['en', 'de', 'pt'];
 
@@ -24,20 +25,20 @@ export default {
       return handleWaitlist(request, env);
     }
 
-    // The page renders dates, rooms and extras from this, so the prices shown
-    // and the prices charged come from one file: public/editions.json.
+    // The booking pages render dates, tiers and extras from this, so the prices
+    // shown and the prices charged come from one file: src/editions.json.
     if (url.pathname === '/api/editions') {
-      try {
-        const config = await loadEditions(request, env);
-        const view = publicView(config, url.searchParams.get('product') || 'weekend');
-        if (!view) return json({ error: 'unknown_product' }, 404);
-        return new Response(JSON.stringify(view), {
-          headers: { 'content-type': 'application/json', 'cache-control': 'public, max-age=60' }
-        });
-      } catch (err) {
-        console.log('editions error:', err && err.message);
-        return json({ error: 'editions_unavailable' }, 500);
-      }
+      const view = publicView(loadEditions(), url.searchParams.get('product') || 'weekend');
+      if (!view) return json({ error: 'unknown_product' }, 404);
+      return new Response(JSON.stringify(view), {
+        headers: { 'content-type': 'application/json', 'cache-control': 'public, max-age=60' }
+      });
+    }
+
+    // Stripe sends buyers to /reserva-confirmada.html?session_id=... and that
+    // page reads the booking back through here.
+    if (url.pathname === '/api/session') {
+      return handleSession(request, env);
     }
 
     if (url.pathname === '/api/checkout') {
