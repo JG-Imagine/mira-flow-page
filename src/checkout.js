@@ -8,7 +8,11 @@
  *   }
  *
  * Secret:      npx wrangler secret put STRIPE_SECRET_KEY
- * Plain var:   "SITE_ORIGIN": "https://mira-flow.ch"  in wrangler.jsonc
+ * Optional var: "FORCE_ORIGIN" in wrangler.jsonc — only if you need to pin
+ *               the return domain. By default buyers return to the host they
+ *               were already on, so .eu and .ch each stay self-consistent.
+ * Optional var: "DEBUG_ERRORS": "true" echoes Stripe's message to the browser.
+ *               Turn it off before going live.
  *
  * NO PRICES LIVE IN THIS FILE. They are all in src/editions.json.
  * The browser sends choice keys only, never amounts.
@@ -93,7 +97,11 @@ export async function handleCheckout(request, env) {
   form.set('billing_address_collection', 'required');
   form.set('phone_number_collection[enabled]', 'true');
 
-  const origin = env.SITE_ORIGIN || new URL(request.url).origin;
+  // Return the buyer to the domain they started on. mira-flow.eu and
+  // mira-flow.ch both serve this Worker, and sending someone who paid on .eu
+  // back to .ch mid-transaction looks like a phish. SITE_ORIGIN is only an
+  // override for the rare case you need to force one host.
+  const origin = env.FORCE_ORIGIN || new URL(request.url).origin;
   const back = body.product === 'week' ? '/book-week.html' : '/weekend.html';
   form.set('success_url', `${origin}/reserva-confirmada.html?lang=${lang}&session_id={CHECKOUT_SESSION_ID}`);
   form.set('cancel_url', `${origin}${back}?lang=${lang}#reservar`);
