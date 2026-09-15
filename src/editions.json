@@ -120,7 +120,7 @@
             "en": "Sea still warm",
             "de": "Meer noch warm"
           },
-          "left": 4,
+          "left": 0,
           "level": {
             "playtomic": {
               "min": 1.75,
@@ -168,7 +168,7 @@
             "en": "Off season, empty courts",
             "de": "Nebensaison, leere Courts"
           },
-          "left": 9,
+          "left": 12,
           "level": {
             "playtomic": {
               "min": 1.5,
@@ -217,7 +217,7 @@
             "en": "First spring edition",
             "de": "Erste Frühlingsedition"
           },
-          "left": 12,
+          "left": 0,
           "level": {
             "playtomic": {
               "min": 2.0,
@@ -389,7 +389,7 @@
             "en": "First spring edition",
             "de": "Erste Frühlingsedition"
           },
-          "left": 6,
+          "left": 0,
           "level": {
             "playtomic": {
               "min": 2.5,
@@ -435,7 +435,7 @@
             "en": "Long days, warm sea",
             "de": "Lange Tage, warmes Meer"
           },
-          "left": 10,
+          "left": 0,
           "level": {
             "playtomic": {
               "min": 2.25,
