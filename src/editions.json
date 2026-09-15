@@ -17,95 +17,555 @@
     "'left' is places remaining. 0 shows as full and the server refuses the sale.",
     "It is manual — nothing decrements it on purchase. Buyers see it, so keep it true.",
     "",
-    "Deploy after editing (wrangler deploy). This is a static asset."
+    "Deploy after editing (wrangler deploy). This file is bundled into the Worker,",
+    "so a JSON syntax error fails the build rather than breaking the live site.",
+    "",
+    "LEVEL — the bands below are PLACEHOLDERS. Get the real ones from your FPP",
+    "coach: they know how M/F/Mixed categories actually play around Milfontes.",
+    "'playtomic' is the machine-readable band (0-7 scale, 0.25 steps) and the one",
+    "buyers outside Portugal will recognise. 'federation' holds the ladders that",
+    "apply to that edition — drop a ladder entirely if it does not. An edition",
+    "showing only 'm' reads as a men's edition, so list all three unless you mean it."
   ],
-
   "products": {
-
     "weekend": {
       "currency": "eur",
       "defaults": {
         "base": 390,
         "tiers": {
-          "shared": { "price": 110, "name": { "pt": "Quarto partilhado · 2 noites", "en": "Shared room · 2 nights", "de": "Doppelzimmer · 2 Nächte" } },
-          "single": { "price": 190, "name": { "pt": "Quarto individual · 2 noites", "en": "Single room · 2 nights", "de": "Einzelzimmer · 2 Nächte" } },
-          "own":    { "price": 0,   "name": { "pt": "Alojamento próprio", "en": "Own accommodation", "de": "Eigene Unterkunft" } }
+          "shared": {
+            "price": 110,
+            "name": {
+              "pt": "Quarto partilhado · 2 noites",
+              "en": "Shared room · 2 nights",
+              "de": "Doppelzimmer · 2 Nächte"
+            }
+          },
+          "single": {
+            "price": 190,
+            "name": {
+              "pt": "Quarto individual · 2 noites",
+              "en": "Single room · 2 nights",
+              "de": "Einzelzimmer · 2 Nächte"
+            }
+          },
+          "own": {
+            "price": 0,
+            "name": {
+              "pt": "Alojamento próprio",
+              "en": "Own accommodation",
+              "de": "Eigene Unterkunft"
+            }
+          }
         },
         "options": [
-          { "id": "transfer",     "price": 45,  "name": { "pt": "Transfer Lisboa, ida e volta", "en": "Lisbon transfer, return", "de": "Transfer Lissabon, hin und zurück" } },
-          { "id": "padel1to1",    "price": 55,  "name": { "pt": "Hora individual com o treinador", "en": "One-to-one hour with the coach", "de": "Einzelstunde mit dem Trainer" } },
-          { "id": "mental1to1",   "price": 55,  "name": { "pt": "Sessão individual de performance mental", "en": "One-to-one mental performance session", "de": "Einzelsession zu mentaler Leistung" } },
-          { "id": "video",        "price": 40,  "name": { "pt": "Análise de vídeo — para o teu jogo", "en": "Video analysis — for your game", "de": "Videoanalyse — für dein Spiel" } },
-          { "id": "filmPersonal", "price": 140, "name": { "pt": "O teu fim de semana em vídeo e fotografia", "en": "Your weekend, filmed and photographed", "de": "Dein Wochenende, gefilmt und fotografiert" } }
+          {
+            "id": "transfer",
+            "price": 45,
+            "name": {
+              "pt": "Transfer Lisboa, ida e volta",
+              "en": "Lisbon transfer, return",
+              "de": "Transfer Lissabon, hin und zurück"
+            }
+          },
+          {
+            "id": "padel1to1",
+            "price": 55,
+            "name": {
+              "pt": "Hora individual com o treinador",
+              "en": "One-to-one hour with the coach",
+              "de": "Einzelstunde mit dem Trainer"
+            }
+          },
+          {
+            "id": "mental1to1",
+            "price": 55,
+            "name": {
+              "pt": "Sessão individual de performance mental",
+              "en": "One-to-one mental performance session",
+              "de": "Einzelsession zu mentaler Leistung"
+            }
+          },
+          {
+            "id": "video",
+            "price": 40,
+            "name": {
+              "pt": "Análise de vídeo — para o teu jogo",
+              "en": "Video analysis — for your game",
+              "de": "Videoanalyse — für dein Spiel"
+            }
+          },
+          {
+            "id": "filmPersonal",
+            "price": 140,
+            "name": {
+              "pt": "O teu fim de semana em vídeo e fotografia",
+              "en": "Your weekend, filmed and photographed",
+              "de": "Dein Wochenende, gefilmt und fotografiert"
+            }
+          }
         ],
         "deposit": null
       },
       "editions": [
-        { "id": "2026-10-16",
-          "label": { "pt": "16 – 18 Outubro 2026", "en": "16 – 18 October 2026", "de": "16. – 18. Oktober 2026" },
-          "note":  { "pt": "Água ainda quente", "en": "Sea still warm", "de": "Meer noch warm" },
+        {
+          "id": "2026-10-16",
+          "label": {
+            "pt": "16 – 18 Outubro 2026",
+            "en": "16 – 18 October 2026",
+            "de": "16. – 18. Oktober 2026"
+          },
+          "note": {
+            "pt": "Água ainda quente",
+            "en": "Sea still warm",
+            "de": "Meer noch warm"
+          },
           "left": 4,
-          "prices": { "tiers": { "shared": 130, "single": 220 } } },
-        { "id": "2026-11-13",
-          "label": { "pt": "13 – 15 Novembro 2026", "en": "13 – 15 November 2026", "de": "13. – 15. November 2026" },
-          "note":  { "pt": "Fora de época, courts vazios", "en": "Off season, empty courts", "de": "Nebensaison, leere Courts" },
+          "level": {
+            "playtomic": {
+              "min": 1.75,
+              "max": 3.25
+            },
+            "federation": {
+              "m": {
+                "pt": "M5 – M6",
+                "en": "M5 – M6",
+                "de": "M5 – M6"
+              },
+              "f": {
+                "pt": "F4 – F5",
+                "en": "F4 – F5",
+                "de": "F4 – F5"
+              },
+              "mix": {
+                "pt": "Misto 4 – 5",
+                "en": "Mixed 4 – 5",
+                "de": "Mixed 4 – 5"
+              }
+            },
+            "note": {
+              "pt": "Jogadores de clube que já jogam com regularidade. Se estás fora desta faixa, escreve-nos — muitas vezes dá.",
+              "en": "Club players who already play regularly. Outside this band? Write to us — it often still works.",
+              "de": "Clubspieler, die regelmässig spielen. Ausserhalb dieser Spanne? Schreib uns — oft geht es trotzdem."
+            }
+          },
+          "prices": {
+            "tiers": {
+              "shared": 130,
+              "single": 220
+            }
+          }
+        },
+        {
+          "id": "2026-11-13",
+          "label": {
+            "pt": "13 – 15 Novembro 2026",
+            "en": "13 – 15 November 2026",
+            "de": "13. – 15. November 2026"
+          },
+          "note": {
+            "pt": "Fora de época, courts vazios",
+            "en": "Off season, empty courts",
+            "de": "Nebensaison, leere Courts"
+          },
           "left": 9,
-          "prices": { "base": 350, "tiers": { "shared": 95, "single": 165 } } },
-        { "id": "2027-03-05",
-          "label": { "pt": "5 – 7 Março 2027", "en": "5 – 7 March 2027", "de": "5. – 7. März 2027" },
-          "note":  { "pt": "Primeira edição da primavera", "en": "First spring edition", "de": "Erste Frühlingsedition" },
+          "level": {
+            "playtomic": {
+              "min": 1.5,
+              "max": 3.0
+            },
+            "federation": {
+              "m": {
+                "pt": "M5 – M6",
+                "en": "M5 – M6",
+                "de": "M5 – M6"
+              },
+              "f": {
+                "pt": "F4 – F5",
+                "en": "F4 – F5",
+                "de": "F4 – F5"
+              },
+              "mix": {
+                "pt": "Misto 4 – 5",
+                "en": "Mixed 4 – 5",
+                "de": "Mixed 4 – 5"
+              }
+            },
+            "note": {
+              "pt": "A edição mais aberta do ano. Boa para quem joga há pouco tempo.",
+              "en": "The most open edition of the year. Good if you have not been playing long.",
+              "de": "Die offenste Edition des Jahres. Gut, wenn du noch nicht lange spielst."
+            }
+          },
+          "prices": {
+            "base": 350,
+            "tiers": {
+              "shared": 95,
+              "single": 165
+            }
+          }
+        },
+        {
+          "id": "2027-03-05",
+          "label": {
+            "pt": "5 – 7 Março 2027",
+            "en": "5 – 7 March 2027",
+            "de": "5. – 7. März 2027"
+          },
+          "note": {
+            "pt": "Primeira edição da primavera",
+            "en": "First spring edition",
+            "de": "Erste Frühlingsedition"
+          },
           "left": 12,
-          "prices": {} },
-        { "id": "2027-04-16",
-          "label": { "pt": "16 – 18 Abril 2027", "en": "16 – 18 April 2027", "de": "16. – 18. April 2027" },
-          "note":  { "pt": "Fim de semana longo", "en": "Long weekend", "de": "Langes Wochenende" },
+          "level": {
+            "playtomic": {
+              "min": 2.0,
+              "max": 3.5
+            },
+            "federation": {
+              "m": {
+                "pt": "M4 – M6",
+                "en": "M4 – M6",
+                "de": "M4 – M6"
+              },
+              "f": {
+                "pt": "F3 – F5",
+                "en": "F3 – F5",
+                "de": "F3 – F5"
+              },
+              "mix": {
+                "pt": "Misto 3 – 5",
+                "en": "Mixed 3 – 5",
+                "de": "Mixed 3 – 5"
+              }
+            },
+            "note": {
+              "pt": "Faixa larga. Fazemos os pares por nível ao longo do fim de semana.",
+              "en": "A wide band. We pair by level across the weekend.",
+              "de": "Eine breite Spanne. Wir stellen die Paarungen übers Wochenende nach Niveau zusammen."
+            }
+          },
+          "prices": {}
+        },
+        {
+          "id": "2027-04-16",
+          "label": {
+            "pt": "16 – 18 Abril 2027",
+            "en": "16 – 18 April 2027",
+            "de": "16. – 18. April 2027"
+          },
+          "note": {
+            "pt": "Fim de semana longo",
+            "en": "Long weekend",
+            "de": "Langes Wochenende"
+          },
           "left": 0,
-          "prices": { "base": 410, "tiers": { "shared": 140, "single": 235 }, "options": { "transfer": 55 } } }
+          "level": {
+            "playtomic": {
+              "min": 2.5,
+              "max": 4.0
+            },
+            "federation": {
+              "m": {
+                "pt": "M3 – M5",
+                "en": "M3 – M5",
+                "de": "M3 – M5"
+              },
+              "f": {
+                "pt": "F2 – F4",
+                "en": "F2 – F4",
+                "de": "F2 – F4"
+              },
+              "mix": {
+                "pt": "Misto 2 – 4",
+                "en": "Mixed 2 – 4",
+                "de": "Mixed 2 – 4"
+              }
+            },
+            "note": {
+              "pt": "Fim de semana longo, ritmo mais forte. Para quem já compete.",
+              "en": "Long weekend, a stronger pace. For players who already compete.",
+              "de": "Langes Wochenende, stärkeres Tempo. Für Spieler, die schon Turniere spielen."
+            }
+          },
+          "prices": {
+            "base": 410,
+            "tiers": {
+              "shared": 140,
+              "single": 235
+            },
+            "options": {
+              "transfer": 55
+            }
+          }
+        }
       ]
     },
-
     "week": {
       "currency": "eur",
       "defaults": {
         "base": 0,
         "tiers": {
-          "classic": { "price": 2900, "name": { "pt": "Classic · 7 noites", "en": "Classic · 7 nights", "de": "Classic · 7 Nächte" } },
-          "full":    { "price": 3900, "name": { "pt": "Full Experience · 7 noites", "en": "Full Experience · 7 nights", "de": "Full Experience · 7 Nächte" } }
+          "classic": {
+            "price": 2900,
+            "name": {
+              "pt": "Classic · 7 noites",
+              "en": "Classic · 7 nights",
+              "de": "Classic · 7 Nächte"
+            }
+          },
+          "full": {
+            "price": 3900,
+            "name": {
+              "pt": "Full Experience · 7 noites",
+              "en": "Full Experience · 7 nights",
+              "de": "Full Experience · 7 Nächte"
+            }
+          }
         },
         "options": [
-          { "id": "singleSupp",   "price": 420, "name": { "pt": "Suplemento de quarto individual", "en": "Single room supplement", "de": "Einzelzimmerzuschlag" } },
-          { "id": "faroTransfer", "price": 120, "name": { "pt": "Transfer aeroporto de Faro, ida e volta", "en": "Faro airport transfer, return", "de": "Transfer Flughafen Faro, hin und zurück" } },
-          { "id": "mental1to1",   "price": 90,  "name": { "pt": "Sessão individual de performance mental", "en": "One-to-one mental performance session", "de": "Einzelsession zu mentaler Leistung" } },
-          { "id": "filmPersonal", "price": 260, "name": { "pt": "A tua semana em vídeo e fotografia", "en": "Your week, filmed and photographed", "de": "Deine Woche, gefilmt und fotografiert" } },
-          { "id": "extraNight",   "price": 95,  "name": { "pt": "Noite extra antes ou depois", "en": "Extra night before or after", "de": "Zusatznacht davor oder danach" } }
+          {
+            "id": "singleSupp",
+            "price": 420,
+            "name": {
+              "pt": "Suplemento de quarto individual",
+              "en": "Single room supplement",
+              "de": "Einzelzimmerzuschlag"
+            }
+          },
+          {
+            "id": "faroTransfer",
+            "price": 120,
+            "name": {
+              "pt": "Transfer aeroporto de Faro, ida e volta",
+              "en": "Faro airport transfer, return",
+              "de": "Transfer Flughafen Faro, hin und zurück"
+            }
+          },
+          {
+            "id": "mental1to1",
+            "price": 90,
+            "name": {
+              "pt": "Sessão individual de performance mental",
+              "en": "One-to-one mental performance session",
+              "de": "Einzelsession zu mentaler Leistung"
+            }
+          },
+          {
+            "id": "filmPersonal",
+            "price": 260,
+            "name": {
+              "pt": "A tua semana em vídeo e fotografia",
+              "en": "Your week, filmed and photographed",
+              "de": "Deine Woche, gefilmt und fotografiert"
+            }
+          },
+          {
+            "id": "extraNight",
+            "price": 95,
+            "name": {
+              "pt": "Noite extra antes ou depois",
+              "en": "Extra night before or after",
+              "de": "Zusatznacht davor oder danach"
+            }
+          }
         ],
-        "deposit": { "amount": 800, "balanceDueDays": 60 }
+        "deposit": {
+          "amount": 800,
+          "balanceDueDays": 60
+        }
       },
       "editions": [
-        { "id": "2027-04-25",
-          "label": { "pt": "25 Abril – 2 Maio 2027", "en": "25 April – 2 May 2027", "de": "25. April – 2. Mai 2027" },
-          "note":  { "pt": "Primeira edição da primavera", "en": "First spring edition", "de": "Erste Frühlingsedition" },
+        {
+          "id": "2027-04-25",
+          "label": {
+            "pt": "25 Abril – 2 Maio 2027",
+            "en": "25 April – 2 May 2027",
+            "de": "25. April – 2. Mai 2027"
+          },
+          "note": {
+            "pt": "Primeira edição da primavera",
+            "en": "First spring edition",
+            "de": "Erste Frühlingsedition"
+          },
           "left": 6,
-          "tiers": ["classic"],
-          "prices": {} },
-        { "id": "2027-05-23",
-          "label": { "pt": "23 – 30 Maio 2027", "en": "23 – 30 May 2027", "de": "23. – 30. Mai 2027" },
-          "note":  { "pt": "Dias longos, mar quente", "en": "Long days, warm sea", "de": "Lange Tage, warmes Meer" },
+          "level": {
+            "playtomic": {
+              "min": 2.5,
+              "max": 4.0
+            },
+            "federation": {
+              "m": {
+                "pt": "M3 – M5",
+                "en": "M3 – M5",
+                "de": "M3 – M5"
+              },
+              "f": {
+                "pt": "F2 – F4",
+                "en": "F2 – F4",
+                "de": "F2 – F4"
+              },
+              "mix": {
+                "pt": "Misto 2 – 4",
+                "en": "Mixed 2 – 4",
+                "de": "Mixed 2 – 4"
+              }
+            },
+            "note": {
+              "pt": "Sete dias exigem um grupo relativamente equilibrado.",
+              "en": "Seven days need a reasonably even group.",
+              "de": "Sieben Tage brauchen eine halbwegs ausgeglichene Gruppe."
+            }
+          },
+          "tiers": [
+            "classic"
+          ],
+          "prices": {}
+        },
+        {
+          "id": "2027-05-23",
+          "label": {
+            "pt": "23 – 30 Maio 2027",
+            "en": "23 – 30 May 2027",
+            "de": "23. – 30. Mai 2027"
+          },
+          "note": {
+            "pt": "Dias longos, mar quente",
+            "en": "Long days, warm sea",
+            "de": "Lange Tage, warmes Meer"
+          },
           "left": 10,
-          "prices": { "tiers": { "classic": 3100, "full": 4100 } } },
-        { "id": "2027-09-19",
-          "label": { "pt": "19 – 26 Setembro 2027", "en": "19 – 26 September 2027", "de": "19. – 26. September 2027" },
-          "note":  { "pt": "A melhor altura do ano em Milfontes", "en": "The best time of year in Milfontes", "de": "Die beste Zeit des Jahres in Milfontes" },
+          "level": {
+            "playtomic": {
+              "min": 2.25,
+              "max": 3.75
+            },
+            "federation": {
+              "m": {
+                "pt": "M4 – M5",
+                "en": "M4 – M5",
+                "de": "M4 – M5"
+              },
+              "f": {
+                "pt": "F3 – F4",
+                "en": "F3 – F4",
+                "de": "F3 – F4"
+              },
+              "mix": {
+                "pt": "Misto 3 – 4",
+                "en": "Mixed 3 – 4",
+                "de": "Mixed 3 – 4"
+              }
+            },
+            "note": {
+              "pt": "A edição mais mista do ano.",
+              "en": "The most mixed edition of the year.",
+              "de": "Die gemischteste Edition des Jahres."
+            }
+          },
+          "prices": {
+            "tiers": {
+              "classic": 3100,
+              "full": 4100
+            }
+          }
+        },
+        {
+          "id": "2027-09-19",
+          "label": {
+            "pt": "19 – 26 Setembro 2027",
+            "en": "19 – 26 September 2027",
+            "de": "19. – 26. September 2027"
+          },
+          "note": {
+            "pt": "A melhor altura do ano em Milfontes",
+            "en": "The best time of year in Milfontes",
+            "de": "Die beste Zeit des Jahres in Milfontes"
+          },
           "left": 12,
-          "prices": { "tiers": { "classic": 3100, "full": 4100 } } },
-        { "id": "2027-10-10",
-          "label": { "pt": "10 – 17 Outubro 2027", "en": "10 – 17 October 2027", "de": "10. – 17. Oktober 2027" },
-          "note":  { "pt": "Edição de clube — grupo fechado", "en": "Club edition — closed group", "de": "Club-Edition — geschlossene Gruppe" },
+          "level": {
+            "playtomic": {
+              "min": 2.5,
+              "max": 4.25
+            },
+            "federation": {
+              "m": {
+                "pt": "M3 – M5",
+                "en": "M3 – M5",
+                "de": "M3 – M5"
+              },
+              "f": {
+                "pt": "F2 – F4",
+                "en": "F2 – F4",
+                "de": "F2 – F4"
+              },
+              "mix": {
+                "pt": "Misto 2 – 4",
+                "en": "Mixed 2 – 4",
+                "de": "Mixed 2 – 4"
+              }
+            },
+            "note": {
+              "pt": "Setembro atrai quem joga o ano inteiro.",
+              "en": "September draws players who play all year.",
+              "de": "Der September zieht Spieler an, die das ganze Jahr spielen."
+            }
+          },
+          "prices": {
+            "tiers": {
+              "classic": 3100,
+              "full": 4100
+            }
+          }
+        },
+        {
+          "id": "2027-10-10",
+          "label": {
+            "pt": "10 – 17 Outubro 2027",
+            "en": "10 – 17 October 2027",
+            "de": "10. – 17. Oktober 2027"
+          },
+          "note": {
+            "pt": "Edição de clube — grupo fechado",
+            "en": "Club edition — closed group",
+            "de": "Club-Edition — geschlossene Gruppe"
+          },
           "left": 0,
-          "tiers": ["full"],
-          "prices": {} }
+          "level": {
+            "playtomic": {
+              "min": 3.0,
+              "max": 4.5
+            },
+            "federation": {
+              "m": {
+                "pt": "M2 – M4",
+                "en": "M2 – M4",
+                "de": "M2 – M4"
+              },
+              "f": {
+                "pt": "F1 – F3",
+                "en": "F1 – F3",
+                "de": "F1 – F3"
+              },
+              "mix": {
+                "pt": "Misto 1 – 3",
+                "en": "Mixed 1 – 3",
+                "de": "Mixed 1 – 3"
+              }
+            },
+            "note": {
+              "pt": "Grupo fechado de clube. O nível é definido pelo clube.",
+              "en": "Closed club group. The level is set by the club.",
+              "de": "Geschlossene Clubgruppe. Das Niveau bestimmt der Club."
+            }
+          },
+          "tiers": [
+            "full"
+          ],
+          "prices": {}
+        }
       ]
     }
-
   }
 }

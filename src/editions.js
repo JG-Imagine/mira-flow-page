@@ -57,6 +57,7 @@ export function resolve(config, productName, editionId) {
     label: edition.label,
     note: edition.note,
     left: edition.left,
+    level: edition.level || null,
     currency: product.currency,
     base: over.base !== undefined ? over.base : product.defaults.base,
     tiers,

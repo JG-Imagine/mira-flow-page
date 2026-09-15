@@ -2,7 +2,7 @@
  * Shared booking module — used by weekend.html and book-week.html.
  *
  * Holds no prices and no dates. Everything comes from /api/editions,
- * which is priced from public/editions.json by the same code that
+ * which is priced from src/editions.json by the same code that
  * prices the Stripe charge.
  *
  * The page supplies BOOKING_CONFIG before loading this file:
@@ -23,6 +23,18 @@ let payMode = 'full';
 
 const B = () => window.BOOKING_CONFIG;
 const el = id => document.getElementById(id);
+
+/** "2.0–3.25" — one decimal unless the quarter-step needs two. */
+const band = p => p ? `${trim(p.min)}–${trim(p.max)}` : '';
+const trim = n => (n % 1 === 0 ? n.toFixed(1) : String(n));
+
+/** The three federation ladders, in whatever order the edition lists them. */
+function ladders(level, L) {
+  if (!level || !level.federation) return [];
+  return ['m', 'f', 'mix']
+    .filter(k => level.federation[k])
+    .map(k => level.federation[k][L] || level.federation[k].pt);
+}
 
 async function loadFeed() {
   try {
@@ -51,7 +63,9 @@ function renderDates() {
       <input type="radio" name="edition" value="${x.id}" ${gone ? 'disabled' : ''}
              ${sel ? 'checked' : ''} onchange="pickDate('${x.id}')">
       <span><span class="dt-d">${x.label[L] || x.label.pt}</span>
-      <span class="dt-m">${x.note[L] || x.note.pt}</span></span>
+      <span class="dt-m">${x.note[L] || x.note.pt}</span>
+      ${x.level ? `<span class="dt-lv">${t('_lvl')} ${band(x.level.playtomic)}
+        <em>${ladders(x.level, L).join(' · ')}</em></span>` : ''}</span>
       <span class="dt-s ${gone ? 'gone' : (few ? 'few' : 'open')}">${label}</span>
     </label>`;
   }).join('');
@@ -61,6 +75,20 @@ function renderChoices() {
   const { t, lang, money, tierDesc, optDesc } = B();
   const L = lang();
   const tiers = el('tiers'), opts = el('opts'), pay = el('paymode');
+
+  const lvlBox = el('levelbox');
+  if (lvlBox) {
+    lvlBox.innerHTML = edition && edition.level ? `
+      <div class="lv-card">
+        <div class="lv-h">${t('_lvlh')}</div>
+        <div class="lv-row"><span>${t('_lvlpt')}</span><span>${band(edition.level.playtomic)}</span></div>
+        ${['m','f','mix'].filter(k => edition.level.federation && edition.level.federation[k])
+          .map(k => `<div class="lv-row"><span>${t('_lvl_' + k)}</span><span>${
+            edition.level.federation[k][B().lang()] || edition.level.federation[k].pt}</span></div>`).join('')}
+        ${edition.level.note ? `<p class="lv-n">${edition.level.note[B().lang()] || edition.level.note.pt}</p>` : ''}
+        <p class="lv-n lv-cav">${t('_lvlcav')}</p>
+      </div>` : '';
+  }
 
   if (!edition) {
     // Prices vary by edition, so there is nothing honest to show yet.
@@ -184,6 +212,10 @@ window.recalc = function () {
   if (taking) {
     html += `<li><span>${t('_subtotal')}</span><span>${money(total)}</span></li>`;
     html += `<li><span>${t('_balancelater')}</span><span>${money(total - dep.amount)}</span></li>`;
+  }
+
+  if (edition.level) {
+    html = `<li><span>${t('_lvl')}</span><span>${band(edition.level.playtomic)}</span></li>` + html;
   }
 
   list.innerHTML = html;

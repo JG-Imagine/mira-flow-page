@@ -41,6 +41,22 @@ const BASE = {
   }
 };
 
+// Asked at checkout because a level printed on the page is guidance, but a
+// level the buyer types is a conversation you can have before they arrive.
+// Stripe caps custom field labels at 50 characters.
+const FIELDS = {
+  playtomic: {
+    pt: 'Nível Playtomic (0 se não tiveres)',
+    en: 'Your Playtomic level (0 if unrated)',
+    de: 'Dein Playtomic-Level (0 wenn ohne)'
+  },
+  club: {
+    pt: 'Clube onde jogas',
+    en: 'Your home club',
+    de: 'Dein Heimclub'
+  }
+};
+
 const DEPOSIT_NAME = {
   pt: 'Depósito de reserva', en: 'Booking deposit', de: 'Buchungsanzahlung'
 };
@@ -89,10 +105,22 @@ export async function handleCheckout(request, env) {
 
   const form = new URLSearchParams();
   form.set('mode', 'payment');
-  // Deliberately no payment_method_types: leaving it unset is what makes Stripe
-  // use the methods enabled in the dashboard, so Multibanco and MB Way can be
-  // switched on there without a redeploy. Do NOT add automatic_payment_methods
-  // here — that is a PaymentIntent parameter and Checkout rejects the request.
+
+  // Normally we send no payment_method_types at all: leaving it unset is what
+  // makes Checkout use whatever is enabled in the Stripe dashboard, so methods
+  // can be switched on there without a redeploy.
+  //
+  // PAYMENT_METHODS is an escape hatch. Payment method settings do NOT carry
+  // over from test mode to live, so a freshly activated account can have an
+  // empty live configuration and Checkout then reports that no payment method
+  // is available. Setting PAYMENT_METHODS to e.g. "card" or "card,multibanco"
+  // in wrangler.jsonc forces the list and gets you selling; clear it again once
+  // the dashboard is configured, so the dashboard stays the single control.
+  //
+  // Do NOT add automatic_payment_methods here — that is a PaymentIntent
+  // parameter and Checkout rejects the whole request.
+  const forced = (env.PAYMENT_METHODS || '').split(',').map(x => x.trim()).filter(Boolean);
+  forced.forEach((pm, n) => form.set(`payment_method_types[${n}]`, pm));
   form.set('locale', lang === 'pt' ? 'pt-BR' : lang); // Stripe has no pt-PT; pt-BR is closest.
   form.set('billing_address_collection', 'required');
   form.set('phone_number_collection[enabled]', 'true');
@@ -136,6 +164,22 @@ export async function handleCheckout(request, env) {
   if (i === 0) {
     console.error('no_line_items', body.product, ed.id, tier.id);
     return json({ error: 'nothing_to_charge' }, 400);
+  }
+
+  // Two required fields. Self-declared levels run optimistic, so we ask for the
+  // actual number and the club rather than a self-assessment dropdown.
+  [['playtomic', 30], ['club', 60]].forEach(([key, max], n) => {
+    form.set(`custom_fields[${n}][key]`, key);
+    form.set(`custom_fields[${n}][type]`, 'text');
+    form.set(`custom_fields[${n}][label][type]`, 'custom');
+    form.set(`custom_fields[${n}][label][custom]`, FIELDS[key][lang]);
+    form.set(`custom_fields[${n}][optional]`, 'false');
+    form.set(`custom_fields[${n}][text][maximum_length]`, String(max));
+  });
+
+  // The band they booked into, so a mismatch is visible next to what they typed.
+  if (ed.level && ed.level.playtomic) {
+    form.set('metadata[level_band]', `${ed.level.playtomic.min}-${ed.level.playtomic.max}`);
   }
 
   form.set('metadata[product]', body.product);

@@ -184,6 +184,17 @@ footer { background:var(--ink); padding:56px; }
   .book-right { position:static; }
   .hero-fact { padding-right:22px; margin-right:22px; }
 }
+
+.dt-lv { display:block; font-size:10.5px; color:var(--gold); margin-top:4px; letter-spacing:.3px; }
+.dt-lv em { font-style:normal; color:var(--muted); }
+.lv-card { border:1px solid var(--sdk); background:var(--slt); padding:18px 20px; margin-top:14px; }
+.lv-h { font-size:9px; font-weight:400; letter-spacing:2px; text-transform:uppercase; color:var(--clay); margin-bottom:12px; }
+.lv-row { display:flex; justify-content:space-between; gap:14px; padding:6px 0;
+  border-bottom:1px solid rgba(0,0,0,.06); font-size:12.5px; color:var(--muted); }
+.lv-row:last-of-type { border-bottom:none; }
+.lv-row span:last-child { color:var(--ink); white-space:nowrap; }
+.lv-n { font-size:12px; color:var(--muted); line-height:1.7; margin-top:10px; }
+.lv-cav { font-style:italic; color:var(--clay); }
 </style>
 </head>
 <body>
@@ -231,6 +242,7 @@ footer { background:var(--ink); padding:56px; }
 
         <p class="opt-h"><span class="step-n">1</span><span data-i18n="bk-dh">Choose an edition</span></p>
         <div class="dates" id="dates"></div>
+        <div id="levelbox"></div>
 
         <p class="opt-h" style="margin-top:30px"><span class="step-n">2</span><span data-i18n="bk-th">Choose a package</span></p>
         <p class="opt-sub" data-i18n="bk-ts">The programme is identical in both. What changes is the service and comfort around it. Some editions run as one package only — a club group travels together.</p>
@@ -323,6 +335,13 @@ let lang = 'en';
    exists twice. DE and PT are below. Prices and dates are NOT here —
    they come from /api/editions. */
 const DE = {
+ "_lvl": "Niveau",
+ "_lvlh": "Niveau dieser Edition",
+ "_lvlpt": "Playtomic",
+ "_lvl_m": "Herren",
+ "_lvl_f": "Damen",
+ "_lvl_mix": "Mixed",
+ "_lvlcav": "Die Verbandskategorien sind eine grobe Orientierung — eine offizielle Entsprechung zum Playtomic-Level gibt es nicht. Wenn du nah an der Spanne liegst, schreib uns, bevor du dich selbst ausschliesst.",
  "nav-back": "Zurück zur Woche",
  "nav-cta": "Buchen",
  "h-ey": "Woche buchen · Vila Nova de Milfontes",
@@ -390,6 +409,13 @@ const DE = {
  "_vatdep": "Anzahlung. Der Rest wird per E-Mail in Rechnung gestellt. Preise pro Person, inkl. MwSt."
 };
 const PT = {
+ "_lvl": "Nível",
+ "_lvlh": "Nível desta edição",
+ "_lvlpt": "Playtomic",
+ "_lvl_m": "Masculinos",
+ "_lvl_f": "Femininos",
+ "_lvl_mix": "Mistos",
+ "_lvlcav": "As categorias federativas são uma orientação aproximada — não há equivalência oficial com o Playtomic. Se estiveres perto da faixa, escreve-nos antes de desistires.",
  "nav-back": "Voltar à semana",
  "nav-cta": "Reservar",
  "h-ey": "Reservar uma semana · Vila Nova de Milfontes",
@@ -457,6 +483,13 @@ const PT = {
  "_vatdep": "Depósito. O restante é facturado por email. Preços por pessoa, IVA incluído."
 };
 const EN_EXTRA = {
+ "_lvl": "Level",
+ "_lvlh": "Level for this edition",
+ "_lvlpt": "Playtomic",
+ "_lvl_m": "Men's",
+ "_lvl_f": "Women's",
+ "_lvl_mix": "Mixed",
+ "_lvlcav": "Federation categories are rough guidance — there is no official equivalence with Playtomic. If you are near the band, write to us before ruling yourself out.",
  "d-classic": "You take care of the small logistics. We take care of everything that matters.",
  "d-full": "Better rooms, full board, Faro transfers, a dedicated minibus, one private session with the mental coach.",
  "d-singleSupp": "A room to yourself, the whole week.",

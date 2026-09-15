@@ -184,6 +184,17 @@ footer { background:var(--ink); padding:56px; }
   .book-right { position:static; }
   .hero-fact { padding-right:22px; margin-right:22px; }
 }
+
+.dt-lv { display:block; font-size:10.5px; color:var(--gold); margin-top:4px; letter-spacing:.3px; }
+.dt-lv em { font-style:normal; color:var(--muted); }
+.lv-card { border:1px solid var(--sdk); background:var(--slt); padding:18px 20px; margin-top:14px; }
+.lv-h { font-size:9px; font-weight:400; letter-spacing:2px; text-transform:uppercase; color:var(--clay); margin-bottom:12px; }
+.lv-row { display:flex; justify-content:space-between; gap:14px; padding:6px 0;
+  border-bottom:1px solid rgba(0,0,0,.06); font-size:12.5px; color:var(--muted); }
+.lv-row:last-of-type { border-bottom:none; }
+.lv-row span:last-child { color:var(--ink); white-space:nowrap; }
+.lv-n { font-size:12px; color:var(--muted); line-height:1.7; margin-top:10px; }
+.lv-cav { font-style:italic; color:var(--clay); }
 </style>
 </head>
 <body>
@@ -252,24 +263,23 @@ footer { background:var(--ink); padding:56px; }
       </div>
       <div class="pd sat">
         <div class="pd-day" data-i18n="pd2-d">Sábado</div>
-        <div class="pd-t" data-i18n="pd2-t">O dia cheio</div>
+        <div class="pd-t" data-i18n="pd2-t">O dia principal</div>
         <ul class="pd-l">
-          <li><span class="hr">08:30</span><span data-i18n="pd2-1">Yoga e respiração</span></li>
-          <li><span class="hr">10:00</span><span data-i18n="pd2-2">Padel — bloco técnico</span></li>
+          <li><span class="hr">08:30</span><span data-i18n="pd2-1">Ritual da manhã</span></li>
+          <li><span class="hr">10:00</span><span data-i18n="pd2-2">Performance mental</span></li>
           <li><span class="hr">13:00</span><span data-i18n="pd2-3">Almoço</span></li>
-          <li><span class="hr">15:00</span><span data-i18n="pd2-4">Performance mental</span></li>
-          <li><span class="hr">17:00</span><span data-i18n="pd2-5">Padel — jogo</span></li>
-          <li><span class="hr">19:30</span><span data-i18n="pd2-6">Terapia de som</span></li>
-          <li><span class="hr">21:00</span><span data-i18n="pd2-7">Jantar</span></li>
+          <li><span class="hr">15:00</span><span data-i18n="pd2-4">Padel — jogo com treinador</span></li>
+          <li><span class="hr">18:00</span><span data-i18n="pd2-5">Terapia de som</span></li>
+          <li><span class="hr">20:00</span><span data-i18n="pd2-6">Jantar no restaurante</span></li>
         </ul>
       </div>
       <div class="pd">
         <div class="pd-day" data-i18n="pd3-d">Domingo</div>
         <div class="pd-t" data-i18n="pd3-t">Torneio</div>
         <ul class="pd-l">
-          <li><span class="hr">08:30</span><span data-i18n="pd3-1">Ritual de manhã</span></li>
+          <li><span class="hr">08:30</span><span data-i18n="pd3-1">Ritual da manhã</span></li>
           <li><span class="hr">10:00</span><span data-i18n="pd3-2">Torneio de encerramento</span></li>
-          <li><span class="hr">13:30</span><span data-i18n="pd3-3">Almoço final</span></li>
+          <li><span class="hr">13:30</span><span data-i18n="pd3-3">Almoço no restaurante</span></li>
           <li><span class="hr">15:30</span><span data-i18n="pd3-4">Partida</span></li>
         </ul>
       </div>
@@ -327,6 +337,7 @@ footer { background:var(--ink); padding:56px; }
 
         <p class="opt-h"><span class="step-n">1</span><span data-i18n="bk-dh">Escolhe a edição</span></p>
         <div class="dates" id="dates"></div>
+        <div id="levelbox"></div>
 
         <p class="opt-h" style="margin-top:30px"><span class="step-n">2</span><span data-i18n="bk-ah">Onde ficas</span></p>
         <p class="opt-sub" data-i18n="bk-as">Duas noites na casa do grupo, a cinco minutos a pé dos courts. Pequeno-almoço incluído.</p>
@@ -411,6 +422,13 @@ let lang = 'pt';
 /* Portuguese lives in the HTML. English lives here. Nothing is
    written twice, so the two can't drift apart. */
 const EN = {
+ "_lvl": "Level",
+ "_lvlh": "Level for this edition",
+ "_lvlpt": "Playtomic",
+ "_lvl_m": "Men's",
+ "_lvl_f": "Women's",
+ "_lvl_mix": "Mixed",
+ "_lvlcav": "Federation categories are rough guidance — there is no official equivalence with Playtomic. If you are near the band, write to us before ruling yourself out.",
   '_loadfail':'Dates are not loading right now. Email hello@mira-flow.ch and we will book you in.',
   '_pickfirst':'Pick an edition first — room prices change with the season.',
   '_soldout':'That edition just filled. Pick another one.',
@@ -429,9 +447,9 @@ const EN = {
   'in-q':'You come to play. The rest of Milfontes happens around it.',
   'pr-sl':'The programme', 'pr-st':'Friday, Saturday, Sunday.',
   'pd1-d':'Friday','pd1-t':'Arrival','pd1-1':'Arrival and check-in','pd1-2':'Opening americano','pd1-3':'Dinner',
-  'pd2-d':'Saturday','pd2-t':'The full day','pd2-1':'Yoga and breathwork','pd2-2':'Padel — technique block',
-  'pd2-3':'Lunch','pd2-4':'Mental performance','pd2-5':'Padel — match play','pd2-6':'Sound therapy','pd2-7':'Dinner',
-  'pd3-d':'Sunday','pd3-t':'Tournament','pd3-1':'Morning ritual','pd3-2':'Closing tournament','pd3-3':'Final lunch','pd3-4':'Departure',
+  'pd2-d':'Saturday','pd2-t':'The main day','pd2-1':'Morning ritual','pd2-2':'Mental performance',
+  'pd2-3':'Lunch','pd2-4':'Padel — coached match play','pd2-5':'Sound therapy','pd2-6':'Dinner at the restaurant',
+  'pd3-d':'Sunday','pd3-t':'Tournament','pd3-1':'Morning ritual','pd3-2':'Closing tournament','pd3-3':'Lunch at the restaurant','pd3-4':'Departure',
   'ic-sl':'What\'s included', 'ic-st':'One price, no surprises.',
   'ic-yh':'Included in the base price',
   'ic-y1':'Around 6 hours on court','ic-y2':'FPP-certified padel coach','ic-y3':'Yoga and breathwork — two sessions',
@@ -481,6 +499,13 @@ const EN = {
 };
 
 const DE = {
+ "_lvl": "Niveau",
+ "_lvlh": "Niveau dieser Edition",
+ "_lvlpt": "Playtomic",
+ "_lvl_m": "Herren",
+ "_lvl_f": "Damen",
+ "_lvl_mix": "Mixed",
+ "_lvlcav": "Die Verbandskategorien sind eine grobe Orientierung — eine offizielle Entsprechung zum Playtomic-Level gibt es nicht. Wenn du nah an der Spanne liegst, schreib uns, bevor du dich selbst ausschliesst.",
  "nav-back": "Die ganze Woche",
  "nav-cta": "Buchen",
  "h-ey": "Wochenende · Vila Nova de Milfontes",
@@ -504,19 +529,18 @@ const DE = {
  "pd1-2": "Auftakt-Americano",
  "pd1-3": "Abendessen",
  "pd2-d": "Samstag",
- "pd2-t": "Der volle Tag",
- "pd2-1": "Yoga und Breathwork",
- "pd2-2": "Padel — Technikblock",
+ "pd2-t": "Der Haupttag",
+ "pd2-1": "Morgenritual",
+ "pd2-2": "Mentale Leistung",
  "pd2-3": "Mittagessen",
- "pd2-4": "Mentale Leistung",
- "pd2-5": "Padel — Matchplay",
- "pd2-6": "Klangtherapie",
- "pd2-7": "Abendessen",
+ "pd2-4": "Padel — Matchplay mit Trainer",
+ "pd2-5": "Klangtherapie",
+ "pd2-6": "Abendessen im Restaurant",
  "pd3-d": "Sonntag",
  "pd3-t": "Turnier",
  "pd3-1": "Morgenritual",
  "pd3-2": "Abschlussturnier",
- "pd3-3": "Letztes Mittagessen",
+ "pd3-3": "Mittagessen im Restaurant",
  "pd3-4": "Abreise",
  "ic-sl": "Was enthalten ist",
  "ic-st": "Ein Preis, keine Überraschungen.",
@@ -595,6 +619,13 @@ const DE = {
 };
 
 const PT_LABELS = {
+ "_lvl": "Nível",
+ "_lvlh": "Nível desta edição",
+ "_lvlpt": "Playtomic",
+ "_lvl_m": "Masculinos",
+ "_lvl_f": "Femininos",
+ "_lvl_mix": "Mistos",
+ "_lvlcav": "As categorias federativas são uma orientação aproximada — não há equivalência oficial com o Playtomic. Se estiveres perto da faixa, escreve-nos antes de desistires.",
   '_loadfail':'As datas não estão a carregar. Escreve para hello@mira-flow.ch e tratamos da tua reserva.',
   '_pickfirst':'Escolhe primeiro uma edição — os preços dos quartos mudam com a época.',
   '_soldout':'Essa edição acabou de encher. Escolhe outra.',
