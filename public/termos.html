@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Condições de reserva — Mira Flow</title>
+<meta name="description" content="Condições de reserva e cancelamento do Mira Flow.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@100;200;300;400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iIzBCMjUzNSIvPjxjaXJjbGUgY3g9IjUwIiBjeT0iNTAiIHI9IjQ0IiBmaWxsPSJub25lIiBzdHJva2U9IiNCNTg0MkEiIHN0cm9rZS13aWR0aD0iMy41Ii8+PHRleHQgeD0iNTAiIHk9IjQ0IiBmb250LWZhbWlseT0iJ0pvc3QnLEFyaWFsIiBmb250LXdlaWdodD0iMjAwIiBmb250LXNpemU9IjIyIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgbGV0dGVyLXNwYWNpbmc9IjMiPk1JUkE8L3RleHQ+PGxpbmUgeDE9IjMyIiB5MT0iNTEiIHgyPSI2OCIgeTI9IjUxIiBzdHJva2U9IiNENEE4NEIiIHN0cm9rZS13aWR0aD0iMSIvPjx0ZXh0IHg9IjUwIiB5PSI2OCIgZm9udC1mYW1pbHk9IidKb3N0JyxBcmlhbCIgZm9udC13ZWlnaHQ9IjIwMCIgZm9udC1zaXplPSIyMiIgZmlsbD0iI0Q0QTg0QiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgbGV0dGVyLXNwYWNpbmc9IjMiPkZMT1c8L3RleHQ+PC9zdmc+">
+<meta name="theme-color" content="#0B2535">
+<style>
+:root {
+  --ink:#0B2535; --deep:#1A4560; --gold:#B5842A; --glt:#D4A84B;
+  --sand:#EDE4D0; --slt:#F7F2E8; --sdk:#D5C9B0;
+  --clay:#8B6A52; --cork:#3D5840; --muted:#7A7060; --text:#1C1C1A;
+}
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body { font-family:'Jost',sans-serif; font-weight:300; color:var(--text); background:var(--slt); overflow-x:hidden; }
+@media (prefers-reduced-motion:reduce) { html{scroll-behavior:auto} *{transition:none!important} }
+
+/* NAV */
+nav { position:fixed; top:0; left:0; right:0; z-index:100; display:flex; justify-content:space-between;
+  align-items:center; padding:20px 56px; transition:background .4s, padding .3s; }
+nav.scrolled { background:rgba(11,37,53,.96); backdrop-filter:blur(8px); padding:14px 56px; }
+.nav-logo { text-decoration:none; line-height:1; }
+.nl-t { font-weight:200; font-size:13px; letter-spacing:6px; color:white; text-transform:uppercase; display:block; }
+.nl-b { font-weight:100; font-size:13px; letter-spacing:6px; color:var(--glt); text-transform:uppercase; display:block; margin-top:-2px; }
+.nav-right { display:flex; align-items:center; gap:20px; }
+.nav-back { font-size:10px; font-weight:300; letter-spacing:2px; text-transform:uppercase;
+  color:rgba(255,255,255,.4); text-decoration:none; transition:color .2s; }
+.nav-back:hover { color:var(--glt); }
+.lang-sw { display:flex; align-items:center; gap:5px; }
+.lsb { background:none; border:none; font-family:'Jost',sans-serif; font-weight:300; font-size:10px;
+  letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,.3); cursor:pointer; padding:4px 2px; transition:color .2s; }
+.lsb.active { color:white; }
+.lang-sep { color:rgba(255,255,255,.15); font-size:10px; }
+.nav-cta { display:inline-block; padding:9px 22px; background:var(--gold); color:white; font-size:10px;
+  font-weight:300; letter-spacing:2px; text-transform:uppercase; text-decoration:none; transition:background .2s; }
+.nav-cta:hover { background:var(--glt); }
+a:focus-visible, button:focus-visible, input:focus-visible { outline:2px solid var(--glt); outline-offset:3px; }
+
+/* HERO */
+#hero { min-height:76vh; background:var(--ink); display:flex; align-items:center;
+  padding:150px 56px 90px; position:relative; overflow:hidden; }
+.hero-ring { position:absolute; border-radius:50%; pointer-events:none; }
+.hero-ring-1 { width:620px; height:620px; right:-190px; top:-160px; border:1px solid rgba(181,132,42,.1); }
+.hero-accent { position:absolute; left:0; top:0; bottom:0; width:2px;
+  background:linear-gradient(180deg,transparent 0%,var(--gold) 30%,var(--glt) 70%,transparent 100%); }
+.hero-inner { position:relative; z-index:2; max-width:1000px; width:100%; }
+.hero-eyebrow { font-size:9px; font-weight:300; letter-spacing:4px; text-transform:uppercase;
+  color:var(--glt); margin-bottom:26px; display:block; }
+.hero-title { font-family:'Cormorant Garamond',serif; font-weight:300; font-size:clamp(40px,6.5vw,78px);
+  line-height:1.05; color:white; margin-bottom:26px; }
+.hero-title em { font-style:italic; color:var(--glt); }
+.hero-tagline { font-family:'Cormorant Garamond',serif; font-style:italic; font-weight:300;
+  font-size:clamp(18px,2.2vw,26px); color:rgba(255,255,255,.55); line-height:1.55; margin-bottom:44px; max-width:620px; }
+.hero-facts { display:flex; margin-bottom:44px; border-top:1px solid rgba(255,255,255,.07);
+  padding-top:26px; flex-wrap:wrap; }
+.hero-fact { padding-right:36px; margin-right:36px; border-right:1px solid rgba(255,255,255,.07); margin-bottom:10px; }
+.hero-fact:last-child { border-right:none; }
+.hf-num { font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:300; color:var(--glt); line-height:1; margin-bottom:5px; }
+.hf-lbl { font-size:9px; font-weight:300; letter-spacing:1.5px; text-transform:uppercase; color:rgba(255,255,255,.3); }
+.btn-p { display:inline-block; padding:14px 32px; background:var(--gold); color:white; font-size:10px;
+  font-weight:300; letter-spacing:2px; text-transform:uppercase; text-decoration:none; transition:background .2s; border:none; cursor:pointer; }
+.btn-p:hover { background:var(--glt); }
+
+/* SECTIONS */
+.sec { padding:84px 56px; }
+.max { max-width:1180px; margin:0 auto; }
+.sl { font-size:9px; font-weight:300; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-bottom:16px; }
+.st { font-family:'Cormorant Garamond',serif; font-weight:300; font-size:clamp(26px,3.5vw,44px); line-height:1.15; color:var(--ink); }
+.st em { font-style:italic; }
+.sb { font-size:14px; font-weight:300; line-height:1.8; color:var(--muted); max-width:64ch; }
+
+/* INTRO */
+.intro-grid { display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start; }
+.intro-note { border-left:2px solid var(--gold); padding:4px 0 4px 22px; }
+.intro-note p { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:18px;
+  color:var(--clay); line-height:1.6; }
+
+/* PROGRAMME */
+.p-prog { background:var(--ink); }
+.prog-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:3px; margin-top:44px; }
+.pd { background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.06); padding:26px 24px; }
+.pd.sat { background:rgba(181,132,42,.07); border-color:rgba(181,132,42,.2); }
+.pd-day { font-size:9px; font-weight:300; letter-spacing:2.5px; text-transform:uppercase; color:var(--glt); margin-bottom:6px; }
+.pd-t { font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:300; color:white; margin-bottom:18px; }
+.pd-l { list-style:none; }
+.pd-l li { display:grid; grid-template-columns:52px 1fr; gap:10px; padding:8px 0;
+  border-bottom:1px solid rgba(255,255,255,.06); font-size:12.5px; color:rgba(255,255,255,.6); line-height:1.5; }
+.pd-l li:last-child { border-bottom:none; }
+.pd-l .hr { color:var(--glt); font-size:11px; }
+
+/* INCLUDED */
+.inc-grid { display:grid; grid-template-columns:1fr 1fr; gap:3px; margin-top:36px; }
+.inc-box { padding:28px 30px; }
+.inc-yes { background:var(--sand); }
+.inc-no { background:white; border:1px solid var(--sdk); }
+.inc-h { font-size:9px; font-weight:400; letter-spacing:2px; text-transform:uppercase; margin-bottom:16px; color:var(--clay); }
+.inc-l { list-style:none; }
+.inc-l li { padding:7px 0; border-bottom:1px solid rgba(0,0,0,.06); font-size:13px; color:var(--text); line-height:1.5; }
+.inc-l li:last-child { border-bottom:none; }
+.inc-no .inc-l li { color:var(--muted); }
+
+/* BOOKING */
+.p-book { background:var(--slt); }
+.book-wrap { display:grid; grid-template-columns:1.35fr 1fr; gap:3px; margin-top:40px; align-items:start; }
+.book-left { background:white; border:1px solid var(--sdk); padding:34px 36px; }
+.book-base { padding-bottom:26px; border-bottom:1px solid var(--sdk); }
+.book-base-h { display:flex; justify-content:space-between; align-items:baseline; gap:16px; flex-wrap:wrap; }
+.book-base-t { font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:300; color:var(--ink); }
+.book-base-p { font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:300; color:var(--gold); white-space:nowrap; }
+.book-base-s { font-size:13px; color:var(--muted); line-height:1.7; margin-top:10px; max-width:52ch; }
+.step-n { display:inline-block; font-size:9px; font-weight:400; letter-spacing:2px;
+  text-transform:uppercase; color:var(--gold); border:1px solid rgba(181,132,42,.35);
+  padding:2px 7px; margin-right:9px; }
+.dates { display:grid; gap:2px; margin-top:14px; }
+.dt { display:grid; grid-template-columns:20px 1fr auto; gap:12px; align-items:center;
+  padding:15px 16px; border:1px solid var(--sdk); background:var(--slt); cursor:pointer; transition:border-color .2s, background .2s; }
+.dt:hover:not(.gone) { border-color:var(--gold); }
+.dt.sel { border-color:var(--gold); background:white; }
+.dt.gone { cursor:not-allowed; opacity:.45; }
+.dt input { width:16px; height:16px; accent-color:var(--gold); cursor:inherit; }
+.dt-d { font-size:14px; color:var(--ink); }
+.dt-m { font-size:11.5px; color:var(--muted); margin-top:2px; }
+.dt-s { font-size:9px; font-weight:400; letter-spacing:1.5px; text-transform:uppercase; white-space:nowrap; }
+.dt-s.open { color:var(--cork); }
+.dt-s.few  { color:var(--gold); }
+.dt-s.gone { color:var(--muted); }
+.opt-h { font-size:9px; font-weight:400; letter-spacing:2px; text-transform:uppercase; color:var(--clay); margin:26px 0 4px; }
+.opt-sub { font-size:12px; color:var(--muted); margin-bottom:14px; line-height:1.6; }
+.opt { display:grid; grid-template-columns:20px 1fr auto; gap:12px; align-items:start;
+  padding:14px 0; border-bottom:1px solid rgba(0,0,0,.07); cursor:pointer; }
+.opt:last-of-type { border-bottom:none; }
+.opt input { width:16px; height:16px; margin-top:3px; accent-color:var(--gold); cursor:pointer; }
+.opt-n { font-size:13.5px; color:var(--text); line-height:1.4; }
+.opt-d { font-size:12px; color:var(--muted); line-height:1.55; margin-top:3px; }
+.opt-p { font-size:13.5px; color:var(--gold); white-space:nowrap; }
+.opt-p.free { color:var(--muted); font-style:italic; font-size:12px; }
+
+.book-right { background:var(--ink); padding:34px 32px; position:sticky; top:96px; }
+.sum-h { font-size:9px; font-weight:400; letter-spacing:2px; text-transform:uppercase; color:var(--glt); margin-bottom:20px; }
+.sum-l { list-style:none; margin-bottom:20px; }
+.sum-l li { display:flex; justify-content:space-between; gap:14px; padding:8px 0;
+  border-bottom:1px solid rgba(255,255,255,.07); font-size:12.5px; color:rgba(255,255,255,.6); line-height:1.45; }
+.sum-l li span:last-child { color:rgba(255,255,255,.85); white-space:nowrap; }
+.sum-tot { display:flex; justify-content:space-between; align-items:baseline; gap:14px;
+  padding-top:18px; border-top:1px solid rgba(181,132,42,.3); }
+.sum-tot-l { font-size:10px; font-weight:300; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,.4); }
+.sum-tot-v { font-family:'Cormorant Garamond',serif; font-size:40px; font-weight:300; color:var(--glt); line-height:1; }
+.sum-vat { font-size:11px; color:rgba(255,255,255,.3); margin-top:8px; line-height:1.6; }
+.sum-terms { display:grid; grid-template-columns:18px 1fr; gap:10px; margin:22px 0 16px; align-items:start; cursor:pointer; }
+.sum-terms input { width:15px; height:15px; margin-top:2px; accent-color:var(--gold); cursor:pointer; }
+.sum-terms span { font-size:11.5px; color:rgba(255,255,255,.45); line-height:1.6; }
+.sum-terms a { color:var(--glt); }
+.sum-btn { display:block; width:100%; padding:15px; background:var(--gold); color:white; border:none;
+  font-family:'Jost',sans-serif; font-size:10px; font-weight:300; letter-spacing:2px; text-transform:uppercase;
+  cursor:pointer; transition:background .2s; }
+.sum-btn:hover:not(:disabled) { background:var(--glt); }
+.sum-btn:disabled { background:rgba(255,255,255,.08); color:rgba(255,255,255,.25); cursor:not-allowed; }
+.sum-err { font-size:12px; color:var(--glt); margin-top:12px; line-height:1.6; display:none; }
+.sum-note { font-size:11px; color:rgba(255,255,255,.28); margin-top:14px; line-height:1.65; }
+
+/* TERMS */
+.p-terms { background:var(--sand); }
+.terms-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:36px; margin-top:32px; }
+.tb-h { font-size:9px; font-weight:400; letter-spacing:2px; text-transform:uppercase; color:var(--clay); margin-bottom:10px; }
+.tb-b { font-size:13px; color:var(--muted); line-height:1.75; }
+
+/* FOOTER */
+footer { background:var(--ink); padding:56px; }
+.foot { max-width:1180px; margin:0 auto; display:flex; justify-content:space-between; gap:32px; flex-wrap:wrap; }
+.foot p { font-size:11px; color:rgba(255,255,255,.3); line-height:1.8; }
+.foot a { color:rgba(255,255,255,.45); text-decoration:none; }
+.foot a:hover { color:var(--glt); }
+
+@media (max-width:940px) {
+  nav, nav.scrolled { padding:14px 22px; }
+  #hero { padding:130px 22px 70px; }
+  .sec, footer { padding:60px 22px; }
+  .intro-grid, .inc-grid, .book-wrap { grid-template-columns:1fr; gap:32px; }
+  .prog-grid, .terms-grid { grid-template-columns:1fr; }
+  .book-right { position:static; }
+  .hero-fact { padding-right:22px; margin-right:22px; }
+}
+
+.dt-lv { display:block; font-size:10.5px; color:var(--gold); margin-top:4px; letter-spacing:.3px; }
+.dt-lv em { font-style:normal; color:var(--muted); }
+.lv-card { border:1px solid var(--sdk); background:var(--slt); padding:18px 20px; margin-top:14px; }
+.lv-h { font-size:9px; font-weight:400; letter-spacing:2px; text-transform:uppercase; color:var(--clay); margin-bottom:12px; }
+.lv-row { display:flex; justify-content:space-between; gap:14px; padding:6px 0;
+  border-bottom:1px solid rgba(0,0,0,.06); font-size:12.5px; color:var(--muted); }
+.lv-row:last-of-type { border-bottom:none; }
+.lv-row span:last-child { color:var(--ink); white-space:nowrap; }
+.lv-n { font-size:12px; color:var(--muted); line-height:1.7; margin-top:10px; }
+.lv-cav { font-style:italic; color:var(--clay); }
+
+.tc { max-width:760px; margin:0 auto; }
+.tc-intro { border-left:2px solid var(--gold); padding:4px 0 4px 22px; margin-bottom:44px; }
+.tc-intro p { font-size:13.5px; color:var(--muted); line-height:1.8; }
+.tc-draft { background:#FFF6D8; border:1px solid #E2C766; padding:16px 20px; margin-bottom:34px; }
+.tc-draft p { font-size:12.5px; color:#6B5410; line-height:1.7; }
+.tc h2 { font-family:'Cormorant Garamond',serif; font-weight:300; font-size:24px;
+  color:var(--ink); margin:38px 0 12px; }
+.tc p { font-size:14px; color:var(--text); line-height:1.85; margin-bottom:12px; }
+.tc ul { margin:0 0 12px 18px; }
+.tc li { font-size:14px; color:var(--text); line-height:1.8; margin-bottom:7px; }
+.tc a { color:var(--clay); }
+.tc-updated { font-size:11.5px; color:var(--muted); margin-top:48px;
+  padding-top:18px; border-top:1px solid var(--sdk); }
+[data-tc] { display:none; }
+[data-tc].on { display:block; }
+</style>
+</head>
+<body>
+
+
+<nav id="nav" class="scrolled">
+  <a href="/" class="nav-logo"><span class="nl-t">Mira</span><span class="nl-b">Flow</span></a>
+  <div class="nav-right">
+    <div class="lang-sw">
+      <button class="lsb active" data-lang="pt" onclick="setLang('pt')">PT</button>
+      <span class="lang-sep">/</span>
+      <button class="lsb" data-lang="en" onclick="setLang('en')">EN</button>
+      <span class="lang-sep">/</span>
+      <button class="lsb" data-lang="de" onclick="setLang('de')">DE</button>
+    </div>
+  </div>
+</nav>
+
+<section class="sec" style="padding-top:120px">
+  <div class="tc">
+<!-- ═══════════════════════════════════════════════════════════════════
+     EDIT THE TERMS HERE. Three blocks, one per language, plain HTML.
+     Deliberately NOT in a JavaScript dictionary: legal text gets edited
+     by people who do not write code, and escaping it into a JS object
+     is how clauses get mangled. Change the text between the tags.
+     Keep the same section order in all three so they stay comparable.
+     ═══════════════════════════════════════════════════════════════════ -->
+<div data-tc="pt" class="on">
+<p class="sl">Mira Flow</p>
+<h1 class="st" style="margin-bottom:22px">Condições de reserva e cancelamento</h1>
+<div class="tc-intro"><p>Escritas para serem lidas. Se alguma coisa não estiver clara, pergunta antes de reservares — hello@mira-flow.ch.</p></div>
+<div class="tc-draft"><p><strong>Rascunho para revisão jurídica. Ainda não é vinculativo. Os campos marcados [A CONFIRMAR] têm de ser preenchidos antes de publicar.</strong></p></div>
+<h2>1. Quem somos</h2>
+<p>Mira Flow, com sede em Vila Nova de Milfontes, Portugal. Registo no RNAVT n.º <strong>[A CONFIRMAR]</strong>. NIF <strong>[A CONFIRMAR]</strong>. Contacto: hello@mira-flow.ch.</p>
+<p>Organizamos e vendemos viagens organizadas na acepção do Decreto-Lei n.º 17/2018. Isto significa que somos responsáveis pela execução de todos os serviços incluídos no teu pacote, mesmo os prestados por terceiros.</p>
+<h2>2. O que estas condições cobrem</h2>
+<p>Aplicam-se a todas as reservas feitas em mira-flow.eu e mira-flow.ch, tanto do fim de semana como da semana completa. Ao concluíres o pagamento aceitas estas condições.</p>
+<p>A informação pré-contratual obrigatória e o formulário normalizado de informação são-te disponibilizados antes do pagamento e fazem parte do contrato.</p>
+<h2>3. Reserva e pagamento</h2>
+<p>A reserva confirma-se com o <strong>pagamento integral</strong>. Não trabalhamos com depósitos: não há valores a liquidar mais tarde nem faturas pendentes antes da chegada.</p>
+<p>Pagamentos por cartão são imediatos. Pagamentos por Multibanco ou MB WAY geram uma referência: o lugar fica reservado enquanto a referência é válida, mas <strong>só está confirmado quando o pagamento entra</strong>. Se a referência caducar, o lugar volta a ficar disponível.</p>
+<p>O pagamento é processado pela Stripe. Não temos acesso aos dados do teu cartão.</p>
+<h2>4. Preço e o que inclui</h2>
+<p>Os preços são por pessoa, em euros, com IVA incluído. O que está incluído e excluído é o que consta na página da edição no momento da reserva.</p>
+<p>Depois da reserva o preço só pode ser alterado nos casos previstos na lei — variações no custo de combustível, impostos ou taxas — até um máximo de 8% e com aviso por escrito no mínimo 20 dias antes da partida. Acima de 8% podes rescindir sem penalização. Se estes custos descerem, o valor é-te devolvido.</p>
+<h2>5. Se cancelares</h2>
+<p>Podes cancelar a qualquer momento por escrito para hello@mira-flow.ch. Aplicam-se as seguintes taxas de rescisão:</p>
+<ul><li><strong>Fim de semana</strong> — mais de 30 dias antes: reembolso integral. Entre 30 e 15 dias: 50%. Menos de 15 dias: sem reembolso.</li><li><strong>Semana</strong> — mais de 90 dias antes: reembolso integral menos <strong>[A CONFIRMAR: €150]</strong> de custos administrativos. Entre 90 e 45 dias: 50%. Menos de 45 dias: sem reembolso.</li></ul>
+<p>Se ocorrerem circunstâncias inevitáveis e excepcionais no destino, ou no trajecto até ele, que afectem de forma significativa a realização da viagem, podes cancelar sem qualquer taxa e receber o reembolso integral, nos termos da lei.</p>
+<p>Recomendamos vivamente um seguro de cancelamento. Não está incluído no preço.</p>
+<h2>6. Passar o teu lugar a outra pessoa</h2>
+<p>Podes ceder a tua reserva a alguém que cumpra as condições da edição — nomeadamente o nível de jogo. Avisa-nos com pelo menos 7 dias de antecedência. Não cobramos por isto, mas custos comprovados cobrados por fornecedores (por exemplo alteração de nome numa reserva) ficam a cargo de quem cede.</p>
+<p>Quem cede e quem recebe o lugar respondem solidariamente pelo pagamento de eventuais custos adicionais.</p>
+<h2>7. Se cancelarmos nós</h2>
+<p>Cada edição precisa de um número mínimo de <strong>8 participantes</strong>. Se não chegarmos a esse número, cancelamos e avisamos-te:</p>
+<ul><li><strong>Semana</strong> — no mínimo 20 dias antes da partida.</li><li><strong>Fim de semana</strong> — no mínimo 7 dias antes da partida.</li></ul>
+<p>Na prática avisamos bem antes disto — 45 dias para a semana, 21 para o fim de semana — mas os prazos acima são os que nos vinculam legalmente.</p>
+<p>Nesse caso devolvemos a totalidade do que pagaste, sem penalização, no prazo de 14 dias. Em alternativa podes transferir o valor para outra edição. Não somos responsáveis por voos, comboios ou alojamento que tenhas reservado por tua conta — mais uma razão para ter seguro.</p>
+<p>Podemos também cancelar por circunstâncias inevitáveis e excepcionais, com reembolso integral e sem indemnização adicional.</p>
+<h2>8. Se alterarmos o programa</h2>
+<p>O programa publicado é a nossa intenção, não um guião rígido. Podemos ajustar horários, campos, restaurantes ou a ordem das sessões por razões de tempo, disponibilidade ou segurança, mantendo o conteúdo e a qualidade equivalentes.</p>
+<p>Se formos obrigados a alterar significativamente um elemento essencial da viagem, ou a baixar a qualidade do pacote, dizemos-te o que mudou e podes aceitar, aceitar uma alternativa, ou rescindir sem penalização.</p>
+<p>Facilitadores nomeados podem mudar por doença ou força maior. Substituímos por alguém de competência equivalente.</p>
+<h2>9. Seguro</h2>
+<p>Não está incluído qualquer seguro pessoal. É da tua responsabilidade ter cobertura de saúde válida em Portugal e, recomendamos, seguro de cancelamento e de acidentes desportivos.</p>
+<p>Cidadãos da UE devem trazer o Cartão Europeu de Seguro de Doença.</p>
+<h2>10. A tua parte</h2>
+<p>Ao reservares declaras que: o teu nível de jogo corresponde ao que indicaste; estás em condições físicas de praticar padel e yoga durante vários dias; e informaste-nos de restrições alimentares, lesões ou condições relevantes para a tua segurança.</p>
+<p>As faixas de nível indicadas em cada edição são uma orientação. Se houver uma diferença substancial entre o nível declarado e o observado, podemos ajustar os pares ou, em casos extremos, limitar a participação em sessões específicas por segurança e pela experiência do grupo.</p>
+<p>Esperamos respeito pelas outras pessoas, pela equipa e pelo lugar. Comportamento que ponha em risco a segurança ou arruíne a experiência dos outros pode levar à exclusão, sem reembolso.</p>
+<h2>11. Fotografia e vídeo</h2>
+<p>Filmamos e fotografamos em court como parte do programa; as imagens de grupo são partilhadas com os participantes.</p>
+<p>A utilização das tuas imagens em materiais de promoção do Mira Flow depende do teu <strong>consentimento explícito</strong>, dado na reserva e revogável a qualquer momento escrevendo para hello@mira-flow.ch. Recusar não afecta em nada a tua reserva.</p>
+<h2>12. Responsabilidade</h2>
+<p>Respondemos pela correcta execução dos serviços incluídos no pacote. Se algo não for prestado conforme contratado, comunica-nos no local e sem demora para que possamos corrigir.</p>
+<p>Não respondemos por incumprimentos que te sejam imputáveis, por actos imprevisíveis de terceiros alheios aos serviços contratados, ou por circunstâncias inevitáveis e excepcionais.</p>
+<p>Nos casos em que a lei o permita, a nossa responsabilidade por danos que não resultem de lesão corporal nem de conduta dolosa ou negligente está limitada a três vezes o preço total da viagem.</p>
+<h2>13. Protecção em caso de insolvência</h2>
+<p>Como agência registada no RNAVT, dispomos de protecção obrigatória contra insolvência através do Fundo de Garantia de Viagens e Turismo, que cobre o reembolso dos pagamentos efectuados e, se aplicável, o repatriamento.</p>
+<p>Detalhes e contacto da entidade garante: <strong>[A CONFIRMAR]</strong>.</p>
+<h2>14. Reclamações e resolução de litígios</h2>
+<p>Fala connosco primeiro — a maior parte das coisas resolve-se em Milfontes, no próprio dia. Reclamações escritas para hello@mira-flow.ch, com resposta no prazo de 30 dias.</p>
+<p>Tens à disposição o <a href="https://www.livroreclamacoes.pt">Livro de Reclamações Eletrónico</a>.</p>
+<p>Em caso de litígio de consumo podes recorrer à entidade de resolução alternativa de litígios competente: <strong>[A CONFIRMAR — indicar a entidade RAL da área de Beja/Odemira]</strong>. Mais informação em <a href="https://www.consumidor.gov.pt">consumidor.gov.pt</a>. Está também disponível a plataforma europeia de resolução de litígios em linha.</p>
+<h2>15. Dados pessoais</h2>
+<p>Tratamos os teus dados para gerir a reserva, organizar a viagem e cumprir obrigações legais e fiscais. Não os vendemos nem os partilhamos para fins de marketing de terceiros.</p>
+<p>Partilhamos o estritamente necessário com os fornecedores da tua viagem — alojamento, restaurantes, clubes, transporte.</p>
+<p>Podes pedir acesso, correcção ou eliminação escrevendo para hello@mira-flow.ch.</p>
+<h2>16. Lei aplicável</h2>
+<p>Estas condições regem-se pela lei portuguesa. Sem prejuízo dos direitos que a lei do consumo te confere, o foro competente é o da comarca de Beja.</p>
+<p class="tc-updated">Última actualização: [DATA]</p>
+</div>
+
+<div data-tc="en">
+<p class="sl">Mira Flow</p>
+<h1 class="st" style="margin-bottom:22px">Booking and cancellation conditions</h1>
+<div class="tc-intro"><p>Written to be read. If anything is unclear, ask before you book — hello@mira-flow.ch.</p></div>
+<div class="tc-draft"><p><strong>Draft pending legal review. Not yet binding. Every [TO CONFIRM] field must be filled before this goes live.</strong></p></div>
+<h2>1. Who we are</h2>
+<p>Mira Flow, based in Vila Nova de Milfontes, Portugal. RNAVT registration no. <strong>[TO CONFIRM]</strong>. Tax no. <strong>[TO CONFIRM]</strong>. Contact: hello@mira-flow.ch.</p>
+<p>We organise and sell package travel within the meaning of Portuguese Decree-Law 17/2018, which implements the EU Package Travel Directive. That means we are responsible for delivering every service in your package, including those performed by others.</p>
+<h2>2. What these terms cover</h2>
+<p>They apply to every booking made on mira-flow.eu and mira-flow.ch, for both the weekend and the full week. Completing payment means you accept them.</p>
+<p>The mandatory pre-contractual information and the standard information form are provided to you before payment and form part of the contract.</p>
+<h2>3. Booking and payment</h2>
+<p>A booking is confirmed by <strong>payment in full</strong>. We do not take deposits: there is no balance to settle later and no invoice waiting for you before arrival.</p>
+<p>Card payments clear immediately. Multibanco and MB WAY generate a reference: your place is held while that reference is valid, but is <strong>only confirmed once the payment lands</strong>. If the reference expires, the place goes back on sale.</p>
+<p>Payment is processed by Stripe. We never see your card details.</p>
+<h2>4. Price and what is included</h2>
+<p>Prices are per person, in euros, VAT included. What is and is not included is whatever the edition page said at the time you booked.</p>
+<p>After booking, the price can only change in the cases the law allows — movements in fuel costs, taxes or fees — up to a maximum of 8%, with written notice at least 20 days before departure. Above 8% you may cancel without penalty. If those costs fall, you get the difference back.</p>
+<h2>5. If you cancel</h2>
+<p>You may cancel at any time in writing to hello@mira-flow.ch. The following termination fees apply:</p>
+<ul><li><strong>Weekend</strong> — more than 30 days before: full refund. Between 30 and 15 days: 50%. Under 15 days: no refund.</li><li><strong>Week</strong> — more than 90 days before: full refund less <strong>[TO CONFIRM: €150]</strong> administration costs. Between 90 and 45 days: 50%. Under 45 days: no refund.</li></ul>
+<p>If unavoidable and extraordinary circumstances occur at the destination, or on the way to it, that significantly affect the trip, you may cancel with no fee at all and receive a full refund, as the law provides.</p>
+<p>We strongly recommend cancellation insurance. It is not included in the price.</p>
+<h2>6. Passing your place to someone else</h2>
+<p>You may transfer your booking to someone who meets the edition's conditions, playing level included. Give us at least 7 days' notice. We charge nothing for this, but any documented supplier costs — a name change on a reservation, for instance — are payable by you.</p>
+<p>You and the person taking your place are jointly liable for any additional costs.</p>
+<h2>7. If we cancel</h2>
+<p>Each edition needs a minimum of <strong>8 participants</strong>. If we do not reach it we cancel and tell you:</p>
+<ul><li><strong>Week</strong> — at least 20 days before departure.</li><li><strong>Weekend</strong> — at least 7 days before departure.</li></ul>
+<p>In practice we tell you far earlier than that — 45 days for the week, 21 for the weekend — but the deadlines above are what binds us legally.</p>
+<p>You then get everything you paid back, without penalty, within 14 days. Or you move the amount to another edition. We are not responsible for flights, trains or accommodation you booked yourself — one more reason to hold insurance.</p>
+<p>We may also cancel for unavoidable and extraordinary circumstances, with a full refund and no further compensation.</p>
+<h2>8. If we change the programme</h2>
+<p>The published programme is our intention, not a rigid script. We may adjust times, courts, restaurants or the order of sessions for reasons of weather, availability or safety, keeping the content and quality equivalent.</p>
+<p>If we have to make a significant change to an essential element of the trip, or reduce the quality of the package, we tell you what changed and you may accept it, accept an alternative, or cancel without penalty.</p>
+<p>Named facilitators can change through illness or force majeure. We replace them with someone of equivalent competence.</p>
+<h2>9. Insurance</h2>
+<p>No personal insurance is included. It is your responsibility to hold valid health cover in Portugal and, we recommend, cancellation and sports accident cover.</p>
+<p>EU citizens should bring their European Health Insurance Card.</p>
+<h2>10. Your part</h2>
+<p>By booking you confirm that: your playing level matches what you declared; you are physically able to play padel and practise yoga across several days; and you have told us about dietary restrictions, injuries or conditions relevant to your safety.</p>
+<p>The level bands shown for each edition are guidance. Where there is a substantial gap between the level declared and the level observed, we may adjust pairings or, in extreme cases, limit participation in specific sessions — for your safety and for the group's experience.</p>
+<p>We expect respect for the other guests, the team and the place. Behaviour that endangers safety or ruins the experience for others can result in exclusion, without refund.</p>
+<h2>11. Photography and video</h2>
+<p>We film and photograph on court as part of the programme, and group footage is shared with participants.</p>
+<p>Using your image in Mira Flow promotional material requires your <strong>explicit consent</strong>, given at booking and withdrawable at any time by writing to hello@mira-flow.ch. Declining has no effect whatsoever on your booking.</p>
+<h2>12. Liability</h2>
+<p>We are liable for the proper performance of the services in your package. If something is not delivered as agreed, tell us on the spot and without delay so we can put it right.</p>
+<p>We are not liable for failures attributable to you, for unforeseeable acts of third parties unconnected with the contracted services, or for unavoidable and extraordinary circumstances.</p>
+<p>Where the law permits, our liability for damage that is not personal injury and not caused intentionally or negligently is limited to three times the total price of the trip.</p>
+<h2>13. Insolvency protection</h2>
+<p>As an RNAVT-registered agency we hold the mandatory insolvency protection through the Portuguese Travel and Tourism Guarantee Fund, covering refund of payments made and, where applicable, repatriation.</p>
+<p>Details and contact for the guarantor: <strong>[TO CONFIRM]</strong>.</p>
+<h2>14. Complaints and disputes</h2>
+<p>Talk to us first — most things get solved in Milfontes on the day. Written complaints to hello@mira-flow.ch, answered within 30 days.</p>
+<p>Portugal's <a href="https://www.livroreclamacoes.pt">electronic complaints book</a> is available to you.</p>
+<p>For consumer disputes you may use the competent alternative dispute resolution body: <strong>[TO CONFIRM — name the ADR entity covering Beja/Odemira]</strong>. More at <a href="https://www.consumidor.gov.pt">consumidor.gov.pt</a>. The European online dispute resolution platform is also available.</p>
+<h2>15. Personal data</h2>
+<p>We process your data to manage the booking, run the trip and meet legal and tax obligations. We do not sell it or share it for third-party marketing.</p>
+<p>We share only what is necessary with the suppliers on your trip — accommodation, restaurants, clubs, transport.</p>
+<p>You can request access, correction or deletion by writing to hello@mira-flow.ch.</p>
+<h2>16. Governing law</h2>
+<p>These terms are governed by Portuguese law. Without prejudice to your consumer rights, the competent court is that of the district of Beja.</p>
+<p class="tc-updated">Last updated: [DATE]</p>
+</div>
+
+<div data-tc="de">
+<p class="sl">Mira Flow</p>
+<h1 class="st" style="margin-bottom:22px">Buchungs- und Stornobedingungen</h1>
+<div class="tc-intro"><p>Zum Lesen geschrieben. Wenn etwas unklar ist, frag vor der Buchung — hello@mira-flow.ch.</p></div>
+<div class="tc-draft"><p><strong>Entwurf, juristische Prüfung ausstehend. Noch nicht verbindlich. Alle mit [ZU BESTÄTIGEN] markierten Felder müssen vor der Veröffentlichung ausgefüllt werden.</strong></p></div>
+<h2>1. Wer wir sind</h2>
+<p>Mira Flow, mit Sitz in Vila Nova de Milfontes, Portugal. RNAVT-Registernummer <strong>[ZU BESTÄTIGEN]</strong>. Steuernummer <strong>[ZU BESTÄTIGEN]</strong>. Kontakt: hello@mira-flow.ch.</p>
+<p>Wir organisieren und verkaufen Pauschalreisen im Sinne des portugiesischen Decreto-Lei 17/2018, das die EU-Pauschalreiserichtlinie umsetzt. Das heisst: Wir haften für die Erbringung sämtlicher Leistungen deines Pakets, auch derjenigen, die Dritte erbringen.</p>
+<h2>2. Wofür diese Bedingungen gelten</h2>
+<p>Sie gelten für jede Buchung über mira-flow.eu und mira-flow.ch, für das Wochenende wie für die ganze Woche. Mit dem Abschluss der Zahlung akzeptierst du sie.</p>
+<p>Die vorgeschriebenen vorvertraglichen Informationen und das Standardformblatt erhältst du vor der Zahlung; sie sind Bestandteil des Vertrags.</p>
+<h2>3. Buchung und Zahlung</h2>
+<p>Eine Buchung ist mit der <strong>vollständigen Zahlung</strong> bestätigt. Wir arbeiten nicht mit Anzahlungen: Es bleibt kein Restbetrag offen und vor der Anreise wartet keine Rechnung auf dich.</p>
+<p>Kartenzahlungen werden sofort ausgeführt. Multibanco und MB WAY erzeugen eine Referenz: Dein Platz ist reserviert, solange die Referenz gültig ist, aber <strong>erst bestätigt, wenn die Zahlung eingeht</strong>. Läuft die Referenz ab, geht der Platz zurück in den Verkauf.</p>
+<p>Die Zahlung wird über Stripe abgewickelt. Wir sehen deine Kartendaten nie.</p>
+<h2>4. Preis und Leistungen</h2>
+<p>Preise verstehen sich pro Person, in Euro, inklusive MwSt. Was enthalten und was nicht enthalten ist, richtet sich nach der Editionsseite zum Zeitpunkt deiner Buchung.</p>
+<p>Nach der Buchung kann sich der Preis nur in den gesetzlich vorgesehenen Fällen ändern — Treibstoffkosten, Steuern oder Gebühren — um höchstens 8% und mit schriftlicher Mitteilung mindestens 20 Tage vor Abreise. Über 8% kannst du kostenfrei zurücktreten. Sinken diese Kosten, erstatten wir die Differenz.</p>
+<h2>5. Wenn du stornierst</h2>
+<p>Du kannst jederzeit schriftlich an hello@mira-flow.ch stornieren. Es gelten folgende Rücktrittsgebühren:</p>
+<ul><li><strong>Wochenende</strong> — mehr als 30 Tage vorher: volle Erstattung. Zwischen 30 und 15 Tagen: 50%. Unter 15 Tagen: keine Erstattung.</li><li><strong>Woche</strong> — mehr als 90 Tage vorher: volle Erstattung abzüglich <strong>[ZU BESTÄTIGEN: 150 €]</strong> Bearbeitungskosten. Zwischen 90 und 45 Tagen: 50%. Unter 45 Tagen: keine Erstattung.</li></ul>
+<p>Treten am Zielort oder auf dem Weg dorthin unvermeidbare, aussergewöhnliche Umstände ein, die die Reise erheblich beeinträchtigen, kannst du gebührenfrei stornieren und erhältst den vollen Betrag zurück.</p>
+<p>Wir empfehlen dringend eine Reiserücktrittsversicherung. Sie ist nicht im Preis enthalten.</p>
+<h2>6. Deinen Platz weitergeben</h2>
+<p>Du kannst deine Buchung an jemanden übertragen, der die Bedingungen der Edition erfüllt — Spielstärke eingeschlossen. Sag uns mindestens 7 Tage vorher Bescheid. Wir berechnen dafür nichts, belegte Kosten von Leistungsträgern (etwa eine Namensänderung) gehen jedoch zu deinen Lasten.</p>
+<p>Du und die Person, die deinen Platz übernimmt, haftet ihr gesamtschuldnerisch für allfällige Mehrkosten.</p>
+<h2>7. Wenn wir absagen</h2>
+<p>Jede Edition braucht mindestens <strong>8 Teilnehmende</strong>. Erreichen wir diese Zahl nicht, sagen wir ab und informieren dich:</p>
+<ul><li><strong>Woche</strong> — spätestens 20 Tage vor Abreise.</li><li><strong>Wochenende</strong> — spätestens 7 Tage vor Abreise.</li></ul>
+<p>In der Praxis melden wir uns deutlich früher — 45 Tage bei der Woche, 21 beim Wochenende — rechtlich binden uns aber die Fristen oben.</p>
+<p>Du bekommst dann alles Gezahlte ohne Abzug innerhalb von 14 Tagen zurück. Alternativ überträgst du den Betrag auf eine andere Edition. Für Flüge, Bahn oder Unterkunft, die du selbst gebucht hast, haften wir nicht — ein Grund mehr für eine Versicherung.</p>
+<p>Wir können auch wegen unvermeidbarer, aussergewöhnlicher Umstände absagen, mit voller Erstattung und ohne weitere Entschädigung.</p>
+<h2>8. Wenn wir das Programm ändern</h2>
+<p>Das veröffentlichte Programm ist unsere Absicht, kein starres Drehbuch. Zeiten, Courts, Restaurants oder die Reihenfolge der Einheiten können wir aus Gründen von Wetter, Verfügbarkeit oder Sicherheit anpassen — bei gleichwertigem Inhalt und gleichwertiger Qualität.</p>
+<p>Müssen wir einen wesentlichen Bestandteil der Reise erheblich ändern oder die Qualität des Pakets senken, sagen wir dir, was sich geändert hat; du kannst annehmen, eine Alternative annehmen oder kostenfrei zurücktreten.</p>
+<p>Namentlich genannte Facilitator können krankheits- oder höhere-Gewalt-bedingt wechseln. Wir ersetzen sie durch gleichwertig qualifizierte Personen.</p>
+<h2>9. Versicherung</h2>
+<p>Eine persönliche Versicherung ist nicht enthalten. Für einen gültigen Krankenversicherungsschutz in Portugal bist du selbst verantwortlich; wir empfehlen zusätzlich eine Rücktritts- und Sportunfallversicherung.</p>
+<p>EU-Bürgerinnen und -Bürger sollten die Europäische Krankenversicherungskarte mitbringen.</p>
+<h2>10. Dein Teil</h2>
+<p>Mit der Buchung bestätigst du: Deine Spielstärke entspricht deinen Angaben; du bist körperlich in der Lage, über mehrere Tage Padel zu spielen und Yoga zu praktizieren; und du hast uns über Ernährungseinschränkungen, Verletzungen oder für deine Sicherheit relevante Umstände informiert.</p>
+<p>Die Niveauangaben je Edition sind eine Orientierung. Weicht das tatsächliche Niveau erheblich vom angegebenen ab, können wir die Paarungen anpassen oder in Extremfällen die Teilnahme an einzelnen Einheiten einschränken — zu deiner Sicherheit und für das Erlebnis der Gruppe.</p>
+<p>Wir erwarten Respekt gegenüber den anderen Gästen, dem Team und dem Ort. Verhalten, das die Sicherheit gefährdet oder das Erlebnis anderer zerstört, kann zum Ausschluss ohne Erstattung führen.</p>
+<h2>11. Foto und Video</h2>
+<p>Wir filmen und fotografieren auf dem Court als Teil des Programms; Gruppenaufnahmen werden mit den Teilnehmenden geteilt.</p>
+<p>Die Verwendung deines Bildes in Mira-Flow-Werbematerial setzt deine <strong>ausdrückliche Einwilligung</strong> voraus, die du bei der Buchung gibst und jederzeit per E-Mail an hello@mira-flow.ch widerrufen kannst. Eine Ablehnung hat keinerlei Auswirkung auf deine Buchung.</p>
+<h2>12. Haftung</h2>
+<p>Wir haften für die ordnungsgemässe Erbringung der im Paket enthaltenen Leistungen. Wird etwas nicht wie vereinbart erbracht, sag es uns vor Ort und unverzüglich, damit wir es beheben können.</p>
+<p>Nicht verantwortlich sind wir für dir zurechenbare Versäumnisse, für unvorhersehbare Handlungen unbeteiligter Dritter und für unvermeidbare, aussergewöhnliche Umstände.</p>
+<p>Soweit gesetzlich zulässig, ist unsere Haftung für Schäden, die weder Personenschäden sind noch vorsätzlich oder fahrlässig verursacht wurden, auf das Dreifache des Gesamtreisepreises begrenzt.</p>
+<h2>13. Insolvenzabsicherung</h2>
+<p>Als im RNAVT eingetragene Agentur verfügen wir über die vorgeschriebene Insolvenzabsicherung über den portugiesischen Garantiefonds für Reisen und Tourismus. Sie deckt die Erstattung geleisteter Zahlungen und gegebenenfalls die Rückbeförderung.</p>
+<p>Angaben und Kontakt des Absicherers: <strong>[ZU BESTÄTIGEN]</strong>.</p>
+<h2>14. Beschwerden und Streitbeilegung</h2>
+<p>Sprich zuerst mit uns — das meiste löst sich in Milfontes noch am selben Tag. Schriftliche Beschwerden an hello@mira-flow.ch, Antwort innerhalb von 30 Tagen.</p>
+<p>Dir steht das portugiesische <a href="https://www.livroreclamacoes.pt">elektronische Beschwerdebuch</a> offen.</p>
+<p>Bei Verbraucherstreitigkeiten kannst du die zuständige Schlichtungsstelle anrufen: <strong>[ZU BESTÄTIGEN — zuständige AS-Stelle für Beja/Odemira nennen]</strong>. Mehr unter <a href="https://www.consumidor.gov.pt">consumidor.gov.pt</a>. Ebenfalls verfügbar ist die europäische Plattform zur Online-Streitbeilegung.</p>
+<h2>15. Personenbezogene Daten</h2>
+<p>Wir verarbeiten deine Daten, um die Buchung zu verwalten, die Reise durchzuführen und gesetzliche sowie steuerliche Pflichten zu erfüllen. Wir verkaufen sie nicht und geben sie nicht für Drittmarketing weiter.</p>
+<p>An die Leistungsträger deiner Reise — Unterkunft, Restaurants, Clubs, Transport — geben wir nur das Nötige weiter.</p>
+<p>Auskunft, Berichtigung oder Löschung kannst du per E-Mail an hello@mira-flow.ch verlangen.</p>
+<h2>16. Anwendbares Recht</h2>
+<p>Es gilt portugiesisches Recht. Unbeschadet deiner Verbraucherrechte ist das Gericht des Bezirks Beja zuständig.</p>
+<p class="tc-updated">Zuletzt aktualisiert: [DATUM]</p>
+</div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot">
+    <div>
+      <p>Mira Flow · Vila Nova de Milfontes · Costa Vicentina</p>
+      <p><a href="mailto:hello@mira-flow.ch">hello@mira-flow.ch</a></p>
+    </div>
+    <div>
+      <p><a href="/">mira-flow.eu</a></p>
+      <p><a href="/weekend.html">Fim de semana</a></p>
+      <p><a href="/book-week.html">Semana</a></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+const params = new URLSearchParams(location.search);
+let lang = ['pt','en','de'].includes(params.get('lang')) ? params.get('lang') : 'pt';
+
+function setLang(l) {
+  lang = l;
+  document.documentElement.lang = l;
+  document.querySelectorAll('.lsb').forEach(b => b.classList.toggle('active', b.dataset.lang === l));
+  // One block visible at a time. No string is duplicated, so the three
+  // versions can never drift out of sync through a translation table.
+  document.querySelectorAll('[data-tc]').forEach(el => el.classList.toggle('on', el.dataset.tc === l));
+}
+setLang(lang);
+</script>
+</body>
+</html>

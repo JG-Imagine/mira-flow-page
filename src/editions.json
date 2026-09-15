@@ -25,7 +25,11 @@
     "'playtomic' is the machine-readable band (0-7 scale, 0.25 steps) and the one",
     "buyers outside Portugal will recognise. 'federation' holds the ladders that",
     "apply to that edition — drop a ladder entirely if it does not. An edition",
-    "showing only 'm' reads as a men's edition, so list all three unless you mean it."
+    "showing only 'm' reads as a men's edition, so list all three unless you mean it.",
+    "",
+    "DEPOSITS are off. 'deposit': null means full payment confirms the booking.",
+    "Setting an object here ({ amount, balanceDueDays }) turns the option back on —",
+    "but nothing invoices or chases a balance yet, so leave it null until that exists."
   ],
   "products": {
     "weekend": {
@@ -127,6 +131,16 @@
               "max": 3.25
             },
             "federation": {
+              "m": {
+                "pt": "M5 – M6",
+                "en": "M5 – M6",
+                "de": "M5 – M6"
+              },
+              "f": {
+                "pt": "F4 – F5",
+                "en": "F4 – F5",
+                "de": "F4 – F5"
+              },
               "mix": {
                 "pt": "Misto 4 – 5",
                 "en": "Mixed 4 – 5",
@@ -158,7 +172,7 @@
             "en": "Off season, empty courts",
             "de": "Nebensaison, leere Courts"
           },
-          "left": 12,
+          "left": 9,
           "level": {
             "playtomic": {
               "min": 1.5,
@@ -351,10 +365,7 @@
             }
           }
         ],
-        "deposit": {
-          "amount": 800,
-          "balanceDueDays": 60
-        }
+        "deposit": null
       },
       "editions": [
         {
@@ -463,7 +474,7 @@
             "en": "The best time of year in Milfontes",
             "de": "Die beste Zeit des Jahres in Milfontes"
           },
-          "left": 12,
+          "left": 0,
           "level": {
             "playtomic": {
               "min": 2.5,
