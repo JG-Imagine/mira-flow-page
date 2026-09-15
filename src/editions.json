@@ -127,16 +127,6 @@
               "max": 3.25
             },
             "federation": {
-              "m": {
-                "pt": "M5 – M6",
-                "en": "M5 – M6",
-                "de": "M5 – M6"
-              },
-              "f": {
-                "pt": "F4 – F5",
-                "en": "F4 – F5",
-                "de": "F4 – F5"
-              },
               "mix": {
                 "pt": "Misto 4 – 5",
                 "en": "Mixed 4 – 5",
@@ -175,16 +165,6 @@
               "max": 3.0
             },
             "federation": {
-              "m": {
-                "pt": "M5 – M6",
-                "en": "M5 – M6",
-                "de": "M5 – M6"
-              },
-              "f": {
-                "pt": "F4 – F5",
-                "en": "F4 – F5",
-                "de": "F4 – F5"
-              },
               "mix": {
                 "pt": "Misto 4 – 5",
                 "en": "Mixed 4 – 5",
