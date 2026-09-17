@@ -176,6 +176,7 @@ nav.scrolled { background:rgba(11,37,53,.96); backdrop-filter:blur(8px); padding
 .place-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:3px; margin-top:3px; }
 .place-card { position:relative; overflow:hidden; aspect-ratio:4/3; background:var(--deep); }
 .place-card.tall { aspect-ratio:3/4; grid-row:span 2; }
+.place-card img { width:100%; height:100%; object-fit:cover; display:block; }
 .place-ph { width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; background:linear-gradient(135deg,var(--deep),var(--ink)); border:1px dashed rgba(181,132,42,.2); }
 .place-ph-icon { font-size:26px; opacity:.35; }
 .place-ph-lbl { font-size:8px; font-weight:300; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,.2); text-align:center; padding:0 16px; }
@@ -454,7 +455,7 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.05); padd
          Recommended: 15–30 sec loop, 1920×1080, H.264, ~5–10MB
          Optimal settings: muted, autoplay, loop, playsinline
     ──────────────────────────────────────────────────────────────────── -->
-    <video class="hero-video" id="hero-video"
+    <video class="hero-video" id="hero-video" poster="img/miraflow-hero-poster.jpg"
            autoplay muted loop playsinline
            preload="metadata"
            oncanplay="this.classList.add('loaded')">
@@ -533,25 +534,33 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.05); padd
           <div class="place-stat"><div class="ps-num">1h</div><div class="ps-lbl" id="ps3">max from home base to any day trip</div></div>
         </div>
       </div>
+      <!-- ═══ PHOTOS NEEDED — drop files into public/img/place/ ═══
+           miraflow-estuary.jpg        3:4 PORTRAIT (tall card, spans two rows)
+           miraflow-home-courts.jpg    4:3 landscape
+           miraflow-sines.jpg          4:3 landscape
+           miraflow-lagos.jpg          4:3 landscape
+           miraflow-accommodation.jpg  4:3 landscape
+           ~1200px wide, under 200KB each. A caption sits over the bottom
+           of every card, so keep the lower third free of anything important. -->
       <div class="place-grid reveal">
         <div class="place-card tall">
-          <div class="place-ph"><div class="place-ph-icon">🌊</div><p class="place-ph-lbl">Mira estuary · golden hour<br>[Add your photo]</p></div>
+          <img src="img/place/miraflow-estuary.jpg" alt="The Mira estuary at golden hour, Vila Nova de Milfontes">
           <div class="place-caption"><h4 id="pc1h">The Mira estuary</h4><p id="pc1p">Vila Nova de Milfontes</p></div>
         </div>
         <div class="place-card">
-          <div class="place-ph"><div class="place-ph-icon">🎾</div><p class="place-ph-lbl">Home courts · Milfontes<br>[Add your photo]</p></div>
+          <img src="img/place/miraflow-home-courts.jpg" alt="The home padel courts in Vila Nova de Milfontes" loading="lazy">
           <div class="place-caption"><h4 id="pc2h">Home courts</h4><p id="pc2p">Milfontes · your base all week</p></div>
         </div>
         <div class="place-card">
-          <div class="place-ph"><div class="place-ph-icon">🏔️</div><p class="place-ph-lbl">Porto Covo cliffs<br>[Add your photo]</p></div>
-          <div class="place-caption"><h4 id="pc3h">Porto Covo</h4><p id="pc3p">Thursday lunch · clifftop</p></div>
+          <img src="img/place/miraflow-sines.jpg" alt="Padel courts in Sines, the Thursday partner club" loading="lazy">
+          <div class="place-caption"><h4 id="pc3h">Sines</h4><p id="pc3p">Thursday · partner club courts</p></div>
         </div>
         <div class="place-card">
-          <div class="place-ph"><div class="place-ph-icon">🎾</div><p class="place-ph-lbl">Lagos courts<br>[Add your photo]</p></div>
+          <img src="img/place/miraflow-lagos.jpg" alt="Padel courts in Lagos, the Wednesday day trip" loading="lazy">
           <div class="place-caption"><h4 id="pc4h">Lagos</h4><p id="pc4p">Wednesday · unfamiliar courts</p></div>
         </div>
         <div class="place-card">
-          <div class="place-ph"><div class="place-ph-icon">🏡</div><p class="place-ph-lbl">Accommodation<br>[Add your photo]</p></div>
+          <img src="img/place/miraflow-accommodation.jpg" alt="The house where guests stay for the week in Milfontes" loading="lazy">
           <div class="place-caption"><h4 id="pc5h">Where you sleep</h4><p id="pc5p">Same bed · 7 nights · unpack once</p></div>
         </div>
       </div>
@@ -1183,8 +1192,8 @@ const T = {
   "pc1p": "Vila Nova de Milfontes",
   "pc2h": "Heimcourts",
   "pc2p": "Milfontes · deine Basis die ganze Woche",
-  "pc3h": "Porto Covo",
-  "pc3p": "Donnerstag Mittagessen · auf der Klippe",
+  "pc3h": "Sines",
+  "pc3p": "Donnerstag · Courts des Partnerclubs",
   "pc4h": "Lagos",
   "pc4p": "Mittwoch · fremde Courts",
   "pc5h": "Wo du schläfst",
@@ -1365,8 +1374,8 @@ const T = {
   "pc1p": "Vila Nova de Milfontes",
   "pc2h": "Courts de casa",
   "pc2p": "Milfontes · a tua base a semana toda",
-  "pc3h": "Porto Covo",
-  "pc3p": "Almoço de quinta · na arriba",
+  "pc3h": "Sines",
+  "pc3p": "Quinta-feira · courts do clube parceiro",
   "pc4h": "Lagos",
   "pc4p": "Quarta · courts desconhecidos",
   "pc5h": "Onde dormes",
