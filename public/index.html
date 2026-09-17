@@ -192,6 +192,9 @@ nav.scrolled { background:rgba(11,37,53,.96); backdrop-filter:blur(8px); padding
 .team-card { background:white; overflow:hidden; }
 .team-card.founder { background:var(--ink); }
 .team-photo { aspect-ratio:3/4; position:relative; overflow:hidden; }
+.team-photo img { width:100%; height:100%; object-fit:cover; display:block; }
+/* Faces sit high in a portrait crop — nudge per person with an inline
+   style like object-position:50% 30% if someone's head gets cut. */
 .team-photo-ph { width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; }
 .team-card:not(.founder) .team-photo-ph { background:var(--sand); }
 .team-card.founder .team-photo-ph { background:linear-gradient(180deg,var(--deep),var(--ink)); }
@@ -565,7 +568,7 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.05); padd
       </div>
       <div class="team-grid reveal">
         <div class="team-card founder">
-          <div class="team-photo"><div class="team-photo-ph"><div class="team-photo-ph-icon">👤</div><p class="team-photo-ph-lbl">[Add photo]</p></div></div>
+          <div class="team-photo"><img src="/img/team/MIRAFLOW-JOAO.jpg" alt="João, founder of Mira Flow, on court in Vila Nova de Milfontes" width="600" height="800"></div>
           <div class="team-info">
             <p class="team-role" id="tr1">Founder · Host</p>
             <h3 class="team-name">João</h3>
@@ -573,7 +576,7 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.05); padd
           </div>
         </div>
         <div class="team-card">
-          <div class="team-photo"><div class="team-photo-ph"><div class="team-photo-ph-icon">🧘</div><p class="team-photo-ph-lbl">[Add photo]</p></div></div>
+          <div class="team-photo"><img src="/img/team/ana-teixeira.jpg" alt="Ana Teixeira leading a morning yoga session in Milfontes" width="600" height="800" loading="lazy"></div>
           <div class="team-info">
             <p class="team-role" id="tr2">Yoga · Breathwork · Daily ritual</p>
             <h3 class="team-name">Ana Teixeira</h3>
