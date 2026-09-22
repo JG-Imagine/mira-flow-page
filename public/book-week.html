@@ -287,11 +287,11 @@ footer { background:var(--ink); padding:56px; }
     <div class="terms-grid">
       <div>
         <p class="tb-h" data-i18n="tb1-h">Cancellation</p>
-        <p class="tb-b" data-i18n="tb1-b"> Cancelation 15 days before is possible but we would love to have you in another possible date.</p>
+        <p class="tb-b" data-i18n="tb1-b">[TO BE CONFIRMED &mdash; legal wording pending. Starting suggestion: deposit refundable up to 90 days before, 50% of the total up to 45 days, no refund after that. Your place is transferable to someone else up to 14 days before, at no cost.]</p>
       </div>
       <div>
         <p class="tb-h" data-i18n="tb2-h">Minimum numbers</p>
-        <p class="tb-b" data-i18n="tb2-b">An edition confirms at 8 players. If we don't reach that, we tell you 15 days ahead and refund in full &mdash; or you move to the next edition, your choice.</p>
+        <p class="tb-b" data-i18n="tb2-b">An edition confirms at 8 players. If we don't reach that, we tell you 45 days ahead and refund in full &mdash; or you move to the next edition, your choice.</p>
       </div>
       <div>
         <p class="tb-h" data-i18n="tb3-h">Playing level</p>
@@ -521,8 +521,8 @@ Object.assign(EN, EN_EXTRA);
 
 const DICTS = { en: EN, de: DE, pt: PT };
 const t = k => { const d = DICTS[lang] || EN; return d[k] !== undefined ? d[k] : (EN[k] || ''); };
-const money = n => new Intl.NumberFormat({ pt:'pt-PT', de:'de-CH' }[lang] || 'en-IE',
-  { style:'currency', currency:'EUR', maximumFractionDigits:0 }).format(n);
+const money = n => new Intl.NumberFormat({ pt:'pt-PT', de:'de-DE' }[lang] || 'en-IE',
+  { style:'currency', currencyDisplay:'narrowSymbol', currency:'EUR', maximumFractionDigits:0 }).format(n);
 
 function setLang(l) {
   lang = l;

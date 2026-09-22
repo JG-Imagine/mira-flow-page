@@ -447,11 +447,11 @@ const params = new URLSearchParams(location.search);
 let lang = ['pt','en','de'].includes(params.get('lang')) ? params.get('lang') : 'pt';
 
 const t = k => { const d = DICTS[lang] || PT; return d[k] !== undefined ? d[k] : PT[k]; };
-const money = (n, cur) => new Intl.NumberFormat({ pt:'pt-PT', de:'de-CH' }[lang] || 'en-IE',
-  { style:'currency', currency: cur || 'EUR', maximumFractionDigits:0 }).format(n);
+const money = (n, cur) => new Intl.NumberFormat({ pt:'pt-PT', de:'de-DE' }[lang] || 'en-IE',
+  { style:'currency', currencyDisplay:'narrowSymbol', currency: cur || 'EUR', maximumFractionDigits:0 }).format(n);
 const theDate = iso => { try {
   return new Date(iso + 'T00:00:00Z').toLocaleDateString(
-    { pt:'pt-PT', de:'de-CH' }[lang] || 'en-IE', { day:'numeric', month:'long', year:'numeric', timeZone:'UTC' });
+    { pt:'pt-PT', de:'de-DE' }[lang] || 'en-IE', { day:'numeric', month:'long', year:'numeric', timeZone:'UTC' });
 } catch { return iso; } };
 
 let booking = null;

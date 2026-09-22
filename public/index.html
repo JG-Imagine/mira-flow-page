@@ -820,7 +820,7 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.05); padd
             <p class="pkg-sub" id="pk1-sub">The full Mira Flow week. You take care of the small logistics. We take care of everything that matters.</p>
           </div>
           <div class="pkg-price-row">
-            <div class="pkg-price" id="pk1-price">€ 2'200</div>
+            <div class="pkg-price" id="pk1-price" data-tier="classic">&nbsp;</div>
             <div class="pkg-per" id="pk1-per">per person</div>
           </div>
           <div class="pkg-feats">
@@ -848,7 +848,7 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.05); padd
             <p class="pkg-sub" id="pk2-sub">You arrive on Sunday and make no decisions until you leave the following Sunday. Everything is arranged.</p>
           </div>
           <div class="pkg-price-row">
-            <div class="pkg-price" id="pk2-price">€ 3'900</div>
+            <div class="pkg-price" id="pk2-price" data-tier="full">&nbsp;</div>
             <div class="pkg-per" id="pk2-per">per person</div>
           </div>
           <div class="pkg-feats">
@@ -1326,9 +1326,7 @@ const T = {
   "pk-st": "Ein Erlebnis.<br><em>Zwei Wege, es zu leben.</em>",
   "pk-gt": "Das Programm ist in beiden Paketen identisch",
   "pk-gb": "Ob du <strong>Classic</strong> oder <strong>Full Experience</strong> wählst – du bekommst dieselbe Woche. Was sich ändert, ist der Service-Level drumherum.",
-  "pk1-price": "CHF 2'150",
   "pk1-per": "pro Person",
-  "pk2-price": "CHF 3'800",
   "pk2-per": "pro Person",
   "pk1-tag": "Die Programmwoche",
   "pk1-name": "Classic",
@@ -1645,7 +1643,6 @@ const T = {
   "pt8": "Presente de boas-vindas",
   "pk1-tag": "A semana de programa",
   "pk1-name": "Classic",
-  "pk1-price": "€ 2.900",
   "pk1-per": "por pessoa",
   "pk1-sub": "A semana Mira Flow completa. Tratas da pequena logística. Nós tratamos de tudo o que importa.",
   "pk1-fl": "O que está incluído",
@@ -1654,7 +1651,6 @@ const T = {
   "pk1-cta": "Reservar lugar",
   "pk2-tag": "A semana acompanhada",
   "pk2-name": "Full<br>Experience",
-  "pk2-price": "€ 3.900",
   "pk2-per": "por pessoa",
   "pk2-sub": "Chegas no domingo e não tomas uma única decisão até saíres no domingo seguinte. Está tudo tratado.",
   "pk2-fl": "Tudo o do Classic, mais:",
@@ -1700,6 +1696,39 @@ const EN = {};
 KEYS.forEach(k => { const el = document.getElementById(k); if (el) EN[k] = el.innerHTML; });
 T.en = EN;
 
+// ── PACKAGE PRICES ───────────────────────────────────────────────
+// No price is typed on this page. They come from src/editions.json via
+// /api/editions — the same numbers the booking page shows and Stripe
+// charges. Change a price there and this follows.
+// Shows "from" the lowest price among editions that still have places.
+var WEEK_FEED = null;
+var PRICE_WORDS = {
+  en: { from: 'from', fail: 'See dates & prices' },
+  de: { from: 'ab',   fail: 'Termine & Preise' },
+  pt: { from: 'desde', fail: 'Ver datas e preços' }
+};
+function renderPrices() {
+  var L = (typeof currentLang === 'string' && PRICE_WORDS[currentLang]) ? currentLang : 'en';
+  var W = PRICE_WORDS[L];
+  document.querySelectorAll('.pkg-price[data-tier]').forEach(function (el) {
+    var tier = el.dataset.tier;
+    var all = WEEK_FEED ? WEEK_FEED.editions.filter(function (e) { return e.tiers[tier]; }) : [];
+    var open = all.filter(function (e) { return e.left > 0; });
+    var pool = open.length ? open : all;
+    if (!pool.length) { el.textContent = W.fail; return; }
+    var prices = pool.map(function (e) { return e.base + e.tiers[tier].price; });
+    var lo = Math.min.apply(null, prices), hi = Math.max.apply(null, prices);
+    var money = new Intl.NumberFormat({ de: 'de-DE', pt: 'pt-PT' }[L] || 'en-IE',
+      { style:'currency', currencyDisplay:'narrowSymbol', currency: (WEEK_FEED.currency || 'eur').toUpperCase(), maximumFractionDigits: 0 });
+    el.textContent = lo === hi ? money.format(lo) : W.from + ' ' + money.format(lo);
+  });
+}
+fetch('/api/editions?product=week')
+  .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
+  .then(function (d) { WEEK_FEED = d; })
+  .catch(function () {})            // feed down → "See dates & prices", never a stale number
+  .then(renderPrices);
+
 function setLang(lang) {
   currentLang = lang;
   document.documentElement.lang = lang;
@@ -1729,6 +1758,7 @@ function setLang(lang) {
     cta.textContent = (T[lang] && T[lang]['nav-cta']) || EN['nav-cta'];
     cta.href = '#waitlist';
   }
+  renderPrices();
 }
 
 </script>
