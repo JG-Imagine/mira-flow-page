@@ -535,7 +535,7 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.05); padd
       <span class="lang-sep">·</span>
       <button class="lsb" data-lang="pt" onclick="setLang('pt')">PT</button>
     </div>
-    <a href="#waitlist" class="nav-cta" id="nav-cta">Join waitlist</a>
+    <a href="/book-week.html" class="nav-cta" id="nav-cta">Book</a>
   </div>
 </nav>
 
@@ -586,7 +586,7 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.05); padd
       </div>
       <div class="hero-cta">
         <a href="/book-week.html" class="btn-p" id="h-btn">See dates and book</a>
-        <a href="#waitlist" class="btn-g" id="h-btn2">Join the waitlist</a>
+        <a href="#waitlist" class="btn-g" id="h-btn2">Keep me posted</a>
         <span class="hero-cta-sub" id="h-sub">Spring &amp; autumn editions · 8–12 guests</span>
       </div>
     </div>
@@ -892,16 +892,16 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.05); padd
   <!-- WAITLIST -->
   <section class="sec p-waitlist" id="waitlist">
     <div class="max">
-      <p class="sl" id="wl-sl">Launching 2026</p>
-      <h2 class="st" style="margin-bottom:16px" id="wl-st">Be the first<br><em>to find your flow.</em></h2>
-      <p class="sb" id="wl-sb">Spring and autumn editions filling now. Leave your email for early access pricing and date confirmation.</p>
+      <p class="sl" id="wl-sl">Not ready to book?</p>
+      <h2 class="st" style="margin-bottom:16px" id="wl-st">Hear about new dates<br><em>before anyone else.</em></h2>
+      <p class="sb" id="wl-sb">New editions go to this list before they appear on the site. A few emails a year, never more.</p>
       <div class="wl-form">
         <input class="wl-input" type="email" id="wl-email" placeholder="your@email.com">
         <input type="text" id="wl-company" tabindex="-1" autocomplete="off" aria-hidden="true"
                style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;">
-        <button class="wl-btn" id="wl-btn" onclick="joinWaitlist()">Join waitlist</button>
+        <button class="wl-btn" id="wl-btn" onclick="joinWaitlist()">Keep me posted</button>
       </div>
-      <p class="wl-note" id="wl-note">No spam. One email when dates are confirmed.</p>
+      <p class="wl-note" id="wl-note">No spam. Unsubscribe with one click.</p>
     </div>
   </section>
 
@@ -1041,7 +1041,7 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.05); padd
         <li><a href="#packages" id="fc1-l4">Packages</a></li>
         <li><a href="/book-week.html" id="fc1-l7">Book a week</a></li>
         <li><a href="/weekend.html" id="fc1-l6">Weekend format</a></li>
-        <li><a href="#waitlist" id="fc1-l5">Join waitlist</a></li>
+        <li><a href="#waitlist" id="fc1-l5">New dates by email</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -1189,7 +1189,7 @@ function showPlayers() {
   document.getElementById('nav-clubs-btn').style.display = 'inline';
   const cta = document.getElementById('nav-cta');
   cta.textContent = (T[currentLang] && T[currentLang]['nav-cta']) || EN['nav-cta'];
-  cta.href = '#waitlist';
+  cta.href = '/book-week.html';
   window.scrollTo({ top: 0, behavior: 'smooth' });
   setTimeout(activateReveals, 100);
 }
@@ -1205,21 +1205,21 @@ const WL_MSG = {
   en: {
     done:    '✓ Check your inbox',
     thanks:  'We sent you a link to confirm. One click and you\'re on the list.',
-    retry:   'Join waitlist',
+    retry:   'Keep me posted',
     failed:  'Something went wrong — please try again, or email hello@mira-flow.ch',
     offline: 'Could not connect — please email hello@mira-flow.ch'
   },
   pt: {
     done:    '✓ Vê o teu email',
     thanks:  'Enviámos-te um link para confirmares. Um clique e ficas na lista.',
-    retry:   'Entrar na lista',
+    retry:   'Quero novidades',
     failed:  'Algo correu mal — tenta de novo, ou escreve para hello@mira-flow.ch',
     offline: 'Sem ligação — escreve para hello@mira-flow.ch'
   },
   de: {
     done:    '✓ Bitte E-Mail prüfen',
     thanks:  'Wir haben dir einen Bestätigungslink geschickt. Ein Klick und du bist dabei.',
-    retry:   'Auf Warteliste',
+    retry:   'Auf dem Laufenden halten',
     failed:  'Etwas ist schiefgelaufen — bitte erneut versuchen oder an hello@mira-flow.ch schreiben',
     offline: 'Keine Verbindung — bitte schreiben Sie an hello@mira-flow.ch'
   }
@@ -1291,7 +1291,7 @@ const T = {
   "h-ey": "Padel-Retreat · Costa Vicentina · Portugal",
   "h-tg": "Sieben Tage an der Atlantikküste.<br>Padel, Mental Coaching, Breathwork.<br><em>Das Spiel, von dem man anders zurückkommt.</em>",
   "h-btn": "Termine ansehen und buchen",
-  "h-btn2": "Auf die Warteliste",
+  "h-btn2": "Auf dem Laufenden bleiben",
   "h-sub": "Frühjahrs- &amp; Herbsteditions · 8–12 Gäste",
   "h-sc": "Entdecken",
   "hf1": "Nächte · Milfontes",
@@ -1300,7 +1300,7 @@ const T = {
   "hf4": "Samstagsturnier",
   "nav-clubs-btn": "Für Clubs",
   "nav-wknd": "Wochenende",
-  "nav-cta": "Warteliste",
+  "nav-cta": "Buchen",
   "why-sl1": "Das Konzept",
   "why-st1": "Kein Trainingscamp.<br><em>Ein Erlebnis.</em>",
   "why-sl2": "Warum es funktioniert",
@@ -1342,11 +1342,11 @@ const T = {
   "wke-cta": "Zum Wochenende",
   "fc1-l6": "Wochenende",
   "fc1-l7": "Woche buchen",
-  "wl-sl": "Start 2026",
-  "wl-st": "Sei der Erste,<br><em>der seinen Flow findet.</em>",
-  "wl-sb": "Frühjahrs- und Herbsteditions füllen sich jetzt. Hinterlasse deine E-Mail für Frühbucherpreise.",
-  "wl-btn": "Auf Warteliste",
-  "wl-note": "Kein Spam. Eine E-Mail, wenn die Termine feststehen.",
+  "wl-sl": "Noch nicht bereit zu buchen?",
+  "wl-st": "Neue Termine<br><em>als Erste erfahren.</em>",
+  "wl-sb": "Neue Editionen gehen zuerst an diese Liste, bevor sie auf der Website erscheinen. Ein paar E-Mails im Jahr, nie mehr.",
+  "wl-btn": "Auf dem Laufenden halten",
+  "wl-note": "Kein Spam. Abmelden mit einem Klick.",
   "club-back": "← Für Spieler",
   "club-lbl": "Für Clubs",
   "fc1-h": "Für Spieler",
@@ -1455,7 +1455,7 @@ const T = {
   "fc1-l2": "Der Ort",
   "fc1-l3": "Die Woche",
   "fc1-l4": "Pakete",
-  "fc1-l5": "Warteliste",
+  "fc1-l5": "Neue Termine per E-Mail",
   "fc2-l1": "Club-Überblick",
   "fc2-l2": "Wie es funktioniert",
   "fc2-l3": "Deck anfordern",
@@ -1517,11 +1517,11 @@ const T = {
   pt: {
   "nav-clubs-btn": "Para clubes",
   "nav-wknd": "Fim de semana",
-  "nav-cta": "Lista de espera",
+  "nav-cta": "Reservar",
   "h-ey": "Retiro de padel · Costa Vicentina · Portugal",
   "h-tg": "Sete dias na costa atlântica.<br>Padel, treino mental, respiração.<br><em>O jogo do qual se volta diferente.</em>",
   "h-btn": "Ver datas e reservar",
-  "h-btn2": "Entrar na lista",
+  "h-btn2": "Quero novidades",
   "h-sub": "Edições de primavera e outono · 8–12 jogadores",
   "h-sc": "Descobrir",
   "hf1": "noites · Milfontes",
@@ -1663,11 +1663,11 @@ const T = {
   "wke-b": "Sexta ao fim da tarde até domingo depois de almoço, em Milfontes. Seis horas de court, a sessão de performance mental, yoga, e o torneio de domingo.",
   "wke-n": "Programa diferente, ritmo diferente. A semana é onde a progressão acontece ao longo de sete dias — o fim de semana é onde conheces o sítio.",
   "wke-cta": "Ver o fim de semana",
-  "wl-sl": "Arranque em 2026",
-  "wl-st": "Sê dos primeiros<br><em>a encontrar o teu flow.</em>",
-  "wl-sb": "As edições de primavera e outono estão a encher. Deixa o teu email para preços de acesso antecipado e confirmação de datas.",
-  "wl-btn": "Entrar na lista",
-  "wl-note": "Sem spam. Um email quando as datas estiverem confirmadas.",
+  "wl-sl": "Ainda não é para já?",
+  "wl-st": "Sabe das novas datas<br><em>antes de toda a gente.</em>",
+  "wl-sb": "As novas edições chegam primeiro a esta lista, antes de aparecerem no site. Poucos emails por ano, nunca mais do que isso.",
+  "wl-btn": "Quero novidades",
+  "wl-note": "Sem spam. Cancelas com um clique.",
   "club-back": "← Para jogadores",
   "club-lbl": "Para clubes",
   "fc1-h": "Para jogadores",
@@ -1677,7 +1677,7 @@ const T = {
   "fc1-l2": "O lugar",
   "fc1-l3": "A semana",
   "fc1-l4": "Pacotes",
-  "fc1-l5": "Lista de espera",
+  "fc1-l5": "Novas datas por email",
   "fc1-l6": "Fim de semana",
   "fc1-l7": "Reservar uma semana",
   "fc2-l1": "Visão geral",
@@ -1756,7 +1756,7 @@ function setLang(lang) {
     cta.href = 'mailto:hello@mira-flow.ch';
   } else {
     cta.textContent = (T[lang] && T[lang]['nav-cta']) || EN['nav-cta'];
-    cta.href = '#waitlist';
+    cta.href = '/book-week.html';
   }
   renderPrices();
 }
