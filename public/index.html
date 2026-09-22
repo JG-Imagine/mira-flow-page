@@ -79,14 +79,41 @@ nav.scrolled { background:rgba(11,37,53,.96); backdrop-filter:blur(8px); padding
     rgba(11,37,53,0.35) 100%
   );
 }
-/* Video upload hint (shown when no video src) */
-.hero-video-hint {
-  position:absolute; bottom:40px; right:56px;
-  z-index:3; font-size:8px; font-weight:300;
-  letter-spacing:2px; text-transform:uppercase;
-  color:rgba(255,255,255,0.12);
-  pointer-events:none;
+/* Poster: its own layer so it is visible before, and without, the video */
+.hero-poster {
+  position:absolute; inset:0; z-index:0;
+  background:url('img/miraflow-hero-poster.jpg') center/cover no-repeat;
+  opacity:0.38;
 }
+/* Placeholder frame — only while neither poster nor video has loaded */
+.hero-ph { display:none; position:absolute; inset:22px; z-index:2; pointer-events:none;
+  border:1px dashed rgba(212,168,75,.7); }
+.hero-ph.on { display:block; }
+.hero-ph span { position:absolute; right:18px; top:62px; font-size:9px; letter-spacing:1.5px;
+  text-transform:uppercase; color:rgba(212,168,75,.9); background:rgba(11,37,53,.8); padding:6px 10px; }
+/* ── FILM ── */
+.p-film { background:var(--ink); }
+.p-film .st { color:white; }
+.yt { margin-top:34px; }
+.yt-frame { position:relative; aspect-ratio:16/9; background:var(--deep); overflow:hidden; }
+.yt-frame iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
+.yt-btn { position:absolute; inset:0; width:100%; height:100%; padding:0; border:0;
+  background:linear-gradient(135deg,var(--deep),var(--ink)); cursor:pointer; }
+.yt-btn img { width:100%; height:100%; object-fit:cover; display:block; opacity:.85; transition:opacity .3s; }
+.yt-btn:hover img, .yt-btn:focus-visible img { opacity:1; }
+.yt-play { position:absolute; left:50%; top:50%; width:76px; height:76px;
+  transform:translate(-50%,-50%); transition:transform .25s; }
+.yt-btn:hover .yt-play { transform:translate(-50%,-50%) scale(1.07); }
+.yt-note { font-size:11px; color:rgba(255,255,255,.35); margin-top:12px; line-height:1.6; }
+/* Placeholder state: no valid ID yet */
+.yt-ph-lbl { display:none; }
+.yt.is-ph .yt-frame { border:1px dashed rgba(212,168,75,.45); }
+.yt.is-ph .yt-btn { cursor:default; }
+.yt.is-ph .yt-play { opacity:.3; }
+.yt.is-ph .yt-ph-lbl { display:block; position:absolute; left:0; right:0; bottom:18px; text-align:center;
+  font-size:9px; letter-spacing:1.5px; text-transform:uppercase; color:rgba(212,168,75,.7); }
+.yt.is-ph .yt-note { display:none; }
+.vh { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
 .hero-ring { position:absolute; border-radius:50%; pointer-events:none; }
 .hero-ring-1 { width:650px; height:650px; right:-180px; top:-180px; border:1px solid rgba(181,132,42,.1); }
 .hero-ring-2 { width:1050px; height:1050px; right:-380px; top:-380px; border:1px solid rgba(181,132,42,.05); }
@@ -414,6 +441,76 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.05); padd
   .hero-facts { gap:0; }
   .hero-fact { padding-right:20px; margin-right:20px; }
 }
+
+/* ═══ HERO LAYOUT B — split ════════════════════════════════════════════
+   Photo/video at full strength on the right, fading into the navy.
+   Focal point: change --hero-focus (x% y%) to recentre the crop.      */
+#hero { --hero-w:46%; --hero-focus:60% 50%;
+  --hero-fade:linear-gradient(90deg,transparent 0,rgba(0,0,0,.35) 12%,rgba(0,0,0,.85) 26%,#000 38%); }
+#hero .hero-poster, #hero .hero-video {
+  left:auto; right:0; width:var(--hero-w); opacity:1;
+  -webkit-mask-image:var(--hero-fade); mask-image:var(--hero-fade); }
+#hero .hero-poster { background-position:var(--hero-focus); }
+#hero .hero-video { object-position:var(--hero-focus); opacity:0; }
+#hero .hero-video.loaded { opacity:1; }
+/* reused as a top shade over the photo so the nav stays legible */
+#hero .hero-video-overlay { left:auto; right:0; width:var(--hero-w); height:190px; bottom:auto;
+  background:linear-gradient(180deg,rgba(11,37,53,.72) 0,rgba(11,37,53,0) 100%); }
+#hero .hero-ring { display:none; }
+#hero .hero-inner { max-width:52%; }
+#hero .hero-facts { display:grid; grid-template-columns:repeat(2,max-content); row-gap:22px; }
+#hero .hero-fact:nth-child(2n) { border-right:none; margin-right:0; }
+#hero .hero-cta { flex-wrap:wrap; }
+#hero .hero-ph { left:auto; right:22px; width:calc(var(--hero-w) - 22px); }
+@media (min-width:1500px) {
+  #hero .hero-facts { grid-template-columns:repeat(4,max-content); }
+  #hero .hero-fact:nth-child(2n) { border-right:1px solid rgba(255,255,255,.07); margin-right:40px; }
+  #hero .hero-fact:last-child { border-right:none; margin-right:0; }
+}
+
+/* Short laptop screens: scale the hero to the height so the booking
+   button stays above the fold (13" laptops are ~760px tall). */
+@media (min-width:761px) and (max-height:900px) {
+  #hero { padding-top:96px; padding-bottom:72px; }
+  #hero .hero-eyebrow { margin-bottom:18px; }
+  #hero .hero-wm { margin-bottom:20px; }
+  #hero .hero-wm-t, #hero .hero-wm-b { font-size:clamp(56px, min(11vw, 13vh), 132px); }
+  #hero .hero-tagline { font-size:clamp(18px, 2.6vh, 28px); margin-bottom:26px; }
+  #hero .hero-facts { padding-top:18px; margin-bottom:26px; row-gap:14px; }
+  #hero .hf-num { font-size:26px; }
+}
+
+/* ═══ PHONES ═══ */
+.nav-menu-btn { display:none; }
+@media (max-width:760px) {
+  /* hero: photo band across the top, text below */
+  #hero { display:block; min-height:0; padding:calc(46vh - 30px) 22px 72px; }
+  #hero .hero-poster, #hero .hero-video-overlay { left:0; right:0; width:100%; }
+  #hero .hero-poster { height:46vh; bottom:auto;
+    -webkit-mask-image:linear-gradient(180deg,#000 55%,transparent 100%);
+            mask-image:linear-gradient(180deg,#000 55%,transparent 100%); }
+  #hero .hero-video { display:none; }
+  #hero .hero-video-overlay { height:120px; }
+  #hero .hero-inner { max-width:100%; }
+  #hero .hero-scroll-btn { display:none; }
+  #hero .hero-ph { inset:74px 12px auto 12px; width:auto; height:calc(46vh - 90px); }
+
+  /* nav: logo + menu button; everything else in a drop-down panel */
+  nav, nav.scrolled { padding:16px 22px; }
+  .nav-menu-btn { display:flex; flex-direction:column; justify-content:center; gap:6px;
+    width:40px; height:40px; margin-right:-8px; padding:0 8px; background:none; border:0; cursor:pointer; }
+  .nav-menu-btn span { display:block; height:1px; background:white; transition:transform .25s; }
+  nav.open .nav-menu-btn span:first-child { transform:translateY(3.5px) rotate(45deg); }
+  nav.open .nav-menu-btn span:last-child  { transform:translateY(-3.5px) rotate(-45deg); }
+  .nav-right { display:none; position:absolute; top:100%; left:0; right:0;
+    flex-direction:column; align-items:flex-start; gap:20px; padding:22px 22px 26px;
+    background:rgba(11,37,53,.97); border-top:1px solid rgba(255,255,255,.06); }
+  nav.open { background:rgba(11,37,53,.97); }
+  nav.open .nav-right { display:flex; }
+  .nav-right .nav-clubs-btn { font-size:12px; color:rgba(255,255,255,.7); }
+  .nav-right .lsb { font-size:12px; }
+  .nav-right .nav-cta { align-self:stretch; text-align:center; padding:13px 22px; }
+}
 </style>
 </head>
 <body>
@@ -424,7 +521,11 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.05); padd
     <span class="nl-t">MIRA</span>
     <span class="nl-b">FLOW</span>
   </a>
-  <div class="nav-right">
+  <button class="nav-menu-btn" id="nav-menu-btn" type="button" aria-label="Menu"
+          aria-expanded="false" aria-controls="nav-right" onclick="toggleNav()">
+    <span></span><span></span>
+  </button>
+  <div class="nav-right" id="nav-right">
     <a href="/weekend.html" class="nav-clubs-btn" id="nav-wknd" style="text-decoration:none">Weekend</a>
     <button class="nav-clubs-btn" id="nav-clubs-btn" onclick="showClubs()">For clubs</button>
     <div class="lang-sw">
@@ -449,21 +550,23 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.05); padd
 
   <!-- HERO -->
   <section id="hero">
-    <!-- ─ Background video ─────────────────────────────────────────────
-         To activate: set the src attribute on the <source> tag below
-         to your MP4 file path, e.g. src="milfontes-hero.mp4"
-         Recommended: 15–30 sec loop, 1920×1080, H.264, ~5–10MB
-         Optimal settings: muted, autoplay, loop, playsinline
+    <!-- ─ HERO BACKGROUND ──────────────────────────────────────────────
+         LAYOUT B (split): the photo/video fills the RIGHT side on desktop and
+         fades into the navy; on phones it becomes a band across the top.
+         To move the focal point, change --hero-focus in the CSS
+         (e.g. 70% 50% shows more of the right of the frame).
+         Poster:  public/img/miraflow-hero-poster.jpg   16:9, ~1600px, <250KB
+         Video:   public/video/miraflow-hero.mp4        ~15s loop, silent, <6MB
+         Phones only ever get the poster. The dashed frame + label appear
+         only while BOTH files are missing, and vanish once either works.
     ──────────────────────────────────────────────────────────────────── -->
-    <video class="hero-video" id="hero-video" poster="img/miraflow-hero-poster.jpg"
-           autoplay muted loop playsinline
-           preload="metadata"
-           oncanplay="this.classList.add('loaded')">
-      <source id="hero-video-src" src="" type="video/mp4">
-      <!-- Fallback: video not shown if src is empty — navy bg shows instead -->
-    </video>
+    <div class="hero-poster" aria-hidden="true"></div>
+    <video class="hero-video" id="hero-video" muted loop playsinline preload="none"
+           aria-hidden="true" data-src="video/miraflow-hero.mp4"></video>
+    <div class="hero-ph" id="hero-ph" aria-hidden="true">
+      <span>Hero background · video/miraflow-hero.mp4 + img/miraflow-hero-poster.jpg</span>
+    </div>
     <div class="hero-video-overlay" id="hero-video-overlay"></div>
-    <p class="hero-video-hint" id="hero-video-hint">[ Add hero video → hero-video-src ]</p>
 
     <div class="hero-ring hero-ring-1"></div>
     <div class="hero-ring hero-ring-2"></div>
@@ -568,6 +671,34 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.05); padd
   </section>
 
   <!-- TEAM -->
+
+  <!-- FILM ───────────────────────────────────────────────────────────
+       Paste your YouTube ID in data-yt below — ONLY the 11 characters
+       after "v=": youtube.com/watch?v=dQw4w9WgXcQ  →  dQw4w9WgXcQ
+       (for youtu.be/dQw4w9WgXcQ links, it's the part after the slash)
+       Poster: public/img/miraflow-film-poster.jpg  16:9 (can copy the hero poster)
+       Until the ID is valid, a dashed placeholder shows in its place.
+  ──────────────────────────────────────────────────────────────────── -->
+  <section class="sec p-film" id="film">
+    <div class="max">
+      <p class="sl" id="fm-sl">The film</p>
+      <h2 class="st" id="fm-st">Milfontes,<br><em>in motion.</em></h2>
+      <div class="yt" data-yt="liT4K1B6L1M">
+        <div class="yt-frame">
+          <button class="yt-btn" type="button">
+            <img src="img/miraflow-film-poster.jpg" alt="" loading="lazy" onerror="this.remove()">
+            <span class="yt-play" aria-hidden="true">
+              <svg viewBox="0 0 68 68"><circle cx="34" cy="34" r="33" fill="rgba(11,37,53,.55)" stroke="#D4A84B" stroke-width="1"/><path d="M27 22 L48 34 L27 46 Z" fill="#D4A84B"/></svg>
+            </span>
+            <span class="vh" id="fm-play">Play the film</span>
+          </button>
+          <p class="yt-ph-lbl">Film · paste your YouTube ID into data-yt</p>
+        </div>
+        <p class="yt-note" id="fm-note">Pressing play loads the video from YouTube, and Google's privacy policy then applies. Nothing from YouTube loads before that.</p>
+      </div>
+    </div>
+  </section>
+
   <section class="sec p-team" id="team">
     <div class="max">
       <div class="reveal">
@@ -937,25 +1068,71 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.05); padd
 </footer>
 
 <script>
-// ── VIDEO HELPER ─────────────────────────────────────────────────────
-// To activate hero video, call:  setHeroVideo('path/to/video.mp4')
-// Or set the src attribute directly on #hero-video-src
-function setHeroVideo(src) {
-  const vid = document.getElementById('hero-video');
-  const srcEl = document.getElementById('hero-video-src');
-  const hint = document.getElementById('hero-video-hint');
-  if (!vid || !srcEl) return;
-  srcEl.src = src;
-  vid.load();
-  vid.oncanplay = () => vid.classList.add('loaded');
-  if (hint) hint.style.display = 'none';
+// ── PHONE MENU ───────────────────────────────────────────────────
+function toggleNav(force) {
+  const nav = document.getElementById('nav');
+  const open = typeof force === 'boolean' ? force : !nav.classList.contains('open');
+  nav.classList.toggle('open', open);
+  document.getElementById('nav-menu-btn').setAttribute('aria-expanded', String(open));
 }
-// On load: if src is empty, keep navy bg — no broken video icon
-document.addEventListener('DOMContentLoaded', () => {
-  const srcEl = document.getElementById('hero-video-src');
-  if (srcEl && !srcEl.src) {
-    document.getElementById('hero-video').style.display = 'none';
+// any choice in the panel closes it; so does Escape
+document.getElementById('nav-right').addEventListener('click', e => {
+  if (e.target.closest('a,button')) toggleNav(false);
+});
+document.addEventListener('keydown', e => { if (e.key === 'Escape') toggleNav(false); });
+
+// ── HERO VIDEO ───────────────────────────────────────────────────
+// Phones, reduced-motion and data-saver visitors keep the poster only.
+// Everyone else gets the loop, attached here so the browser never
+// downloads it for people it would not be shown to.
+(function initHero() {
+  const vid = document.getElementById('hero-video');
+  const ph  = document.getElementById('hero-ph');
+  let posterOk = false, videoOk = false, checked = 0;
+  const settle = () => { if (++checked === 2 && ph) ph.classList.toggle('on', !posterOk && !videoOk); };
+
+  const probe = new Image();                       // is the poster there?
+  probe.onload  = () => { posterOk = true;  settle(); };
+  probe.onerror = () => { posterOk = false; settle(); };
+  probe.src = 'img/miraflow-hero-poster.jpg';
+
+  const src = vid && vid.dataset.src;
+  const narrow = window.matchMedia('(max-width: 760px)').matches;
+  const still  = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const conn   = navigator.connection;
+  const saving = !!(conn && (conn.saveData || /(^|-)2g$/.test(conn.effectiveType || '')));
+  if (!vid || !src || narrow || still || saving) { settle(); return; }
+
+  vid.addEventListener('canplay', () => {
+    videoOk = true; vid.classList.add('loaded');
+    vid.play().catch(() => {});                    // muted autoplay; a refusal leaves the poster
+    settle();
+  }, { once: true });
+  vid.addEventListener('error', () => { vid.remove(); settle(); }, { once: true });
+  vid.src = src;
+  vid.load();
+})();
+
+// ── FILM (click-to-load YouTube) ──────────────────────────────────
+// Nothing from YouTube or Google loads until the visitor presses play.
+document.querySelectorAll('.yt[data-yt]').forEach(box => {
+  const id  = (box.dataset.yt || '').trim();
+  const btn = box.querySelector('.yt-btn');
+  if (!/^[A-Za-z0-9_-]{11}$/.test(id)) {           // placeholder until a real ID is set
+    box.classList.add('is-ph');
+    btn.disabled = true;
+    return;
   }
+  btn.addEventListener('click', () => {
+    const f = document.createElement('iframe');
+    f.src = 'https://www.youtube-nocookie.com/embed/' + id +
+            '?autoplay=1&rel=0&playsinline=1&hl=' + (typeof currentLang === 'string' ? currentLang : 'en');
+    f.title = 'Mira Flow';
+    f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+    f.allowFullscreen = true;
+    f.referrerPolicy = 'strict-origin-when-cross-origin';
+    box.querySelector('.yt-frame').replaceChildren(f);
+  }, { once: true });
 });
 
 // ── WAITLIST ENDPOINT ────────────────────────────────────────────
@@ -1194,6 +1371,10 @@ const T = {
   "pc2p": "Milfontes · deine Basis die ganze Woche",
   "pc3h": "Sines",
   "pc3p": "Donnerstag · Courts des Partnerclubs",
+  "fm-sl": "Der Film",
+  "fm-st": "Milfontes,<br><em>in Bewegung.</em>",
+  "fm-play": "Film abspielen",
+  "fm-note": "Beim Abspielen wird das Video von YouTube geladen; dann gilt die Datenschutzerklärung von Google. Vorher wird nichts von YouTube geladen.",
   "pc4h": "Lagos",
   "pc4p": "Mittwoch · fremde Courts",
   "pc5h": "Wo du schläfst",
@@ -1376,6 +1557,10 @@ const T = {
   "pc2p": "Milfontes · a tua base a semana toda",
   "pc3h": "Sines",
   "pc3p": "Quinta-feira · courts do clube parceiro",
+  "fm-sl": "O filme",
+  "fm-st": "Milfontes,<br><em>em movimento.</em>",
+  "fm-play": "Ver o filme",
+  "fm-note": "Ao carregar em play, o vídeo é carregado do YouTube e passa a aplicar-se a política de privacidade da Google. Antes disso não é carregado nada do YouTube.",
   "pc4h": "Lagos",
   "pc4p": "Quarta · courts desconhecidos",
   "pc5h": "Onde dormes",
