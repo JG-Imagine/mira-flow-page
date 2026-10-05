@@ -276,8 +276,7 @@
             }
           },
           "tiers": [
-            "classic",
-            "full" 
+            "classic"
           ],
           "prices": {}
         },
@@ -371,9 +370,6 @@
             }
           },
           "prices": {
-            "tiers": {
-              "classic": 3100,
-              "full": 4100
             }
           }
         },
