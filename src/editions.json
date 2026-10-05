@@ -187,7 +187,7 @@
         "options": [
           {
             "id": "singleSupp",
-            "price": 420,
+            "price": 220,
             "name": {
               "pt": "Suplemento de quarto individual",
               "en": "Single room supplement",
@@ -196,7 +196,7 @@
           },
           {
             "id": "faroTransfer",
-            "price": 120,
+            "price": 220,
             "name": {
               "pt": "Transfer aeroporto de Faro, ida e volta",
               "en": "Faro airport transfer, return",
@@ -276,7 +276,8 @@
             }
           },
           "tiers": [
-            "classic" 
+            "classic",
+            "full" 
           ],
           "prices": {}
         },
@@ -292,7 +293,7 @@
             "en": "Long days, warm sea",
             "de": "Lange Tage, warmes Meer"
           },
-          "left": 0,
+          "left": 12,
           "level": {
             "playtomic": {
               "min": 2.25,
