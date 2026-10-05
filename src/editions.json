@@ -38,7 +38,7 @@
         "base": 390,
         "tiers": {
           "shared": {
-            "price": 110,
+            "price": 100,
             "name": {
               "pt": "Quarto partilhado · 2 noites",
               "en": "Shared room · 2 nights",
@@ -65,7 +65,7 @@
         "options": [
           {
             "id": "transfer",
-            "price": 45,
+            "price": 250,
             "name": {
               "pt": "Transfer Lisboa, ida e volta",
               "en": "Lisbon transfer, return",
@@ -155,8 +155,8 @@
           },
           "prices": {
             "tiers": {
-              "shared": 130,
-              "single": 220
+              "shared": 100,
+              "single": 200
             }
           }
         }
@@ -235,38 +235,38 @@
       },
       "editions": [
         {
-          "id": "2027-04-25",
+          "id": "2026-11-01",
           "label": {
-            "pt": "25 Abril – 2 Maio 2027",
-            "en": "25 April – 2 May 2027",
-            "de": "25. April – 2. Mai 2027"
+            "pt": "01 Novembro – 08 Novembro 2026",
+            "en": "01 November – 08 November 2026",
+            "de": "01. November  – 08. November 2026"
           },
           "note": {
-            "pt": "Primeira edição da primavera",
-            "en": "First spring edition",
-            "de": "Erste Frühlingsedition"
+            "pt": "Outono em cheio",
+            "en": "Full Autumn",
+            "de": "Voller Herbst"
           },
-          "left": 0,
+          "left": 12,
           "level": {
             "playtomic": {
-              "min": 2.5,
-              "max": 4.0
+              "min": 0,
+              "max": 1.5
             },
             "federation": {
               "m": {
-                "pt": "M3 – M5",
-                "en": "M3 – M5",
-                "de": "M3 – M5"
+                "pt": "M5 – M6",
+                "en": "M5 – M6",
+                "de": "M5 – M6"
               },
               "f": {
-                "pt": "F2 – F4",
-                "en": "F2 – F4",
-                "de": "F2 – F4"
+                "pt": "F5 – F6",
+                "en": "F5 – F6",
+                "de": "F5 – F6"
               },
               "mix": {
-                "pt": "Misto 2 – 4",
-                "en": "Mixed 2 – 4",
-                "de": "Mixed 2 – 4"
+                "pt": "Misto 5 – 6",
+                "en": "Mixed 5 – 6",
+                "de": "Mixed 5 – 6"
               }
             },
             "note": {
@@ -276,7 +276,7 @@
             }
           },
           "tiers": [
-            "classic"
+            "classic" 
           ],
           "prices": {}
         },
@@ -340,7 +340,7 @@
             "en": "The best time of year in Milfontes",
             "de": "Die beste Zeit des Jahres in Milfontes"
           },
-          "left": 0,
+          "left": 12,
           "level": {
             "playtomic": {
               "min": 2.5,
@@ -388,7 +388,7 @@
             "en": "Club edition — closed group",
             "de": "Club-Edition — geschlossene Gruppe"
           },
-          "left": 0,
+          "left": 12,
           "level": {
             "playtomic": {
               "min": 3.0,
