@@ -29,7 +29,11 @@
     "",
     "DEPOSITS are off. 'deposit': null means full payment confirms the booking.",
     "Setting an object here ({ amount, balanceDueDays }) turns the option back on —",
-    "but nothing invoices or chases a balance yet, so leave it null until that exists."
+    "but nothing invoices or chases a balance yet, so leave it null until that exists.",
+    "",
+    "IDs MUST BE UNIQUE and must be the edition's START DATE (YYYY-MM-DD).",
+    "Two editions sharing an id is silent: the file is valid, it deploys, and the",
+    "second one renders as a duplicate of the first instead of appearing."
   ],
   "products": {
     "weekend": {
@@ -116,8 +120,8 @@
           "id": "2026-11-13",
           "label": {
             "pt": "13 – 15 Novembro 2026",
-            "en": "13 – 15 Novembro 2026",
-            "de": "13. – 15. Novembro 2026"
+            "en": "13 – 15 November 2026",
+            "de": "13. – 15. November 2026"
           },
           "note": {
             "pt": "Outono em cheio",
@@ -161,11 +165,11 @@
           }
         },
         {
-          "id": "2026-11-13",
+          "id": "2027-02-12",
           "label": {
-            "pt": "12 – 14 Fevereiro 2026",
-            "en": "12 – 14 February 2026",
-            "de": "12. – 14. Februar 2026"
+            "pt": "12 – 14 Fevereiro 2027",
+            "en": "12 – 14 February 2027",
+            "de": "12. – 14. Februar 2027"
           },
           "note": {
             "pt": "Padel Love",
