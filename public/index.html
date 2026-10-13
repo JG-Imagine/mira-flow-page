@@ -280,56 +280,41 @@ nav.scrolled { background:rgba(11,37,53,.96); backdrop-filter:blur(8px); padding
 .pkg-g-text strong { font-weight:400; color:white; }
 .pkg-tags { display:flex; flex-wrap:wrap; gap:6px; margin-top:14px; }
 .pkg-tag { font-size:8px; font-weight:300; letter-spacing:1px; text-transform:uppercase; padding:3px 8px; border:0.5px solid rgba(181,132,42,.3); color:var(--glt); }
-.pkg-grid { display:grid; grid-template-columns:1fr 1fr; gap:3px; margin-top:3px; }
+.pkg-grid { display:grid; grid-template-columns:1fr; gap:3px; margin-top:3px; max-width:620px; margin-left:auto; margin-right:auto; }
 .pkg { display:flex; flex-direction:column; overflow:hidden; position:relative; }
 .pkg::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; }
 .pkg-classic { background:var(--slt); border:1px solid var(--sdk); }
 .pkg-classic::before { background:var(--sdk); }
-.pkg-full { background:var(--ink); border:1px solid rgba(181,132,42,.15); }
-.pkg-full::before { background:var(--gold); }
 .pkg-tier { padding:28px 28px 0; }
 .pkg-tier-tag { font-size:8px; font-weight:300; letter-spacing:2.5px; text-transform:uppercase; margin-bottom:8px; }
 .pkg-classic .pkg-tier-tag { color:var(--muted); }
-.pkg-full .pkg-tier-tag { color:var(--glt); }
 .pkg-name { font-family:'Cormorant Garamond',serif; font-size:36px; font-weight:300; line-height:1.1; margin-bottom:8px; }
 .pkg-classic .pkg-name { color:var(--ink); }
-.pkg-full .pkg-name { color:white; }
 .pkg-sub { font-size:12px; font-weight:300; line-height:1.6; max-width:380px; }
 .pkg-classic .pkg-sub { color:var(--muted); }
-.pkg-full .pkg-sub { color:rgba(255,255,255,.4); }
 .pkg-price-row { padding:20px 28px; border-bottom:1px solid; display:flex; align-items:baseline; gap:8px; }
 .pkg-classic .pkg-price-row { border-color:var(--sdk); }
-.pkg-full .pkg-price-row { border-color:rgba(255,255,255,.08); }
 .pkg-price { font-family:'Cormorant Garamond',serif; font-size:44px; font-weight:300; line-height:1; }
 .pkg-classic .pkg-price { color:var(--ink); }
-.pkg-full .pkg-price { color:var(--glt); }
 .pkg-per { font-size:12px; font-weight:300; }
 .pkg-classic .pkg-per { color:var(--muted); }
-.pkg-full .pkg-per { color:rgba(255,255,255,.3); }
 .pkg-feats { padding:20px 28px; flex:1; }
 .pkg-feat-label { font-size:8px; font-weight:400; letter-spacing:2px; text-transform:uppercase; margin-bottom:12px; }
 .pkg-classic .pkg-feat-label { color:var(--muted); }
-.pkg-full .pkg-feat-label { color:var(--glt); }
 .pkg-feat-list { list-style:none; }
 .pkg-feat-list li { display:grid; grid-template-columns:14px 1fr; gap:8px; padding:6px 0; border-bottom:1px solid; font-size:12px; font-weight:300; line-height:1.45; }
 .pkg-feat-list li:last-child { border-bottom:none; }
 .pkg-classic .pkg-feat-list li { border-color:var(--sdk); color:var(--muted); }
-.pkg-full .pkg-feat-list li { border-color:rgba(255,255,255,.06); color:rgba(255,255,255,.55); }
 .pkg-feat-list li::before { content:'✓'; font-size:9px; padding-top:1px; }
 .pkg-classic .pkg-feat-list li::before { color:var(--gold); }
-.pkg-full .pkg-feat-list li::before { color:var(--glt); }
 .pkg-feat-list li.plus { font-weight:400; }
 .pkg-classic .pkg-feat-list li.plus { color:var(--ink); }
-.pkg-full .pkg-feat-list li.plus { color:white; }
 .pkg-note-box { padding:14px 18px; margin:0 28px 20px; font-size:11px; font-weight:300; line-height:1.65; font-style:italic; }
 .pkg-classic .pkg-note-box { background:var(--sand); color:var(--muted); }
-.pkg-full .pkg-note-box { background:rgba(181,132,42,.07); color:rgba(255,255,255,.4); }
 .pkg-cta-wrap { padding:0 28px 28px; }
 .pkg-cta { display:block; padding:13px; text-align:center; font-size:10px; font-weight:300; letter-spacing:2px; text-transform:uppercase; text-decoration:none; transition:all .2s; }
 .pkg-classic .pkg-cta { border:1px solid var(--gold); color:var(--gold); }
 .pkg-classic .pkg-cta:hover { background:var(--gold); color:white; }
-.pkg-full .pkg-cta { background:var(--gold); color:white; }
-.pkg-full .pkg-cta:hover { background:var(--glt); color:var(--ink); }
 .pkg-group-note { margin-top:20px; background:rgba(255,255,255,.04); padding:16px 20px; border-left:2px solid var(--gold); }
 .pgn { font-size:12px; font-weight:300; color:rgba(255,255,255,.4); line-height:1.7; }
 .pgn strong { color:white; font-weight:400; }
@@ -796,11 +781,11 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.05); padd
     <div class="max">
       <div class="reveal" style="text-align:center;max-width:540px;margin:0 auto">
         <p class="sl" id="pk-sl">Your week</p>
-        <h2 class="st" style="color:white" id="pk-st">One experience.<br><em>Two ways to live it.</em></h2>
+        <h2 class="st" style="color:white" id="pk-st">One week.<br><em>Everything that matters, included.</em></h2>
       </div>
       <div class="pkg-guarantee reveal">
-        <p class="pkg-g-title" id="pk-gt">The programme is identical in both packages</p>
-        <p class="pkg-g-text" id="pk-gb">Whether you choose <strong>Classic</strong> or <strong>Full Experience</strong>, you get the same week — same courts, same mental coach, same sessions, same Saturday tournament. What changes is the level of service and comfort wrapped around it.</p>
+        <p class="pkg-g-title" id="pk-gt">Every week includes</p>
+        <p class="pkg-g-text" id="pk-gb">There is one package, and it is the whole programme — the same courts, the same mental coaching, the same sessions, the same Saturday tournament for everyone in the group. <strong>Add what you want on top</strong> when you book: a room to yourself, airport transfers, extra nights, a private session with the mental coach.</p>
         <div class="pkg-tags">
           <span class="pkg-tag" id="pt1">All padel sessions</span>
           <span class="pkg-tag" id="pt2">Mental coaching</span>
@@ -815,9 +800,9 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.05); padd
       <div class="pkg-grid reveal">
         <div class="pkg pkg-classic">
           <div class="pkg-tier">
-            <p class="pkg-tier-tag" id="pk1-tag">The programme week</p>
-            <h3 class="pkg-name" id="pk1-name">Classic</h3>
-            <p class="pkg-sub" id="pk1-sub">The full Mira Flow week. You take care of the small logistics. We take care of everything that matters.</p>
+            <p class="pkg-tier-tag" id="pk1-tag">Sunday to Sunday</p>
+            <h3 class="pkg-name" id="pk1-name">The Mira Flow week</h3>
+            <p class="pkg-sub" id="pk1-sub">Seven days, one home base, and everything on the programme already arranged. You choose what to add.</p>
           </div>
           <div class="pkg-price-row">
             <div class="pkg-price" id="pk1-price" data-tier="classic">&nbsp;</div>
@@ -838,38 +823,9 @@ footer { background:var(--ink); border-top:1px solid rgba(255,255,255,.05); padd
               <li>Welcome gift</li>
             </ul>
           </div>
-          <div class="pkg-note-box" id="pk1-note">A group of friends or a club that wants the full Mira Flow experience — without the full-service layer.</div>
+          <div class="pkg-note-box" id="pk1-note">Groups of friends and clubs travel on the same terms as everyone else. Talk to us about group dates and bringing your own coach.</div>
           <div class="pkg-cta-wrap"><a href="/book-week.html" class="pkg-cta" id="pk1-cta">Reserve a place</a></div>
         </div>
-        <div class="pkg pkg-full">
-          <div class="pkg-tier">
-            <p class="pkg-tier-tag" id="pk2-tag">The hosted week</p>
-            <h3 class="pkg-name" id="pk2-name">Full<br>Experience</h3>
-            <p class="pkg-sub" id="pk2-sub">You arrive on Sunday and make no decisions until you leave the following Sunday. Everything is arranged.</p>
-          </div>
-          <div class="pkg-price-row">
-            <div class="pkg-price" id="pk2-price" data-tier="full">&nbsp;</div>
-            <div class="pkg-per" id="pk2-per">per person</div>
-          </div>
-          <div class="pkg-feats">
-            <p class="pkg-feat-label" id="pk2-fl">Everything in Classic, plus:</p>
-            <ul class="pkg-feat-list" id="pk2-list">
-              <li class="plus">Superior accommodation — best available rooms</li>
-              <li class="plus">Full board — all meals at curated local restaurants</li>
-              <li class="plus">Faro airport transfers — arrival &amp; departure</li>
-              <li class="plus">Dedicated minibus all day trips &amp; tournament</li>
-              <li class="plus">1 private session with the mental coach</li>
-              <li class="plus">Club coach travels free (8+ guests)</li>
-              <li class="plus">Full concierge — every detail handled</li>
-              <li class="plus">Priority court booking at all venues</li>
-            </ul>
-          </div>
-          <div class="pkg-note-box" id="pk2-note">A Swiss club that wants to offer its members a genuinely premium travel week. Your coach comes with the group. We organise everything.</div>
-          <div class="pkg-cta-wrap"><a href="/book-week.html" class="pkg-cta" id="pk2-cta">Reserve a place</a></div>
-        </div>
-      </div>
-      <div class="pkg-group-note reveal">
-        <p class="pgn" id="pkg-gn"><strong>Groups book as one.</strong> Classic groups travel Classic. Full Experience groups travel Full Experience. No mixing within a session. Swiss CHF rates available on request. Group pricing from 8 guests.</p>
       </div>
     </div>
   </section>
@@ -1323,18 +1279,13 @@ const T = {
   "mn-sl": "Das Unterscheidungsmerkmal",
   "mn-st": "Das mentale Spiel.<br><em>Was niemand sonst anspricht.</em>",
   "pk-sl": "Deine Woche",
-  "pk-st": "Ein Erlebnis.<br><em>Zwei Wege, es zu leben.</em>",
-  "pk-gt": "Das Programm ist in beiden Paketen identisch",
-  "pk-gb": "Ob du <strong>Classic</strong> oder <strong>Full Experience</strong> wählst – du bekommst dieselbe Woche. Was sich ändert, ist der Service-Level drumherum.",
+  "pk-st": "Eine Woche.<br><em>Alles Wesentliche inklusive.</em>",
+  "pk-gt": "Jede Woche enthält",
+  "pk-gb": "Es gibt ein Paket, und es ist das ganze Programm — dieselben Courts, dasselbe Mental Coaching, dieselben Einheiten, dasselbe Samstagsturnier für alle in der Gruppe. <strong>Dazubuchen kannst du, was du möchtest</strong>: ein Zimmer für dich allein, Flughafentransfers, Zusatznächte, eine Einzelsession mit dem Mental Coach.",
   "pk1-per": "pro Person",
-  "pk2-per": "pro Person",
-  "pk1-tag": "Die Programmwoche",
-  "pk1-name": "Classic",
+  "pk1-tag": "Sonntag bis Sonntag",
+  "pk1-name": "Die Mira-Flow-Woche",
   "pk1-cta": "Platz reservieren",
-  "pk2-tag": "Die betreute Woche",
-  "pk2-name": "Full<br>Experience",
-  "pk2-cta": "Platz reservieren",
-  "pkg-gn": "<strong>Gruppen buchen gemeinsam.</strong> Classic-Gruppen reisen Classic, Full Experience-Gruppen reisen Full Experience. EUR-Preise auf Anfrage. Gruppenrabatt ab 8 Gästen.",
   "wke-sl": "Kurzformat",
   "wke-st": "Keine ganze Woche möglich?<br><em>Komm für ein Wochenende.</em>",
   "wke-b": "Freitagabend bis Sonntagnachmittag in Milfontes. Sechs Stunden auf dem Court, die Mental-Session, Yoga und das Sonntagsturnier. Auf Portugiesisch, für Spieler aus dem Raum Lissabon.",
@@ -1443,14 +1394,10 @@ const T = {
   "pt6": "Samstagsturnier",
   "pt7": "Commitment-Karte",
   "pt8": "Willkommensgeschenk",
-  "pk1-sub": "Die volle Mira-Flow-Woche. Du kümmerst dich um die kleine Logistik. Wir kümmern uns um alles, worauf es ankommt.",
+  "pk1-sub": "Sieben Tage, eine Basis, und alles im Programm bereits organisiert. Was dazukommt, wählst du.",
   "pk1-fl": "Was enthalten ist",
   "pk1-list": "<li>7 Nächte — Standardunterkunft</li> <li>Halbpension — täglich Frühstück + 4 Gruppenessen</li> <li>Gemeinsamer Transport — alle Tagesausflüge</li> <li>Vollständiges Mental-Coaching-Programm</li> <li>Alle Padel-Sessions in unseren Partnerclubs</li> <li>Tägliches Yoga + Breathwork um 09:00</li> <li>Klangtherapie — Di & Do abends</li> <li>Persönliches Spielplan-Heft</li> <li>Abschlussturnier am Samstag</li> <li>Willkommensgeschenk</li>",
-  "pk1-note": "Eine Gruppe Freunde oder ein Club, der die volle Mira-Flow-Erfahrung will — ohne die Rundum-Service-Schicht.",
-  "pk2-sub": "Du kommst am Sonntag an und triffst bis zur Abreise am folgenden Sonntag keine einzige Entscheidung. Alles ist organisiert.",
-  "pk2-fl": "Alles aus Classic, plus:",
-  "pk2-list": "<li class=\"plus\">Bessere Unterkunft — die besten verfügbaren Zimmer</li> <li class=\"plus\">Vollpension — alle Mahlzeiten in ausgewählten lokalen Restaurants</li> <li class=\"plus\">Transfers Flughafen Faro — An- und Abreise</li> <li class=\"plus\">Eigener Minibus für alle Ausflüge und das Turnier</li> <li class=\"plus\">1 Einzelsession mit dem Mental Coach</li> <li class=\"plus\">Clubtrainer reist kostenlos mit (ab 8 Gästen)</li> <li class=\"plus\">Voller Concierge — jedes Detail geregelt</li> <li class=\"plus\">Bevorzugte Courtbuchung an allen Anlagen</li>",
-  "pk2-note": "Ein Schweizer Club, der seinen Mitgliedern eine wirklich hochwertige Reisewoche bieten will. Euer Trainer kommt mit. Wir organisieren alles.",
+  "pk1-note": "Freundesgruppen und Clubs reisen zu denselben Bedingungen wie alle anderen. Sprich mit uns über Gruppentermine und darüber, euren eigenen Trainer mitzubringen.",
   "fc1-l1": "Das Konzept",
   "fc1-l2": "Der Ort",
   "fc1-l3": "Die Woche",
@@ -1630,9 +1577,9 @@ const T = {
   "mc3b": "Yoga, respiração e terapia de som treinam o sistema nervoso a soltar mais depressa. Quem solta mais depressa recupera mais depressa. O ritual da manhã não é bem-estar opcional — é a base de todos os dias.",
   "mc-quote": "\"O resultado é só informação. A tua reação a ele é que é o jogo.\"",
   "pk-sl": "A tua semana",
-  "pk-st": "Uma experiência.<br><em>Duas formas de a viver.</em>",
-  "pk-gt": "O programa é idêntico nos dois pacotes",
-  "pk-gb": "Quer escolhas <strong>Classic</strong> quer <strong>Full Experience</strong>, tens a mesma semana — mesmos courts, mesmo coach mental, mesmas sessões, mesmo torneio de sábado. O que muda é o nível de serviço e conforto à volta.",
+  "pk-st": "Uma semana.<br><em>Tudo o que importa, incluído.</em>",
+  "pk-gt": "Todas as semanas incluem",
+  "pk-gb": "Há um pacote, e é o programa inteiro — os mesmos courts, o mesmo trabalho mental, as mesmas sessões, o mesmo torneio de sábado para todos no grupo. <strong>Acrescentas o que quiseres</strong> na reserva: um quarto só para ti, transfers de aeroporto, noites extra, uma sessão privada com o coach mental.",
   "pt1": "Todas as sessões de padel",
   "pt2": "Treino mental",
   "pt3": "Ritual diário às 09:00",
@@ -1641,23 +1588,14 @@ const T = {
   "pt6": "Torneio de sábado",
   "pt7": "Cartão de compromisso",
   "pt8": "Presente de boas-vindas",
-  "pk1-tag": "A semana de programa",
-  "pk1-name": "Classic",
+  "pk1-tag": "De domingo a domingo",
+  "pk1-name": "A semana Mira Flow",
   "pk1-per": "por pessoa",
-  "pk1-sub": "A semana Mira Flow completa. Tratas da pequena logística. Nós tratamos de tudo o que importa.",
+  "pk1-sub": "Sete dias, uma só base, e tudo o que está no programa já tratado. O que acrescentas é contigo.",
   "pk1-fl": "O que está incluído",
   "pk1-list": "<li>7 noites — alojamento standard</li> <li>Meia pensão — pequeno-almoço diário + 4 jantares de grupo</li> <li>Transporte de grupo — todas as saídas</li> <li>Programa completo de treino mental</li> <li>Todas as sessões de padel nos clubes parceiros</li> <li>Ritual diário de yoga + respiração às 09:00</li> <li>Terapia de som — terça e quinta à noite</li> <li>Caderno pessoal de plano de jogo</li> <li>Torneio de encerramento de sábado</li> <li>Presente de boas-vindas</li>",
-  "pk1-note": "Um grupo de amigos ou um clube que quer a experiência Mira Flow completa — sem a camada de serviço integral.",
+  "pk1-note": "Grupos de amigos e clubes viajam nas mesmas condições que toda a gente. Fala connosco sobre datas de grupo e sobre trazeres o teu treinador.",
   "pk1-cta": "Reservar lugar",
-  "pk2-tag": "A semana acompanhada",
-  "pk2-name": "Full<br>Experience",
-  "pk2-per": "por pessoa",
-  "pk2-sub": "Chegas no domingo e não tomas uma única decisão até saíres no domingo seguinte. Está tudo tratado.",
-  "pk2-fl": "Tudo o do Classic, mais:",
-  "pk2-list": "<li class=\"plus\">Alojamento superior — os melhores quartos disponíveis</li> <li class=\"plus\">Pensão completa — todas as refeições em restaurantes escolhidos</li> <li class=\"plus\">Transfers do aeroporto de Faro — chegada e partida</li> <li class=\"plus\">Minibus dedicado em todas as saídas e no torneio</li> <li class=\"plus\">1 sessão privada com o coach mental</li> <li class=\"plus\">Treinador do clube viaja sem custo (8+ jogadores)</li> <li class=\"plus\">Concierge completo — cada detalhe tratado</li> <li class=\"plus\">Prioridade na marcação de courts</li>",
-  "pk2-note": "Um clube que quer oferecer aos sócios uma semana de viagem verdadeiramente premium. O vosso treinador vem com o grupo. Nós organizamos tudo.",
-  "pk2-cta": "Reservar lugar",
-  "pkg-gn": "<strong>Os grupos reservam em conjunto.</strong> Grupos Classic viajam Classic. Grupos Full Experience viajam Full Experience. Sem misturas na mesma edição. Preços em CHF a pedido. Preço de grupo a partir de 8 jogadores.",
   "wke-sl": "Formato curto",
   "wke-st": "Não consegues uma semana?<br><em>Vem um fim de semana.</em>",
   "wke-b": "Sexta ao fim da tarde até domingo depois de almoço, em Milfontes. Seis horas de court, a sessão de performance mental, yoga, e o torneio de domingo.",

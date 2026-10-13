@@ -12,7 +12,6 @@
     "The week has base 0, so its tier price IS the package price.",
     "",
     "AN EDITION CAN RESTRICT TIERS with \"tiers\": [\"full\"]. That enforces the",
-    "no-mixing rule: a Full Experience week cannot be sold a Classic place.",
     "",
     "'left' is places remaining. 0 shows as full and the server refuses the sale.",
     "It is manual — nothing decrements it on purchase. Buyers see it, so keep it true.",
@@ -857,17 +856,9 @@
           "classic": {
             "price": 2900,
             "name": {
-              "pt": "Classic · 7 noites",
-              "en": "Classic · 7 nights",
-              "de": "Classic · 7 Nächte"
-            }
-          },
-          "full": {
-            "price": 3900,
-            "name": {
-              "pt": "Full Experience · 7 noites",
-              "en": "Full Experience · 7 nights",
-              "de": "Full Experience · 7 Nächte"
+              "pt": "Semana Mira Flow · 7 noites",
+              "en": "Mira Flow week · 7 nights",
+              "de": "Mira-Flow-Woche · 7 Nächte"
             }
           }
         },
@@ -961,10 +952,7 @@
               "en": "Seven days need a reasonably even group.",
               "de": "Sieben Tage brauchen eine halbwegs ausgeglichene Gruppe."
             }
-          },
-          "tiers": [
-            "classic"
-          ]
+          }
         },
         {
           "id": "2027-03-14",
