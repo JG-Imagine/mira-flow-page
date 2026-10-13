@@ -159,6 +159,54 @@
               "single": 200
             }
           }
+        },
+        {
+          "id": "2026-11-13",
+          "label": {
+            "pt": "12 – 14 Fevereiro 2026",
+            "en": "12 – 14 February 2026",
+            "de": "12. – 14. Februar 2026"
+          },
+          "note": {
+            "pt": "Padel Love",
+            "en": "Padel Love",
+            "de": "Padel Love"
+          },
+          "left": 12,
+          "level": {
+            "playtomic": {
+              "min": 0,
+              "max": 1.5
+            },
+            "federation": {
+              "m": {
+                "pt": "M5 – M6",
+                "en": "M5 – M6",
+                "de": "M5 – M6"
+              },
+              "f": {
+                "pt": "F5 – F6",
+                "en": "F5 – F6",
+                "de": "F5 – F6"
+              },
+              "mix": {
+                "pt": "Misto 5 – 6",
+                "en": "Mixed 5 – 6",
+                "de": "Mixed 5 – 6"
+              }
+            },
+            "note": {
+              "pt": "Jogadores de clube que já jogam com regularidade. Se estás fora desta faixa, escreve-nos — muitas vezes dá.",
+              "en": "Club players who already play regularly. Outside this band? Write to us — it often still works.",
+              "de": "Clubspieler, die regelmässig spielen. Ausserhalb dieser Spanne? Schreib uns — oft geht es trotzdem."
+            }
+          },
+          "prices": {
+            "tiers": {
+              "shared": 100,
+              "single": 200
+            }
+          }
         }
       ]
     },
