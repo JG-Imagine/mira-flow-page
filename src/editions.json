@@ -374,49 +374,6 @@
           "prices": {}
         },
         {
-          "id": "2027-05-07",
-          "label": {
-            "pt": "7 – 9 Maio 2027",
-            "en": "7 – 9 May 2027",
-            "de": "7. – 9. Mai 2027"
-          },
-          "note": {
-            "pt": "Mar a aquecer",
-            "en": "The sea warming up",
-            "de": "Das Meer wird wärmer"
-          },
-          "left": 12,
-          "level": {
-            "playtomic": {
-              "min": 1.5,
-              "max": 3.0
-            },
-            "federation": {
-              "m": {
-                "pt": "M5 – M6",
-                "en": "M5 – M6",
-                "de": "M5 – M6"
-              },
-              "f": {
-                "pt": "F5 – F6",
-                "en": "F5 – F6",
-                "de": "F5 – F6"
-              },
-              "mix": {
-                "pt": "Misto 5 – 6",
-                "en": "Mixed 5 – 6",
-                "de": "Mixed 5 – 6"
-              }
-            },
-            "note": {
-              "pt": "Faixa aberta. Boa para quem joga há pouco tempo ou quer voltar ao ritmo. Fazemos os pares por nível.",
-              "en": "An open band. Good if you have not been playing long, or want to get back into rhythm. We pair by level.",
-              "de": "Eine offene Spanne. Gut, wenn du noch nicht lange spielst oder wieder reinkommen willst. Wir paaren nach Niveau."
-            }
-          },
-          "prices": {}
-        },
-        {
           "id": "2027-05-21",
           "label": {
             "pt": "21 – 23 Maio 2027",
@@ -627,135 +584,6 @@
               "pt": "Ritmo mais forte, para quem compete ou joga várias vezes por semana.",
               "en": "A stronger pace, for players who compete or play several times a week.",
               "de": "Stärkeres Tempo, für Spieler, die Turniere spielen oder mehrmals pro Woche auf dem Court stehen."
-            }
-          },
-          "prices": {}
-        },
-        {
-          "id": "2027-09-10",
-          "label": {
-            "pt": "10 – 12 Setembro 2027",
-            "en": "10 – 12 September 2027",
-            "de": "10. – 12. September 2027"
-          },
-          "note": {
-            "pt": "A melhor altura do ano",
-            "en": "The best time of year",
-            "de": "Die beste Zeit des Jahres"
-          },
-          "left": 12,
-          "level": {
-            "playtomic": {
-              "min": 1.5,
-              "max": 3.0
-            },
-            "federation": {
-              "m": {
-                "pt": "M5 – M6",
-                "en": "M5 – M6",
-                "de": "M5 – M6"
-              },
-              "f": {
-                "pt": "F5 – F6",
-                "en": "F5 – F6",
-                "de": "F5 – F6"
-              },
-              "mix": {
-                "pt": "Misto 5 – 6",
-                "en": "Mixed 5 – 6",
-                "de": "Mixed 5 – 6"
-              }
-            },
-            "note": {
-              "pt": "Faixa aberta. Boa para quem joga há pouco tempo ou quer voltar ao ritmo. Fazemos os pares por nível.",
-              "en": "An open band. Good if you have not been playing long, or want to get back into rhythm. We pair by level.",
-              "de": "Eine offene Spanne. Gut, wenn du noch nicht lange spielst oder wieder reinkommen willst. Wir paaren nach Niveau."
-            }
-          },
-          "prices": {}
-        },
-        {
-          "id": "2027-09-24",
-          "label": {
-            "pt": "24 – 26 Setembro 2027",
-            "en": "24 – 26 September 2027",
-            "de": "24. – 26. September 2027"
-          },
-          "note": {
-            "pt": "Água ainda quente",
-            "en": "Sea still warm",
-            "de": "Meer noch warm"
-          },
-          "left": 12,
-          "level": {
-            "playtomic": {
-              "min": 2.5,
-              "max": 4.0
-            },
-            "federation": {
-              "m": {
-                "pt": "M3 – M4",
-                "en": "M3 – M4",
-                "de": "M3 – M4"
-              },
-              "f": {
-                "pt": "F3 – F4",
-                "en": "F3 – F4",
-                "de": "F3 – F4"
-              },
-              "mix": {
-                "pt": "Misto 3 – 4",
-                "en": "Mixed 3 – 4",
-                "de": "Mixed 3 – 4"
-              }
-            },
-            "note": {
-              "pt": "Ritmo mais forte, para quem compete ou joga várias vezes por semana.",
-              "en": "A stronger pace, for players who compete or play several times a week.",
-              "de": "Stärkeres Tempo, für Spieler, die Turniere spielen oder mehrmals pro Woche auf dem Court stehen."
-            }
-          },
-          "prices": {}
-        },
-        {
-          "id": "2027-10-08",
-          "label": {
-            "pt": "8 – 10 Outubro 2027",
-            "en": "8 – 10 October 2027",
-            "de": "8. – 10. Oktober 2027"
-          },
-          "note": {
-            "pt": "Outono dourado",
-            "en": "Golden autumn",
-            "de": "Goldener Herbst"
-          },
-          "left": 12,
-          "level": {
-            "playtomic": {
-              "min": 1.5,
-              "max": 3.0
-            },
-            "federation": {
-              "m": {
-                "pt": "M5 – M6",
-                "en": "M5 – M6",
-                "de": "M5 – M6"
-              },
-              "f": {
-                "pt": "F5 – F6",
-                "en": "F5 – F6",
-                "de": "F5 – F6"
-              },
-              "mix": {
-                "pt": "Misto 5 – 6",
-                "en": "Mixed 5 – 6",
-                "de": "Mixed 5 – 6"
-              }
-            },
-            "note": {
-              "pt": "Faixa aberta. Boa para quem joga há pouco tempo ou quer voltar ao ritmo. Fazemos os pares por nível.",
-              "en": "An open band. Good if you have not been playing long, or want to get back into rhythm. We pair by level.",
-              "de": "Eine offene Spanne. Gut, wenn du noch nicht lange spielst oder wieder reinkommen willst. Wir paaren nach Niveau."
             }
           },
           "prices": {}
@@ -998,49 +826,6 @@
           "prices": {}
         },
         {
-          "id": "2027-04-11",
-          "label": {
-            "pt": "11 – 18 Abril 2027",
-            "en": "11 – 18 April 2027",
-            "de": "11. – 18. April 2027"
-          },
-          "note": {
-            "pt": "Costa em flor",
-            "en": "The coast in bloom",
-            "de": "Die Küste blüht"
-          },
-          "left": 12,
-          "level": {
-            "playtomic": {
-              "min": 2.5,
-              "max": 4.0
-            },
-            "federation": {
-              "m": {
-                "pt": "M3 – M4",
-                "en": "M3 – M4",
-                "de": "M3 – M4"
-              },
-              "f": {
-                "pt": "F3 – F4",
-                "en": "F3 – F4",
-                "de": "F3 – F4"
-              },
-              "mix": {
-                "pt": "Misto 3 – 4",
-                "en": "Mixed 3 – 4",
-                "de": "Mixed 3 – 4"
-              }
-            },
-            "note": {
-              "pt": "Ritmo mais forte, para quem compete ou joga várias vezes por semana.",
-              "en": "A stronger pace, for players who compete or play several times a week.",
-              "de": "Stärkeres Tempo, für Spieler, die Turniere spielen oder mehrmals pro Woche auf dem Court stehen."
-            }
-          },
-          "prices": {}
-        },
-        {
           "id": "2027-05-09",
           "label": {
             "pt": "9 – 16 Maio 2027",
@@ -1170,11 +955,11 @@
           "prices": {}
         },
         {
-          "id": "2027-09-12",
+          "id": "2027-05-12",
           "label": {
-            "pt": "12 – 19 Setembro 2027",
-            "en": "12 – 19 September 2027",
-            "de": "12. – 19. September 2027"
+            "pt": "5  – 12 Setembro 2027",
+            "en": "5 – 12 September 2027",
+            "de": "5. – 12. September 2027"
           },
           "note": {
             "pt": "A melhor altura do ano",
@@ -1213,11 +998,11 @@
           "prices": {}
         },
         {
-          "id": "2027-10-10",
+          "id": "2027-24-10",
           "label": {
-            "pt": "10 – 17 Outubro 2027",
-            "en": "10 – 17 October 2027",
-            "de": "10. – 17. Oktober 2027"
+            "pt": "24 – 31 Outubro 2027",
+            "en": "24 – 31 October 2027",
+            "de": "24. – 31. Oktober 2027"
           },
           "note": {
             "pt": "Outono dourado",
