@@ -1,12 +1,13 @@
-// VIP store — catalogue + Stripe Checkout for apparel.
+// VIP store — catalogue + multi-item Stripe Checkout.
 // Routed from src/index.js for /api/vipstore/*. Uses the existing
 // STRIPE_SECRET_KEY secret and SITE_ORIGIN var — no new config needed.
 
 import shop from './shop.json';
 
 const STRIPE_KEY_NAME = 'STRIPE_SECRET_KEY';
-
 const LOCALES = ['en', 'de', 'pt'];
+
+const activeProducts = () => shop.products.filter((p) => p.active !== false);
 
 export async function handleVipStore(request, env) {
   const url = new URL(request.url);
@@ -23,16 +24,20 @@ export async function handleVipStore(request, env) {
 }
 
 function publicCatalog() {
+  const products = activeProducts();
+  const used = new Set(products.map((p) => p.category));
   return {
     currency: shop.currency,
     open: shop.open,
-    products: shop.products.map((p) => ({
+    maxItemsPerOrder: shop.maxItemsPerOrder,
+    categories: shop.categories.filter((c) => used.has(c.id)),
+    products: products.map((p) => ({
       id: p.id,
+      category: p.category,
       name: p.name,
       description: p.description,
       price: p.price,
-      images: p.images,
-      maxPerOrder: p.maxPerOrder,
+      images: p.images || [],
       // Expose availability, not exact stock counts above 3
       sizes: Object.fromEntries(
         Object.entries(p.sizes).map(([size, n]) => [size, n <= 0 ? 0 : n <= 3 ? n : 'ok'])
@@ -54,29 +59,46 @@ async function createCheckout(request, env, origin) {
     return json({ error: 'bad_request' }, 400);
   }
 
-  const { productId, size, quantity, delivery } = body || {};
   const lang = LOCALES.includes(body?.lang) ? body.lang : 'en';
+  const items = Array.isArray(body?.items) ? body.items : [];
+  if (!items.length || items.length > 20) return json({ error: 'empty_cart' }, 400);
 
-  const product = shop.products.find((p) => p.id === productId);
-  if (!product) return json({ error: 'unknown_product' }, 400);
-
-  if (!Object.prototype.hasOwnProperty.call(product.sizes, size)) {
-    return json({ error: 'unknown_size' }, 400);
-  }
-
-  const qty = Number.parseInt(quantity, 10);
-  if (!Number.isInteger(qty) || qty < 1 || qty > product.maxPerOrder) {
-    return json({ error: 'bad_quantity' }, 400);
-  }
-  if (product.sizes[size] < qty) return json({ error: 'out_of_stock' }, 409);
-
-  const deliveryOpt = shop.delivery[delivery];
+  const deliveryKey = body.delivery;
+  const deliveryOpt = Object.prototype.hasOwnProperty.call(shop.delivery, deliveryKey)
+    ? shop.delivery[deliveryKey]
+    : null;
   if (!deliveryOpt) return json({ error: 'bad_delivery' }, 400);
+
+  // Validate and merge lines (same product + size → one line)
+  const lines = new Map();
+  for (const it of items) {
+    const product = activeProducts().find((p) => p.id === it?.productId);
+    if (!product) return json({ error: 'unknown_product', productId: it?.productId }, 400);
+    if (!Object.prototype.hasOwnProperty.call(product.sizes, it.size)) {
+      return json({ error: 'unknown_size', productId: product.id }, 400);
+    }
+    const qty = Number.parseInt(it.quantity, 10);
+    if (!Number.isInteger(qty) || qty < 1) return json({ error: 'bad_quantity' }, 400);
+    const key = `${product.id}:${it.size}`;
+    const prev = lines.get(key);
+    lines.set(key, { product, size: it.size, qty: (prev?.qty || 0) + qty });
+  }
+
+  let total = 0;
+  for (const l of lines.values()) {
+    if (l.product.sizes[l.size] < l.qty) {
+      return json({ error: 'out_of_stock', productId: l.product.id, size: l.size }, 409);
+    }
+    total += l.qty;
+  }
+  if (total > shop.maxItemsPerOrder) return json({ error: 'too_many_items' }, 400);
 
   const key = env[STRIPE_KEY_NAME];
   if (!key) return json({ error: 'stripe_not_configured' }, 500);
 
-  const meta = { type: 'vipstore', product: product.id, size, quantity: String(qty), delivery };
+  // Compact order summary for metadata (Stripe limit: 500 chars per value)
+  const summary = [...lines.values()].map((l) => `${l.product.id}:${l.size}:${l.qty}`).join(',');
+  const meta = { type: 'vipstore', items: summary.slice(0, 500), delivery: deliveryKey };
 
   const params = {
     mode: 'payment',
@@ -84,17 +106,22 @@ async function createCheckout(request, env, origin) {
     allow_promotion_codes: 'true',
     'phone_number_collection[enabled]': 'true',
     success_url: `${origin}/vipstore/?ordered=1&lang=${lang}`,
-    cancel_url: `${origin}/vipstore/?lang=${lang}`,
-    'line_items[0][quantity]': String(qty),
-    'line_items[0][price_data][currency]': shop.currency,
-    'line_items[0][price_data][unit_amount]': String(product.price),
-    'line_items[0][price_data][product_data][name]': `${product.name[lang]} — ${size}`,
-    'line_items[0][price_data][product_data][description]': deliveryOpt.label[lang],
+    cancel_url: `${origin}/vipstore/?cart=1&lang=${lang}`,
     ...flat('metadata', meta),
     ...flat('payment_intent_data[metadata]', meta),
   };
 
-  if (delivery === 'pickup') {
+  [...lines.values()].forEach((l, i) => {
+    const p = `line_items[${i}]`;
+    params[`${p}[quantity]`] = String(l.qty);
+    params[`${p}[price_data][currency]`] = shop.currency;
+    params[`${p}[price_data][unit_amount]`] = String(l.product.price);
+    params[`${p}[price_data][product_data][name]`] = `${l.product.name[lang]} — ${l.size}`;
+    params[`${p}[price_data][product_data][metadata][product]`] = l.product.id;
+    params[`${p}[price_data][product_data][metadata][size]`] = l.size;
+  });
+
+  if (deliveryKey === 'pickup') {
     Object.assign(params, {
       'custom_fields[0][key]': 'pickup',
       'custom_fields[0][type]': 'dropdown',
@@ -129,7 +156,7 @@ async function createCheckout(request, env, origin) {
 
   const data = await res.json();
   if (!res.ok) {
-    console.error('Stripe error', data?.error?.message);
+    console.log('Stripe error', data?.error?.message);
     return json({ error: 'stripe_error' }, 502);
   }
   return json({ url: data.url });

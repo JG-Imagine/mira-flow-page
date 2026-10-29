@@ -1,26 +1,54 @@
 {
-  "_comment": "Single source of truth for the VIP store. Prices in cents. Update stock by hand after each sale until the Stripe webhook is in place.",
+  "_comment": "Single source of truth for the VIP store. Prices in cents. To add a product: copy a block in 'products', give it a unique id, put images in public/vipstore/img/. Set 'active': false to hide one. One-size items: use \"sizes\": { \"One size\": 10 }. Update stock by hand after each sale until the Stripe webhook is in place.",
   "currency": "eur",
   "open": true,
+  "maxItemsPerOrder": 10,
+
+  "categories": [
+    { "id": "women", "label": { "en": "Women", "de": "Damen", "pt": "Mulher" } },
+    { "id": "men", "label": { "en": "Men", "de": "Herren", "pt": "Homem" } },
+    { "id": "accessories", "label": { "en": "Accessories", "de": "Accessoires", "pt": "Acessórios" } }
+  ],
+
   "products": [
     {
-      "id": "tee-classic",
+      "id": "tee-women",
+      "active": true,
+      "category": "women",
       "name": {
-        "en": "Mira Flow Tee",
-        "de": "Mira Flow T-Shirt",
-        "pt": "T-shirt Mira Flow"
+        "en": "Mira Flow Tee — Women",
+        "de": "Mira Flow T-Shirt — Damen",
+        "pt": "T-shirt Mira Flow — Mulher"
       },
       "description": {
-        "en": "Soft cotton tee, printed by a local workshop in the Alentejo. Made for the court, the beach and the long lunch after.",
-        "de": "Weiches Baumwoll-T-Shirt, bedruckt von einer lokalen Werkstatt im Alentejo. Gemacht für den Court, den Strand und das lange Mittagessen danach.",
-        "pt": "T-shirt de algodão macio, estampada por uma oficina local no Alentejo. Feita para o campo, para a praia e para o almoço longo que vem depois."
+        "en": "Fitted soft cotton tee, printed by a local workshop in the Alentejo. Made for the court, the beach and the long lunch after.",
+        "de": "Tailliertes, weiches Baumwoll-T-Shirt, bedruckt von einer lokalen Werkstatt im Alentejo. Gemacht für den Court, den Strand und das lange Mittagessen danach.",
+        "pt": "T-shirt cintada de algodão macio, estampada por uma oficina local no Alentejo. Feita para o campo, para a praia e para o almoço longo que vem depois."
       },
       "price": 2500,
-      "images": ["/vipstore/tee-front.jpg", "/vipstore/tee-back.jpg"],
-      "sizes": { "S": 5, "M": 10, "L": 10, "XL": 5 },
-      "maxPerOrder": 5
+      "images": ["/vipstore/img/tee-women-1.jpg", "/vipstore/img/tee-women-2.jpg"],
+      "sizes": { "XS": 3, "S": 6, "M": 6, "L": 3 }
+    },
+    {
+      "id": "tee-men",
+      "active": true,
+      "category": "men",
+      "name": {
+        "en": "Mira Flow Tee — Men",
+        "de": "Mira Flow T-Shirt — Herren",
+        "pt": "T-shirt Mira Flow — Homem"
+      },
+      "description": {
+        "en": "Regular-fit soft cotton tee, printed by a local workshop in the Alentejo. Made for the court, the beach and the long lunch after.",
+        "de": "Weiches Baumwoll-T-Shirt in normaler Passform, bedruckt von einer lokalen Werkstatt im Alentejo. Gemacht für den Court, den Strand und das lange Mittagessen danach.",
+        "pt": "T-shirt de corte regular em algodão macio, estampada por uma oficina local no Alentejo. Feita para o campo, para a praia e para o almoço longo que vem depois."
+      },
+      "price": 2500,
+      "images": ["/vipstore/img/tee-men-1.jpg", "/vipstore/img/tee-men-2.jpg"],
+      "sizes": { "S": 4, "M": 8, "L": 8, "XL": 4 }
     }
   ],
+
   "delivery": {
     "pickup": {
       "price": 0,
