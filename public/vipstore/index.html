@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Mira Flow — VIP Store</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F7F2E8; --navy: #0B2535; --gold: #B5842A; --forest: #3D5840; --brown: #8B6A52;
+    --line: rgba(11, 37, 53, .14);
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--cream); color: var(--navy); font-family: Jost, system-ui, sans-serif; font-weight: 300; line-height: 1.55; }
+  a { color: inherit; }
+  header { display: flex; justify-content: space-between; align-items: center; padding: 20px 24px; max-width: 1100px; margin: 0 auto; }
+  .brand { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; letter-spacing: .02em; text-decoration: none; }
+  .langs button { background: none; border: 0; font: inherit; font-size: .8rem; letter-spacing: .12em; color: var(--brown); cursor: pointer; padding: 4px 6px; }
+  .langs button[aria-pressed="true"] { color: var(--navy); font-weight: 500; border-bottom: 1px solid var(--gold); }
+
+  main { max-width: 1100px; margin: 0 auto; padding: 8px 24px 64px; }
+  .eyebrow { font-size: .72rem; letter-spacing: .28em; text-transform: uppercase; color: var(--gold); margin: 0 0 6px; }
+  h1 { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(2.2rem, 5vw, 3.4rem); line-height: 1.05; margin: 0 0 8px; }
+  .intro { max-width: 560px; color: var(--brown); margin: 0 0 40px; }
+
+  .product { display: grid; grid-template-columns: 1.1fr 1fr; gap: 48px; align-items: start; }
+  .gallery { display: grid; gap: 12px; }
+  .gallery .main { aspect-ratio: 4/5; background: #EFE7D8; border-radius: 2px; overflow: hidden; display: grid; place-items: center; }
+  .gallery img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .thumbs { display: flex; gap: 10px; }
+  .thumbs button { width: 72px; aspect-ratio: 4/5; padding: 0; border: 1px solid var(--line); background: #EFE7D8; cursor: pointer; overflow: hidden; }
+  .thumbs button[aria-pressed="true"] { border-color: var(--navy); }
+  .placeholder svg { width: 62%; height: auto; }
+
+  h2 { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 2rem; margin: 0; }
+  .price { font-size: 1.25rem; margin: 6px 0 18px; font-weight: 400; }
+  .desc { margin: 0 0 28px; }
+  .field { margin-bottom: 24px; }
+  .label { font-size: .72rem; letter-spacing: .2em; text-transform: uppercase; margin-bottom: 10px; display: block; }
+  .sizes { display: flex; flex-wrap: wrap; gap: 8px; }
+  .sizes button { min-width: 52px; padding: 10px 12px; border: 1px solid var(--line); background: transparent; font: inherit; font-weight: 400; color: var(--navy); cursor: pointer; }
+  .sizes button[aria-pressed="true"] { background: var(--navy); color: var(--cream); border-color: var(--navy); }
+  .sizes button:disabled { opacity: .35; cursor: not-allowed; text-decoration: line-through; }
+  .hint { font-size: .82rem; color: var(--forest); min-height: 1.2em; margin-top: 8px; }
+  .qty { display: inline-flex; border: 1px solid var(--line); }
+  .qty button { width: 40px; border: 0; background: none; font-size: 1.1rem; cursor: pointer; color: var(--navy); }
+  .qty output { width: 40px; display: grid; place-items: center; font-weight: 400; }
+  .delivery label { display: flex; gap: 12px; align-items: flex-start; padding: 12px 0; border-bottom: 1px solid var(--line); cursor: pointer; }
+  .delivery label:first-of-type { border-top: 1px solid var(--line); }
+  .delivery input { accent-color: var(--navy); margin-top: 5px; }
+  .delivery .cost { margin-left: auto; white-space: nowrap; font-weight: 400; }
+  .total { display: flex; justify-content: space-between; font-size: 1.05rem; margin: 18px 0 6px; font-weight: 400; }
+  .code-note { font-size: .85rem; color: var(--brown); margin: 0 0 18px; }
+  .buy { width: 100%; padding: 16px; border: 0; background: var(--navy); color: var(--cream); font: inherit; font-size: .85rem; letter-spacing: .22em; text-transform: uppercase; cursor: pointer; }
+  .buy:hover { background: #12364c; }
+  .buy:disabled { opacity: .5; cursor: wait; }
+  .error { color: #9b2c2c; font-size: .9rem; min-height: 1.3em; margin-top: 10px; }
+  .fine { font-size: .78rem; color: var(--brown); margin-top: 22px; }
+
+  .thanks { display: none; max-width: 560px; padding: 48px 0; }
+  .thanks.show { display: block; }
+  .thanks h1 { margin-bottom: 14px; }
+  .closed { display: none; padding: 48px 0; }
+
+  @media (max-width: 760px) {
+    header, main { padding-left: 16px; padding-right: 16px; }
+    .product { grid-template-columns: 1fr; gap: 28px; }
+    .intro { margin-bottom: 28px; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <a class="brand" href="/">Mira Flow</a>
+  <nav class="langs" aria-label="Language">
+    <button data-lang="en">EN</button><button data-lang="de">DE</button><button data-lang="pt">PT</button>
+  </nav>
+</header>
+
+<main>
+  <section class="thanks" id="thanks">
+    <p class="eyebrow" data-t="eyebrow"></p>
+    <h1 data-t="thanksTitle"></h1>
+    <p data-t="thanksBody"></p>
+    <p><a href="/" data-t="back"></a></p>
+  </section>
+
+  <section class="closed" id="closed">
+    <h1 data-t="closedTitle"></h1>
+    <p data-t="closedBody"></p>
+  </section>
+
+  <section id="store" hidden>
+    <p class="eyebrow" data-t="eyebrow"></p>
+    <h1 data-t="title"></h1>
+    <p class="intro" data-t="intro"></p>
+
+    <div class="product">
+      <div class="gallery">
+        <div class="main" id="mainImg"></div>
+        <div class="thumbs" id="thumbs"></div>
+      </div>
+
+      <div>
+        <h2 id="pName"></h2>
+        <p class="price" id="pPrice"></p>
+        <p class="desc" id="pDesc"></p>
+
+        <div class="field">
+          <span class="label" data-t="size"></span>
+          <div class="sizes" id="sizes" role="group"></div>
+          <div class="hint" id="sizeHint"></div>
+        </div>
+
+        <div class="field">
+          <span class="label" data-t="quantity"></span>
+          <div class="qty">
+            <button type="button" id="qMinus" aria-label="−">−</button>
+            <output id="qVal">1</output>
+            <button type="button" id="qPlus" aria-label="+">+</button>
+          </div>
+        </div>
+
+        <div class="field delivery" id="delivery">
+          <span class="label" data-t="delivery"></span>
+        </div>
+
+        <div class="total"><span data-t="total"></span><span id="total"></span></div>
+        <p class="code-note" data-t="codeNote"></p>
+        <button class="buy" id="buy" data-t="buy"></button>
+        <div class="error" id="error" role="alert"></div>
+        <p class="fine" data-t="fine"></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script>
+const T = {
+  en: {
+    eyebrow: 'Members only', title: 'The VIP Store',
+    intro: 'A small run of Mira Flow apparel for the people who have been part of it. Not sold anywhere else.',
+    size: 'Size', quantity: 'Quantity', delivery: 'Delivery', total: 'Total',
+    codeNote: 'Have a VIP code? Enter it on the payment page.',
+    buy: 'Continue to payment', free: 'Free', selectSize: 'Please choose a size.',
+    left: n => `Only ${n} left in this size.`, soldOut: 'Sold out',
+    err: 'Something went wrong. Please try again, or write to us.', errStock: 'That size just sold out. Please choose another.',
+    fine: 'Secure payment by Stripe. 14-day right of withdrawal on unworn items. Shipping outside the EU (e.g. Switzerland) may involve customs handling.',
+    thanksTitle: 'Thank you — it’s yours.', thanksBody: 'Your receipt is on its way by email. If you chose pickup, we’ll be in touch to arrange it; if you chose shipping, we’ll send it within a few working days.',
+    back: 'Back to Mira Flow', closedTitle: 'The store is resting.', closedBody: 'Check back soon.'
+  },
+  de: {
+    eyebrow: 'Nur für Mitglieder', title: 'Der VIP Store',
+    intro: 'Eine kleine Auflage Mira Flow Kleidung für alle, die schon dabei waren. Nirgendwo sonst erhältlich.',
+    size: 'Größe', quantity: 'Anzahl', delivery: 'Lieferung', total: 'Gesamt',
+    codeNote: 'Du hast einen VIP-Code? Gib ihn auf der Zahlungsseite ein.',
+    buy: 'Weiter zur Zahlung', free: 'Kostenlos', selectSize: 'Bitte wähle eine Größe.',
+    left: n => `Nur noch ${n} in dieser Größe.`, soldOut: 'Ausverkauft',
+    err: 'Etwas ist schiefgelaufen. Bitte versuche es erneut oder schreib uns.', errStock: 'Diese Größe ist gerade ausverkauft. Bitte wähle eine andere.',
+    fine: 'Sichere Zahlung über Stripe. 14 Tage Widerrufsrecht für ungetragene Artikel. Bei Versand außerhalb der EU (z. B. in die Schweiz) können Zollformalitäten anfallen.',
+    thanksTitle: 'Danke — es gehört dir.', thanksBody: 'Deine Quittung kommt per E-Mail. Bei Abholung melden wir uns zur Vereinbarung; bei Versand schicken wir es innerhalb weniger Werktage los.',
+    back: 'Zurück zu Mira Flow', closedTitle: 'Der Store macht gerade Pause.', closedBody: 'Schau bald wieder vorbei.'
+  },
+  pt: {
+    eyebrow: 'Só para membros', title: 'A VIP Store',
+    intro: 'Uma pequena edição de roupa Mira Flow para quem já fez parte. Não está à venda em mais lado nenhum.',
+    size: 'Tamanho', quantity: 'Quantidade', delivery: 'Entrega', total: 'Total',
+    codeNote: 'Tens um código VIP? Introduz na página de pagamento.',
+    buy: 'Continuar para pagamento', free: 'Grátis', selectSize: 'Escolhe um tamanho.',
+    left: n => `Só restam ${n} neste tamanho.`, soldOut: 'Esgotado',
+    err: 'Algo correu mal. Tenta novamente ou escreve-nos.', errStock: 'Esse tamanho acabou de esgotar. Escolhe outro.',
+    fine: 'Pagamento seguro via Stripe. 14 dias de direito de livre resolução em artigos não usados. Envios para fora da UE (ex. Suíça) podem implicar formalidades alfandegárias.',
+    thanksTitle: 'Obrigado — já é tua.', thanksBody: 'O recibo segue por email. Se escolheste levantamento, entramos em contacto para combinar; se escolheste envio, seguirá dentro de poucos dias úteis.',
+    back: 'Voltar à Mira Flow', closedTitle: 'A loja está em pausa.', closedBody: 'Volta em breve.'
+  }
+};
+
+const params = new URLSearchParams(location.search);
+const browser = (navigator.language || 'en').slice(0, 2);
+let lang = ['en', 'de', 'pt'].includes(params.get('lang')) ? params.get('lang') : (['de', 'pt'].includes(browser) ? browser : 'en');
+
+let catalog = null, product = null, size = null, qty = 1, delivery = 'pickup', imgIdx = 0;
+const $ = id => document.getElementById(id);
+const eur = cents => new Intl.NumberFormat(lang === 'en' ? 'en-IE' : lang === 'de' ? 'de-DE' : 'pt-PT', { style: 'currency', currency: 'EUR' }).format(cents / 100);
+
+const TEE_SVG = '<div class="placeholder"><svg viewBox="0 0 200 200" fill="none" aria-hidden="true"><path d="M70 30 L40 45 L20 80 L45 92 L52 78 L52 175 L148 175 L148 78 L155 92 L180 80 L160 45 L130 30 C125 42 113 50 100 50 C87 50 75 42 70 30 Z" stroke="#0B2535" stroke-width="2" fill="#F7F2E8"/><text x="100" y="110" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="16" fill="#B5842A">Mira Flow</text></svg></div>';
+
+function setLang(l) {
+  lang = l;
+  document.documentElement.lang = l;
+  document.querySelectorAll('.langs button').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === l));
+  document.querySelectorAll('[data-t]').forEach(el => { const v = T[l][el.dataset.t]; if (typeof v === 'string') el.textContent = v; });
+  if (product) render();
+}
+
+function render() {
+  $('pName').textContent = product.name[lang];
+  $('pDesc').textContent = product.description[lang];
+  $('pPrice').textContent = eur(product.price);
+
+  // gallery
+  const imgs = product.images || [];
+  const showImg = i => {
+    imgIdx = i;
+    const box = $('mainImg');
+    if (!imgs.length) { box.innerHTML = TEE_SVG; return; }
+    const img = new Image();
+    img.alt = product.name[lang];
+    img.onerror = () => { box.innerHTML = TEE_SVG; };
+    img.src = imgs[i];
+    box.replaceChildren(img);
+    [...$('thumbs').children].forEach((b, j) => b.setAttribute('aria-pressed', j === i));
+  };
+  $('thumbs').replaceChildren(...(imgs.length > 1 ? imgs.map((src, i) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    const im = new Image(); im.src = src; im.alt = ''; im.onerror = () => b.remove();
+    b.append(im); b.onclick = () => showImg(i);
+    return b;
+  }) : []));
+  showImg(imgIdx);
+
+  // sizes
+  $('sizes').replaceChildren(...Object.entries(product.sizes).map(([s, avail]) => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.textContent = s;
+    b.disabled = avail === 0;
+    if (avail === 0) b.title = T[lang].soldOut;
+    b.setAttribute('aria-pressed', s === size);
+    b.onclick = () => { size = s; $('error').textContent = ''; qty = Math.min(qty, maxQty()); render(); };
+    return b;
+  }));
+  const a = size ? product.sizes[size] : null;
+  $('sizeHint').textContent = typeof a === 'number' && a > 0 ? T[lang].left(a) : '';
+
+  $('qVal').textContent = qty;
+
+  // delivery
+  const box = $('delivery');
+  box.querySelectorAll('label').forEach(l => l.remove());
+  Object.entries(catalog.delivery).forEach(([key, d]) => {
+    const l = document.createElement('label');
+    l.innerHTML = `<input type="radio" name="delivery" value="${key}" ${key === delivery ? 'checked' : ''}><span></span><span class="cost"></span>`;
+    l.children[1].textContent = d.label[lang];
+    l.children[2].textContent = d.price ? eur(d.price) : T[lang].free;
+    l.querySelector('input').onchange = () => { delivery = key; render(); };
+    box.append(l);
+  });
+
+  $('total').textContent = eur(product.price * qty + catalog.delivery[delivery].price);
+}
+
+function maxQty() {
+  const a = size ? product.sizes[size] : 'ok';
+  return typeof a === 'number' ? Math.min(a, product.maxPerOrder) : product.maxPerOrder;
+}
+
+$('qMinus').onclick = () => { qty = Math.max(1, qty - 1); render(); };
+$('qPlus').onclick = () => { qty = Math.min(maxQty(), qty + 1); render(); };
+document.querySelectorAll('.langs button').forEach(b => b.onclick = () => setLang(b.dataset.lang));
+
+$('buy').onclick = async () => {
+  $('error').textContent = '';
+  if (!size) { $('error').textContent = T[lang].selectSize; return; }
+  $('buy').disabled = true;
+  try {
+    const res = await fetch('/api/vipstore/checkout', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ productId: product.id, size, quantity: qty, delivery, lang })
+    });
+    const data = await res.json();
+    if (data.url) { location.href = data.url; return; }
+    $('error').textContent = data.error === 'out_of_stock' ? T[lang].errStock : T[lang].err;
+  } catch { $('error').textContent = T[lang].err; }
+  $('buy').disabled = false;
+};
+
+async function init() {
+  setLang(lang);
+  if (params.get('ordered') === '1') { $('thanks').classList.add('show'); return; }
+  try {
+    const res = await fetch('/api/vipstore/catalog', { cache: 'no-store' });
+    catalog = await res.json();
+  } catch { catalog = null; }
+  if (!catalog || !catalog.open || !catalog.products.length) { $('closed').style.display = 'block'; return; }
+  product = catalog.products[0];
+  $('store').hidden = false;
+  render();
+}
+init();
+</script>
+</body>
+</html>

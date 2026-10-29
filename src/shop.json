@@ -1,0 +1,52 @@
+{
+  "_comment": "Single source of truth for the VIP store. Prices in cents. Update stock by hand after each sale until the Stripe webhook is in place.",
+  "currency": "eur",
+  "open": true,
+  "products": [
+    {
+      "id": "tee-classic",
+      "name": {
+        "en": "Mira Flow Tee",
+        "de": "Mira Flow T-Shirt",
+        "pt": "T-shirt Mira Flow"
+      },
+      "description": {
+        "en": "Soft cotton tee, printed by a local workshop in the Alentejo. Made for the court, the beach and the long lunch after.",
+        "de": "Weiches Baumwoll-T-Shirt, bedruckt von einer lokalen Werkstatt im Alentejo. Gemacht für den Court, den Strand und das lange Mittagessen danach.",
+        "pt": "T-shirt de algodão macio, estampada por uma oficina local no Alentejo. Feita para o campo, para a praia e para o almoço longo que vem depois."
+      },
+      "price": 2500,
+      "images": ["/vipstore/tee-front.jpg", "/vipstore/tee-back.jpg"],
+      "sizes": { "S": 5, "M": 10, "L": 10, "XL": 5 },
+      "maxPerOrder": 5
+    }
+  ],
+  "delivery": {
+    "pickup": {
+      "price": 0,
+      "label": {
+        "en": "Pickup — at your retreat or in Vila Nova de Milfontes",
+        "de": "Abholung — beim Retreat oder in Vila Nova de Milfontes",
+        "pt": "Levantamento — no retiro ou em Vila Nova de Milfontes"
+      }
+    },
+    "pt": {
+      "price": 500,
+      "countries": ["PT"],
+      "label": {
+        "en": "Shipping within Portugal",
+        "de": "Versand innerhalb Portugals",
+        "pt": "Envio para Portugal"
+      }
+    },
+    "eu": {
+      "price": 1400,
+      "countries": ["CH", "DE", "AT", "ES", "FR", "IT", "NL", "BE", "LU"],
+      "label": {
+        "en": "Shipping to Switzerland & Europe",
+        "de": "Versand in die Schweiz & nach Europa",
+        "pt": "Envio para a Suíça e Europa"
+      }
+    }
+  }
+}

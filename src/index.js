@@ -14,6 +14,7 @@
 import { handleCheckout } from './checkout.js';
 import { loadEditions, publicView } from './editions.js';
 import { handleSession } from './session.js';
+import { handleVipStore } from './vipstore.js';
 
 const LANGS = ['en', 'de', 'pt'];
 
@@ -46,6 +47,13 @@ export default {
         return json({ error: 'method_not_allowed' }, 405);
       }
       return handleCheckout(request, env);
+    }
+
+    // Unlisted apparel store at /vipstore/. Prices, stock and shipping
+    // come from src/shop.json. Returns null for anything that isn't its own.
+    if (url.pathname.startsWith('/api/vipstore/')) {
+      const vip = await handleVipStore(request, env);
+      if (vip) return vip;
     }
 
     // Without this, a typo'd endpoint gets served the 404 asset page —
