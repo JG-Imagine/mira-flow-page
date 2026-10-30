@@ -1,54 +1,169 @@
 {
-  "_comment": "Single source of truth for the VIP store. Prices in cents. To add a product: copy a block in 'products', give it a unique id, put images in public/vipstore/img/. Set 'active': false to hide one. One-size items: use \"sizes\": { \"One size\": 10 }. Update stock by hand after each sale until the Stripe webhook is in place.",
+  "_comment": "Single source of truth for the VIP store. Prices in cents. To add a product: copy a block in 'products', give it a unique id, put images in public/vipstore/img/. Set 'active': false to hide one. One-size items: use \"sizes\": { \"One size\": 10 }. Update stock by hand after each sale until the Stripe webhook is in place. 'supplierRef' is internal only and never shown on the site.",
   "currency": "eur",
   "open": true,
   "maxItemsPerOrder": 10,
-
   "categories": [
-    { "id": "women", "label": { "en": "Women", "de": "Damen", "pt": "Mulher" } },
-    { "id": "men", "label": { "en": "Men", "de": "Herren", "pt": "Homem" } },
-    { "id": "accessories", "label": { "en": "Accessories", "de": "Accessoires", "pt": "Acessórios" } }
-  ],
-
-  "products": [
     {
-      "id": "tee-women",
-      "active": true,
-      "category": "women",
-      "name": {
-        "en": "Mira Flow Tee — Women",
-        "de": "Mira Flow T-Shirt — Damen",
-        "pt": "T-shirt Mira Flow — Mulher"
-      },
-      "description": {
-        "en": "Fitted soft cotton tee, printed by a local workshop in the Alentejo. Made for the court, the beach and the long lunch after.",
-        "de": "Tailliertes, weiches Baumwoll-T-Shirt, bedruckt von einer lokalen Werkstatt im Alentejo. Gemacht für den Court, den Strand und das lange Mittagessen danach.",
-        "pt": "T-shirt cintada de algodão macio, estampada por uma oficina local no Alentejo. Feita para o campo, para a praia e para o almoço longo que vem depois."
-      },
-      "price": 2500,
-      "images": ["/vipstore/img/tee-women-1.jpg", "/vipstore/img/tee-women-2.jpg"],
-      "sizes": { "XS": 3, "S": 6, "M": 6, "L": 3 }
+      "id": "women",
+      "label": {
+        "en": "Women",
+        "de": "Damen",
+        "pt": "Mulher"
+      }
     },
     {
-      "id": "tee-men",
+      "id": "men",
+      "label": {
+        "en": "Men",
+        "de": "Herren",
+        "pt": "Homem"
+      }
+    },
+    {
+      "id": "accessories",
+      "label": {
+        "en": "Accessories",
+        "de": "Accessoires",
+        "pt": "Acessórios"
+      }
+    }
+  ],
+  "products": [
+    {
+      "id": "tee-men-navy",
+      "supplierRef": "SLAM 0304 — Navy blue",
       "active": true,
       "category": "men",
       "name": {
-        "en": "Mira Flow Tee — Men",
-        "de": "Mira Flow T-Shirt — Herren",
-        "pt": "T-shirt Mira Flow — Homem"
+        "en": "Mira Flow Technical Tee — Men, Navy",
+        "de": "Mira Flow Funktionsshirt — Herren, Navy",
+        "pt": "T-shirt Técnica Mira Flow — Homem, Azul-marinho"
       },
       "description": {
-        "en": "Regular-fit soft cotton tee, printed by a local workshop in the Alentejo. Made for the court, the beach and the long lunch after.",
-        "de": "Weiches Baumwoll-T-Shirt in normaler Passform, bedruckt von einer lokalen Werkstatt im Alentejo. Gemacht für den Court, den Strand und das lange Mittagessen danach.",
-        "pt": "T-shirt de corte regular em algodão macio, estampada por uma oficina local no Alentejo. Feita para o campo, para a praia e para o almoço longo que vem depois."
+        "en": "Our men's technical tee in navy — breathable recycled polyester, made for the court and everything after. Printed by a local workshop in the Alentejo.",
+        "de": "Unser Herren-Funktionsshirt in Navy — atmungsaktives recyceltes Polyester, gemacht für den Court und alles danach. Bedruckt von einer lokalen Werkstatt im Alentejo.",
+        "pt": "A nossa t-shirt técnica de homem em azul-marinho — poliéster reciclado e respirável, feita para o campo e para tudo o que vem depois. Estampada por uma oficina local no Alentejo."
       },
       "price": 2500,
-      "images": ["/vipstore/img/tee-men-1.jpg", "/vipstore/img/tee-men-2.jpg"],
-      "sizes": { "S": 4, "M": 8, "L": 8, "XL": 4 }
+      "images": [
+        "/vipstore/img/tee-men-navy-1.jpg",
+        "/vipstore/img/tee-men-navy-2.jpg"
+      ],
+      "sizes": {
+        "M": 2,
+        "L": 4,
+        "XL": 2,
+        "XXL": 4,
+        "XXXL": 1
+      }
+    },
+    {
+      "id": "tee-men-white",
+      "supplierRef": "SLAM 0304 — Branco",
+      "active": true,
+      "category": "men",
+      "name": {
+        "en": "Mira Flow Technical Tee — Men, White",
+        "de": "Mira Flow Funktionsshirt — Herren, Weiß",
+        "pt": "T-shirt Técnica Mira Flow — Homem, Branco"
+      },
+      "description": {
+        "en": "Our men's technical tee in white — breathable recycled polyester, made for the court and everything after. Printed by a local workshop in the Alentejo.",
+        "de": "Unser Herren-Funktionsshirt in Weiß — atmungsaktives recyceltes Polyester, gemacht für den Court und alles danach. Bedruckt von einer lokalen Werkstatt im Alentejo.",
+        "pt": "A nossa t-shirt técnica de homem em branco — poliéster reciclado e respirável, feita para o campo e para tudo o que vem depois. Estampada por uma oficina local no Alentejo."
+      },
+      "price": 2500,
+      "images": [
+        "/vipstore/img/tee-men-white-1.jpg",
+        "/vipstore/img/tee-men-white-2.jpg"
+      ],
+      "sizes": {
+        "M": 2,
+        "L": 4,
+        "XL": 2,
+        "XXL": 2
+      }
+    },
+    {
+      "id": "tee-women-navy",
+      "supplierRef": "SLAM WOMAN 0305 — Navy blue",
+      "active": true,
+      "category": "women",
+      "name": {
+        "en": "Mira Flow Technical Tee — Women, Navy",
+        "de": "Mira Flow Funktionsshirt — Damen, Navy",
+        "pt": "T-shirt Técnica Mira Flow — Mulher, Azul-marinho"
+      },
+      "description": {
+        "en": "Our women's technical tee in navy — breathable recycled polyester, made for the court and everything after. Printed by a local workshop in the Alentejo.",
+        "de": "Unser Damen-Funktionsshirt in Navy — atmungsaktives recyceltes Polyester, gemacht für den Court und alles danach. Bedruckt von einer lokalen Werkstatt im Alentejo.",
+        "pt": "A nossa t-shirt técnica de mulher em azul-marinho — poliéster reciclado e respirável, feita para o campo e para tudo o que vem depois. Estampada por uma oficina local no Alentejo."
+      },
+      "price": 2500,
+      "images": [
+        "/vipstore/img/tee-women-navy-1.jpg",
+        "/vipstore/img/tee-women-navy-2.jpg"
+      ],
+      "sizes": {
+        "S": 4,
+        "M": 3,
+        "L": 3
+      }
+    },
+    {
+      "id": "tee-women-white",
+      "supplierRef": "SLAM WOMAN 0305 — Branco",
+      "active": true,
+      "category": "women",
+      "name": {
+        "en": "Mira Flow Technical Tee — Women, White",
+        "de": "Mira Flow Funktionsshirt — Damen, Weiß",
+        "pt": "T-shirt Técnica Mira Flow — Mulher, Branco"
+      },
+      "description": {
+        "en": "Our women's technical tee in white — breathable recycled polyester, made for the court and everything after. Printed by a local workshop in the Alentejo.",
+        "de": "Unser Damen-Funktionsshirt in Weiß — atmungsaktives recyceltes Polyester, gemacht für den Court und alles danach. Bedruckt von einer lokalen Werkstatt im Alentejo.",
+        "pt": "A nossa t-shirt técnica de mulher em branco — poliéster reciclado e respirável, feita para o campo e para tudo o que vem depois. Estampada por uma oficina local no Alentejo."
+      },
+      "price": 2500,
+      "images": [
+        "/vipstore/img/tee-women-white-1.jpg",
+        "/vipstore/img/tee-women-white-2.jpg"
+      ],
+      "sizes": {
+        "S": 4,
+        "M": 3,
+        "L": 3
+      }
+    },
+    {
+      "id": "tank-women-white",
+      "supplierRef": "AIDA 6656 — Branco",
+      "active": true,
+      "category": "women",
+      "name": {
+        "en": "Mira Flow Racerback Tank — Women, White",
+        "de": "Mira Flow Racerback-Top — Damen, Weiß",
+        "pt": "Top Racerback Mira Flow — Mulher, Branco"
+      },
+      "description": {
+        "en": "Fitted racerback tank in a breathable, quick-drying stretch fabric. For hot days on court and yoga on the deck. Printed by a local workshop in the Alentejo.",
+        "de": "Tailliertes Racerback-Top aus atmungsaktivem, schnell trocknendem Stretch-Material. Für heiße Tage auf dem Court und Yoga auf dem Deck. Bedruckt von einer lokalen Werkstatt im Alentejo.",
+        "pt": "Top racerback cintado em tecido elástico, respirável e de secagem rápida. Para dias quentes no campo e yoga no deck. Estampado por uma oficina local no Alentejo."
+      },
+      "price": 2500,
+      "images": [
+        "/vipstore/img/tank-women-white-1.jpg",
+        "/vipstore/img/tank-women-white-2.jpg"
+      ],
+      "sizes": {
+        "S": 4,
+        "M": 3,
+        "L": 3
+      }
     }
   ],
-
   "delivery": {
     "pickup": {
       "price": 0,
@@ -60,7 +175,9 @@
     },
     "pt": {
       "price": 500,
-      "countries": ["PT"],
+      "countries": [
+        "PT"
+      ],
       "label": {
         "en": "Shipping within Portugal",
         "de": "Versand innerhalb Portugals",
@@ -69,7 +186,17 @@
     },
     "eu": {
       "price": 1400,
-      "countries": ["CH", "DE", "AT", "ES", "FR", "IT", "NL", "BE", "LU"],
+      "countries": [
+        "CH",
+        "DE",
+        "AT",
+        "ES",
+        "FR",
+        "IT",
+        "NL",
+        "BE",
+        "LU"
+      ],
       "label": {
         "en": "Shipping to Switzerland & Europe",
         "de": "Versand in die Schweiz & nach Europa",
