@@ -741,48 +741,6 @@
       },
       "editions": [
         {
-          "id": "2026-11-01",
-          "label": {
-            "pt": "01 Novembro – 08 Novembro 2026",
-            "en": "01 November – 08 November 2026",
-            "de": "01. November  – 08. November 2026"
-          },
-          "note": {
-            "pt": "Outono em cheio",
-            "en": "Full Autumn",
-            "de": "Voller Herbst"
-          },
-          "left": 12,
-          "level": {
-            "playtomic": {
-              "min": 0,
-              "max": 1.5
-            },
-            "federation": {
-              "m": {
-                "pt": "M5 – M6",
-                "en": "M5 – M6",
-                "de": "M5 – M6"
-              },
-              "f": {
-                "pt": "F5 – F6",
-                "en": "F5 – F6",
-                "de": "F5 – F6"
-              },
-              "mix": {
-                "pt": "Misto 5 – 6",
-                "en": "Mixed 5 – 6",
-                "de": "Mixed 5 – 6"
-              }
-            },
-            "note": {
-              "pt": "Sete dias exigem um grupo relativamente equilibrado.",
-              "en": "Seven days need a reasonably even group.",
-              "de": "Sieben Tage brauchen eine halbwegs ausgeglichene Gruppe."
-            }
-          }
-        },
-        {
           "id": "2027-03-14",
           "label": {
             "pt": "14 – 21 Março 2027",
