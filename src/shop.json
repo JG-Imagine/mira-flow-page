@@ -48,7 +48,8 @@
       "price": 2500,
       "images": [
         "/vipstore/img/tee-men-navy-1.jpg",
-        "/vipstore/img/tee-men-navy-2.jpg"
+        "/vipstore/img/tee-men-navy-2.jpg",
+        "/vipstore/img/tee-men-navy-3.jpg"
       ],
       "sizes": {
         "M": 2,
@@ -76,7 +77,8 @@
       "price": 2500,
       "images": [
         "/vipstore/img/tee-men-white-1.jpg",
-        "/vipstore/img/tee-men-white-2.jpg"
+        "/vipstore/img/tee-men-white-2.jpg",
+        "/vipstore/img/tee-men-white-3.jpg"
       ],
       "sizes": {
         "M": 2,
@@ -103,7 +105,8 @@
       "price": 2500,
       "images": [
         "/vipstore/img/tee-women-navy-1.jpg",
-        "/vipstore/img/tee-women-navy-2.jpg"
+        "/vipstore/img/tee-women-navy-2.jpg",
+        "/vipstore/img/tee-women-navy-3.jpg"
       ],
       "sizes": {
         "S": 4,
@@ -129,7 +132,8 @@
       "price": 2500,
       "images": [
         "/vipstore/img/tee-women-white-1.jpg",
-        "/vipstore/img/tee-women-white-2.jpg"
+        "/vipstore/img/tee-women-white-2.jpg",
+        "/vipstore/img/tee-women-white-3.jpg"
       ],
       "sizes": {
         "S": 4,
@@ -155,7 +159,8 @@
       "price": 2500,
       "images": [
         "/vipstore/img/tank-women-white-1.jpg",
-        "/vipstore/img/tank-women-white-2.jpg"
+        "/vipstore/img/tank-women-white-2.jpg",
+        "/vipstore/img/tank-women-white-3.jpg"
       ],
       "sizes": {
         "S": 4,
